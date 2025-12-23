@@ -81,9 +81,7 @@ class PokeDream:
         prompt = structure_prompt(
             concept=concept,
             types=types,
-            body_type=body_type,
-            colors=colors,
-            culture=culture
+            colors=colors
         )
         
         image_paths = self.image_gen.generate_and_save(
