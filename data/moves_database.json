@@ -1,0 +1,369 @@
+{
+  "moves": {
+    "normal": {
+      "physical": [
+        {"name": "Tackle", "power": 40, "accuracy": 100, "pp": 35, "tier": "early", "tags": ["contact"]},
+        {"name": "Scratch", "power": 40, "accuracy": 100, "pp": 35, "tier": "early", "tags": ["contact", "claw"]},
+        {"name": "Pound", "power": 40, "accuracy": 100, "pp": 35, "tier": "early", "tags": ["contact"]},
+        {"name": "Quick Attack", "power": 40, "accuracy": 100, "pp": 30, "tier": "early", "tags": ["priority"]},
+        {"name": "Headbutt", "power": 70, "accuracy": 100, "pp": 15, "tier": "mid", "tags": ["contact", "flinch"]},
+        {"name": "Slash", "power": 70, "accuracy": 100, "pp": 20, "tier": "mid", "tags": ["contact", "claw", "high_crit"]},
+        {"name": "Body Slam", "power": 85, "accuracy": 100, "pp": 15, "tier": "mid", "tags": ["contact", "paralyze"]},
+        {"name": "Take Down", "power": 90, "accuracy": 85, "pp": 20, "tier": "mid", "tags": ["contact", "recoil"]},
+        {"name": "Double-Edge", "power": 120, "accuracy": 100, "pp": 15, "tier": "late", "tags": ["contact", "recoil"]},
+        {"name": "Giga Impact", "power": 150, "accuracy": 90, "pp": 5, "tier": "late", "tags": ["contact", "recharge"]},
+        {"name": "Extreme Speed", "power": 80, "accuracy": 100, "pp": 5, "tier": "late", "tags": ["priority"]}
+      ],
+      "special": [
+        {"name": "Swift", "power": 60, "accuracy": null, "pp": 20, "tier": "mid", "tags": ["never_miss"]},
+        {"name": "Hyper Voice", "power": 90, "accuracy": 100, "pp": 10, "tier": "late", "tags": ["sound"]},
+        {"name": "Hyper Beam", "power": 150, "accuracy": 90, "pp": 5, "tier": "late", "tags": ["recharge"]}
+      ],
+      "status": [
+        {"name": "Growl", "power": null, "accuracy": 100, "pp": 40, "tier": "early", "tags": ["debuff", "sound"]},
+        {"name": "Leer", "power": null, "accuracy": 100, "pp": 30, "tier": "early", "tags": ["debuff"]},
+        {"name": "Protect", "power": null, "accuracy": null, "pp": 10, "tier": "mid", "tags": ["protection"]},
+        {"name": "Swords Dance", "power": null, "accuracy": null, "pp": 20, "tier": "mid", "tags": ["buff", "attack"]}
+      ]
+    },
+    "fire": {
+      "physical": [
+        {"name": "Ember", "power": 40, "accuracy": 100, "pp": 25, "tier": "early", "tags": ["burn"]},
+        {"name": "Flame Wheel", "power": 60, "accuracy": 100, "pp": 25, "tier": "mid", "tags": ["contact", "burn"]},
+        {"name": "Fire Punch", "power": 75, "accuracy": 100, "pp": 15, "tier": "mid", "tags": ["contact", "punch", "burn"]},
+        {"name": "Fire Fang", "power": 65, "accuracy": 95, "pp": 15, "tier": "mid", "tags": ["contact", "bite", "burn", "flinch"]},
+        {"name": "Blaze Kick", "power": 85, "accuracy": 90, "pp": 10, "tier": "mid", "tags": ["contact", "kick", "burn", "high_crit"]},
+        {"name": "Flare Blitz", "power": 120, "accuracy": 100, "pp": 15, "tier": "late", "tags": ["contact", "recoil", "burn"]}
+      ],
+      "special": [
+        {"name": "Incinerate", "power": 60, "accuracy": 100, "pp": 15, "tier": "mid", "tags": []},
+        {"name": "Flamethrower", "power": 90, "accuracy": 100, "pp": 15, "tier": "late", "tags": ["burn"]},
+        {"name": "Fire Blast", "power": 110, "accuracy": 85, "pp": 5, "tier": "late", "tags": ["burn"]},
+        {"name": "Heat Wave", "power": 95, "accuracy": 90, "pp": 10, "tier": "late", "tags": ["spread", "burn"]},
+        {"name": "Overheat", "power": 130, "accuracy": 90, "pp": 5, "tier": "late", "tags": ["self_debuff"]}
+      ],
+      "status": [
+        {"name": "Will-O-Wisp", "power": null, "accuracy": 85, "pp": 15, "tier": "mid", "tags": ["burn"]},
+        {"name": "Sunny Day", "power": null, "accuracy": null, "pp": 5, "tier": "mid", "tags": ["weather"]}
+      ]
+    },
+    "water": {
+      "physical": [
+        {"name": "Aqua Jet", "power": 40, "accuracy": 100, "pp": 20, "tier": "early", "tags": ["priority"]},
+        {"name": "Waterfall", "power": 80, "accuracy": 100, "pp": 15, "tier": "mid", "tags": ["contact", "flinch"]},
+        {"name": "Aqua Tail", "power": 90, "accuracy": 90, "pp": 10, "tier": "late", "tags": ["contact"]},
+        {"name": "Liquidation", "power": 85, "accuracy": 100, "pp": 10, "tier": "late", "tags": ["contact", "debuff"]}
+      ],
+      "special": [
+        {"name": "Water Gun", "power": 40, "accuracy": 100, "pp": 25, "tier": "early", "tags": []},
+        {"name": "Bubble Beam", "power": 65, "accuracy": 100, "pp": 20, "tier": "mid", "tags": ["speed_down"]},
+        {"name": "Scald", "power": 80, "accuracy": 100, "pp": 15, "tier": "mid", "tags": ["burn"]},
+        {"name": "Surf", "power": 90, "accuracy": 100, "pp": 15, "tier": "late", "tags": ["spread"]},
+        {"name": "Hydro Pump", "power": 110, "accuracy": 80, "pp": 5, "tier": "late", "tags": []},
+        {"name": "Origin Pulse", "power": 110, "accuracy": 85, "pp": 10, "tier": "legendary", "tags": ["spread"]}
+      ],
+      "status": [
+        {"name": "Rain Dance", "power": null, "accuracy": null, "pp": 5, "tier": "mid", "tags": ["weather"]},
+        {"name": "Aqua Ring", "power": null, "accuracy": null, "pp": 20, "tier": "mid", "tags": ["heal"]}
+      ]
+    },
+    "grass": {
+      "physical": [
+        {"name": "Vine Whip", "power": 45, "accuracy": 100, "pp": 25, "tier": "early", "tags": ["contact"]},
+        {"name": "Razor Leaf", "power": 55, "accuracy": 95, "pp": 25, "tier": "early", "tags": ["high_crit"]},
+        {"name": "Seed Bomb", "power": 80, "accuracy": 100, "pp": 15, "tier": "mid", "tags": []},
+        {"name": "Leaf Blade", "power": 90, "accuracy": 100, "pp": 15, "tier": "late", "tags": ["contact", "high_crit"]},
+        {"name": "Wood Hammer", "power": 120, "accuracy": 100, "pp": 15, "tier": "late", "tags": ["contact", "recoil"]},
+        {"name": "Power Whip", "power": 120, "accuracy": 85, "pp": 10, "tier": "late", "tags": ["contact"]}
+      ],
+      "special": [
+        {"name": "Absorb", "power": 20, "accuracy": 100, "pp": 25, "tier": "early", "tags": ["drain"]},
+        {"name": "Mega Drain", "power": 40, "accuracy": 100, "pp": 15, "tier": "early", "tags": ["drain"]},
+        {"name": "Giga Drain", "power": 75, "accuracy": 100, "pp": 10, "tier": "mid", "tags": ["drain"]},
+        {"name": "Energy Ball", "power": 90, "accuracy": 100, "pp": 10, "tier": "late", "tags": ["debuff"]},
+        {"name": "Leaf Storm", "power": 130, "accuracy": 90, "pp": 5, "tier": "late", "tags": ["self_debuff"]},
+        {"name": "Solar Beam", "power": 120, "accuracy": 100, "pp": 10, "tier": "late", "tags": ["charge"]}
+      ],
+      "status": [
+        {"name": "Leech Seed", "power": null, "accuracy": 90, "pp": 10, "tier": "early", "tags": ["drain"]},
+        {"name": "Sleep Powder", "power": null, "accuracy": 75, "pp": 15, "tier": "mid", "tags": ["sleep"]},
+        {"name": "Synthesis", "power": null, "accuracy": null, "pp": 5, "tier": "mid", "tags": ["heal"]}
+      ]
+    },
+    "electric": {
+      "physical": [
+        {"name": "Thunder Punch", "power": 75, "accuracy": 100, "pp": 15, "tier": "mid", "tags": ["contact", "punch", "paralyze"]},
+        {"name": "Spark", "power": 65, "accuracy": 100, "pp": 20, "tier": "mid", "tags": ["contact", "paralyze"]},
+        {"name": "Wild Charge", "power": 90, "accuracy": 100, "pp": 15, "tier": "late", "tags": ["contact", "recoil"]},
+        {"name": "Volt Tackle", "power": 120, "accuracy": 100, "pp": 15, "tier": "late", "tags": ["contact", "recoil", "paralyze"]}
+      ],
+      "special": [
+        {"name": "Thunder Shock", "power": 40, "accuracy": 100, "pp": 30, "tier": "early", "tags": ["paralyze"]},
+        {"name": "Electro Ball", "power": null, "accuracy": 100, "pp": 10, "tier": "mid", "tags": ["speed_based"]},
+        {"name": "Thunderbolt", "power": 90, "accuracy": 100, "pp": 15, "tier": "late", "tags": ["paralyze"]},
+        {"name": "Thunder", "power": 110, "accuracy": 70, "pp": 10, "tier": "late", "tags": ["paralyze", "rain_accurate"]},
+        {"name": "Volt Switch", "power": 70, "accuracy": 100, "pp": 20, "tier": "mid", "tags": ["switch"]}
+      ],
+      "status": [
+        {"name": "Thunder Wave", "power": null, "accuracy": 90, "pp": 20, "tier": "early", "tags": ["paralyze"]},
+        {"name": "Electric Terrain", "power": null, "accuracy": null, "pp": 10, "tier": "mid", "tags": ["terrain"]}
+      ]
+    },
+    "ice": {
+      "physical": [
+        {"name": "Ice Punch", "power": 75, "accuracy": 100, "pp": 15, "tier": "mid", "tags": ["contact", "punch", "freeze"]},
+        {"name": "Ice Fang", "power": 65, "accuracy": 95, "pp": 15, "tier": "mid", "tags": ["contact", "bite", "freeze", "flinch"]},
+        {"name": "Avalanche", "power": 60, "accuracy": 100, "pp": 10, "tier": "mid", "tags": ["contact", "revenge"]},
+        {"name": "Icicle Crash", "power": 85, "accuracy": 90, "pp": 10, "tier": "late", "tags": ["flinch"]},
+        {"name": "Ice Shard", "power": 40, "accuracy": 100, "pp": 30, "tier": "early", "tags": ["priority"]}
+      ],
+      "special": [
+        {"name": "Powder Snow", "power": 40, "accuracy": 100, "pp": 25, "tier": "early", "tags": ["freeze"]},
+        {"name": "Icy Wind", "power": 55, "accuracy": 95, "pp": 15, "tier": "early", "tags": ["speed_down"]},
+        {"name": "Ice Beam", "power": 90, "accuracy": 100, "pp": 10, "tier": "late", "tags": ["freeze"]},
+        {"name": "Blizzard", "power": 110, "accuracy": 70, "pp": 5, "tier": "late", "tags": ["freeze", "spread", "hail_accurate"]},
+        {"name": "Freeze-Dry", "power": 70, "accuracy": 100, "pp": 20, "tier": "mid", "tags": ["freeze", "super_effective_water"]}
+      ],
+      "status": [
+        {"name": "Hail", "power": null, "accuracy": null, "pp": 10, "tier": "mid", "tags": ["weather"]},
+        {"name": "Mist", "power": null, "accuracy": null, "pp": 30, "tier": "early", "tags": ["protection"]}
+      ]
+    },
+    "fighting": {
+      "physical": [
+        {"name": "Karate Chop", "power": 50, "accuracy": 100, "pp": 25, "tier": "early", "tags": ["contact", "high_crit"]},
+        {"name": "Low Kick", "power": null, "accuracy": 100, "pp": 20, "tier": "early", "tags": ["contact", "kick", "weight_based"]},
+        {"name": "Mach Punch", "power": 40, "accuracy": 100, "pp": 30, "tier": "early", "tags": ["contact", "punch", "priority"]},
+        {"name": "Brick Break", "power": 75, "accuracy": 100, "pp": 15, "tier": "mid", "tags": ["contact", "screen_break"]},
+        {"name": "Drain Punch", "power": 75, "accuracy": 100, "pp": 10, "tier": "mid", "tags": ["contact", "punch", "drain"]},
+        {"name": "High Jump Kick", "power": 130, "accuracy": 90, "pp": 10, "tier": "late", "tags": ["contact", "kick", "crash"]},
+        {"name": "Close Combat", "power": 120, "accuracy": 100, "pp": 5, "tier": "late", "tags": ["contact", "self_debuff"]},
+        {"name": "Aura Sphere", "power": 80, "accuracy": null, "pp": 20, "tier": "late", "tags": ["never_miss"]}
+      ],
+      "special": [
+        {"name": "Vacuum Wave", "power": 40, "accuracy": 100, "pp": 30, "tier": "early", "tags": ["priority"]},
+        {"name": "Focus Blast", "power": 120, "accuracy": 70, "pp": 5, "tier": "late", "tags": ["debuff"]}
+      ],
+      "status": [
+        {"name": "Bulk Up", "power": null, "accuracy": null, "pp": 20, "tier": "mid", "tags": ["buff"]},
+        {"name": "Detect", "power": null, "accuracy": null, "pp": 5, "tier": "mid", "tags": ["protection"]}
+      ]
+    },
+    "poison": {
+      "physical": [
+        {"name": "Poison Sting", "power": 15, "accuracy": 100, "pp": 35, "tier": "early", "tags": ["poison"]},
+        {"name": "Poison Fang", "power": 50, "accuracy": 100, "pp": 15, "tier": "mid", "tags": ["contact", "bite", "toxic"]},
+        {"name": "Poison Jab", "power": 80, "accuracy": 100, "pp": 20, "tier": "late", "tags": ["contact", "poison"]},
+        {"name": "Cross Poison", "power": 70, "accuracy": 100, "pp": 20, "tier": "mid", "tags": ["contact", "high_crit", "poison"]},
+        {"name": "Gunk Shot", "power": 120, "accuracy": 80, "pp": 5, "tier": "late", "tags": ["poison"]}
+      ],
+      "special": [
+        {"name": "Sludge", "power": 65, "accuracy": 100, "pp": 20, "tier": "mid", "tags": ["poison"]},
+        {"name": "Sludge Bomb", "power": 90, "accuracy": 100, "pp": 10, "tier": "late", "tags": ["poison"]},
+        {"name": "Sludge Wave", "power": 95, "accuracy": 100, "pp": 10, "tier": "late", "tags": ["poison", "spread"]},
+        {"name": "Venoshock", "power": 65, "accuracy": 100, "pp": 10, "tier": "mid", "tags": ["double_poisoned"]}
+      ],
+      "status": [
+        {"name": "Toxic", "power": null, "accuracy": 90, "pp": 10, "tier": "mid", "tags": ["toxic"]},
+        {"name": "Poison Gas", "power": null, "accuracy": 90, "pp": 40, "tier": "early", "tags": ["poison"]},
+        {"name": "Coil", "power": null, "accuracy": null, "pp": 20, "tier": "mid", "tags": ["buff"]}
+      ]
+    },
+    "ground": {
+      "physical": [
+        {"name": "Mud-Slap", "power": 20, "accuracy": 100, "pp": 10, "tier": "early", "tags": ["accuracy_down"]},
+        {"name": "Dig", "power": 80, "accuracy": 100, "pp": 10, "tier": "mid", "tags": ["contact", "semi_invulnerable"]},
+        {"name": "Bulldoze", "power": 60, "accuracy": 100, "pp": 20, "tier": "mid", "tags": ["spread", "speed_down"]},
+        {"name": "Drill Run", "power": 80, "accuracy": 95, "pp": 10, "tier": "mid", "tags": ["contact", "high_crit"]},
+        {"name": "Earthquake", "power": 100, "accuracy": 100, "pp": 10, "tier": "late", "tags": ["spread"]},
+        {"name": "High Horsepower", "power": 95, "accuracy": 95, "pp": 10, "tier": "late", "tags": ["contact"]}
+      ],
+      "special": [
+        {"name": "Earth Power", "power": 90, "accuracy": 100, "pp": 10, "tier": "late", "tags": ["debuff"]}
+      ],
+      "status": [
+        {"name": "Sand Attack", "power": null, "accuracy": 100, "pp": 15, "tier": "early", "tags": ["accuracy_down"]},
+        {"name": "Sandstorm", "power": null, "accuracy": null, "pp": 10, "tier": "mid", "tags": ["weather"]}
+      ]
+    },
+    "flying": {
+      "physical": [
+        {"name": "Peck", "power": 35, "accuracy": 100, "pp": 35, "tier": "early", "tags": ["contact"]},
+        {"name": "Wing Attack", "power": 60, "accuracy": 100, "pp": 35, "tier": "early", "tags": ["contact"]},
+        {"name": "Aerial Ace", "power": 60, "accuracy": null, "pp": 20, "tier": "mid", "tags": ["contact", "never_miss"]},
+        {"name": "Acrobatics", "power": 55, "accuracy": 100, "pp": 15, "tier": "mid", "tags": ["contact", "no_item_boost"]},
+        {"name": "Fly", "power": 90, "accuracy": 95, "pp": 15, "tier": "mid", "tags": ["contact", "semi_invulnerable"]},
+        {"name": "Brave Bird", "power": 120, "accuracy": 100, "pp": 15, "tier": "late", "tags": ["contact", "recoil"]},
+        {"name": "Dual Wingbeat", "power": 40, "accuracy": 90, "pp": 10, "tier": "mid", "tags": ["contact", "multi_hit"]}
+      ],
+      "special": [
+        {"name": "Gust", "power": 40, "accuracy": 100, "pp": 35, "tier": "early", "tags": []},
+        {"name": "Air Cutter", "power": 60, "accuracy": 95, "pp": 25, "tier": "mid", "tags": ["high_crit"]},
+        {"name": "Air Slash", "power": 75, "accuracy": 95, "pp": 15, "tier": "mid", "tags": ["flinch"]},
+        {"name": "Hurricane", "power": 110, "accuracy": 70, "pp": 10, "tier": "late", "tags": ["confuse", "rain_accurate"]}
+      ],
+      "status": [
+        {"name": "Roost", "power": null, "accuracy": null, "pp": 10, "tier": "mid", "tags": ["heal"]},
+        {"name": "Tailwind", "power": null, "accuracy": null, "pp": 15, "tier": "mid", "tags": ["speed_buff"]}
+      ]
+    },
+    "psychic": {
+      "physical": [
+        {"name": "Zen Headbutt", "power": 80, "accuracy": 90, "pp": 15, "tier": "mid", "tags": ["contact", "flinch"]},
+        {"name": "Psycho Cut", "power": 70, "accuracy": 100, "pp": 20, "tier": "mid", "tags": ["high_crit"]}
+      ],
+      "special": [
+        {"name": "Confusion", "power": 50, "accuracy": 100, "pp": 25, "tier": "early", "tags": ["confuse"]},
+        {"name": "Psybeam", "power": 65, "accuracy": 100, "pp": 20, "tier": "mid", "tags": ["confuse"]},
+        {"name": "Psychic", "power": 90, "accuracy": 100, "pp": 10, "tier": "late", "tags": ["debuff"]},
+        {"name": "Psyshock", "power": 80, "accuracy": 100, "pp": 10, "tier": "late", "tags": ["physical_damage"]},
+        {"name": "Future Sight", "power": 120, "accuracy": 100, "pp": 10, "tier": "late", "tags": ["delayed"]}
+      ],
+      "status": [
+        {"name": "Hypnosis", "power": null, "accuracy": 60, "pp": 20, "tier": "mid", "tags": ["sleep"]},
+        {"name": "Calm Mind", "power": null, "accuracy": null, "pp": 20, "tier": "mid", "tags": ["buff"]},
+        {"name": "Agility", "power": null, "accuracy": null, "pp": 30, "tier": "mid", "tags": ["speed_buff"]},
+        {"name": "Reflect", "power": null, "accuracy": null, "pp": 20, "tier": "mid", "tags": ["screen"]},
+        {"name": "Light Screen", "power": null, "accuracy": null, "pp": 30, "tier": "mid", "tags": ["screen"]}
+      ]
+    },
+    "bug": {
+      "physical": [
+        {"name": "Fury Cutter", "power": 40, "accuracy": 95, "pp": 20, "tier": "early", "tags": ["contact", "escalating"]},
+        {"name": "Bug Bite", "power": 60, "accuracy": 100, "pp": 20, "tier": "mid", "tags": ["contact", "berry_steal"]},
+        {"name": "X-Scissor", "power": 80, "accuracy": 100, "pp": 15, "tier": "late", "tags": ["contact"]},
+        {"name": "Leech Life", "power": 80, "accuracy": 100, "pp": 10, "tier": "late", "tags": ["contact", "drain"]},
+        {"name": "Megahorn", "power": 120, "accuracy": 85, "pp": 10, "tier": "late", "tags": ["contact"]}
+      ],
+      "special": [
+        {"name": "Struggle Bug", "power": 50, "accuracy": 100, "pp": 20, "tier": "early", "tags": ["debuff"]},
+        {"name": "Signal Beam", "power": 75, "accuracy": 100, "pp": 15, "tier": "mid", "tags": ["confuse"]},
+        {"name": "Bug Buzz", "power": 90, "accuracy": 100, "pp": 10, "tier": "late", "tags": ["sound", "debuff"]}
+      ],
+      "status": [
+        {"name": "String Shot", "power": null, "accuracy": 95, "pp": 40, "tier": "early", "tags": ["speed_down"]},
+        {"name": "Quiver Dance", "power": null, "accuracy": null, "pp": 20, "tier": "late", "tags": ["buff"]}
+      ]
+    },
+    "rock": {
+      "physical": [
+        {"name": "Rock Throw", "power": 50, "accuracy": 90, "pp": 15, "tier": "early", "tags": []},
+        {"name": "Rock Tomb", "power": 60, "accuracy": 95, "pp": 15, "tier": "mid", "tags": ["speed_down"]},
+        {"name": "Rock Slide", "power": 75, "accuracy": 90, "pp": 10, "tier": "mid", "tags": ["flinch", "spread"]},
+        {"name": "Stone Edge", "power": 100, "accuracy": 80, "pp": 5, "tier": "late", "tags": ["high_crit"]},
+        {"name": "Head Smash", "power": 150, "accuracy": 80, "pp": 5, "tier": "late", "tags": ["contact", "recoil"]}
+      ],
+      "special": [
+        {"name": "Ancient Power", "power": 60, "accuracy": 100, "pp": 5, "tier": "mid", "tags": ["all_stats_up"]},
+        {"name": "Power Gem", "power": 80, "accuracy": 100, "pp": 20, "tier": "late", "tags": []}
+      ],
+      "status": [
+        {"name": "Stealth Rock", "power": null, "accuracy": null, "pp": 20, "tier": "mid", "tags": ["hazard"]},
+        {"name": "Rock Polish", "power": null, "accuracy": null, "pp": 20, "tier": "mid", "tags": ["speed_buff"]}
+      ]
+    },
+    "ghost": {
+      "physical": [
+        {"name": "Lick", "power": 30, "accuracy": 100, "pp": 30, "tier": "early", "tags": ["contact", "paralyze"]},
+        {"name": "Shadow Claw", "power": 70, "accuracy": 100, "pp": 15, "tier": "mid", "tags": ["contact", "claw", "high_crit"]},
+        {"name": "Shadow Sneak", "power": 40, "accuracy": 100, "pp": 30, "tier": "early", "tags": ["contact", "priority"]},
+        {"name": "Phantom Force", "power": 90, "accuracy": 100, "pp": 10, "tier": "late", "tags": ["contact", "semi_invulnerable"]}
+      ],
+      "special": [
+        {"name": "Night Shade", "power": null, "accuracy": 100, "pp": 15, "tier": "early", "tags": ["level_based"]},
+        {"name": "Hex", "power": 65, "accuracy": 100, "pp": 10, "tier": "mid", "tags": ["double_status"]},
+        {"name": "Shadow Ball", "power": 80, "accuracy": 100, "pp": 15, "tier": "late", "tags": ["debuff"]}
+      ],
+      "status": [
+        {"name": "Confuse Ray", "power": null, "accuracy": 100, "pp": 10, "tier": "early", "tags": ["confuse"]},
+        {"name": "Will-O-Wisp", "power": null, "accuracy": 85, "pp": 15, "tier": "mid", "tags": ["burn"]},
+        {"name": "Destiny Bond", "power": null, "accuracy": null, "pp": 5, "tier": "late", "tags": ["ko_revenge"]}
+      ]
+    },
+    "dragon": {
+      "physical": [
+        {"name": "Dragon Claw", "power": 80, "accuracy": 100, "pp": 15, "tier": "mid", "tags": ["contact", "claw"]},
+        {"name": "Dragon Rush", "power": 100, "accuracy": 75, "pp": 10, "tier": "late", "tags": ["contact", "flinch"]},
+        {"name": "Outrage", "power": 120, "accuracy": 100, "pp": 10, "tier": "late", "tags": ["contact", "locked", "confuse_self"]}
+      ],
+      "special": [
+        {"name": "Dragon Breath", "power": 60, "accuracy": 100, "pp": 20, "tier": "early", "tags": ["paralyze"]},
+        {"name": "Dragon Pulse", "power": 85, "accuracy": 100, "pp": 10, "tier": "late", "tags": []},
+        {"name": "Draco Meteor", "power": 130, "accuracy": 90, "pp": 5, "tier": "late", "tags": ["self_debuff"]}
+      ],
+      "status": [
+        {"name": "Dragon Dance", "power": null, "accuracy": null, "pp": 20, "tier": "mid", "tags": ["buff"]}
+      ]
+    },
+    "dark": {
+      "physical": [
+        {"name": "Bite", "power": 60, "accuracy": 100, "pp": 25, "tier": "early", "tags": ["contact", "bite", "flinch"]},
+        {"name": "Feint Attack", "power": 60, "accuracy": null, "pp": 20, "tier": "mid", "tags": ["never_miss"]},
+        {"name": "Crunch", "power": 80, "accuracy": 100, "pp": 15, "tier": "mid", "tags": ["contact", "bite", "debuff"]},
+        {"name": "Sucker Punch", "power": 70, "accuracy": 100, "pp": 5, "tier": "mid", "tags": ["contact", "priority_conditional"]},
+        {"name": "Throat Chop", "power": 80, "accuracy": 100, "pp": 15, "tier": "mid", "tags": ["contact", "sound_block"]},
+        {"name": "Knock Off", "power": 65, "accuracy": 100, "pp": 20, "tier": "mid", "tags": ["contact", "item_remove"]},
+        {"name": "Foul Play", "power": 95, "accuracy": 100, "pp": 15, "tier": "late", "tags": ["contact", "use_opponent_attack"]}
+      ],
+      "special": [
+        {"name": "Snarl", "power": 55, "accuracy": 95, "pp": 15, "tier": "mid", "tags": ["sound", "debuff"]},
+        {"name": "Dark Pulse", "power": 80, "accuracy": 100, "pp": 15, "tier": "late", "tags": ["flinch"]}
+      ],
+      "status": [
+        {"name": "Nasty Plot", "power": null, "accuracy": null, "pp": 20, "tier": "mid", "tags": ["buff"]},
+        {"name": "Taunt", "power": null, "accuracy": 100, "pp": 20, "tier": "mid", "tags": ["disable_status"]}
+      ]
+    },
+    "steel": {
+      "physical": [
+        {"name": "Metal Claw", "power": 50, "accuracy": 95, "pp": 35, "tier": "early", "tags": ["contact", "claw", "attack_up"]},
+        {"name": "Iron Head", "power": 80, "accuracy": 100, "pp": 15, "tier": "mid", "tags": ["contact", "flinch"]},
+        {"name": "Iron Tail", "power": 100, "accuracy": 75, "pp": 15, "tier": "late", "tags": ["contact", "debuff"]},
+        {"name": "Meteor Mash", "power": 90, "accuracy": 90, "pp": 10, "tier": "late", "tags": ["contact", "punch", "attack_up"]},
+        {"name": "Heavy Slam", "power": null, "accuracy": 100, "pp": 10, "tier": "mid", "tags": ["contact", "weight_based"]}
+      ],
+      "special": [
+        {"name": "Flash Cannon", "power": 80, "accuracy": 100, "pp": 10, "tier": "late", "tags": ["debuff"]}
+      ],
+      "status": [
+        {"name": "Iron Defense", "power": null, "accuracy": null, "pp": 15, "tier": "mid", "tags": ["buff"]},
+        {"name": "Metal Sound", "power": null, "accuracy": 85, "pp": 40, "tier": "mid", "tags": ["debuff", "sound"]}
+      ]
+    },
+    "fairy": {
+      "physical": [
+        {"name": "Play Rough", "power": 90, "accuracy": 90, "pp": 10, "tier": "late", "tags": ["contact", "debuff"]}
+      ],
+      "special": [
+        {"name": "Fairy Wind", "power": 40, "accuracy": 100, "pp": 30, "tier": "early", "tags": []},
+        {"name": "Draining Kiss", "power": 50, "accuracy": 100, "pp": 10, "tier": "mid", "tags": ["contact", "drain"]},
+        {"name": "Dazzling Gleam", "power": 80, "accuracy": 100, "pp": 10, "tier": "late", "tags": ["spread"]},
+        {"name": "Moonblast", "power": 95, "accuracy": 100, "pp": 15, "tier": "late", "tags": ["debuff"]}
+      ],
+      "status": [
+        {"name": "Charm", "power": null, "accuracy": 100, "pp": 20, "tier": "early", "tags": ["debuff"]},
+        {"name": "Sweet Kiss", "power": null, "accuracy": 75, "pp": 10, "tier": "early", "tags": ["confuse"]},
+        {"name": "Moonlight", "power": null, "accuracy": null, "pp": 5, "tier": "mid", "tags": ["heal"]}
+      ]
+    }
+  },
+  "coverage_chart": {
+    "fire": ["grass", "ice", "bug", "steel"],
+    "water": ["fire", "ground", "rock"],
+    "grass": ["water", "ground", "rock"],
+    "electric": ["water", "flying"],
+    "ice": ["grass", "ground", "flying", "dragon"],
+    "fighting": ["normal", "ice", "rock", "dark", "steel"],
+    "poison": ["grass", "fairy"],
+    "ground": ["fire", "electric", "poison", "rock", "steel"],
+    "flying": ["grass", "fighting", "bug"],
+    "psychic": ["fighting", "poison"],
+    "bug": ["grass", "psychic", "dark"],
+    "rock": ["fire", "ice", "flying", "bug"],
+    "ghost": ["psychic", "ghost"],
+    "dragon": ["dragon"],
+    "dark": ["psychic", "ghost"],
+    "steel": ["ice", "rock", "fairy"],
+    "fairy": ["fighting", "dragon", "dark"]
+  }
+}
