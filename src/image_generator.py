@@ -19,7 +19,7 @@ class PokemonImageGenerator:
     
     # Lambda Labs text-to-pokemon model
     MODEL = "stability-ai/sdxl:39ed52f2a78e934b3ba6e2a89f5b1c712de7dfea535525255b1aa35c5565e08b"
-
+    
     def __init__(self, output_dir: str = "outputs"):
         """Initialize the generator."""
         self.output_dir = Path(output_dir)
@@ -53,12 +53,8 @@ class PokemonImageGenerator:
         Returns:
             List of URLs to generated images
         """
-        # Add consistent Pokemon style to all prompts
-        style_suffix = ", pokemon style, ken sugimori art, official pokemon artwork, simple background, full body"
-        styled_prompt = prompt + style_suffix
-        
         inputs = {
-            "prompt": styled_prompt,
+            "prompt": prompt,
             "num_outputs": min(num_outputs, 4),
             "guidance_scale": guidance_scale,
             "num_inference_steps": num_inference_steps,
@@ -116,11 +112,26 @@ class PokemonImageGenerator:
         return saved_paths
 
 
+# Cultural inspiration mappings for each region
+CULTURE_THEMES = {
+    "nepal": "Nepalese culture, Himalayan mythology, Buddhist and Hindu influences, temple architecture, prayer flags, snow leopard, yak, rhododendron",
+    "mexico": "Mexican culture, Aztec and Mayan mythology, Day of the Dead, alebrijes folk art, jaguar, quetzal bird, cactus, vibrant patterns",
+    "jordan": "Jordanian culture, Nabataean architecture, Petra, Arabian mythology, desert landscape, Bedouin patterns, sand cat, oryx",
+    "saudi arabia": "Saudi Arabian culture, Arabian mythology, desert dunes, falcon, camel, geometric Islamic patterns, oasis",
+    "colombia": "Colombian culture, pre-Columbian mythology, Muisca legend of El Dorado, Andean condor, orchids, emerald, coffee plants",
+    "vietnam": "Vietnamese culture, dragon mythology, lotus flower, water buffalo, rice paddies, lantern festivals, ao dai patterns",
+    "el salvador": "Salvadoran culture, Mayan heritage, Pipil mythology, torogoz bird, izote flower, volcanic landscape, indigo dye",
+    "panama": "Panamanian culture, Kuna mola patterns, harpy eagle, golden frog, tropical rainforest, Panama Canal, Emberá traditions",
+    "costa rica": "Costa Rican culture, pre-Columbian jade, quetzal bird, sloth, tropical rainforest, volcanic hot springs, oxcart patterns"
+}
+
+
 def structure_prompt(
     concept: str,
     types: list[str] = None,
     body_type: str = None,
     colors: list[str] = None,
+    culture: str = None,
     extra: str = None
 ) -> str:
     """
@@ -131,6 +142,7 @@ def structure_prompt(
         types: Pokémon types (["Fire", "Dragon"])
         body_type: Physical form ("quadruped", "bipedal", "serpentine")
         colors: Color scheme (["red", "orange"])
+        culture: Cultural inspiration ("nepal", "mexico", "jordan", etc.)
         extra: Additional descriptors
     
     Returns:
@@ -149,6 +161,13 @@ def structure_prompt(
     if colors:
         parts.append(f"{' and '.join(colors)} colored")
     
+    if culture:
+        culture_key = culture.lower()
+        if culture_key in CULTURE_THEMES:
+            parts.append(f"inspired by {CULTURE_THEMES[culture_key]}")
+        else:
+            parts.append(f"inspired by {culture} culture and mythology")
+    
     if extra:
         parts.append(extra)
     
@@ -157,31 +176,47 @@ def structure_prompt(
 
 # Quick test function
 def main():
-    """Test the generator with a sample prompt."""
+    """Test the generator with culturally-inspired prompts."""
     generator = PokemonImageGenerator()
     
-    # Simple prompt
-    print("\n--- Test 1: Simple prompt ---")
-    urls = generator.generate("cute water dragon", seed=42)
-    print(f"URLs: {urls}")
-    
-    # Structured prompt
-    print("\n--- Test 2: Structured prompt ---")
+    # Test 1: Nepal-inspired Pokemon
+    print("\n--- Test 1: Nepal-inspired Pokemon ---")
     prompt = structure_prompt(
-        concept="fierce dragon with crystalline scales",
-        types=["Dragon", "Ice"],
+        concept="snow leopard guardian spirit",
+        types=["Ice", "Fighting"],
         body_type="quadruped",
-        colors=["blue", "white"]
+        colors=["white", "blue", "gold"],
+        culture="nepal"
     )
-    print(f"Prompt: {prompt}")
+    print(f"Prompt: {prompt}\n")
+    paths = generator.generate_and_save(prompt, name="nepal_snowleopard", seed=42)
+    print(f"Saved: {paths}")
     
-    paths = generator.generate_and_save(
-        prompt=prompt,
-        name="ice_dragon",
-        num_outputs=2,
-        seed=123
+    # Test 2: Mexico-inspired Pokemon
+    print("\n--- Test 2: Mexico-inspired Pokemon ---")
+    prompt = structure_prompt(
+        concept="skeletal jaguar spirit",
+        types=["Ghost", "Dark"],
+        body_type="quadruped",
+        colors=["black", "orange", "turquoise"],
+        culture="mexico"
     )
-    print(f"Saved to: {paths}")
+    print(f"Prompt: {prompt}\n")
+    paths = generator.generate_and_save(prompt, name="mexico_jaguar", seed=42)
+    print(f"Saved: {paths}")
+    
+    # Test 3: Jordan-inspired Pokemon
+    print("\n--- Test 3: Jordan-inspired Pokemon ---")
+    prompt = structure_prompt(
+        concept="ancient sandstone guardian",
+        types=["Rock", "Ghost"],
+        body_type="bipedal",
+        colors=["rose", "tan", "gold"],
+        culture="jordan"
+    )
+    print(f"Prompt: {prompt}\n")
+    paths = generator.generate_and_save(prompt, name="jordan_petra", seed=42)
+    print(f"Saved: {paths}")
 
 
 if __name__ == "__main__":
