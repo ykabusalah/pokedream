@@ -2,7 +2,7 @@
 
 **AI-Powered Custom Pokémon Generator with Balanced Stats**
 
-Generate unique, never-before-seen Pokémon complete with balanced stats, movesets, abilities, and lore-accurate Pokédex entries — all powered by cutting-edge AI.
+Generate unique, never-before-seen Pokémon complete with balanced stats, movesets, abilities, and lore-accurate Pokédex entries — all powered by AI.
 
 ![Python](https://img.shields.io/badge/Python-3.10+-blue?logo=python)
 ![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-red?logo=pytorch)
