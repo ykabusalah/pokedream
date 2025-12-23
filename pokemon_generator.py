@@ -12,6 +12,7 @@ from dotenv import load_dotenv
 
 from src.image_generator import PokemonImageGenerator, structure_prompt
 from src.stats_generator import PokemonStatsGenerator
+from src.moves_generator import MoveGenerator
 
 load_dotenv()
 
@@ -25,6 +26,7 @@ class PokeDream:
         
         self.image_gen = PokemonImageGenerator(output_dir)
         self.stats_gen = PokemonStatsGenerator()
+        self.moves_gen = MoveGenerator()
     
     def create(
         self,
@@ -57,7 +59,7 @@ class PokeDream:
         print(f"{'='*60}\n")
         
         # Step 1: Generate stats first (to get the name)
-        print("[1/3] Generating stats and lore...")
+        print("[1/4] Generating stats and lore...")
         pokemon = self.stats_gen.generate(
             concept=concept,
             types=types,
@@ -68,8 +70,14 @@ class PokeDream:
         name = pokemon["name"].lower()
         print(f"      Name: {pokemon['name']}")
         
-        # Step 2: Generate image
-        print("[2/3] Generating image...")
+        # Step 2: Generate moveset
+        print("[2/4] Generating moveset...")
+        moveset = self.moves_gen.generate_moveset(pokemon)
+        pokemon["moveset"] = moveset
+        print(f"      Moves: {', '.join(moveset['current_moves'])}")
+        
+        # Step 3: Generate image
+        print("[3/4] Generating image...")
         prompt = structure_prompt(
             concept=concept,
             types=types,
@@ -87,8 +95,8 @@ class PokeDream:
         pokemon["image_path"] = str(image_paths[0])
         pokemon["image_prompt"] = prompt
         
-        # Step 3: Save complete data
-        print("[3/3] Saving Pokemon data...")
+        # Step 4: Save complete data
+        print("[4/4] Saving Pokemon data...")
         json_path = self.output_dir / f"{name}_data.json"
         with open(json_path, "w") as f:
             json.dump(pokemon, f, indent=2)
@@ -97,7 +105,11 @@ class PokeDream:
         
         # Display result
         print(self.stats_gen.display(pokemon))
-        print(f"Image saved: {pokemon['image_path']}")
+        print("\nMOVESET")
+        print("-" * 30)
+        print(f"  Current: {', '.join(moveset['current_moves'])}")
+        print(f"  TMs: {', '.join([m['move'] for m in moveset['tm_moves'][:4]])}")
+        print(f"\nImage saved: {pokemon['image_path']}")
         print(f"Data saved:  {json_path}")
         
         return pokemon
