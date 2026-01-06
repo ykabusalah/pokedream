@@ -2,6 +2,7 @@ import { useState } from 'react';
 import BlaineErrorPopup from './BlaineErrorPopup';
 import ShinyPopup from './ShinyPopup';
 import SharePopup from './SharePopup';
+import DailyChallenge from './DailyChallenge';
 
 const API_URL = 'http://localhost:8000';
 
@@ -161,6 +162,7 @@ export default function PokemonGenerator({ trainerName, trainerId, onNavigate })
   const [showErrorPopup, setShowErrorPopup] = useState(false);
   const [showShinyPopup, setShowShinyPopup] = useState(false);
   const [showSharePopup, setShowSharePopup] = useState(false);
+  const [activeChallenge, setActiveChallenge] = useState(null);
 
   const toggleType = (type) => {
     if (selectedTypes.includes(type)) {
@@ -168,6 +170,33 @@ export default function PokemonGenerator({ trainerName, trainerId, onNavigate })
     } else if (selectedTypes.length < 2) {
       setSelectedTypes([...selectedTypes, type]);
     }
+  };
+
+  const handleUseChallenge = (challengeData) => {
+    // Switch to advanced mode to show type selection
+    setMode('advanced');
+    
+    // Set types if provided
+    if (challengeData.types && challengeData.types.length > 0) {
+      setSelectedTypes(challengeData.types);
+    }
+    
+    // Build description from challenge
+    let desc = '';
+    if (challengeData.theme) {
+      desc = `A Pokémon based on ${challengeData.theme}`;
+    }
+    if (challengeData.culture) {
+      desc = desc 
+        ? `${desc}, inspired by ${challengeData.culture} culture`
+        : `A Pokémon inspired by ${challengeData.culture} mythology`;
+    }
+    if (desc) {
+      setDescription(desc);
+    }
+    
+    // Track active challenge for completion
+    setActiveChallenge(challengeData.challengeId);
   };
 
   const handleGenerate = async () => {
@@ -209,6 +238,18 @@ export default function PokemonGenerator({ trainerName, trainerId, onNavigate })
       if (data.pokemon.is_shiny) {
         setShowShinyPopup(true);
       }
+      
+      // Mark challenge as completed if active
+      if (activeChallenge && trainerId && data.pokemon.id) {
+        try {
+          await fetch(`${API_URL}/api/daily-challenge/complete?trainer_id=${trainerId}&pokemon_id=${data.pokemon.id}`, {
+            method: 'POST'
+          });
+          setActiveChallenge(null);
+        } catch (err) {
+          console.error('Failed to mark challenge complete:', err);
+        }
+      }
     } catch (err) {
       setError(err.message);
       setShowErrorPopup(true);
@@ -223,6 +264,14 @@ export default function PokemonGenerator({ trainerName, trainerId, onNavigate })
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold mb-2">PokéDream Generator</h1>
           <p className="text-gray-400">Welcome, {trainerName}! Describe your dream Pokémon.</p>
+        </div>
+        
+        {/* Daily Challenge */}
+        <div className="mb-6">
+          <DailyChallenge 
+            trainerId={trainerId} 
+            onUseChallenge={handleUseChallenge}
+          />
         </div>
         
         <div className="flex justify-center gap-4 mb-6">

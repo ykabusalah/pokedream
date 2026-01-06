@@ -15,6 +15,7 @@ from pokemon_generator import PokeDream
 from src.pokedex_db import get_db
 from src.trainer_db import get_trainer_db
 from src.name_filter import is_name_appropriate, sanitize_name
+from src.daily_challenges import generate_daily_challenge, get_challenge_db, check_challenge_completion
 
 app = FastAPI(title="PokéDream API")
 
@@ -337,6 +338,52 @@ def get_shiny_pokemon():
     """Get all shiny Pokemon."""
     db = get_db()
     return {"pokemon": db.get_shinies()}
+
+
+# ==================== DAILY CHALLENGE ENDPOINTS ====================
+
+@app.get("/api/daily-challenge")
+def get_daily_challenge(trainer_id: str = None):
+    """Get today's daily challenge."""
+    challenge = generate_daily_challenge()
+    
+    # Check if trainer has completed it
+    if trainer_id:
+        challenge_db = get_challenge_db()
+        challenge["completed"] = challenge_db.has_completed(trainer_id, challenge["id"])
+    else:
+        challenge["completed"] = False
+    
+    return challenge
+
+
+@app.post("/api/daily-challenge/complete")
+def complete_daily_challenge(trainer_id: str, pokemon_id: str):
+    """Mark daily challenge as completed."""
+    challenge = generate_daily_challenge()
+    challenge_db = get_challenge_db()
+    
+    # Check if already completed
+    if challenge_db.has_completed(trainer_id, challenge["id"]):
+        return {"success": False, "message": "Challenge already completed today"}
+    
+    # Mark as completed
+    challenge_db.mark_completed(trainer_id, challenge["id"], pokemon_id)
+    
+    return {"success": True, "message": "Challenge completed!"}
+
+
+@app.get("/api/daily-challenge/history/{trainer_id}")
+def get_challenge_history(trainer_id: str):
+    """Get trainer's challenge completion history."""
+    challenge_db = get_challenge_db()
+    completions = challenge_db.get_trainer_completions(trainer_id)
+    total = challenge_db.get_completion_count(trainer_id)
+    
+    return {
+        "completions": completions,
+        "total_completed": total
+    }
 
 
 if __name__ == "__main__":
