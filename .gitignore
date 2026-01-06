@@ -1,5 +1,20 @@
+# Backend
 .env
 venv/
 outputs/
 __pycache__/
 *.pyc
+sprites/
+
+# Frontend
+node_modules/
+dist/
+.vite/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
