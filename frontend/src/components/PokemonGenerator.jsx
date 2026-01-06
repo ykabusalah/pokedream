@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import BlaineErrorPopup from './BlaineErrorPopup';
 
 const API_URL = 'http://localhost:8000';
 
@@ -16,7 +17,6 @@ const TYPE_COLORS = {
   Steel: '#B8B8D0', Fairy: '#EE99AC'
 };
 
-// Stat bar component
 const StatBar = ({ label, value, max = 255, color = '#f59e0b' }) => (
   <div className="flex items-center gap-3">
     <span className="w-20 text-sm text-gray-400">{label}</span>
@@ -30,7 +30,6 @@ const StatBar = ({ label, value, max = 255, color = '#f59e0b' }) => (
   </div>
 );
 
-// Type badge
 const TypeBadge = ({ type }) => (
   <span 
     className="px-3 py-1 rounded-full text-sm font-bold text-white"
@@ -40,20 +39,17 @@ const TypeBadge = ({ type }) => (
   </span>
 );
 
-// Pokemon card
 const PokemonCard = ({ pokemon, imageKey }) => {
   if (!pokemon) return null;
   
   const { name, types, stats, pokedex_entry, lore, moveset, image_path } = pokemon;
   
-  // Add cache-busting timestamp to image URL
   const imageUrl = image_path 
     ? `${API_URL}/${image_path}?t=${imageKey}` 
     : null;
   
   return (
     <div className="bg-gray-900 rounded-2xl p-6 max-w-2xl mx-auto" style={{ border: '3px solid #374151' }}>
-      {/* Header */}
       <div className="flex justify-between items-start mb-6">
         <div>
           <h2 className="text-3xl font-bold text-white mb-2">{name}</h2>
@@ -66,7 +62,6 @@ const PokemonCard = ({ pokemon, imageKey }) => {
         </div>
       </div>
       
-      {/* Image - key forces re-render, cache-bust in URL */}
       {imageUrl && (
         <div className="mb-6 flex justify-center">
           <img 
@@ -79,14 +74,12 @@ const PokemonCard = ({ pokemon, imageKey }) => {
         </div>
       )}
       
-      {/* Pokedex Entry */}
       {pokedex_entry && (
         <p className="text-gray-300 italic mb-6 text-center px-4">
           "{pokedex_entry}"
         </p>
       )}
       
-      {/* Stats */}
       {stats && (
         <div className="space-y-2 mb-6">
           <StatBar label="HP" value={stats.hp} color="#ef4444" />
@@ -98,7 +91,6 @@ const PokemonCard = ({ pokemon, imageKey }) => {
         </div>
       )}
       
-      {/* Moves */}
       {moveset?.current_moves && (
         <div className="mb-4">
           <h3 className="text-sm font-bold text-gray-500 mb-2">MOVES</h3>
@@ -112,7 +104,6 @@ const PokemonCard = ({ pokemon, imageKey }) => {
         </div>
       )}
       
-      {/* Lore */}
       {lore?.origin && (
         <div className="text-sm text-gray-500 mt-4 pt-4 border-t border-gray-800">
           <span className="font-bold">Origin:</span> {lore.origin}
@@ -130,6 +121,7 @@ export default function PokemonGenerator({ trainerName }) {
   const [error, setError] = useState(null);
   const [mode, setMode] = useState('simple');
   const [imageKey, setImageKey] = useState(Date.now());
+  const [showErrorPopup, setShowErrorPopup] = useState(false);
 
   const toggleType = (type) => {
     if (selectedTypes.includes(type)) {
@@ -142,11 +134,11 @@ export default function PokemonGenerator({ trainerName }) {
   const handleGenerate = async () => {
     if (!description.trim()) return;
     
-    // Clear previous pokemon and force new image load
     setPokemon(null);
     setImageKey(Date.now());
     setIsGenerating(true);
     setError(null);
+    setShowErrorPopup(false);
     
     try {
       const endpoint = mode === 'simple' ? '/api/quick-generate' : '/api/generate';
@@ -171,9 +163,10 @@ export default function PokemonGenerator({ trainerName }) {
       
       const data = await res.json();
       setPokemon(data.pokemon);
-      setImageKey(Date.now()); // Update again after successful load
+      setImageKey(Date.now());
     } catch (err) {
       setError(err.message);
+      setShowErrorPopup(true);
     } finally {
       setIsGenerating(false);
     }
@@ -182,13 +175,11 @@ export default function PokemonGenerator({ trainerName }) {
   return (
     <div className="min-h-screen bg-gray-950 text-white p-8">
       <div className="max-w-4xl mx-auto">
-        {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold mb-2">PokéDream Generator</h1>
           <p className="text-gray-400">Welcome, {trainerName}! Describe your dream Pokémon.</p>
         </div>
         
-        {/* Mode Toggle */}
         <div className="flex justify-center gap-4 mb-6">
           <button
             onClick={() => setMode('simple')}
@@ -208,7 +199,6 @@ export default function PokemonGenerator({ trainerName }) {
           </button>
         </div>
         
-        {/* Input Form */}
         <div className="bg-gray-900 rounded-xl p-6 mb-8" style={{ border: '3px solid #374151' }}>
           <textarea
             value={description}
@@ -217,7 +207,6 @@ export default function PokemonGenerator({ trainerName }) {
             className="w-full bg-gray-800 text-white p-4 rounded-lg resize-none h-32 outline-none focus:ring-2 focus:ring-amber-500 mb-4"
           />
           
-          {/* Type selector (advanced mode) */}
           {mode === 'advanced' && (
             <div className="mb-4">
               <p className="text-sm text-gray-400 mb-2">Select up to 2 types:</p>
@@ -249,7 +238,6 @@ export default function PokemonGenerator({ trainerName }) {
           </button>
         </div>
         
-        {/* Loading */}
         {isGenerating && (
           <div className="text-center py-12">
             <div className="animate-spin w-12 h-12 border-4 border-amber-500 border-t-transparent rounded-full mx-auto mb-4" />
@@ -258,21 +246,25 @@ export default function PokemonGenerator({ trainerName }) {
           </div>
         )}
         
-        {/* Error */}
-        {error && (
-          <div className="bg-red-900/50 border border-red-500 rounded-lg p-4 mb-8 text-center">
-            <p className="text-red-300">{error}</p>
-            <p className="text-red-400 text-sm mt-2">Make sure the backend server is running on port 8000</p>
-          </div>
-        )}
-        
-        {/* Result */}
         {pokemon && !isGenerating && <PokemonCard pokemon={pokemon} imageKey={imageKey} />}
         
-        {/* Footer */}
         <p className="text-center text-gray-600 text-sm mt-12">
           Powered by Claude AI & Replicate • PokéDream v1.0 • Oneira Region
         </p>
+
+        {showErrorPopup && error && (
+          <BlaineErrorPopup 
+            error={error}
+            onRetry={() => {
+              setShowErrorPopup(false);
+              setError(null);
+            }}
+            onClose={() => {
+              setShowErrorPopup(false);
+              setError(null);
+            }}
+          />
+        )}
       </div>
     </div>
   );
