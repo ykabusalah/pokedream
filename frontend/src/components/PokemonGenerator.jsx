@@ -113,7 +113,7 @@ const PokemonCard = ({ pokemon, imageKey }) => {
   );
 };
 
-export default function PokemonGenerator({ trainerName }) {
+export default function PokemonGenerator({ trainerName, onNavigate }) {
   const [description, setDescription] = useState('');
   const [selectedTypes, setSelectedTypes] = useState([]);
   const [isGenerating, setIsGenerating] = useState(false);
@@ -247,6 +247,28 @@ export default function PokemonGenerator({ trainerName }) {
         )}
         
         {pokemon && !isGenerating && <PokemonCard pokemon={pokemon} imageKey={imageKey} />}
+        
+        {/* Post-creation options */}
+        {pokemon && !isGenerating && (
+          <div className="flex justify-center gap-4 mt-6">
+            <button
+              onClick={() => {
+                setPokemon(null);
+                setDescription('');
+                setSelectedTypes([]);
+              }}
+              className="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white font-bold rounded-lg transition-all"
+            >
+              Create Another
+            </button>
+            <button
+              onClick={() => onNavigate && onNavigate('pokedex')}
+              className="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-white font-bold rounded-lg transition-all"
+            >
+              View in Pokédex
+            </button>
+          </div>
+        )}
         
         <p className="text-center text-gray-600 text-sm mt-12">
           Powered by Claude AI & Replicate • PokéDream v1.0 • Oneira Region
