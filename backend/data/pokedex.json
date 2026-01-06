@@ -1,0 +1,381 @@
+{
+  "region": "Oneira",
+  "pokemon": [
+    {
+      "name": "Glacilong",
+      "types": [
+        "Ice",
+        "Dragon"
+      ],
+      "stats": {
+        "hp": 85,
+        "attack": 75,
+        "defense": 90,
+        "sp_attack": 125,
+        "sp_defense": 95,
+        "speed": 80
+      },
+      "abilities": [
+        "Snow Warning",
+        "Ice Body",
+        "Adaptability"
+      ],
+      "signature_move": {
+        "name": "Jade Blizzard",
+        "type": "Ice",
+        "category": "Special",
+        "power": 90,
+        "accuracy": 90,
+        "description": "A mystical ice storm that may lower the target's Speed and has increased critical hit ratio"
+      },
+      "pokedex_entry": "This ancient dragon is said to bring winter to mountain peaks with its crystalline breath. Legend tells of emperors who sought its jade-colored ice scales as symbols of eternal prosperity. It dwells in the highest glacial caves, emerging only during the harshest blizzards.",
+      "category": "The Jade Frost Pokemon",
+      "height_m": 3.2,
+      "weight_kg": 185.5,
+      "bst": 550,
+      "tier": "fully_evolved",
+      "concept": "an ice dragon ",
+      "culture": "china",
+      "moveset": {
+        "level_up_moves": [
+          {
+            "level": 1,
+            "move": "Growl",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 5,
+            "move": "Leer",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 10,
+            "move": "Powder Snow",
+            "type": "ice",
+            "power": 40,
+            "category": "special"
+          },
+          {
+            "level": 15,
+            "move": "Dragon Dance",
+            "type": "dragon",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 20,
+            "move": "Icy Wind",
+            "type": "ice",
+            "power": 55,
+            "category": "special"
+          },
+          {
+            "level": 25,
+            "move": "Freeze-Dry",
+            "type": "ice",
+            "power": 70,
+            "category": "special"
+          },
+          {
+            "level": 30,
+            "move": "Dragon Breath",
+            "type": "dragon",
+            "power": 60,
+            "category": "special"
+          },
+          {
+            "level": 35,
+            "move": "Hyper Voice",
+            "type": "normal",
+            "power": 90,
+            "category": "special"
+          },
+          {
+            "level": 40,
+            "move": "Hail",
+            "type": "ice",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 45,
+            "move": "Ice Beam",
+            "type": "ice",
+            "power": 90,
+            "category": "special"
+          },
+          {
+            "level": 50,
+            "move": "Blizzard",
+            "type": "ice",
+            "power": 110,
+            "category": "special"
+          }
+        ],
+        "tm_moves": [
+          {
+            "move": "Ice Beam",
+            "type": "ice",
+            "power": 90,
+            "reason": "STAB"
+          },
+          {
+            "move": "Blizzard",
+            "type": "ice",
+            "power": 110,
+            "reason": "STAB"
+          },
+          {
+            "move": "Dragon Pulse",
+            "type": "dragon",
+            "power": 85,
+            "reason": "STAB"
+          },
+          {
+            "move": "Draco Meteor",
+            "type": "dragon",
+            "power": 130,
+            "reason": "STAB"
+          },
+          {
+            "move": "Bubble Beam",
+            "type": "water",
+            "power": 65,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Thunderbolt",
+            "type": "electric",
+            "power": 90,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Incinerate",
+            "type": "fire",
+            "power": 60,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Protect",
+            "type": "normal",
+            "power": null,
+            "reason": "Utility"
+          }
+        ],
+        "egg_moves": [
+          {
+            "move": "Ice Shard",
+            "type": "ice",
+            "power": 40
+          }
+        ],
+        "current_moves": [
+          "Hyper Voice",
+          "Hail",
+          "Ice Beam",
+          "Blizzard"
+        ]
+      },
+      "image_path": "outputs\\pokemon_20260105_232830_879755_6505.png",
+      "image_prompt": "Ice/Dragon type pokemon, an ice dragon , pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+      "json_path": "outputs\\glacilong_data.json",
+      "trainer": "Trainer",
+      "dex_number": 1,
+      "added_at": "2026-01-05T23:28:30.892756",
+      "id": "pkmn_0001"
+    },
+    {
+      "name": "Glacilong",
+      "types": [
+        "Ice",
+        "Dragon"
+      ],
+      "stats": {
+        "hp": 85,
+        "attack": 95,
+        "defense": 80,
+        "sp_attack": 110,
+        "sp_defense": 90,
+        "speed": 70
+      },
+      "abilities": [
+        "Snow Warning",
+        "Ice Body",
+        "Adaptability"
+      ],
+      "signature_move": {
+        "name": "Celestial Frost",
+        "type": "Ice",
+        "category": "Special",
+        "power": 90,
+        "accuracy": 90,
+        "description": "A mystical ice attack that may freeze the target and ignores weather conditions"
+      },
+      "pokedex_entry": "This majestic dragon soars through mountain peaks, leaving trails of crystalline ice that shimmer like jade. Ancient scrolls speak of Glacilong as a guardian spirit that brings pure snow to sacred peaks. Its breath can freeze entire valleys, yet it only attacks to protect its mountain domain.",
+      "category": "The Jade Frost Pokemon",
+      "height_m": 3.2,
+      "weight_kg": 145.5,
+      "bst": 530,
+      "tier": "fully_evolved",
+      "concept": "ice dragon",
+      "culture": "china",
+      "moveset": {
+        "level_up_moves": [
+          {
+            "level": 1,
+            "move": "Growl",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 5,
+            "move": "Dragon Breath",
+            "type": "dragon",
+            "power": 60,
+            "category": "special"
+          },
+          {
+            "level": 10,
+            "move": "Mist",
+            "type": "ice",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 15,
+            "move": "Hail",
+            "type": "ice",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 20,
+            "move": "Leer",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 25,
+            "move": "Icy Wind",
+            "type": "ice",
+            "power": 55,
+            "category": "special"
+          },
+          {
+            "level": 30,
+            "move": "Powder Snow",
+            "type": "ice",
+            "power": 40,
+            "category": "special"
+          },
+          {
+            "level": 35,
+            "move": "Freeze-Dry",
+            "type": "ice",
+            "power": 70,
+            "category": "special"
+          },
+          {
+            "level": 40,
+            "move": "Hyper Beam",
+            "type": "normal",
+            "power": 150,
+            "category": "special"
+          },
+          {
+            "level": 45,
+            "move": "Hyper Voice",
+            "type": "normal",
+            "power": 90,
+            "category": "special"
+          },
+          {
+            "level": 50,
+            "move": "Blizzard",
+            "type": "ice",
+            "power": 110,
+            "category": "special"
+          }
+        ],
+        "tm_moves": [
+          {
+            "move": "Ice Beam",
+            "type": "ice",
+            "power": 90,
+            "reason": "STAB"
+          },
+          {
+            "move": "Blizzard",
+            "type": "ice",
+            "power": 110,
+            "reason": "STAB"
+          },
+          {
+            "move": "Dragon Pulse",
+            "type": "dragon",
+            "power": 85,
+            "reason": "STAB"
+          },
+          {
+            "move": "Draco Meteor",
+            "type": "dragon",
+            "power": 130,
+            "reason": "STAB"
+          },
+          {
+            "move": "Surf",
+            "type": "water",
+            "power": 90,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Electro Ball",
+            "type": "electric",
+            "power": null,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Heat Wave",
+            "type": "fire",
+            "power": 95,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Protect",
+            "type": "normal",
+            "power": null,
+            "reason": "Utility"
+          }
+        ],
+        "egg_moves": [
+          {
+            "move": "Ice Shard",
+            "type": "ice",
+            "power": 40
+          }
+        ],
+        "current_moves": [
+          "Freeze-Dry",
+          "Hyper Beam",
+          "Hyper Voice",
+          "Blizzard"
+        ]
+      },
+      "image_path": "outputs\\pokemon_20260105_233314_966910_1374.png",
+      "image_prompt": "Ice/Dragon type pokemon, ice dragon, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+      "json_path": "outputs\\glacilong_data.json",
+      "trainer": "Trainer",
+      "dex_number": 2,
+      "added_at": "2026-01-05T23:33:14.979073",
+      "id": "pkmn_0002"
+    }
+  ],
+  "next_dex_number": 3,
+  "created_at": "2026-01-05T23:25:41.275963"
+}
