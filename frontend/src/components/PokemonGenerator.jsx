@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import BlaineErrorPopup from './BlaineErrorPopup';
+import ShinyPopup from './ShinyPopup';
 
 const API_URL = 'http://localhost:8000';
 
@@ -42,17 +43,52 @@ const TypeBadge = ({ type }) => (
 const PokemonCard = ({ pokemon, imageKey }) => {
   if (!pokemon) return null;
   
-  const { name, types, stats, pokedex_entry, lore, moveset, image_path } = pokemon;
+  const { name, types, stats, pokedex_entry, lore, moveset, image_path, is_shiny } = pokemon;
   
   const imageUrl = image_path 
     ? `${API_URL}/${image_path}?t=${imageKey}` 
     : null;
   
   return (
-    <div className="bg-gray-900 rounded-2xl p-6 max-w-2xl mx-auto" style={{ border: '3px solid #374151' }}>
+    <div 
+      className={`bg-gray-900 rounded-2xl p-6 max-w-2xl mx-auto relative overflow-hidden ${is_shiny ? 'ring-2 ring-yellow-400' : ''}`} 
+      style={{ border: is_shiny ? '3px solid #fbbf24' : '3px solid #374151' }}
+    >
+      {/* Shiny sparkle effect */}
+      {is_shiny && (
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          {[...Array(8)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute text-yellow-300 text-sm"
+              style={{
+                left: `${10 + Math.random() * 80}%`,
+                top: `${10 + Math.random() * 80}%`,
+                animation: `sparkle-float ${2 + Math.random()}s ease-in-out infinite`,
+                animationDelay: `${Math.random() * 2}s`,
+              }}
+            >
+              ✦
+            </div>
+          ))}
+          <style>{`
+            @keyframes sparkle-float {
+              0%, 100% { opacity: 0.3; transform: scale(0.8); }
+              50% { opacity: 1; transform: scale(1.2); }
+            }
+          `}</style>
+        </div>
+      )}
       <div className="flex justify-between items-start mb-6">
         <div>
-          <h2 className="text-3xl font-bold text-white mb-2">{name}</h2>
+          <div className="flex items-center gap-3 mb-2">
+            <h2 className="text-3xl font-bold text-white">{name}</h2>
+            {is_shiny && (
+              <span className="bg-gradient-to-r from-yellow-400 to-amber-500 text-black text-xs font-bold px-2 py-1 rounded-full flex items-center gap-1">
+                ✨ SHINY
+              </span>
+            )}
+          </div>
           <div className="flex gap-2">
             {types?.map(t => <TypeBadge key={t} type={t} />)}
           </div>
@@ -122,6 +158,7 @@ export default function PokemonGenerator({ trainerName, onNavigate }) {
   const [mode, setMode] = useState('simple');
   const [imageKey, setImageKey] = useState(Date.now());
   const [showErrorPopup, setShowErrorPopup] = useState(false);
+  const [showShinyPopup, setShowShinyPopup] = useState(false);
 
   const toggleType = (type) => {
     if (selectedTypes.includes(type)) {
@@ -164,6 +201,11 @@ export default function PokemonGenerator({ trainerName, onNavigate }) {
       const data = await res.json();
       setPokemon(data.pokemon);
       setImageKey(Date.now());
+      
+      // Show shiny popup if shiny
+      if (data.pokemon.is_shiny) {
+        setShowShinyPopup(true);
+      }
     } catch (err) {
       setError(err.message);
       setShowErrorPopup(true);
@@ -285,6 +327,13 @@ export default function PokemonGenerator({ trainerName, onNavigate }) {
               setShowErrorPopup(false);
               setError(null);
             }}
+          />
+        )}
+        
+        {showShinyPopup && pokemon && (
+          <ShinyPopup 
+            pokemon={pokemon}
+            onContinue={() => setShowShinyPopup(false)}
           />
         )}
       </div>

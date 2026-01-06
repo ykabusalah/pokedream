@@ -6,6 +6,7 @@ to create fully-realized Pokemon inspired by world cultures.
 
 import os
 import json
+import random
 from pathlib import Path
 from datetime import datetime
 from dotenv import load_dotenv
@@ -16,6 +17,9 @@ from src.moves_generator import MoveGenerator
 from src.pokedex_db import get_db
 
 load_dotenv()
+
+# Shiny odds: 1 in 4096 (authentic Pokemon odds)
+SHINY_ODDS = 4096
 
 
 class PokeDream:
@@ -115,7 +119,13 @@ class PokeDream:
         pokemon["image_path"] = str(image_paths[0])
         pokemon["image_prompt"] = prompt
         
-        # Step 4: Save complete data
+        # Step 4: Shiny roll (1/4096 chance)
+        is_shiny = random.randint(1, SHINY_ODDS) == 1
+        pokemon["is_shiny"] = is_shiny
+        if is_shiny:
+            print("      ✨ SHINY POKEMON! ✨")
+        
+        # Step 5: Save complete data
         print("[4/4] Saving Pokemon data...")
         json_path = self.output_dir / f"{name}_data.json"
         with open(json_path, "w") as f:

@@ -122,10 +122,35 @@ class PokemonImageGenerator:
 
 
 def structure_prompt(concept: str, types: list, culture: str = None, 
-                     body_type: str = None, colors: list = None) -> str:
+                     body_type: str = None, colors: list = None,
+                     is_shiny: bool = False) -> str:
     """Build a Pokemon-style prompt."""
     
     type_str = "/".join(types) if types else "Normal"
+    
+    # Shiny variant gets completely different colors
+    if is_shiny:
+        shiny_parts = [
+            f"{type_str} type pokemon",
+            concept,
+            "SHINY RARE VARIANT",
+            "COMPLETELY DIFFERENT COLOR SCHEME than normal",
+            "inverted colors or opposite hue",
+            "example: if normally blue make it pink or gold",
+            "example: if normally green make it purple or silver", 
+            "example: if normally red make it blue or black",
+            "metallic sheen",
+            "iridescent glow",
+            "sparkle highlights",
+            f"inspired by {culture} mythology" if culture and culture != "original" else "",
+            f"{body_type} body shape" if body_type else "",
+            "pokemon official art style",
+            "ken sugimori illustration",
+            "single pokemon centered",
+            "full body on white background",
+            "clean vector illustration",
+        ]
+        return ", ".join(p for p in shiny_parts if p)
     
     parts = [
         f"{type_str} type pokemon",
