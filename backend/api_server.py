@@ -13,6 +13,7 @@ import traceback
 
 from pokemon_generator import PokeDream
 from src.pokedex_db import get_db
+from src.trainer_db import get_trainer_db
 from src.name_filter import is_name_appropriate, sanitize_name
 
 app = FastAPI(title="PokéDream API")
@@ -41,15 +42,26 @@ class GenerateRequest(BaseModel):
     body_type: str | None = None
     colors: list[str] | None = None
     trainer_name: str = "Trainer"
+    trainer_id: str | None = None
 
 
 class QuickGenerateRequest(BaseModel):
     description: str
     trainer_name: str = "Trainer"
+    trainer_id: str | None = None
 
 
 class ValidateNameRequest(BaseModel):
     name: str
+
+
+class RegisterTrainerRequest(BaseModel):
+    name: str
+
+
+class UpdateActiveTimeRequest(BaseModel):
+    trainer_id: str
+    seconds: int
 
 
 def get_validated_trainer_name(name: str) -> str:
@@ -77,6 +89,74 @@ def validate_name(req: ValidateNameRequest):
     }
 
 
+# ==================== TRAINER ENDPOINTS ====================
+
+@app.post("/api/trainer/register")
+def register_trainer(req: RegisterTrainerRequest):
+    """Register a new trainer or return existing one."""
+    is_valid, reason = is_name_appropriate(req.name)
+    if not is_valid:
+        raise HTTPException(status_code=400, detail=reason)
+    
+    name = sanitize_name(req.name)
+    trainer_db = get_trainer_db()
+    
+    # Check if trainer with this name exists
+    existing = trainer_db.get_trainer_by_name(name)
+    if existing:
+        # Update last seen and return existing
+        trainer_db.update_trainer(existing["id"], {})
+        return {"trainer": existing, "returning": True}
+    
+    # Create new trainer
+    trainer = trainer_db.create_trainer(name)
+    return {"trainer": trainer, "returning": False}
+
+
+@app.get("/api/trainer/{trainer_id}")
+def get_trainer(trainer_id: str):
+    """Get trainer profile."""
+    trainer_db = get_trainer_db()
+    trainer = trainer_db.get_trainer(trainer_id)
+    
+    if not trainer:
+        raise HTTPException(status_code=404, detail="Trainer not found")
+    
+    return {"trainer": trainer}
+
+
+@app.get("/api/trainer/{trainer_id}/stats")
+def get_trainer_stats(trainer_id: str):
+    """Get full trainer stats including Pokemon breakdown."""
+    trainer_db = get_trainer_db()
+    pokedex = get_db()
+    
+    stats = trainer_db.get_trainer_stats(trainer_id, pokedex)
+    if not stats:
+        raise HTTPException(status_code=404, detail="Trainer not found")
+    
+    return stats
+
+
+@app.post("/api/trainer/active-time")
+def update_active_time(req: UpdateActiveTimeRequest):
+    """Update trainer's active time."""
+    trainer_db = get_trainer_db()
+    trainer = trainer_db.add_active_time(req.trainer_id, req.seconds)
+    
+    if not trainer:
+        raise HTTPException(status_code=404, detail="Trainer not found")
+    
+    return {"trainer": trainer}
+
+
+@app.get("/api/trainer/leaderboard")
+def get_leaderboard(limit: int = 10):
+    """Get top trainers by Pokemon created."""
+    trainer_db = get_trainer_db()
+    return {"trainers": trainer_db.get_leaderboard(limit)}
+
+
 @app.post("/api/generate")
 def generate_pokemon(req: GenerateRequest):
     """Generate a Pokemon with full control over parameters."""
@@ -93,10 +173,16 @@ def generate_pokemon(req: GenerateRequest):
             colors=req.colors
         )
         pokemon["trainer"] = trainer_name
+        pokemon["trainer_id"] = req.trainer_id
         
         # Add to Pokédex
         db = get_db()
         pokemon = db.add_pokemon(pokemon)
+        
+        # Update trainer stats
+        if req.trainer_id:
+            trainer_db = get_trainer_db()
+            trainer_db.increment_pokemon_created(req.trainer_id, pokemon.get("is_shiny", False))
         
         return {"success": True, "pokemon": pokemon}
     except Exception as e:
@@ -170,10 +256,16 @@ def quick_generate(req: QuickGenerateRequest):
             tier="fully_evolved"
         )
         pokemon["trainer"] = trainer_name
+        pokemon["trainer_id"] = req.trainer_id
         
         # Add to Pokédex
         db = get_db()
         pokemon = db.add_pokemon(pokemon)
+        
+        # Update trainer stats
+        if req.trainer_id:
+            trainer_db = get_trainer_db()
+            trainer_db.increment_pokemon_created(req.trainer_id, pokemon.get("is_shiny", False))
         
         return {"success": True, "pokemon": pokemon}
     except Exception as e:
@@ -184,11 +276,13 @@ def quick_generate(req: QuickGenerateRequest):
 # ==================== POKÉDEX ENDPOINTS ====================
 
 @app.get("/api/pokedex")
-def get_pokedex(type: str = None, limit: int = 50, offset: int = 0):
+def get_pokedex(type: str = None, trainer_id: str = None, limit: int = 50, offset: int = 0):
     """Get all Pokemon in the Pokédex."""
     db = get_db()
     
-    if type:
+    if trainer_id:
+        pokemon = db.get_by_trainer(trainer_id)
+    elif type:
         pokemon = db.get_by_type(type)
     else:
         pokemon = db.get_all()

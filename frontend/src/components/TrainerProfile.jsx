@@ -59,27 +59,52 @@ const TypeBar = ({ type, count, maxCount }) => (
   </div>
 );
 
-export default function TrainerProfile({ trainerName, activeTime, onNavigate, onChangeName }) {
+export default function TrainerProfile({ trainerName, trainerId, onNavigate, onChangeName }) {
   const [stats, setStats] = useState(null);
+  const [trainerData, setTrainerData] = useState(null);
   const [recentPokemon, setRecentPokemon] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [trainerId]);
 
   const fetchData = async () => {
     try {
-      const [statsRes, recentRes] = await Promise.all([
+      const requests = [
         fetch(`${API_URL}/api/pokedex/stats`),
         fetch(`${API_URL}/api/pokedex/recent?limit=5`)
-      ]);
+      ];
+      
+      // Add trainer-specific stats if we have trainerId
+      if (trainerId) {
+        requests.push(fetch(`${API_URL}/api/trainer/${trainerId}/stats`));
+      }
+      
+      const responses = await Promise.all(requests);
+      const [statsRes, recentRes] = responses;
       
       const statsData = await statsRes.json();
       const recentData = await recentRes.json();
       
-      setStats(statsData);
-      setRecentPokemon(recentData.pokemon || []);
+      // Use trainer-specific stats if available
+      if (trainerId && responses[2]) {
+        const trainerStats = await responses[2].json();
+        setTrainerData(trainerStats.trainer);
+        setStats({
+          total: trainerStats.total_pokemon,
+          shinies: trainerStats.shinies,
+          type_counts: trainerStats.type_counts,
+        });
+      } else {
+        setStats(statsData);
+      }
+      
+      // Filter recent Pokemon to show only this trainer's
+      const myPokemon = (recentData.pokemon || []).filter(
+        p => !trainerId || p.trainer_id === trainerId
+      );
+      setRecentPokemon(myPokemon);
     } catch (err) {
       console.error('Failed to fetch stats:', err);
     } finally {
@@ -88,7 +113,7 @@ export default function TrainerProfile({ trainerName, activeTime, onNavigate, on
   };
 
   const getTimePlayed = () => {
-    const totalSeconds = activeTime || 0;
+    const totalSeconds = trainerData?.active_time_seconds || 0;
     const hours = Math.floor(totalSeconds / 3600);
     const minutes = Math.floor((totalSeconds % 3600) / 60);
     if (hours > 0) return `${hours}h ${minutes}m`;
@@ -178,6 +203,14 @@ export default function TrainerProfile({ trainerName, activeTime, onNavigate, on
                 <span className="text-gray-400">
                   Active time: {getTimePlayed()}
                 </span>
+                {trainerData?.created_at && (
+                  <>
+                    <span className="text-gray-500">•</span>
+                    <span className="text-gray-400">
+                      Joined: {new Date(trainerData.created_at).toLocaleDateString()}
+                    </span>
+                  </>
+                )}
               </div>
               <button
                 onClick={onChangeName}
@@ -225,7 +258,7 @@ export default function TrainerProfile({ trainerName, activeTime, onNavigate, on
             label="Active Time" 
             value={getTimePlayed()} 
             icon="⏱️"
-            subtext="While page is open"
+            subtext="Total time on site"
           />
         </div>
 

@@ -2271,8 +2271,191 @@
       "dex_number": 12,
       "added_at": "2026-01-06T11:51:19.658553",
       "id": "pkmn_0012"
+    },
+    {
+      "name": "Heikou",
+      "types": [
+        "Dragon",
+        "Dark"
+      ],
+      "stats": {
+        "hp": 95,
+        "attack": 110,
+        "defense": 85,
+        "sp_attack": 100,
+        "sp_defense": 80,
+        "speed": 75
+      },
+      "abilities": [
+        "Intimidate",
+        "Moxie",
+        "Shadow Tag"
+      ],
+      "signature_move": {
+        "name": "Obsidian Tempest",
+        "type": "Dragon",
+        "category": "Special",
+        "power": 95,
+        "accuracy": 85,
+        "description": "Creates a whirlwind of black scales that may lower the target's accuracy"
+      },
+      "pokedex_entry": "This ancient dragon's midnight-black scales are said to absorb moonlight, granting it power during the night. Legends tell of Heikou emerging from deep mountain caves to bring balance between opposing forces. Its roar can be heard echoing through valleys for miles.",
+      "category": "The Shadow Emperor Pokemon",
+      "height_m": 4.2,
+      "weight_kg": 185.5,
+      "bst": 545,
+      "tier": "fully_evolved",
+      "concept": "a black dragon",
+      "culture": "china",
+      "moveset": {
+        "level_up_moves": [
+          {
+            "level": 1,
+            "move": "Bite",
+            "type": "dark",
+            "power": 60,
+            "category": "physical"
+          },
+          {
+            "level": 5,
+            "move": "Leer",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 10,
+            "move": "Growl",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 15,
+            "move": "Headbutt",
+            "type": "normal",
+            "power": 70,
+            "category": "physical"
+          },
+          {
+            "level": 20,
+            "move": "Slash",
+            "type": "normal",
+            "power": 70,
+            "category": "physical"
+          },
+          {
+            "level": 25,
+            "move": "Nasty Plot",
+            "type": "dark",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 30,
+            "move": "Throat Chop",
+            "type": "dark",
+            "power": 80,
+            "category": "physical"
+          },
+          {
+            "level": 35,
+            "move": "Feint Attack",
+            "type": "dark",
+            "power": 60,
+            "category": "physical"
+          },
+          {
+            "level": 40,
+            "move": "Body Slam",
+            "type": "normal",
+            "power": 85,
+            "category": "physical"
+          },
+          {
+            "level": 45,
+            "move": "Giga Impact",
+            "type": "normal",
+            "power": 150,
+            "category": "physical"
+          },
+          {
+            "level": 50,
+            "move": "Foul Play",
+            "type": "dark",
+            "power": 95,
+            "category": "physical"
+          }
+        ],
+        "tm_moves": [
+          {
+            "move": "Dragon Claw",
+            "type": "dragon",
+            "power": 80,
+            "reason": "STAB"
+          },
+          {
+            "move": "Dragon Rush",
+            "type": "dragon",
+            "power": 100,
+            "reason": "STAB"
+          },
+          {
+            "move": "Feint Attack",
+            "type": "dark",
+            "power": 60,
+            "reason": "STAB"
+          },
+          {
+            "move": "Crunch",
+            "type": "dark",
+            "power": 80,
+            "reason": "STAB"
+          },
+          {
+            "move": "Waterfall",
+            "type": "water",
+            "power": 80,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Seed Bomb",
+            "type": "grass",
+            "power": 80,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Thunder Punch",
+            "type": "electric",
+            "power": 75,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Protect",
+            "type": "normal",
+            "power": null,
+            "reason": "Utility"
+          }
+        ],
+        "egg_moves": [],
+        "current_moves": [
+          "Feint Attack",
+          "Body Slam",
+          "Giga Impact",
+          "Foul Play"
+        ]
+      },
+      "image_path": "outputs\\heikou_20260106_123349_209712_3036.png",
+      "image_prompt": "Dragon type pokemon, a black dragon, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+      "is_shiny": false,
+      "json_path": "outputs\\heikou_data.json",
+      "trainer": "gfgf",
+      "trainer_id": "62300379",
+      "dex_number": 13,
+      "added_at": "2026-01-06T12:33:49.219343",
+      "id": "pkmn_0013"
     }
   ],
-  "next_dex_number": 13,
+  "next_dex_number": 14,
   "created_at": "2026-01-05T23:25:41.275963"
 }

@@ -89,6 +89,11 @@ class PokedexDB:
         return [p for p in self.data["pokemon"] 
                 if pokemon_type in p.get("types", [])]
     
+    def get_by_trainer(self, trainer_id: str) -> list:
+        """Get all Pokemon created by a specific trainer."""
+        return [p for p in self.data["pokemon"] 
+                if p.get("trainer_id") == trainer_id]
+    
     def get_shinies(self) -> list:
         """Get all shiny Pokemon."""
         return [p for p in self.data["pokemon"] 

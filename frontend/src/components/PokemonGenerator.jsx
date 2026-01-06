@@ -149,7 +149,7 @@ const PokemonCard = ({ pokemon, imageKey }) => {
   );
 };
 
-export default function PokemonGenerator({ trainerName, onNavigate }) {
+export default function PokemonGenerator({ trainerName, trainerId, onNavigate }) {
   const [description, setDescription] = useState('');
   const [selectedTypes, setSelectedTypes] = useState([]);
   const [isGenerating, setIsGenerating] = useState(false);
@@ -180,11 +180,12 @@ export default function PokemonGenerator({ trainerName, onNavigate }) {
     try {
       const endpoint = mode === 'simple' ? '/api/quick-generate' : '/api/generate';
       const body = mode === 'simple' 
-        ? { description, trainer_name: trainerName }
+        ? { description, trainer_name: trainerName, trainer_id: trainerId }
         : { 
             concept: description, 
             types: selectedTypes.length ? selectedTypes : ['Normal'],
-            trainer_name: trainerName 
+            trainer_name: trainerName,
+            trainer_id: trainerId
           };
       
       const res = await fetch(`${API_URL}${endpoint}`, {

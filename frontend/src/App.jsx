@@ -5,58 +5,107 @@ import Pokedex from './components/Pokedex';
 import PokemonDetail from './components/PokemonDetail';
 import TrainerProfile from './components/TrainerProfile';
 
+const API_URL = 'http://localhost:8000';
+
 export default function App() {
-  // Load saved trainer name from localStorage
+  // Load saved trainer from localStorage
   const [savedTrainerName] = useState(() => {
     return localStorage.getItem('pokedream_trainer_name') || null;
   });
-  const [currentPage, setCurrentPage] = useState('intro'); // Always show intro, but it will be shorter for returning users
+  const [currentPage, setCurrentPage] = useState('intro');
   const [trainerName, setTrainerName] = useState(() => {
     return localStorage.getItem('pokedream_trainer_name') || 'Trainer';
   });
+  const [trainerId, setTrainerId] = useState(() => {
+    return localStorage.getItem('pokedream_trainer_id') || null;
+  });
   const [selectedDexNumber, setSelectedDexNumber] = useState(null);
   
-  // Active time tracking
-  const [activeTime, setActiveTime] = useState(() => {
-    const saved = localStorage.getItem('pokedream_active_time');
-    return saved ? parseInt(saved, 10) : 0;
-  });
+  // Active time tracking - sync to backend periodically
+  const activeTimeRef = useRef(0);
+  const lastSyncRef = useRef(Date.now());
   const isActiveRef = useRef(true);
   
-  // Track active time only when page is visible
+  // Track active time and sync to backend every 60 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       if (isActiveRef.current && document.visibilityState === 'visible') {
-        setActiveTime(prev => {
-          const newTime = prev + 1;
-          localStorage.setItem('pokedream_active_time', newTime.toString());
-          return newTime;
-        });
+        activeTimeRef.current += 1;
+        
+        // Sync to backend every 60 seconds
+        const now = Date.now();
+        if (trainerId && now - lastSyncRef.current >= 60000) {
+          syncActiveTime();
+          lastSyncRef.current = now;
+        }
       }
-    }, 1000); // Count every second
+    }, 1000);
     
     const handleVisibilityChange = () => {
       isActiveRef.current = document.visibilityState === 'visible';
+      // Sync when leaving page
+      if (!isActiveRef.current && trainerId && activeTimeRef.current > 0) {
+        syncActiveTime();
+      }
     };
     
-    const handleFocus = () => { isActiveRef.current = true; };
-    const handleBlur = () => { isActiveRef.current = false; };
+    const handleBeforeUnload = () => {
+      // Final sync when closing
+      if (trainerId && activeTimeRef.current > 0) {
+        // Use sendBeacon for reliable delivery
+        navigator.sendBeacon(
+          `${API_URL}/api/trainer/active-time`,
+          JSON.stringify({ trainer_id: trainerId, seconds: activeTimeRef.current })
+        );
+      }
+    };
     
     document.addEventListener('visibilitychange', handleVisibilityChange);
-    window.addEventListener('focus', handleFocus);
-    window.addEventListener('blur', handleBlur);
+    window.addEventListener('beforeunload', handleBeforeUnload);
     
     return () => {
       clearInterval(interval);
       document.removeEventListener('visibilitychange', handleVisibilityChange);
-      window.removeEventListener('focus', handleFocus);
-      window.removeEventListener('blur', handleBlur);
+      window.removeEventListener('beforeunload', handleBeforeUnload);
     };
-  }, []);
+  }, [trainerId]);
+  
+  const syncActiveTime = async () => {
+    if (!trainerId || activeTimeRef.current === 0) return;
+    
+    try {
+      await fetch(`${API_URL}/api/trainer/active-time`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ trainer_id: trainerId, seconds: activeTimeRef.current })
+      });
+      activeTimeRef.current = 0; // Reset after sync
+    } catch (err) {
+      console.error('Failed to sync active time:', err);
+    }
+  };
 
-  const handleIntroComplete = (name) => {
+  const handleIntroComplete = async (name) => {
     setTrainerName(name);
     localStorage.setItem('pokedream_trainer_name', name);
+    
+    // Register trainer with backend
+    try {
+      const res = await fetch(`${API_URL}/api/trainer/register`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name })
+      });
+      
+      if (res.ok) {
+        const data = await res.json();
+        setTrainerId(data.trainer.id);
+        localStorage.setItem('pokedream_trainer_id', data.trainer.id);
+      }
+    } catch (err) {
+      console.error('Failed to register trainer:', err);
+    }
+    
     setCurrentPage('generator');
   };
 
@@ -68,8 +117,9 @@ export default function App() {
   };
   
   const handleChangeName = () => {
-    // Clear saved name and go to intro
     localStorage.removeItem('pokedream_trainer_name');
+    localStorage.removeItem('pokedream_trainer_id');
+    setTrainerId(null);
     setCurrentPage('intro');
   };
 
@@ -90,15 +140,15 @@ export default function App() {
 
   // Pokedex
   if (currentPage === 'pokedex') {
-    return <Pokedex onNavigate={handleNavigate} />;
+    return <Pokedex onNavigate={handleNavigate} trainerId={trainerId} />;
   }
 
   // Trainer Profile
   if (currentPage === 'profile') {
     return (
       <TrainerProfile 
-        trainerName={trainerName} 
-        activeTime={activeTime}
+        trainerName={trainerName}
+        trainerId={trainerId}
         onNavigate={handleNavigate}
         onChangeName={handleChangeName}
       />
@@ -136,7 +186,8 @@ export default function App() {
       </nav>
       
       <PokemonGenerator 
-        trainerName={trainerName} 
+        trainerName={trainerName}
+        trainerId={trainerId}
         onNavigate={handleNavigate}
       />
     </div>
