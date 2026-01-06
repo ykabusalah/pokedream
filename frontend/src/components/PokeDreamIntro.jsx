@@ -82,43 +82,23 @@ const PixelInput = ({ value, onChange, placeholder, onSubmit, isValidating }) =>
   </div>
 );
 
-// Platinum-style gold pattern background
+// Simple gold sparkle background
 const GoldPatternBackground = () => (
-  <div className="absolute inset-0 overflow-hidden bg-gradient-to-b from-stone-900 via-amber-950 to-stone-900">
-    <div 
-      className="absolute inset-0"
-      style={{ animation: 'panLeft 12s linear infinite' }}
-    >
-      <svg width="200%" height="100%" className="opacity-30">
-        {[0, 800, 1600].map((offset) => (
-          <g key={offset} transform={`translate(${offset}, 0)`}>
-            <circle cx="400" cy="50%" r="280" fill="none" stroke="#d4af37" strokeWidth="3" />
-            <circle cx="400" cy="50%" r="260" fill="none" stroke="#b8860b" strokeWidth="2" />
-            <circle cx="400" cy="50%" r="220" fill="none" stroke="#d4af37" strokeWidth="4" />
-            <circle cx="400" cy="50%" r="180" fill="none" stroke="#b8860b" strokeWidth="2" />
-            {[...Array(12)].map((_, i) => (
-              <line key={i} x1="400" y1="50%" x2={400 + Math.cos(i * 30 * Math.PI / 180) * 300} 
-                y2={`calc(50% + ${Math.sin(i * 30 * Math.PI / 180) * 300}px)`}
-                stroke="#8b7355" strokeWidth="1" opacity="0.5" />
-            ))}
-          </g>
-        ))}
-        <line x1="0" y1="30%" x2="200%" y2="30%" stroke="#8b7355" strokeWidth="2" opacity="0.3" />
-        <line x1="0" y1="70%" x2="200%" y2="70%" stroke="#8b7355" strokeWidth="2" opacity="0.3" />
-      </svg>
-    </div>
-    {[...Array(25)].map((_, i) => (
+  <div className="absolute inset-0 overflow-hidden bg-black">
+    {/* Gold sparkles falling */}
+    {[...Array(40)].map((_, i) => (
       <div 
         key={i}
-        className="absolute bg-amber-200 rounded-full"
+        className="absolute bg-amber-300 rounded-full"
         style={{
-          width: Math.random() > 0.9 ? '3px' : '2px',
-          height: Math.random() > 0.9 ? '3px' : '2px',
+          width: Math.random() > 0.8 ? '4px' : Math.random() > 0.5 ? '3px' : '2px',
+          height: Math.random() > 0.8 ? '4px' : Math.random() > 0.5 ? '3px' : '2px',
           left: `${Math.random() * 100}%`,
           top: `-10px`,
-          animation: `fall ${4 + Math.random() * 4}s linear infinite`,
-          animationDelay: `${Math.random() * 4}s`,
-          opacity: 0.4 + Math.random() * 0.6
+          animation: `fall ${5 + Math.random() * 5}s linear infinite`,
+          animationDelay: `${Math.random() * 5}s`,
+          opacity: 0.3 + Math.random() * 0.7,
+          boxShadow: '0 0 6px 1px rgba(251, 191, 36, 0.6)'
         }}
       />
     ))}
@@ -364,10 +344,6 @@ export default function PokeDreamIntro({ onComplete }) {
       </div>
       
       <style>{`
-        @keyframes panLeft {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
         @keyframes fall {
           0% { transform: translateY(-10px); opacity: 0; }
           10% { opacity: 1; }
