@@ -13,6 +13,7 @@ import traceback
 
 from pokemon_generator import PokeDream
 from src.pokedex_db import get_db
+from src.name_filter import is_name_appropriate, sanitize_name
 
 app = FastAPI(title="PokéDream API")
 
@@ -47,15 +48,42 @@ class QuickGenerateRequest(BaseModel):
     trainer_name: str = "Trainer"
 
 
+class ValidateNameRequest(BaseModel):
+    name: str
+
+
+def get_validated_trainer_name(name: str) -> str:
+    """Validate and sanitize trainer name, return safe version."""
+    is_valid, reason = is_name_appropriate(name)
+    if not is_valid:
+        # Return generic name if inappropriate
+        return "Trainer"
+    return sanitize_name(name)
+
+
 @app.get("/")
 def root():
     return {"status": "PokéDream API running", "version": "1.0", "region": "Oneira"}
+
+
+@app.post("/api/validate-name")
+def validate_name(req: ValidateNameRequest):
+    """Check if a trainer name is appropriate."""
+    is_valid, reason = is_name_appropriate(req.name)
+    return {
+        "valid": is_valid,
+        "reason": reason,
+        "sanitized": sanitize_name(req.name) if is_valid else "Trainer"
+    }
 
 
 @app.post("/api/generate")
 def generate_pokemon(req: GenerateRequest):
     """Generate a Pokemon with full control over parameters."""
     try:
+        # Validate trainer name
+        trainer_name = get_validated_trainer_name(req.trainer_name)
+        
         pokemon = generator.create(
             concept=req.concept,
             types=req.types,
@@ -64,7 +92,7 @@ def generate_pokemon(req: GenerateRequest):
             body_type=req.body_type,
             colors=req.colors
         )
-        pokemon["trainer"] = req.trainer_name
+        pokemon["trainer"] = trainer_name
         
         # Add to Pokédex
         db = get_db()
@@ -80,6 +108,9 @@ def generate_pokemon(req: GenerateRequest):
 def quick_generate(req: QuickGenerateRequest):
     """Generate a Pokemon from a natural language description."""
     try:
+        # Validate trainer name
+        trainer_name = get_validated_trainer_name(req.trainer_name)
+        
         # Type inference from keywords
         desc_lower = req.description.lower()
         types = []
@@ -138,7 +169,7 @@ def quick_generate(req: QuickGenerateRequest):
             culture=culture,
             tier="fully_evolved"
         )
-        pokemon["trainer"] = req.trainer_name
+        pokemon["trainer"] = trainer_name
         
         # Add to Pokédex
         db = get_db()
