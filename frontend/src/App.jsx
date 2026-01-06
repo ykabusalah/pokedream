@@ -3,9 +3,10 @@ import PokeDreamIntro from './components/PokeDreamIntro';
 import PokemonGenerator from './components/PokemonGenerator';
 import Pokedex from './components/Pokedex';
 import PokemonDetail from './components/PokemonDetail';
+import TrainerProfile from './components/TrainerProfile';
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState('intro'); // intro, generator, pokedex, pokemon
+  const [currentPage, setCurrentPage] = useState('intro'); // intro, generator, pokedex, pokemon, profile
   const [trainerName, setTrainerName] = useState('Trainer');
   const [selectedDexNumber, setSelectedDexNumber] = useState(null);
 
@@ -41,6 +42,16 @@ export default function App() {
     return <Pokedex onNavigate={handleNavigate} />;
   }
 
+  // Trainer Profile
+  if (currentPage === 'profile') {
+    return (
+      <TrainerProfile 
+        trainerName={trainerName} 
+        onNavigate={handleNavigate}
+      />
+    );
+  }
+
   // Generator (default after intro)
   return (
     <div className="min-h-screen bg-gray-950">
@@ -61,7 +72,12 @@ export default function App() {
               Pokédex
             </button>
             <span className="text-gray-600">|</span>
-            <span className="text-gray-400">{trainerName}</span>
+            <button
+              onClick={() => handleNavigate('profile')}
+              className="text-amber-400 hover:text-amber-300 transition-all font-medium"
+            >
+              {trainerName}
+            </button>
           </div>
         </div>
       </nav>
