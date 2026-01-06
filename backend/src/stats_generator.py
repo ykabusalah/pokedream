@@ -38,7 +38,8 @@ class PokemonStatsGenerator:
         concept: str,
         types: list[str] = None,
         culture: str = None,
-        tier: str = "fully_evolved"
+        tier: str = "fully_evolved",
+        existing_names: list[str] = None
     ) -> dict:
         """
         Generate Pokemon stats and metadata.
@@ -48,6 +49,7 @@ class PokemonStatsGenerator:
             types: Suggested types (["Ice", "Fighting"])
             culture: Cultural inspiration ("nepal")
             tier: Power tier (early_game, mid_game, fully_evolved, pseudo_legendary, legendary)
+            existing_names: List of names already in the Pokédex (to avoid duplicates)
         
         Returns:
             Dictionary with name, types, stats, abilities, moves, pokedex entry
@@ -57,16 +59,23 @@ class PokemonStatsGenerator:
         type_hint = f"Suggested types: {'/'.join(types)}" if types else "Choose appropriate types"
         culture_hint = f"Cultural inspiration: {culture}" if culture else ""
         
+        # Build the avoid names section
+        avoid_names_hint = ""
+        if existing_names and len(existing_names) > 0:
+            # Limit to last 50 names to avoid huge prompts
+            recent_names = existing_names[-50:] if len(existing_names) > 50 else existing_names
+            avoid_names_hint = f"\n\nIMPORTANT - These names are already taken, DO NOT use any of them or variations: {', '.join(recent_names)}"
+        
         prompt = f"""You are a Pokemon game designer. Create a complete Pokemon based on this concept:
 
 Concept: {concept}
 {type_hint}
 {culture_hint}
-Power Tier: {tier} (Base Stat Total should be between {bst_min}-{bst_max})
+Power Tier: {tier} (Base Stat Total should be between {bst_min}-{bst_max}){avoid_names_hint}
 
 Respond with ONLY valid JSON in this exact format, no other text:
 {{
-    "name": "Pokemon name (creative, 1-2 syllables, memorable)",
+    "name": "Pokemon name (creative, 1-2 syllables, memorable, MUST BE UNIQUE)",
     "types": ["Type1", "Type2 or null if single type"],
     "stats": {{
         "hp": number,
@@ -99,7 +108,12 @@ Rules for stats:
   - Fast/agile designs: higher Speed
   - Physical attackers: higher Attack
   - Special attackers: higher Sp.Attack
-- Type influences stats: Steel types have high Defense, Psychic types have high Sp.Attack, etc."""
+- Type influences stats: Steel types have high Defense, Psychic types have high Sp.Attack, etc.
+
+Rules for naming:
+- Name MUST be completely unique and not similar to any existing names listed above
+- Be creative - combine unexpected syllables, use different language roots
+- Avoid obvious patterns (don't just add -mon, -zard, -saur to things)"""
 
         message = self.client.messages.create(
             model="claude-sonnet-4-20250514",
@@ -169,13 +183,14 @@ def main():
     """Test the stats generator."""
     generator = PokemonStatsGenerator()
     
-    # Test: Nepal-inspired Pokemon
+    # Test: Nepal-inspired Pokemon with existing names to avoid
     print("Generating Nepal-inspired Pokemon...")
     pokemon = generator.generate(
         concept="snow leopard guardian spirit",
         types=["Ice", "Fighting"],
         culture="Nepal",
-        tier="fully_evolved"
+        tier="fully_evolved",
+        existing_names=["Frostclaw", "Snowpaw", "Icefang"]  # Example existing names
     )
     
     print(generator.display(pokemon))

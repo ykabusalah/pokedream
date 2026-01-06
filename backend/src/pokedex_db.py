@@ -38,6 +38,14 @@ class PokedexDB:
         with open(self.db_path, 'w') as f:
             json.dump(self.data, f, indent=2)
     
+    def get_all_names(self) -> list:
+        """Get all existing Pokemon names (for duplicate prevention)."""
+        return [p.get("name", "").lower() for p in self.data["pokemon"]]
+    
+    def name_exists(self, name: str) -> bool:
+        """Check if a Pokemon name already exists."""
+        return name.lower() in self.get_all_names()
+    
     def add_pokemon(self, pokemon: dict) -> dict:
         """
         Add a new Pokemon to the Pokédex.
@@ -137,4 +145,5 @@ def get_db() -> PokedexDB:
 if __name__ == "__main__":
     db = get_db()
     print(f"Pokédex has {db.get_count()} Pokemon")
+    print(f"Existing names: {db.get_all_names()}")
     print(f"Stats: {db.get_stats()}")

@@ -13,6 +13,7 @@ from dotenv import load_dotenv
 from src.image_generator import PokemonImageGenerator, structure_prompt
 from src.stats_generator import PokemonStatsGenerator
 from src.moves_generator import MoveGenerator
+from src.pokedex_db import get_db
 
 load_dotenv()
 
@@ -27,6 +28,7 @@ class PokeDream:
         self.image_gen = PokemonImageGenerator(output_dir)
         self.stats_gen = PokemonStatsGenerator()
         self.moves_gen = MoveGenerator()
+        self.pokedex = get_db()
     
     def create(
         self,
@@ -58,17 +60,37 @@ class PokeDream:
         print(f"Culture: {culture} | Types: {'/'.join(types)} | Tier: {tier}")
         print(f"{'='*60}\n")
         
+        # Get existing names to avoid duplicates
+        existing_names = self.pokedex.get_all_names()
+        print(f"      Existing Pokemon in Pokédex: {len(existing_names)}")
+        
         # Step 1: Generate stats first (to get the name)
         print("[1/4] Generating stats and lore...")
         pokemon = self.stats_gen.generate(
             concept=concept,
             types=types,
             culture=culture,
-            tier=tier
+            tier=tier,
+            existing_names=existing_names
         )
         
         name = pokemon["name"].lower()
         print(f"      Name: {pokemon['name']}")
+        
+        # Double-check name isn't a duplicate (Claude might ignore instructions)
+        if self.pokedex.name_exists(pokemon["name"]):
+            print(f"      WARNING: Name '{pokemon['name']}' already exists, regenerating...")
+            # Try again with stronger emphasis
+            existing_names.append(pokemon["name"].lower())
+            pokemon = self.stats_gen.generate(
+                concept=concept,
+                types=types,
+                culture=culture,
+                tier=tier,
+                existing_names=existing_names
+            )
+            name = pokemon["name"].lower()
+            print(f"      New name: {pokemon['name']}")
         
         # Step 2: Generate moveset
         print("[2/4] Generating moveset...")
@@ -86,7 +108,7 @@ class PokeDream:
         
         image_paths = self.image_gen.generate_and_save(
             prompt=prompt,
-            name=name,
+            pokemon_name=name,
             seed=seed
         )
         
