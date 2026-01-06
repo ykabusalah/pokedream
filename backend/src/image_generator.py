@@ -143,11 +143,15 @@ def structure_prompt(concept: str, types: list, culture: str = None,
         f"{body_type} body" if body_type else "",
         f"colors: {', '.join(colors)}" if colors else "",
         "single pokemon only",
+        "one character",
         "centered composition",
+        "full body portrait",
+        "simple white background",
         "ken sugimori style",
-        "official pokemon art",
-        "full body",
-        "white background",
+        "official pokemon artwork",
+        "clean illustration",
+        "no multiple views",
+        "no reference sheet",
     ]
     
     return ", ".join(p for p in parts if p)
