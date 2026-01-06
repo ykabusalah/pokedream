@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import BlaineErrorPopup from './BlaineErrorPopup';
 import ShinyPopup from './ShinyPopup';
+import SharePopup from './SharePopup';
 
 const API_URL = 'http://localhost:8000';
 
@@ -159,6 +160,7 @@ export default function PokemonGenerator({ trainerName, trainerId, onNavigate })
   const [imageKey, setImageKey] = useState(Date.now());
   const [showErrorPopup, setShowErrorPopup] = useState(false);
   const [showShinyPopup, setShowShinyPopup] = useState(false);
+  const [showSharePopup, setShowSharePopup] = useState(false);
 
   const toggleType = (type) => {
     if (selectedTypes.includes(type)) {
@@ -293,7 +295,7 @@ export default function PokemonGenerator({ trainerName, trainerId, onNavigate })
         
         {/* Post-creation options */}
         {pokemon && !isGenerating && (
-          <div className="flex justify-center gap-4 mt-6">
+          <div className="flex flex-wrap justify-center gap-4 mt-6">
             <button
               onClick={() => {
                 setPokemon(null);
@@ -303,6 +305,12 @@ export default function PokemonGenerator({ trainerName, trainerId, onNavigate })
               className="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white font-bold rounded-lg transition-all"
             >
               Create Another
+            </button>
+            <button
+              onClick={() => setShowSharePopup(true)}
+              className="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-lg transition-all flex items-center gap-2"
+            >
+              <span>📤</span> Share
             </button>
             <button
               onClick={() => onNavigate && onNavigate('pokedex')}
@@ -335,6 +343,13 @@ export default function PokemonGenerator({ trainerName, trainerId, onNavigate })
           <ShinyPopup 
             pokemon={pokemon}
             onContinue={() => setShowShinyPopup(false)}
+          />
+        )}
+        
+        {showSharePopup && pokemon && (
+          <SharePopup
+            pokemon={pokemon}
+            onClose={() => setShowSharePopup(false)}
           />
         )}
       </div>
