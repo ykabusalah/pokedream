@@ -41,11 +41,15 @@ const TypeBadge = ({ type }) => (
 );
 
 // Pokemon card
-const PokemonCard = ({ pokemon }) => {
+const PokemonCard = ({ pokemon, imageKey }) => {
   if (!pokemon) return null;
   
   const { name, types, stats, pokedex_entry, lore, moveset, image_path } = pokemon;
-  const imageUrl = image_path ? `${API_URL}/${image_path}` : null;
+  
+  // Add cache-busting timestamp to image URL
+  const imageUrl = image_path 
+    ? `${API_URL}/${image_path}?t=${imageKey}` 
+    : null;
   
   return (
     <div className="bg-gray-900 rounded-2xl p-6 max-w-2xl mx-auto" style={{ border: '3px solid #374151' }}>
@@ -62,10 +66,11 @@ const PokemonCard = ({ pokemon }) => {
         </div>
       </div>
       
-      {/* Image */}
+      {/* Image - key forces re-render, cache-bust in URL */}
       {imageUrl && (
         <div className="mb-6 flex justify-center">
           <img 
+            key={imageKey}
             src={imageUrl} 
             alt={name}
             className="w-64 h-64 object-contain rounded-xl bg-gray-800 p-4"
@@ -123,7 +128,8 @@ export default function PokemonGenerator({ trainerName }) {
   const [isGenerating, setIsGenerating] = useState(false);
   const [pokemon, setPokemon] = useState(null);
   const [error, setError] = useState(null);
-  const [mode, setMode] = useState('simple'); // simple or advanced
+  const [mode, setMode] = useState('simple');
+  const [imageKey, setImageKey] = useState(Date.now());
 
   const toggleType = (type) => {
     if (selectedTypes.includes(type)) {
@@ -136,6 +142,9 @@ export default function PokemonGenerator({ trainerName }) {
   const handleGenerate = async () => {
     if (!description.trim()) return;
     
+    // Clear previous pokemon and force new image load
+    setPokemon(null);
+    setImageKey(Date.now());
     setIsGenerating(true);
     setError(null);
     
@@ -155,10 +164,14 @@ export default function PokemonGenerator({ trainerName }) {
         body: JSON.stringify(body)
       });
       
-      if (!res.ok) throw new Error('Generation failed');
+      if (!res.ok) {
+        const errorData = await res.json().catch(() => ({}));
+        throw new Error(errorData.detail || 'Generation failed');
+      }
       
       const data = await res.json();
       setPokemon(data.pokemon);
+      setImageKey(Date.now()); // Update again after successful load
     } catch (err) {
       setError(err.message);
     } finally {
@@ -254,11 +267,11 @@ export default function PokemonGenerator({ trainerName }) {
         )}
         
         {/* Result */}
-        {pokemon && !isGenerating && <PokemonCard pokemon={pokemon} />}
+        {pokemon && !isGenerating && <PokemonCard pokemon={pokemon} imageKey={imageKey} />}
         
         {/* Footer */}
         <p className="text-center text-gray-600 text-sm mt-12">
-          Powered by Claude AI & Replicate • PokéDream v1.0
+          Powered by Claude AI & Replicate • PokéDream v1.0 • Oneira Region
         </p>
       </div>
     </div>
