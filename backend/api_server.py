@@ -9,8 +9,10 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from pathlib import Path
 import uvicorn
+import traceback
 
 from pokemon_generator import PokeDream
+from src.pokedex_db import get_db
 
 app = FastAPI(title="PokéDream API")
 
@@ -47,7 +49,7 @@ class QuickGenerateRequest(BaseModel):
 
 @app.get("/")
 def root():
-    return {"status": "PokéDream API running", "version": "1.0"}
+    return {"status": "PokéDream API running", "version": "1.0", "region": "Oneira"}
 
 
 @app.post("/api/generate")
@@ -63,19 +65,22 @@ def generate_pokemon(req: GenerateRequest):
             colors=req.colors
         )
         pokemon["trainer"] = req.trainer_name
+        
+        # Add to Pokédex
+        db = get_db()
+        pokemon = db.add_pokemon(pokemon)
+        
         return {"success": True, "pokemon": pokemon}
     except Exception as e:
+        traceback.print_exc()
         raise HTTPException(status_code=500, detail=str(e))
 
 
 @app.post("/api/quick-generate")
 def quick_generate(req: QuickGenerateRequest):
-    """
-    Generate a Pokemon from a natural language description.
-    Infers types from the description.
-    """
+    """Generate a Pokemon from a natural language description."""
     try:
-        # Simple type inference from keywords
+        # Type inference from keywords
         desc_lower = req.description.lower()
         types = []
         
@@ -109,7 +114,7 @@ def quick_generate(req: QuickGenerateRequest):
         if not types:
             types = ["Normal"]
         
-        # Infer culture from keywords
+        # Culture inference
         culture = "original"
         culture_keywords = {
             "vietnam": ["vietnam", "pho", "bun bo", "banh mi", "ao dai"],
@@ -134,26 +139,79 @@ def quick_generate(req: QuickGenerateRequest):
             tier="fully_evolved"
         )
         pokemon["trainer"] = req.trainer_name
+        
+        # Add to Pokédex
+        db = get_db()
+        pokemon = db.add_pokemon(pokemon)
+        
         return {"success": True, "pokemon": pokemon}
     except Exception as e:
-        import traceback
-        traceback.print_exc()  # Print full error to terminal
+        traceback.print_exc()
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@app.get("/api/recent")
+# ==================== POKÉDEX ENDPOINTS ====================
+
+@app.get("/api/pokedex")
+def get_pokedex(type: str = None, limit: int = 50, offset: int = 0):
+    """Get all Pokemon in the Pokédex."""
+    db = get_db()
+    
+    if type:
+        pokemon = db.get_by_type(type)
+    else:
+        pokemon = db.get_all()
+    
+    # Pagination
+    total = len(pokemon)
+    pokemon = pokemon[offset:offset + limit]
+    
+    return {
+        "pokemon": pokemon,
+        "total": total,
+        "limit": limit,
+        "offset": offset,
+    }
+
+
+@app.get("/api/pokedex/stats")
+def get_pokedex_stats():
+    """Get Pokédex statistics."""
+    db = get_db()
+    return db.get_stats()
+
+
+@app.get("/api/pokedex/recent")
 def get_recent_pokemon(limit: int = 10):
-    """Get recently generated Pokemon."""
-    outputs = Path("outputs")
-    jsons = sorted(outputs.glob("*.json"), key=lambda x: x.stat().st_mtime, reverse=True)
+    """Get recently created Pokemon."""
+    db = get_db()
+    return {"pokemon": db.get_recent(limit)}
+
+
+@app.get("/api/pokedex/search")
+def search_pokemon(q: str):
+    """Search Pokemon by name."""
+    db = get_db()
+    return {"pokemon": db.search(q)}
+
+
+@app.get("/api/pokedex/{dex_number}")
+def get_pokemon_by_dex(dex_number: int):
+    """Get a specific Pokemon by Pokédex number."""
+    db = get_db()
+    pokemon = db.get_by_dex_number(dex_number)
     
-    recent = []
-    for j in jsons[:limit]:
-        import json
-        with open(j) as f:
-            recent.append(json.load(f))
+    if not pokemon:
+        raise HTTPException(status_code=404, detail="Pokemon not found")
     
-    return {"pokemon": recent}
+    return {"pokemon": pokemon}
+
+
+@app.get("/api/pokedex/shinies")
+def get_shiny_pokemon():
+    """Get all shiny Pokemon."""
+    db = get_db()
+    return {"pokemon": db.get_shinies()}
 
 
 if __name__ == "__main__":
