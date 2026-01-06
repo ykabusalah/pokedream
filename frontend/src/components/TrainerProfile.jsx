@@ -59,17 +59,10 @@ const TypeBar = ({ type, count, maxCount }) => (
   </div>
 );
 
-export default function TrainerProfile({ trainerName, onNavigate }) {
+export default function TrainerProfile({ trainerName, activeTime, onNavigate, onChangeName }) {
   const [stats, setStats] = useState(null);
   const [recentPokemon, setRecentPokemon] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [sessionStart] = useState(() => {
-    const saved = localStorage.getItem('pokedream_session_start');
-    if (saved) return new Date(saved);
-    const now = new Date();
-    localStorage.setItem('pokedream_session_start', now.toISOString());
-    return now;
-  });
 
   useEffect(() => {
     fetchData();
@@ -95,12 +88,12 @@ export default function TrainerProfile({ trainerName, onNavigate }) {
   };
 
   const getTimePlayed = () => {
-    const now = new Date();
-    const diff = now - sessionStart;
-    const hours = Math.floor(diff / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const totalSeconds = activeTime || 0;
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
     if (hours > 0) return `${hours}h ${minutes}m`;
-    return `${minutes}m`;
+    if (minutes > 0) return `${minutes}m`;
+    return `${totalSeconds}s`;
   };
 
   const getFavoriteType = () => {
@@ -183,9 +176,15 @@ export default function TrainerProfile({ trainerName, onNavigate }) {
                 </span>
                 <span className="text-gray-500">•</span>
                 <span className="text-gray-400">
-                  Playing for {getTimePlayed()}
+                  Active time: {getTimePlayed()}
                 </span>
               </div>
+              <button
+                onClick={onChangeName}
+                className="mt-3 text-xs text-gray-500 hover:text-gray-300 transition-all"
+              >
+                Change trainer name
+              </button>
             </div>
 
             {favoriteType && (
@@ -223,10 +222,10 @@ export default function TrainerProfile({ trainerName, onNavigate }) {
             subtext="1/4096 chance each"
           />
           <StatCard 
-            label="Time Playing" 
+            label="Active Time" 
             value={getTimePlayed()} 
             icon="⏱️"
-            subtext="This session"
+            subtext="While page is open"
           />
         </div>
 
