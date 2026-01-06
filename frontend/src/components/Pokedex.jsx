@@ -2,12 +2,6 @@ import { useState, useEffect } from 'react';
 
 const API_URL = 'http://localhost:8000';
 
-const POKEMON_TYPES = [
-  'Normal', 'Fire', 'Water', 'Electric', 'Grass', 'Ice',
-  'Fighting', 'Poison', 'Ground', 'Flying', 'Psychic', 'Bug',
-  'Rock', 'Ghost', 'Dragon', 'Dark', 'Steel', 'Fairy'
-];
-
 const TYPE_COLORS = {
   Normal: '#A8A878', Fire: '#F08030', Water: '#6890F0', Electric: '#F8D030',
   Grass: '#78C850', Ice: '#98D8D8', Fighting: '#C03028', Poison: '#A040A0',
@@ -16,80 +10,71 @@ const TYPE_COLORS = {
   Steel: '#B8B8D0', Fairy: '#EE99AC'
 };
 
-const TypeBadge = ({ type, small = false }) => (
-  <span 
-    className={`${small ? 'px-2 py-0.5 text-xs' : 'px-3 py-1 text-sm'} rounded-full font-bold text-white`}
-    style={{ backgroundColor: TYPE_COLORS[type] || '#888' }}
-  >
-    {type}
-  </span>
-);
+const POKEMON_TYPES = Object.keys(TYPE_COLORS);
 
+// Pokemon card component
 const PokemonCard = ({ pokemon, onClick }) => {
-  const { dex_number, name, types, image_path, is_shiny } = pokemon;
-  const imageUrl = image_path ? `${API_URL}/${image_path}` : null;
+  const primaryType = pokemon.types?.[0] || 'Normal';
   
   return (
     <div 
       onClick={onClick}
-      className="bg-gray-900 rounded-xl p-4 cursor-pointer transition-all hover:scale-105 hover:bg-gray-800 relative"
-      style={{ border: '2px solid #374151' }}
+      className="bg-gray-800 rounded-lg p-3 cursor-pointer hover:scale-105 transition-all hover:ring-2 hover:ring-amber-500"
     >
-      {/* Shiny indicator */}
-      {is_shiny && (
-        <div className="absolute top-2 right-2 text-yellow-400 animate-pulse">
-          ✨
+      <div className="text-xs text-gray-500 mb-1">
+        #{String(pokemon.dex_number).padStart(3, '0')}
+      </div>
+      
+      {pokemon.image_path ? (
+        <img 
+          src={`${API_URL}/${pokemon.image_path}`}
+          alt={pokemon.name}
+          className="w-full aspect-square object-contain bg-gray-700 rounded mb-2"
+        />
+      ) : (
+        <div className="w-full aspect-square bg-gray-700 rounded mb-2 flex items-center justify-center text-4xl">
+          ?
         </div>
       )}
       
-      {/* Dex number */}
-      <p className="text-gray-500 text-xs mb-2">#{String(dex_number).padStart(4, '0')}</p>
+      <div className="font-bold text-sm truncate">{pokemon.name}</div>
       
-      {/* Image */}
-      <div className="w-full aspect-square bg-gray-800 rounded-lg mb-3 flex items-center justify-center overflow-hidden">
-        {imageUrl ? (
-          <img 
-            src={imageUrl} 
-            alt={name}
-            className="w-full h-full object-contain p-2"
-          />
-        ) : (
-          <span className="text-4xl">?</span>
-        )}
-      </div>
-      
-      {/* Name */}
-      <h3 className="text-white font-bold text-center mb-2 truncate">{name}</h3>
-      
-      {/* Types */}
-      <div className="flex justify-center gap-1 flex-wrap">
-        {types?.map(t => <TypeBadge key={t} type={t} small />)}
+      <div className="flex gap-1 mt-1 flex-wrap">
+        {pokemon.types?.map(type => (
+          <span 
+            key={type}
+            className="text-xs px-2 py-0.5 rounded text-white"
+            style={{ backgroundColor: TYPE_COLORS[type] }}
+          >
+            {type}
+          </span>
+        ))}
       </div>
     </div>
   );
 };
 
+// Empty state
 const EmptyState = ({ onGenerate }) => (
   <div className="text-center py-16">
-    <div className="text-6xl mb-4">📖</div>
-    <h2 className="text-2xl font-bold text-white mb-2">The Pokédex is Empty!</h2>
-    <p className="text-gray-400 mb-6">No Pokémon have been discovered in the Oneira Region yet.</p>
+    <div className="text-6xl mb-4">📭</div>
+    <h2 className="text-2xl font-bold mb-2">No Pokémon Yet!</h2>
+    <p className="text-gray-400 mb-6">Your Pokédex is empty. Create your first AI-generated Pokémon!</p>
     <button
       onClick={onGenerate}
       className="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-white font-bold rounded-lg transition-all"
     >
-      Create the First Pokémon
+      Create Your First Pokémon
     </button>
   </div>
 );
 
 export default function Pokedex({ onNavigate }) {
   const [pokemon, setPokemon] = useState([]);
-  const [stats, setStats] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [stats, setStats] = useState(null);
   const [selectedType, setSelectedType] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedPokemon, setSelectedPokemon] = useState(null);
 
   useEffect(() => {
     loadPokedex();
@@ -139,20 +124,29 @@ export default function Pokedex({ onNavigate }) {
     }
   };
 
-  const filteredPokemon = pokemon;
-
   return (
     <div className="min-h-screen bg-gray-950 text-white">
       {/* Header */}
       <div className="bg-gray-900 border-b border-gray-800">
         <div className="max-w-6xl mx-auto px-4 py-6">
+          {/* Top nav row with home button */}
           <div className="flex items-center justify-between mb-4">
-            <div>
-              <h1 className="text-3xl font-bold">Oneira Pokédex</h1>
-              <p className="text-gray-400">
-                {stats ? `${stats.total} Pokémon discovered` : 'Loading...'}
-                {stats?.shinies > 0 && ` • ${stats.shinies} shiny`}
-              </p>
+            <div className="flex items-center gap-4">
+              {/* HOME BUTTON */}
+              <button
+                onClick={() => onNavigate('generator')}
+                className="text-xl font-bold text-white hover:text-amber-400 transition-all"
+              >
+                🔴 PokéDream
+              </button>
+              <span className="text-gray-600">|</span>
+              <div>
+                <h1 className="text-2xl font-bold">Oneira Pokédex</h1>
+                <p className="text-gray-400 text-sm">
+                  {stats ? `${stats.total} Pokémon discovered` : 'Loading...'}
+                  {stats?.shinies > 0 && ` • ${stats.shinies} shiny`}
+                </p>
+              </div>
             </div>
             <button
               onClick={() => onNavigate('generator')}
@@ -217,11 +211,11 @@ export default function Pokedex({ onNavigate }) {
             <div className="animate-spin w-12 h-12 border-4 border-amber-500 border-t-transparent rounded-full mx-auto mb-4" />
             <p className="text-gray-400">Loading Pokédex...</p>
           </div>
-        ) : filteredPokemon.length === 0 ? (
+        ) : pokemon.length === 0 ? (
           <EmptyState onGenerate={() => onNavigate('generator')} />
         ) : (
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
-            {filteredPokemon.map(p => (
+            {pokemon.map(p => (
               <PokemonCard 
                 key={p.id || p.dex_number} 
                 pokemon={p}

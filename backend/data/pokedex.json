@@ -2454,8 +2454,202 @@
       "dex_number": 13,
       "added_at": "2026-01-06T12:33:49.219343",
       "id": "pkmn_0013"
+    },
+    {
+      "name": "Sombralenda",
+      "types": [
+        "Dark",
+        "Ghost"
+      ],
+      "stats": {
+        "hp": 85,
+        "attack": 70,
+        "defense": 75,
+        "sp_attack": 115,
+        "sp_defense": 95,
+        "speed": 85
+      },
+      "abilities": [
+        "Shadow Tag",
+        "Cursed Body",
+        "Prankster"
+      ],
+      "signature_move": {
+        "name": "Legend's Curse",
+        "type": "Dark",
+        "category": "Special",
+        "power": 90,
+        "accuracy": 85,
+        "description": "An ancient curse that may lower the target's Attack, Defense, or Speed at random"
+      },
+      "pokedex_entry": "This mysterious Pokemon emerges from deep forests during moonless nights, carrying whispered tales from ancient times. Local folklore speaks of its ability to weave shadows into stories that can trap the unwary. Its ethereal form flickers between reality and legend, making it difficult to distinguish from the myths themselves.",
+      "category": "The Shadow Legend Pokemon",
+      "height_m": 1.8,
+      "weight_kg": 45.5,
+      "bst": 525,
+      "tier": "fully_evolved",
+      "concept": "A Pok\u00e9mon inspired by Brazilian mythology",
+      "culture": "original",
+      "moveset": {
+        "level_up_moves": [
+          {
+            "level": 1,
+            "move": "Leer",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 5,
+            "move": "Night Shade",
+            "type": "ghost",
+            "power": null,
+            "category": "special"
+          },
+          {
+            "level": 10,
+            "move": "Growl",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 15,
+            "move": "Confuse Ray",
+            "type": "ghost",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 20,
+            "move": "Hex",
+            "type": "ghost",
+            "power": 65,
+            "category": "special"
+          },
+          {
+            "level": 25,
+            "move": "Swift",
+            "type": "normal",
+            "power": 60,
+            "category": "special"
+          },
+          {
+            "level": 30,
+            "move": "Nasty Plot",
+            "type": "dark",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 35,
+            "move": "Dark Pulse",
+            "type": "dark",
+            "power": 80,
+            "category": "special"
+          },
+          {
+            "level": 40,
+            "move": "Shadow Ball",
+            "type": "ghost",
+            "power": 80,
+            "category": "special"
+          },
+          {
+            "level": 45,
+            "move": "Destiny Bond",
+            "type": "ghost",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 50,
+            "move": "Hyper Beam",
+            "type": "normal",
+            "power": 150,
+            "category": "special"
+          }
+        ],
+        "tm_moves": [
+          {
+            "move": "Snarl",
+            "type": "dark",
+            "power": 55,
+            "reason": "STAB"
+          },
+          {
+            "move": "Dark Pulse",
+            "type": "dark",
+            "power": 80,
+            "reason": "STAB"
+          },
+          {
+            "move": "Hex",
+            "type": "ghost",
+            "power": 65,
+            "reason": "STAB"
+          },
+          {
+            "move": "Shadow Ball",
+            "type": "ghost",
+            "power": 80,
+            "reason": "STAB"
+          },
+          {
+            "move": "Giga Drain",
+            "type": "grass",
+            "power": 75,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Incinerate",
+            "type": "fire",
+            "power": 60,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Scald",
+            "type": "water",
+            "power": 80,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Protect",
+            "type": "normal",
+            "power": null,
+            "reason": "Utility"
+          }
+        ],
+        "egg_moves": [
+          {
+            "move": "Shadow Claw",
+            "type": "ghost",
+            "power": 70
+          },
+          {
+            "move": "Shadow Sneak",
+            "type": "ghost",
+            "power": 40
+          }
+        ],
+        "current_moves": [
+          "Dark Pulse",
+          "Shadow Ball",
+          "Destiny Bond",
+          "Hyper Beam"
+        ]
+      },
+      "image_path": "outputs\\sombralenda_20260106_162234_790953_6456.png",
+      "image_prompt": "Dark type pokemon, A Pok\u00e9mon inspired by Brazilian mythology, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+      "is_shiny": false,
+      "json_path": "outputs\\sombralenda_data.json",
+      "trainer": "gfgf",
+      "trainer_id": "62300379",
+      "dex_number": 14,
+      "added_at": "2026-01-06T16:22:34.816163",
+      "id": "pkmn_0014"
     }
   ],
-  "next_dex_number": 14,
+  "next_dex_number": 15,
   "created_at": "2026-01-05T23:25:41.275963"
 }

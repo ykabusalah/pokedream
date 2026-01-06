@@ -1,384 +1,234 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
-const API_URL = 'http://localhost:8000';
-
-// Typewriter effect
-const TypewriterText = ({ text, speed = 35, isActive, onComplete }) => {
-  const [displayed, setDisplayed] = useState('');
-  const [done, setDone] = useState(false);
-  
-  useEffect(() => {
-    if (!isActive) return;
-    setDisplayed('');
-    setDone(false);
-    let i = 0;
-    const interval = setInterval(() => {
-      if (i < text.length) {
-        setDisplayed(text.slice(0, i + 1));
-        i++;
-      } else {
-        clearInterval(interval);
-        setDone(true);
-        onComplete?.();
-      }
-    }, speed);
-    return () => clearInterval(interval);
-  }, [text, isActive]);
-  
-  return <span>{displayed}<span className={`${done ? 'opacity-0' : 'animate-pulse'}`}>▼</span></span>;
-};
-
-// Dialog box
-const DialogBox = ({ children, showContinue, onContinue }) => (
-  <div className="w-full max-w-2xl mx-auto">
+// Platinum-style dialog box
+const DialogBox = ({ speaker, children, showArrow, onClick }) => (
+  <div className="w-full max-w-xl mx-auto px-4" onClick={onClick}>
+    {speaker && (
+      <div 
+        className="inline-block px-3 py-1 text-sm font-medium text-gray-700 ml-3"
+        style={{
+          background: 'linear-gradient(180deg, #f0f0e8 0%, #d8d8c8 100%)',
+          border: '2px solid #707070',
+          borderBottom: 'none',
+          borderRadius: '6px 6px 0 0',
+        }}
+      >
+        {speaker}
+      </div>
+    )}
     <div 
-      className="relative bg-white rounded-lg p-5 cursor-pointer"
+      className="relative p-4 cursor-pointer select-none"
       style={{
-        border: '4px solid #303030',
-        boxShadow: 'inset 0 0 0 3px #f8f8f8, inset 0 0 0 5px #b0b0b0',
+        background: 'linear-gradient(180deg, #f8f8f0 0%, #e8e8d8 100%)',
+        border: '3px solid #606060',
+        borderRadius: speaker ? '0 10px 10px 10px' : '10px',
       }}
-      onClick={onContinue}
     >
-      <div className="text-gray-900 text-xl leading-relaxed min-h-[80px]" style={{ fontFamily: 'system-ui' }}>
+      <div className="text-gray-800 text-lg leading-relaxed min-h-[45px]">
         {children}
       </div>
-      {showContinue && (
-        <div className="absolute bottom-2 right-3 animate-bounce">
-          <span className="text-gray-600 text-sm">▼</span>
-        </div>
+      {showArrow && (
+        <div className="absolute bottom-2 right-3 animate-bounce text-gray-500">▼</div>
       )}
     </div>
   </div>
 );
 
-// Text input with validation
-const PixelInput = ({ value, onChange, placeholder, onSubmit, isValidating }) => (
-  <div className="mt-4">
-    <div className="flex gap-3">
-      <input
-        type="text"
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        placeholder={placeholder}
-        onKeyDown={(e) => e.key === 'Enter' && onSubmit()}
-        maxLength={20}
-        className="flex-1 bg-gray-100 text-gray-900 text-xl px-4 py-3 rounded-lg outline-none focus:ring-2 focus:ring-amber-400"
-        style={{ border: '3px solid #303030' }}
-        autoFocus
-        disabled={isValidating}
-      />
-      <button
-        onClick={onSubmit}
-        disabled={isValidating}
-        className="px-6 py-3 bg-amber-500 text-white font-bold rounded-lg transition-all hover:bg-amber-400 disabled:opacity-50"
-        style={{ border: '3px solid #92400e' }}
-      >
-        {isValidating ? '...' : 'OK'}
-      </button>
-    </div>
-    <p className="text-gray-500 text-xs mt-2">
-      2-20 characters, letters and numbers only
-    </p>
-  </div>
-);
-
-// Simple gold sparkle background
-const GoldPatternBackground = () => (
-  <div className="absolute inset-0 overflow-hidden bg-black">
-    {/* Gold sparkles falling */}
-    {[...Array(40)].map((_, i) => (
-      <div 
-        key={i}
-        className="absolute bg-amber-300 rounded-full"
-        style={{
-          width: Math.random() > 0.8 ? '4px' : Math.random() > 0.5 ? '3px' : '2px',
-          height: Math.random() > 0.8 ? '4px' : Math.random() > 0.5 ? '3px' : '2px',
-          left: `${Math.random() * 100}%`,
-          top: `-10px`,
-          animation: `fall ${5 + Math.random() * 5}s linear infinite`,
-          animationDelay: `${Math.random() * 5}s`,
-          opacity: 0.3 + Math.random() * 0.7,
-          boxShadow: '0 0 6px 1px rgba(251, 191, 36, 0.6)'
-        }}
-      />
-    ))}
-  </div>
-);
-
-const BLANK_NAME_RESPONSES = [
-  "...You DO have a name, right? Even my Magmar has a name!",
-  "A blank name? What are you, a Ditto trying to blend in?",
-  "No name? Did a Psyduck steal your memory?",
-  "Come on now, even MissingNo. had more of an identity than that!",
-  "I can't just call you 'Hey You!' ...Actually, I could, but I won't.",
-  "Nice try, but 'nothing' isn't a name. Trust me, I've checked the records.",
-];
-
-const INAPPROPRIATE_NAME_RESPONSES = [
-  "Whoa there! Let's keep it family-friendly. This isn't the Celadon Game Corner!",
-  "I've seen some things in my Gym Leader days, but that name? No way.",
-  "My Rapidash just fainted from reading that. Try again!",
-  "That name would get us both banned from the Pokémon League. Next!",
-];
-
-export default function PokeDreamIntro({ onComplete, savedTrainerName }) {
-  const [phase, setPhase] = useState('black');
-  const [dialogIndex, setDialogIndex] = useState(0);
-  const [textComplete, setTextComplete] = useState(false);
-  const [trainerName, setTrainerName] = useState(savedTrainerName || '');
-  const [confirmedName, setConfirmedName] = useState('');
-  const [isValidating, setIsValidating] = useState(false);
-  const [blaineResponse, setBlaineResponse] = useState(null);
-  const [isReturningUser] = useState(!!savedTrainerName);
-  
-  // Dialog for NEW users
-  const newUserDialogs = [
-    { text: "Hello there! Welcome to the world of PokéDream!", type: "speech" },
-    { text: "My name is Blaine. I'm going to be your Pokémon Professor today!", type: "speech" },
-    { text: "It's a pleasure to meet you.", type: "speech" },
-    { text: "...What's that? You recognize me?", type: "speech" },
-    { text: "Ah yes... from Cinnabar Island. In Kanto. The Fire-type Gym Leader.", type: "speech" },
-    { text: "Well... let's just say we had a few lawsuits after the volcano in the gym went off.", type: "speech" },
-    { text: "Had to leave town in a hurry. Very hush-hush. You understand.", type: "speech" },
-    { text: "And if you don't keep quiet about it... you don't get a Pokémon! Capisce?", type: "speech" },
-    { text: "...Ahem. ANYWAY!", type: "speech" },
-    { text: "I've reinvented myself! Now I use the power of ARTIFICIAL INTELLIGENCE to create brand new Pokémon!", type: "speech" },
-    { text: "It's like breeding, but with more GPUs and fewer Dittos. Much more sanitary.", type: "speech" },
-    { text: "But first, tell me a little about yourself.", type: "speech" },
-    { text: "What's your name?", type: "nameInput" },
-    { text: "Right! So your name is NAME_PLACEHOLDER!", type: "speech", dynamic: true },
-    { text: "NAME_PLACEHOLDER, your very own Pokémon dream is about to unfold!", type: "speech", dynamic: true },
-    { text: "A world of dreams and adventures with AI-generated Pokémon awaits!", type: "speech" },
-    { text: "Let's go!", type: "speech" },
-  ];
-  
-  // Dialog for RETURNING users
-  const returningUserDialogs = [
-    { text: `Oh! Well, well, well... if it isn't NAME_PLACEHOLDER!`, type: "speech", dynamic: true },
-    { text: "I knew you'd come crawling back! They always do.", type: "speech" },
-    { text: "What's the matter? Couldn't resist my charming personality?", type: "speech" },
-    { text: "...Or was it the AI-generated Pokémon? It's the Pokémon, isn't it.", type: "speech" },
-    { text: "No matter! Professor Blaine is ALWAYS ready to create more digital creatures!", type: "speech" },
-    { text: "The lab is warmed up, the servers are humming, and my incredibly legal AI is ready to go!", type: "speech" },
-    { text: "Let's make some more Pokémon, shall we?", type: "speech" },
-  ];
-  
-  const dialogs = isReturningUser ? returningUserDialogs : newUserDialogs;
+// Typewriter effect
+const Typewriter = ({ text, onDone, active }) => {
+  const [shown, setShown] = useState('');
+  const [done, setDone] = useState(false);
   
   useEffect(() => {
-    const t1 = setTimeout(() => setPhase('pan'), 800);
-    const t2 = setTimeout(() => setPhase('fadeToBlack'), 5500);
-    const t3 = setTimeout(() => setPhase('professor'), 6500);
-    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
+    if (!active || !text) return;
+    setShown('');
+    setDone(false);
+    let i = 0;
+    const id = setInterval(() => {
+      if (i < text.length) {
+        setShown(text.slice(0, ++i));
+      } else {
+        setDone(true);
+        clearInterval(id);
+        onDone?.();
+      }
+    }, 28);
+    return () => clearInterval(id);
+  }, [text, active]);
+  
+  return <>{shown}{!done && <span className="animate-pulse">|</span>}</>;
+};
+
+// Sparkle particle
+const Sparkle = ({ x, delay }) => (
+  <div
+    className="absolute w-1 h-1 bg-yellow-100 rounded-full"
+    style={{
+      left: `${x}%`,
+      boxShadow: '0 0 6px 2px rgba(255,255,200,0.8)',
+      animation: `fall 3.5s linear ${delay}s infinite`,
+    }}
+  />
+);
+
+// Blaine with suitcase
+const BlaineSprite = () => (
+  <div className="flex flex-col items-center" style={{ animation: 'float 3s ease-in-out infinite' }}>
+    <img 
+      src="/blaine.png"
+      alt="Blaine"
+      className="h-32"
+      style={{ imageRendering: 'pixelated' }}
+    />
+    {/* Suitcase */}
+    <svg viewBox="0 0 40 24" className="w-14 h-8 -mt-1">
+      <rect x="2" y="5" width="36" height="17" rx="2" fill="#8B5A2B" stroke="#5D3A1A" strokeWidth="1.5"/>
+      <rect x="2" y="5" width="36" height="4" fill="#A0522D"/>
+      <rect x="15" y="1" width="10" height="5" rx="1" fill="#5D3A1A"/>
+      <rect x="17" y="2" width="6" height="3" fill="#8B5A2B"/>
+      <rect x="9" y="12" width="4" height="2" fill="#DAA520"/>
+      <rect x="27" y="12" width="4" height="2" fill="#DAA520"/>
+    </svg>
+  </div>
+);
+
+export default function PokeDreamIntro({ onComplete }) {
+  const [bg, setBg] = useState(0);
+  const [msgIdx, setMsgIdx] = useState(0);
+  const [typed, setTyped] = useState(false);
+  const [name, setName] = useState('');
+  const [confirmedName, setConfirmedName] = useState('');
+  const [done, setDone] = useState(false);
+  const [showProfessor, setShowProfessor] = useState(false);
+
+  const messages = [
+    { s: "???", t: "Hello there!" },
+    { s: "???", t: "It's so nice to meet you." },
+    { s: "???", t: "Welcome to the world of Pokémon!" },
+    { s: "Blaine", t: "My name is Blaine. I'm going to be your Pokémon Professor today!" },
+    { s: "Blaine", t: "It's a pleasure to meet you." },
+    { s: "Blaine", t: "...What's that? You recognize me?" },
+    { s: "Blaine", t: "Ah yes... from Cinnabar Island. In Kanto. The Fire-type Gym Leader." },
+    { s: "Blaine", t: "Well... let's just say we had a few lawsuits after the volcano in the gym went off." },
+    { s: "Blaine", t: "Had to leave town in a hurry. Very hush-hush. You understand." },
+    { s: "Blaine", t: "And if you don't keep quiet about it... you don't get a Pokémon! Capisce?" },
+    { s: "Blaine", t: "...Ahem. ANYWAY!" },
+    { s: "Blaine", t: "I've reinvented myself! Now I use ARTIFICIAL INTELLIGENCE to create brand new Pokémon!" },
+    { s: "Blaine", t: "It's like breeding, but with more GPUs and fewer Dittos. Much more sanitary." },
+    { s: "Blaine", t: "But first, tell me about yourself. What's your name?", input: true },
+    { s: "Blaine", t: `Right! So your name is ${confirmedName || '[NAME]'}!` },
+    { s: "Blaine", t: "Today, we're demoing a new way to give trainers a Pokémon." },
+    { s: "Blaine", t: "Through the power of new technologies, we are actively creating NEW Pokémon!" },
+    { s: "Blaine", t: `${confirmedName || 'Trainer'}! Your very own Pokémon dream is about to unfold!` },
+    { s: "Blaine", t: "A world of dreams and adventures with AI-generated Pokémon awaits!" },
+    { s: "Blaine", t: "Let's go!" },
+  ];
+
+  const msg = messages[msgIdx];
+  const displayText = msg?.t.replace(/\[NAME\]/g, confirmedName || '[NAME]');
+
+  // Background fade in
+  useEffect(() => {
+    const t1 = setTimeout(() => setBg(1), 500);
+    const t2 = setTimeout(() => setShowProfessor(true), 1500);
+    return () => { clearTimeout(t1); clearTimeout(t2); };
   }, []);
-  
-  const currentDialog = dialogs[dialogIndex];
-  
-  const getDisplayText = () => {
-    if (blaineResponse) return blaineResponse;
-    if (!currentDialog) return '';
-    if (currentDialog.dynamic) {
-      const nameToUse = isReturningUser ? savedTrainerName : confirmedName;
-      return currentDialog.text.replace(/NAME_PLACEHOLDER/g, nameToUse);
+
+  // Handle done state
+  useEffect(() => {
+    if (done && onComplete) {
+      onComplete(confirmedName || 'Trainer');
     }
-    return currentDialog.text;
-  };
-  
-  const handleContinue = () => {
-    // If showing a Blaine error response, go back to name input
-    if (blaineResponse) {
-      setBlaineResponse(null);
-      setTextComplete(false);
-      return;
-    }
+  }, [done, confirmedName, onComplete]);
+
+  const advance = useCallback(() => {
+    if (!typed) return;
+    if (msg?.input && !confirmedName) return;
     
-    // Don't advance if text is still typing
-    if (!textComplete && currentDialog?.type === 'speech') return;
-    
-    // Don't advance if we're on name input - must use the OK button
-    if (currentDialog?.type === 'nameInput') return;
-    
-    if (dialogIndex < dialogs.length - 1) {
-      setDialogIndex(d => d + 1);
-      setTextComplete(false);
+    if (msgIdx < messages.length - 1) {
+      setMsgIdx(i => i + 1);
+      setTyped(false);
     } else {
-      // End of dialog - use saved name for returning users
-      const finalName = isReturningUser ? savedTrainerName : confirmedName;
-      onComplete?.(finalName);
+      setDone(true);
+    }
+  }, [typed, msg, confirmedName, msgIdx, messages.length]);
+
+  const submitName = () => {
+    if (name.trim()) {
+      setConfirmedName(name.trim());
+      setTimeout(() => {
+        setMsgIdx(i => i + 1);
+        setTyped(false);
+      }, 300);
     }
   };
-  
-  const handleNameSubmit = async () => {
-    const name = trainerName.trim();
-    
-    // Check for blank name
-    if (!name) {
-      const randomMsg = BLANK_NAME_RESPONSES[Math.floor(Math.random() * BLANK_NAME_RESPONSES.length)];
-      setBlaineResponse(randomMsg);
-      setTextComplete(false);
-      return;
-    }
-    
-    // Check length
-    if (name.length < 2) {
-      setBlaineResponse("That's a bit short, don't you think? Give me at least 2 characters to work with!");
-      setTextComplete(false);
-      return;
-    }
-    
-    setIsValidating(true);
-    
-    try {
-      const res = await fetch(`${API_URL}/api/validate-name`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name })
-      });
-      
-      const data = await res.json();
-      
-      if (data.valid) {
-        setConfirmedName(data.sanitized);
-        setDialogIndex(d => d + 1);
-        setTextComplete(false);
-        setBlaineResponse(null);
-      } else {
-        const randomMsg = INAPPROPRIATE_NAME_RESPONSES[Math.floor(Math.random() * INAPPROPRIATE_NAME_RESPONSES.length)];
-        setBlaineResponse(randomMsg);
-        setTextComplete(false);
-      }
-    } catch (err) {
-      // If API fails, do basic validation and allow
-      if (name.length >= 2 && name.length <= 20) {
-        setConfirmedName(name);
-        setDialogIndex(d => d + 1);
-        setTextComplete(false);
-        setBlaineResponse(null);
-      } else {
-        setBlaineResponse("Something went wrong! But hey, if your name is valid, just try again.");
-        setTextComplete(false);
-      }
-    } finally {
-      setIsValidating(false);
-    }
-  };
-  
-  const handleSkip = () => {
-    // Returning users can always skip
-    if (isReturningUser) {
-      onComplete?.(savedTrainerName);
-      return;
-    }
-    
-    // New users with confirmed name can skip
-    if (confirmedName) {
-      onComplete?.(confirmedName);
-    } else {
-      // Skip to name input
-      setPhase('professor');
-      setDialogIndex(12);
-      setTextComplete(true);
-      setBlaineResponse(null);
-    }
-  };
-  
-  // Determine if we should show the skip button
-  const showSkipButton = isReturningUser || confirmedName || (currentDialog?.type !== 'nameInput' && !blaineResponse);
-  
+
+  if (done) return null;
+
   return (
-    <div className="fixed inset-0 flex flex-col items-center justify-center p-8 overflow-hidden bg-black">
-      
-      <div className={`absolute inset-0 bg-black z-20 transition-opacity duration-700 
-        ${phase === 'black' ? 'opacity-100' : 'opacity-0 pointer-events-none'}`} 
+    <div className="fixed inset-0 bg-black overflow-hidden">
+      {/* Platinum gold gradient background */}
+      <div 
+        className={`absolute inset-0 transition-opacity duration-1000 ${bg ? 'opacity-100' : 'opacity-0'}`}
+        style={{
+          background: 'linear-gradient(180deg, #2a2520 0%, #3d362d 30%, #4a4035 50%, #3d362d 70%, #2a2520 100%)',
+        }}
       />
       
-      <div className={`absolute inset-0 transition-opacity duration-1000 
-        ${phase === 'pan' ? 'opacity-100' : phase === 'fadeToBlack' ? 'opacity-0' : 'opacity-0'}`}>
-        <GoldPatternBackground />
+      {/* Sparkles */}
+      <div className={`absolute inset-0 overflow-hidden transition-opacity duration-1000 ${bg ? 'opacity-100' : 'opacity-0'}`}>
+        {[...Array(20)].map((_, i) => (
+          <Sparkle key={i} x={Math.random() * 100} delay={Math.random() * 3} />
+        ))}
       </div>
-      
-      <div className={`relative z-10 flex flex-col items-center transition-all duration-1000 
-        ${phase === 'professor' ? 'opacity-100' : 'opacity-0'}`}>
-        
-        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-amber-950/50 via-stone-900 to-stone-950" />
-        
-        <div className="mb-8 relative" style={{ animation: 'float 3s ease-in-out infinite' }}>
-          <div className="absolute inset-0 blur-2xl opacity-40 bg-orange-500 rounded-full scale-150" />
-          <img 
-            src="/blaine.png"
-            alt="Professor Blaine"
-            className="relative z-10 w-32 h-auto"
-            style={{ 
-              imageRendering: 'pixelated',
-              filter: 'drop-shadow(0 0 20px rgba(251, 146, 60, 0.5))'
-            }}
-          />
-        </div>
-        
-        {(currentDialog || blaineResponse) && (
-          <DialogBox 
-            showContinue={textComplete && (blaineResponse || currentDialog?.type === 'speech')} 
-            onContinue={handleContinue}
-          >
-            {blaineResponse ? (
-              <TypewriterText
-                key={`error-${blaineResponse}`}
-                text={blaineResponse}
-                speed={35}
-                isActive={phase === 'professor'}
-                onComplete={() => setTextComplete(true)}
-              />
-            ) : currentDialog?.type === 'speech' ? (
-              <TypewriterText
-                key={dialogIndex}
-                text={getDisplayText()}
-                speed={35}
-                isActive={phase === 'professor'}
-                onComplete={() => setTextComplete(true)}
-              />
-            ) : currentDialog?.type === 'nameInput' ? (
-              <>
-                <TypewriterText
-                  key={dialogIndex}
-                  text={getDisplayText()}
-                  speed={35}
-                  isActive={phase === 'professor'}
-                  onComplete={() => setTextComplete(true)}
-                />
-                {textComplete && (
-                  <PixelInput
-                    value={trainerName}
-                    onChange={setTrainerName}
-                    placeholder="Enter your name..."
-                    onSubmit={handleNameSubmit}
-                    isValidating={isValidating}
+
+      {/* Main content - CENTERED */}
+      <div className="relative z-10 flex flex-col items-center justify-center p-4 w-full min-h-screen">
+        {/* Center container for Blaine and dialog */}
+        <div className="flex flex-col items-center w-full max-w-xl">
+          {showProfessor && msgIdx >= 3 && (
+            <div className="mb-4 flex justify-center w-full">
+              <BlaineSprite />
+            </div>
+          )}
+
+          {msg && bg >= 1 && (
+            <DialogBox speaker={msg.s} showArrow={typed && !msg.input} onClick={advance}>
+              <Typewriter text={displayText} active={true} onDone={() => setTyped(true)} />
+              {msg.input && typed && !confirmedName && (
+                <div className="flex gap-2 mt-2">
+                  <input
+                    value={name}
+                    onChange={e => setName(e.target.value)}
+                    onKeyDown={e => e.key === 'Enter' && submitName()}
+                    className="flex-1 px-2 py-1 border-2 border-gray-400 rounded text-gray-800"
+                    placeholder="Your name..."
+                    autoFocus
                   />
-                )}
-              </>
-            ) : null}
-          </DialogBox>
-        )}
-        
-        {showSkipButton && (
-          <button 
-            onClick={handleSkip}
-            className="mt-8 text-amber-200/40 hover:text-amber-200/70 text-sm transition-colors"
-          >
-            {isReturningUser ? "Skip to Generator →" : (confirmedName ? "Skip to Generator →" : "Skip Intro →")}
-          </button>
-        )}
+                  <button onClick={submitName} className="px-4 py-1 bg-amber-500 text-white rounded font-bold">
+                    OK
+                  </button>
+                </div>
+              )}
+            </DialogBox>
+          )}
+        </div>
+
+        <button onClick={() => setDone(true)} className="fixed bottom-3 right-3 text-white/30 hover:text-white/60 text-xs">
+          Skip →
+        </button>
       </div>
-      
+
       <style>{`
         @keyframes fall {
-          0% { transform: translateY(-10px); opacity: 0; }
+          0% { top: -10px; opacity: 0; }
           10% { opacity: 1; }
-          90% { opacity: 1; }
-          100% { transform: translateY(100vh); opacity: 0; }
+          90% { opacity: 0.8; }
+          100% { top: 100vh; opacity: 0; }
         }
         @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-8px); }
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-5px); }
         }
       `}</style>
     </div>
