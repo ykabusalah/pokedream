@@ -4,6 +4,7 @@ import PokemonGenerator from './components/PokemonGenerator';
 import Pokedex from './components/Pokedex';
 import PokemonDetail from './components/PokemonDetail';
 import TrainerProfile from './components/TrainerProfile';
+import Leaderboard from './components/Leaderboard';
 
 const API_URL = 'http://localhost:8000';
 
@@ -155,6 +156,16 @@ export default function App() {
     );
   }
 
+  // Leaderboard
+  if (currentPage === 'leaderboard') {
+    return (
+      <Leaderboard 
+        trainerId={trainerId}
+        onNavigate={handleNavigate}
+      />
+    );
+  }
+
   // Generator (default after intro)
   return (
     <div className="min-h-screen bg-gray-950">
@@ -173,6 +184,12 @@ export default function App() {
               className="text-gray-400 hover:text-white transition-all"
             >
               Pokédex
+            </button>
+            <button
+              onClick={() => handleNavigate('leaderboard')}
+              className="text-gray-400 hover:text-white transition-all"
+            >
+              🏆
             </button>
             <span className="text-gray-600">|</span>
             <button

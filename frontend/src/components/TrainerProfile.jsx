@@ -329,13 +329,21 @@ export default function TrainerProfile({ trainerName, trainerId, onNavigate, onC
         )}
 
         {/* Create More CTA */}
-        <div className="text-center mt-8">
+        <div className="text-center mt-8 space-y-4">
           <button
             onClick={() => onNavigate('generator')}
             className="px-8 py-3 bg-amber-500 hover:bg-amber-400 text-white font-bold rounded-lg transition-all"
           >
             Create More Pokémon
           </button>
+          <div>
+            <button
+              onClick={() => onNavigate('leaderboard')}
+              className="text-gray-400 hover:text-white transition-all"
+            >
+              🏆 View Leaderboard
+            </button>
+          </div>
         </div>
       </div>
     </div>
