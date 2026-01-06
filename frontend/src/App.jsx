@@ -7,10 +7,10 @@ import TrainerProfile from './components/TrainerProfile';
 
 export default function App() {
   // Load saved trainer name from localStorage
-  const [currentPage, setCurrentPage] = useState(() => {
-    const savedName = localStorage.getItem('pokedream_trainer_name');
-    return savedName ? 'generator' : 'intro';
+  const [savedTrainerName] = useState(() => {
+    return localStorage.getItem('pokedream_trainer_name') || null;
   });
+  const [currentPage, setCurrentPage] = useState('intro'); // Always show intro, but it will be shorter for returning users
   const [trainerName, setTrainerName] = useState(() => {
     return localStorage.getItem('pokedream_trainer_name') || 'Trainer';
   });
@@ -75,7 +75,7 @@ export default function App() {
 
   // Intro
   if (currentPage === 'intro') {
-    return <PokeDreamIntro onComplete={handleIntroComplete} />;
+    return <PokeDreamIntro onComplete={handleIntroComplete} savedTrainerName={savedTrainerName} />;
   }
 
   // Pokemon Detail

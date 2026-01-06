@@ -121,16 +121,18 @@ const INAPPROPRIATE_NAME_RESPONSES = [
   "That name would get us both banned from the Pokémon League. Next!",
 ];
 
-export default function PokeDreamIntro({ onComplete }) {
+export default function PokeDreamIntro({ onComplete, savedTrainerName }) {
   const [phase, setPhase] = useState('black');
   const [dialogIndex, setDialogIndex] = useState(0);
   const [textComplete, setTextComplete] = useState(false);
-  const [trainerName, setTrainerName] = useState('');
+  const [trainerName, setTrainerName] = useState(savedTrainerName || '');
   const [confirmedName, setConfirmedName] = useState('');
   const [isValidating, setIsValidating] = useState(false);
-  const [blaineResponse, setBlaineResponse] = useState(null); // For error responses
+  const [blaineResponse, setBlaineResponse] = useState(null);
+  const [isReturningUser] = useState(!!savedTrainerName);
   
-  const dialogs = [
+  // Dialog for NEW users
+  const newUserDialogs = [
     { text: "Hello there! Welcome to the world of PokéDream!", type: "speech" },
     { text: "My name is Blaine. I'm going to be your Pokémon Professor today!", type: "speech" },
     { text: "It's a pleasure to meet you.", type: "speech" },
@@ -150,6 +152,19 @@ export default function PokeDreamIntro({ onComplete }) {
     { text: "Let's go!", type: "speech" },
   ];
   
+  // Dialog for RETURNING users
+  const returningUserDialogs = [
+    { text: `Oh! Well, well, well... if it isn't NAME_PLACEHOLDER!`, type: "speech", dynamic: true },
+    { text: "I knew you'd come crawling back! They always do.", type: "speech" },
+    { text: "What's the matter? Couldn't resist my charming personality?", type: "speech" },
+    { text: "...Or was it the AI-generated Pokémon? It's the Pokémon, isn't it.", type: "speech" },
+    { text: "No matter! Professor Blaine is ALWAYS ready to create more digital creatures!", type: "speech" },
+    { text: "The lab is warmed up, the servers are humming, and my incredibly legal AI is ready to go!", type: "speech" },
+    { text: "Let's make some more Pokémon, shall we?", type: "speech" },
+  ];
+  
+  const dialogs = isReturningUser ? returningUserDialogs : newUserDialogs;
+  
   useEffect(() => {
     const t1 = setTimeout(() => setPhase('pan'), 800);
     const t2 = setTimeout(() => setPhase('fadeToBlack'), 5500);
@@ -163,7 +178,8 @@ export default function PokeDreamIntro({ onComplete }) {
     if (blaineResponse) return blaineResponse;
     if (!currentDialog) return '';
     if (currentDialog.dynamic) {
-      return currentDialog.text.replace(/NAME_PLACEHOLDER/g, confirmedName);
+      const nameToUse = isReturningUser ? savedTrainerName : confirmedName;
+      return currentDialog.text.replace(/NAME_PLACEHOLDER/g, nameToUse);
     }
     return currentDialog.text;
   };
@@ -186,7 +202,9 @@ export default function PokeDreamIntro({ onComplete }) {
       setDialogIndex(d => d + 1);
       setTextComplete(false);
     } else {
-      onComplete?.(confirmedName);
+      // End of dialog - use saved name for returning users
+      const finalName = isReturningUser ? savedTrainerName : confirmedName;
+      onComplete?.(finalName);
     }
   };
   
@@ -246,9 +264,17 @@ export default function PokeDreamIntro({ onComplete }) {
   };
   
   const handleSkip = () => {
+    // Returning users can always skip
+    if (isReturningUser) {
+      onComplete?.(savedTrainerName);
+      return;
+    }
+    
+    // New users with confirmed name can skip
     if (confirmedName) {
       onComplete?.(confirmedName);
     } else {
+      // Skip to name input
       setPhase('professor');
       setDialogIndex(12);
       setTextComplete(true);
@@ -257,7 +283,7 @@ export default function PokeDreamIntro({ onComplete }) {
   };
   
   // Determine if we should show the skip button
-  const showSkipButton = confirmedName || (currentDialog?.type !== 'nameInput' && !blaineResponse);
+  const showSkipButton = isReturningUser || confirmedName || (currentDialog?.type !== 'nameInput' && !blaineResponse);
   
   return (
     <div className="fixed inset-0 flex flex-col items-center justify-center p-8 overflow-hidden bg-black">
@@ -338,7 +364,7 @@ export default function PokeDreamIntro({ onComplete }) {
             onClick={handleSkip}
             className="mt-8 text-amber-200/40 hover:text-amber-200/70 text-sm transition-colors"
           >
-            {confirmedName ? "Skip to Generator →" : "Skip Intro →"}
+            {isReturningUser ? "Skip to Generator →" : (confirmedName ? "Skip to Generator →" : "Skip Intro →")}
           </button>
         )}
       </div>
