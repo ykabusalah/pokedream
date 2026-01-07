@@ -2648,8 +2648,965 @@
       "dex_number": 14,
       "added_at": "2026-01-06T16:22:34.816163",
       "id": "pkmn_0014"
+    },
+    {
+      "name": "\u00c1mbareth",
+      "types": [
+        "Bug",
+        "Steel"
+      ],
+      "stats": {
+        "hp": 75,
+        "attack": 65,
+        "defense": 110,
+        "sp_attack": 95,
+        "sp_defense": 85,
+        "speed": 90
+      },
+      "abilities": [
+        "Compound Eyes",
+        "Light Metal",
+        "Magic Guard"
+      ],
+      "signature_move": {
+        "name": "Amber Prison",
+        "type": "Steel",
+        "category": "Special",
+        "power": 80,
+        "accuracy": 100,
+        "description": "Traps the target in hardened resin for 2-5 turns, preventing switching and dealing damage each turn."
+      },
+      "pokedex_entry": "Ancient Celtic fairy spirits became trapped in tree resin millions of years ago, eventually fossilizing into living amber. Its crystalline wings shimmer with trapped sunlight, and it's said to dance during the Day of the Dead to honor those preserved in time. The intricate patterns on its metallic carapace tell stories of forgotten forests.",
+      "category": "The Fossilized Fairy Pokemon",
+      "height_m": 0.8,
+      "weight_kg": 12.5,
+      "bst": 520,
+      "tier": "fully_evolved",
+      "concept": "a celtic fairy trapped in amber",
+      "culture": "mexican",
+      "moveset": {
+        "level_up_moves": [
+          {
+            "level": 1,
+            "move": "Struggle Bug",
+            "type": "bug",
+            "power": 50,
+            "category": "special"
+          },
+          {
+            "level": 5,
+            "move": "String Shot",
+            "type": "bug",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 10,
+            "move": "Growl",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 15,
+            "move": "Leer",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 20,
+            "move": "Swift",
+            "type": "normal",
+            "power": 60,
+            "category": "special"
+          },
+          {
+            "level": 25,
+            "move": "Metal Sound",
+            "type": "steel",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 30,
+            "move": "Signal Beam",
+            "type": "bug",
+            "power": 75,
+            "category": "special"
+          },
+          {
+            "level": 35,
+            "move": "Bug Buzz",
+            "type": "bug",
+            "power": 90,
+            "category": "special"
+          },
+          {
+            "level": 40,
+            "move": "Quiver Dance",
+            "type": "bug",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 45,
+            "move": "Flash Cannon",
+            "type": "steel",
+            "power": 80,
+            "category": "special"
+          },
+          {
+            "level": 50,
+            "move": "Iron Defense",
+            "type": "steel",
+            "power": null,
+            "category": "status"
+          }
+        ],
+        "tm_moves": [
+          {
+            "move": "Signal Beam",
+            "type": "bug",
+            "power": 75,
+            "reason": "STAB"
+          },
+          {
+            "move": "Bug Buzz",
+            "type": "bug",
+            "power": 90,
+            "reason": "STAB"
+          },
+          {
+            "move": "Flash Cannon",
+            "type": "steel",
+            "power": 80,
+            "reason": "STAB"
+          },
+          {
+            "move": "Electro Ball",
+            "type": "electric",
+            "power": null,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Flamethrower",
+            "type": "fire",
+            "power": 90,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Solar Beam",
+            "type": "grass",
+            "power": 120,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Protect",
+            "type": "normal",
+            "power": null,
+            "reason": "Utility"
+          },
+          {
+            "move": "Rest",
+            "type": "psychic",
+            "power": null,
+            "reason": "Recovery"
+          }
+        ],
+        "egg_moves": [
+          {
+            "move": "Leech Life",
+            "type": "bug",
+            "power": 80
+          }
+        ],
+        "current_moves": [
+          "Bug Buzz",
+          "Quiver Dance",
+          "Flash Cannon",
+          "Iron Defense"
+        ]
+      },
+      "image_path": "outputs\\\u00e1mbareth_20260106_193503_073419_1334.png",
+      "image_prompt": "Bug/Steel type pokemon, a celtic fairy trapped in amber, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+      "is_shiny": false,
+      "json_path": "outputs\\\u00e1mbareth_data.json",
+      "trainer": "l",
+      "random_generated": true,
+      "dex_number": 15,
+      "added_at": "2026-01-06T19:35:03.083861",
+      "id": "pkmn_0015"
+    },
+    {
+      "name": "Eclairok",
+      "types": [
+        "Dark",
+        "Fairy"
+      ],
+      "stats": {
+        "hp": 95,
+        "attack": 75,
+        "defense": 80,
+        "sp_attack": 110,
+        "sp_defense": 95,
+        "speed": 70
+      },
+      "abilities": [
+        "Sweet Veil",
+        "Gluttony",
+        "Magic Guard"
+      ],
+      "signature_move": {
+        "name": "Cursed Cream",
+        "type": "Dark",
+        "category": "Special",
+        "power": 85,
+        "accuracy": 90,
+        "description": "The user sprays dark magical cream that may lower the target's Sp.Defense and has a chance to badly poison"
+      },
+      "pokedex_entry": "This Pokemon's body is filled with enchanted cream that becomes more potent under moonlight. Eclairok are known to gather in abandoned bakeries, where their magical filling slowly seeps into forgotten pastries. Despite their ominous appearance, they are surprisingly gentle and often leave sweet treats for kind-hearted travelers.",
+      "category": "The Enchanted Pastry Pokemon",
+      "height_m": 1.2,
+      "weight_kg": 28.5,
+      "bst": 525,
+      "tier": "fully_evolved",
+      "concept": "a pastry creature filled with magical cream",
+      "culture": "original",
+      "moveset": {
+        "level_up_moves": [
+          {
+            "level": 1,
+            "move": "Fairy Wind",
+            "type": "fairy",
+            "power": 40,
+            "category": "special"
+          },
+          {
+            "level": 5,
+            "move": "Leer",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 10,
+            "move": "Sweet Kiss",
+            "type": "fairy",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 15,
+            "move": "Charm",
+            "type": "fairy",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 20,
+            "move": "Growl",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 25,
+            "move": "Taunt",
+            "type": "dark",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 30,
+            "move": "Snarl",
+            "type": "dark",
+            "power": 55,
+            "category": "special"
+          },
+          {
+            "level": 35,
+            "move": "Swift",
+            "type": "normal",
+            "power": 60,
+            "category": "special"
+          },
+          {
+            "level": 40,
+            "move": "Hyper Voice",
+            "type": "normal",
+            "power": 90,
+            "category": "special"
+          },
+          {
+            "level": 45,
+            "move": "Dazzling Gleam",
+            "type": "fairy",
+            "power": 80,
+            "category": "special"
+          },
+          {
+            "level": 50,
+            "move": "Moonlight",
+            "type": "fairy",
+            "power": null,
+            "category": "status"
+          }
+        ],
+        "tm_moves": [
+          {
+            "move": "Snarl",
+            "type": "dark",
+            "power": 55,
+            "reason": "STAB"
+          },
+          {
+            "move": "Dark Pulse",
+            "type": "dark",
+            "power": 80,
+            "reason": "STAB"
+          },
+          {
+            "move": "Draining Kiss",
+            "type": "fairy",
+            "power": 50,
+            "reason": "STAB"
+          },
+          {
+            "move": "Dazzling Gleam",
+            "type": "fairy",
+            "power": 80,
+            "reason": "STAB"
+          },
+          {
+            "move": "Giga Drain",
+            "type": "grass",
+            "power": 75,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Thunderbolt",
+            "type": "electric",
+            "power": 90,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Heat Wave",
+            "type": "fire",
+            "power": 95,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Protect",
+            "type": "normal",
+            "power": null,
+            "reason": "Utility"
+          }
+        ],
+        "egg_moves": [
+          {
+            "move": "Draining Kiss",
+            "type": "fairy",
+            "power": 50
+          }
+        ],
+        "current_moves": [
+          "Swift",
+          "Hyper Voice",
+          "Dazzling Gleam",
+          "Moonlight"
+        ]
+      },
+      "image_path": "outputs\\eclairok_20260106_200306_952058_5292.png",
+      "image_prompt": "Dark type pokemon, a pastry creature filled with magical cream, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+      "is_shiny": false,
+      "json_path": "outputs\\eclairok_data.json",
+      "trainer": "NL",
+      "random_generated": true,
+      "dex_number": 16,
+      "added_at": "2026-01-06T20:03:06.957059",
+      "id": "pkmn_0016"
+    },
+    {
+      "name": "Jingwu",
+      "types": [
+        "Ice",
+        "Dragon"
+      ],
+      "stats": {
+        "hp": 88,
+        "attack": 95,
+        "defense": 78,
+        "sp_attack": 115,
+        "sp_defense": 92,
+        "speed": 82
+      },
+      "abilities": [
+        "Snow Warning",
+        "Refrigerate",
+        "Ice Body"
+      ],
+      "signature_move": {
+        "name": "Jade Blizzard",
+        "type": "Ice",
+        "category": "Special",
+        "power": 100,
+        "accuracy": 85,
+        "description": "A mystical blizzard infused with ancient power that may freeze the target and pierces through protection moves"
+      },
+      "pokedex_entry": "Ancient legends speak of Jingwu as the guardian of sacred mountain peaks, where it creates crystalline palaces from ice and jade. Its breath can instantly freeze entire valleys, yet it is said to bring good fortune to those pure of heart. The intricate frost patterns on its scales are believed to contain ancient wisdom.",
+      "category": "The Jade Frost Pokemon",
+      "height_m": 3.2,
+      "weight_kg": 185.5,
+      "bst": 550,
+      "tier": "fully_evolved",
+      "concept": "ice dragon",
+      "culture": "china",
+      "moveset": {
+        "level_up_moves": [
+          {
+            "level": 1,
+            "move": "Growl",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 5,
+            "move": "Powder Snow",
+            "type": "ice",
+            "power": 40,
+            "category": "special"
+          },
+          {
+            "level": 10,
+            "move": "Leer",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 15,
+            "move": "Dragon Dance",
+            "type": "dragon",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 20,
+            "move": "Swift",
+            "type": "normal",
+            "power": 60,
+            "category": "special"
+          },
+          {
+            "level": 25,
+            "move": "Hail",
+            "type": "ice",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 30,
+            "move": "Mist",
+            "type": "ice",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 35,
+            "move": "Ice Beam",
+            "type": "ice",
+            "power": 90,
+            "category": "special"
+          },
+          {
+            "level": 40,
+            "move": "Freeze-Dry",
+            "type": "ice",
+            "power": 70,
+            "category": "special"
+          },
+          {
+            "level": 45,
+            "move": "Blizzard",
+            "type": "ice",
+            "power": 110,
+            "category": "special"
+          },
+          {
+            "level": 50,
+            "move": "Draco Meteor",
+            "type": "dragon",
+            "power": 130,
+            "category": "special"
+          }
+        ],
+        "tm_moves": [
+          {
+            "move": "Ice Beam",
+            "type": "ice",
+            "power": 90,
+            "reason": "STAB"
+          },
+          {
+            "move": "Blizzard",
+            "type": "ice",
+            "power": 110,
+            "reason": "STAB"
+          },
+          {
+            "move": "Dragon Pulse",
+            "type": "dragon",
+            "power": 85,
+            "reason": "STAB"
+          },
+          {
+            "move": "Draco Meteor",
+            "type": "dragon",
+            "power": 130,
+            "reason": "STAB"
+          },
+          {
+            "move": "Leaf Storm",
+            "type": "grass",
+            "power": 130,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Thunder",
+            "type": "electric",
+            "power": 110,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Incinerate",
+            "type": "fire",
+            "power": 60,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Protect",
+            "type": "normal",
+            "power": null,
+            "reason": "Utility"
+          }
+        ],
+        "egg_moves": [
+          {
+            "move": "Ice Shard",
+            "type": "ice",
+            "power": 40
+          }
+        ],
+        "current_moves": [
+          "Ice Beam",
+          "Freeze-Dry",
+          "Blizzard",
+          "Draco Meteor"
+        ]
+      },
+      "image_path": "outputs\\jingwu_20260106_200321_408619_4140.png",
+      "image_prompt": "Ice/Dragon type pokemon, ice dragon, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+      "is_shiny": false,
+      "json_path": "outputs\\jingwu_data.json",
+      "trainer": "NL",
+      "dex_number": 17,
+      "added_at": "2026-01-06T20:03:21.414705",
+      "id": "pkmn_0017"
+    },
+    {
+      "name": "Verdusk",
+      "types": [
+        "Grass",
+        null
+      ],
+      "stats": {
+        "hp": 95,
+        "attack": 110,
+        "defense": 85,
+        "sp_attack": 75,
+        "sp_defense": 90,
+        "speed": 65
+      },
+      "abilities": [
+        "Overgrow",
+        "Thick Fat",
+        "Sap Sipper"
+      ],
+      "signature_move": {
+        "name": "Forest Maul",
+        "type": "Grass",
+        "category": "Physical",
+        "power": 85,
+        "accuracy": 90,
+        "description": "The user strikes with moss-covered claws that may cause the target to flinch"
+      },
+      "pokedex_entry": "Verdusk's thick fur grows moss and small plants that provide camouflage in dense forests. It marks territory by leaving deep claw scratches on trees that sprout new growth. Despite its intimidating size, it gently tends to forest saplings.",
+      "category": "The Grove Guardian Pokemon",
+      "height_m": 2.1,
+      "weight_kg": 145.8,
+      "bst": 520,
+      "tier": "fully_evolved",
+      "concept": "a grass bear",
+      "culture": "original",
+      "moveset": {
+        "level_up_moves": [
+          {
+            "level": 1,
+            "move": "Scratch",
+            "type": "normal",
+            "power": 40,
+            "category": "physical"
+          },
+          {
+            "level": 5,
+            "move": "Tackle",
+            "type": "normal",
+            "power": 40,
+            "category": "physical"
+          },
+          {
+            "level": 10,
+            "move": "Leer",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 15,
+            "move": "Vine Whip",
+            "type": "grass",
+            "power": 45,
+            "category": "physical"
+          },
+          {
+            "level": 20,
+            "move": "Slash",
+            "type": "normal",
+            "power": 70,
+            "category": "physical"
+          },
+          {
+            "level": 25,
+            "move": "Quick Attack",
+            "type": "normal",
+            "power": 40,
+            "category": "physical"
+          },
+          {
+            "level": 30,
+            "move": "Take Down",
+            "type": "normal",
+            "power": 90,
+            "category": "physical"
+          },
+          {
+            "level": 35,
+            "move": "Power Whip",
+            "type": "grass",
+            "power": 120,
+            "category": "physical"
+          },
+          {
+            "level": 40,
+            "move": "Leaf Blade",
+            "type": "grass",
+            "power": 90,
+            "category": "physical"
+          },
+          {
+            "level": 45,
+            "move": "Wood Hammer",
+            "type": "grass",
+            "power": 120,
+            "category": "physical"
+          },
+          {
+            "level": 50,
+            "move": "Extreme Speed",
+            "type": "normal",
+            "power": 80,
+            "category": "physical"
+          }
+        ],
+        "tm_moves": [
+          {
+            "move": "Seed Bomb",
+            "type": "grass",
+            "power": 80,
+            "reason": "STAB"
+          },
+          {
+            "move": "Leaf Blade",
+            "type": "grass",
+            "power": 90,
+            "reason": "STAB"
+          },
+          {
+            "move": "Ice Punch",
+            "type": "ice",
+            "power": 75,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Wild Charge",
+            "type": "electric",
+            "power": 90,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Flame Wheel",
+            "type": "fire",
+            "power": 60,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Protect",
+            "type": "normal",
+            "power": null,
+            "reason": "Utility"
+          },
+          {
+            "move": "Rest",
+            "type": "psychic",
+            "power": null,
+            "reason": "Recovery"
+          }
+        ],
+        "egg_moves": [
+          {
+            "move": "Razor Leaf",
+            "type": "grass",
+            "power": 55
+          },
+          {
+            "move": "Leaf Blade",
+            "type": "grass",
+            "power": 90
+          },
+          {
+            "move": "Wood Hammer",
+            "type": "grass",
+            "power": 120
+          },
+          {
+            "move": "Absorb",
+            "type": "grass",
+            "power": 20
+          }
+        ],
+        "current_moves": [
+          "Power Whip",
+          "Leaf Blade",
+          "Wood Hammer",
+          "Extreme Speed"
+        ]
+      },
+      "image_path": "outputs\\verdusk_20260106_200939_872655_5154.png",
+      "image_prompt": "Grass type pokemon, a grass bear, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+      "is_shiny": false,
+      "json_path": "outputs\\verdusk_data.json",
+      "trainer": "NL",
+      "dex_number": 18,
+      "added_at": "2026-01-06T20:09:39.891925",
+      "id": "pkmn_0018"
+    },
+    {
+      "name": "Mauhaki",
+      "types": [
+        "Electric",
+        "Dark"
+      ],
+      "stats": {
+        "hp": 75,
+        "attack": 65,
+        "defense": 70,
+        "sp_attack": 115,
+        "sp_defense": 95,
+        "speed": 105
+      },
+      "abilities": [
+        "Bad Dreams",
+        "Static",
+        "Insomnia"
+      ],
+      "signature_move": {
+        "name": "Terror Volt",
+        "type": "Electric",
+        "category": "Special",
+        "power": 80,
+        "accuracy": 100,
+        "description": "An electric attack that has a 30% chance to cause the target to flinch due to overwhelming fear"
+      },
+      "pokedex_entry": "Born from the collective fears that drift across ocean winds, Mauhaki feeds on the nightmares of sleeping sailors. Its crackling form appears during stormy nights, weaving between lightning strikes as it hunts for troubled dreams. Ancient island legends speak of its ability to trap victims in endless sleep terrors.",
+      "category": "The Dream Terror Pokemon",
+      "height_m": 1.8,
+      "weight_kg": 42.5,
+      "bst": 525,
+      "tier": "fully_evolved",
+      "concept": "the physical manifestation of a nightmare",
+      "culture": "polynesian",
+      "moveset": {
+        "level_up_moves": [
+          {
+            "level": 1,
+            "move": "Thunder Shock",
+            "type": "electric",
+            "power": 40,
+            "category": "special"
+          },
+          {
+            "level": 5,
+            "move": "Thunder Wave",
+            "type": "electric",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 10,
+            "move": "Growl",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 15,
+            "move": "Electro Ball",
+            "type": "electric",
+            "power": null,
+            "category": "special"
+          },
+          {
+            "level": 20,
+            "move": "Volt Switch",
+            "type": "electric",
+            "power": 70,
+            "category": "special"
+          },
+          {
+            "level": 25,
+            "move": "Leer",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 30,
+            "move": "Snarl",
+            "type": "dark",
+            "power": 55,
+            "category": "special"
+          },
+          {
+            "level": 35,
+            "move": "Electric Terrain",
+            "type": "electric",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 40,
+            "move": "Nasty Plot",
+            "type": "dark",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 45,
+            "move": "Thunderbolt",
+            "type": "electric",
+            "power": 90,
+            "category": "special"
+          },
+          {
+            "level": 50,
+            "move": "Hyper Beam",
+            "type": "normal",
+            "power": 150,
+            "category": "special"
+          }
+        ],
+        "tm_moves": [
+          {
+            "move": "Electro Ball",
+            "type": "electric",
+            "power": null,
+            "reason": "STAB"
+          },
+          {
+            "move": "Thunderbolt",
+            "type": "electric",
+            "power": 90,
+            "reason": "STAB"
+          },
+          {
+            "move": "Snarl",
+            "type": "dark",
+            "power": 55,
+            "reason": "STAB"
+          },
+          {
+            "move": "Dark Pulse",
+            "type": "dark",
+            "power": 80,
+            "reason": "STAB"
+          },
+          {
+            "move": "Blizzard",
+            "type": "ice",
+            "power": 110,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Leaf Storm",
+            "type": "grass",
+            "power": 130,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Heat Wave",
+            "type": "fire",
+            "power": 95,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Protect",
+            "type": "normal",
+            "power": null,
+            "reason": "Utility"
+          }
+        ],
+        "egg_moves": [
+          {
+            "move": "Wild Charge",
+            "type": "electric",
+            "power": 90
+          },
+          {
+            "move": "Volt Tackle",
+            "type": "electric",
+            "power": 120
+          }
+        ],
+        "current_moves": [
+          "Electric Terrain",
+          "Nasty Plot",
+          "Thunderbolt",
+          "Hyper Beam"
+        ]
+      },
+      "image_path": "outputs\\mauhaki_20260106_201002_270770_8407.png",
+      "image_prompt": "Electric type pokemon, the physical manifestation of a nightmare, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+      "is_shiny": false,
+      "json_path": "outputs\\mauhaki_data.json",
+      "trainer": "NL",
+      "random_generated": true,
+      "dex_number": 19,
+      "added_at": "2026-01-06T20:10:02.283106",
+      "id": "pkmn_0019"
     }
   ],
-  "next_dex_number": 15,
+  "next_dex_number": 20,
   "created_at": "2026-01-05T23:25:41.275963"
 }
