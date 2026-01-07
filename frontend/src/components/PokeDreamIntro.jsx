@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 const API_URL = 'http://localhost:8000';
 
-// Blaine's humorous responses for blank names
+// Blaine's responses for blank names
 const BLANK_NAME_RESPONSES = [
   "A blank name? What are you, a Ditto trying to blend in?",
   "You DO have a name, right? Even my Magmar has a name!",
@@ -65,25 +65,48 @@ const Sparkle = ({ x, delay }) => (
   />
 );
 
-// Blaine sprite
-const BlaineSprite = () => (
-  <div className="flex flex-col items-center" style={{ animation: 'float 3s ease-in-out infinite' }}>
-    <img 
-      src="/blaine.png"
-      alt="Blaine"
-      className="h-32"
-      style={{ imageRendering: 'pixelated' }}
-    />
-    <svg viewBox="0 0 40 24" className="w-14 h-8 -mt-1">
-      <rect x="2" y="5" width="36" height="17" rx="2" fill="#8B5A2B" stroke="#5D3A1A" strokeWidth="1.5"/>
-      <rect x="2" y="5" width="36" height="4" fill="#A0522D"/>
-      <rect x="15" y="1" width="10" height="5" rx="1" fill="#5D3A1A"/>
-      <rect x="17" y="2" width="6" height="3" fill="#8B5A2B"/>
-      <rect x="9" y="12" width="4" height="2" fill="#DAA520"/>
-      <rect x="27" y="12" width="4" height="2" fill="#DAA520"/>
-    </svg>
-  </div>
-);
+// Blaine sprite with suitcase - aligned to Blaine's visual center
+const BlaineSprite = () => {
+  // Adjust this value to align suitcase with Blaine's head
+  const suitcaseOffset = 16; 
+  
+  return (
+    <div 
+      className="flex flex-col items-center justify-center" 
+      style={{ animation: 'float 3s ease-in-out infinite' }}
+    >
+      {/* Blaine image */}
+      <img 
+        src="/blaine.png"
+        alt="Blaine"
+        className="h-32"
+        style={{ imageRendering: 'pixelated' }}
+      />
+      
+      {/* Suitcase - positioned relative to Blaine's visual center */}
+      <div 
+        className="-mt-1"
+        style={{ marginLeft: `${suitcaseOffset}px` }}
+      >
+        <svg viewBox="0 0 60 35" className="w-16 h-10" style={{ imageRendering: 'pixelated' }}>
+        {/* Suitcase body */}
+        <rect x="5" y="8" width="50" height="25" rx="3" fill="#8B4513" stroke="#5D2E0C" strokeWidth="2" />
+        {/* Top band */}
+        <rect x="5" y="8" width="50" height="6" rx="2" fill="#A0522D" />
+        {/* Handle */}
+        <rect x="24" y="2" width="12" height="8" rx="2" fill="#5D2E0C" />
+        <rect x="26" y="4" width="8" height="4" rx="1" fill="#8B4513" />
+        {/* Latches */}
+        <rect x="15" y="18" width="6" height="4" rx="1" fill="#DAA520" stroke="#B8860B" strokeWidth="1" />
+        <rect x="39" y="18" width="6" height="4" rx="1" fill="#DAA520" stroke="#B8860B" strokeWidth="1" />
+        {/* Center clasp */}
+        <rect x="26" y="16" width="8" height="6" rx="1" fill="#DAA520" stroke="#B8860B" strokeWidth="1" />
+        <circle cx="30" cy="19" r="2" fill="#B8860B" />
+      </svg>
+      </div>
+    </div>
+  );
+};
 
 // Dialog box
 const DialogBox = ({ speaker, children, showArrow, onClick }) => (
@@ -277,26 +300,19 @@ export default function PokeDreamIntro({ onComplete, savedTrainerName }) {
 
   const handleSkip = () => {
     if (isReturningUser) {
-      // Returning user can always skip to generator
       onComplete?.(savedTrainerName);
     } else if (confirmedName) {
-      // New user with confirmed name can skip to generator
       localStorage.setItem('pokedream_trainer_name', confirmedName);
       onComplete?.(confirmedName);
     } else {
-      // New user without name - skip to name input dialog
-      setDialogIndex(13); // "What's your name?" is index 13
+      setDialogIndex(13);
       setTextComplete(true);
       setBlaineResponse(null);
     }
   };
 
-  // Determine if skip button should show
-  // For returning users: always show
-  // For new users: hide during name input AND when showing Blaine's error response
   const showSkipButton = isReturningUser || confirmedName || (currentDialog?.type !== 'nameInput' && !blaineResponse);
   
-  // Skip button text
   const getSkipButtonText = () => {
     if (isReturningUser) return "Skip to generator →";
     if (confirmedName) return "Skip to generator →";
@@ -320,12 +336,12 @@ export default function PokeDreamIntro({ onComplete, savedTrainerName }) {
         ))}
       </div>
 
-      {/* Main content */}
+      {/* Main content - centered container */}
       <div className="relative z-10 flex flex-col items-center justify-center p-4 w-full min-h-screen">
         <div className="flex flex-col items-center w-full max-w-xl">
-          {/* Blaine sprite - show earlier for returning users */}
+          {/* Blaine sprite - centered wrapper */}
           {showProfessor && (isReturningUser || dialogIndex >= 3) && (
-            <div className="mb-4 flex justify-center w-full">
+            <div className="w-full max-w-md mx-auto flex justify-center mb-4">
               <BlaineSprite />
             </div>
           )}
@@ -369,7 +385,7 @@ export default function PokeDreamIntro({ onComplete, savedTrainerName }) {
             </DialogBox>
           )}
 
-          {/* Skip button - below dialog */}
+          {/* Skip button */}
           <div className="mt-4 h-6">
             {showSkipButton && (
               <button 

@@ -3605,8 +3605,212 @@
       "dex_number": 19,
       "added_at": "2026-01-06T20:10:02.283106",
       "id": "pkmn_0019"
+    },
+    {
+      "name": "Makoloa",
+      "types": [
+        "Fire",
+        "Ghost"
+      ],
+      "stats": {
+        "hp": 85,
+        "attack": 65,
+        "defense": 80,
+        "sp_attack": 125,
+        "sp_defense": 95,
+        "speed": 75
+      },
+      "abilities": [
+        "Flash Fire",
+        "Cursed Body",
+        "Soul Collector"
+      ],
+      "signature_move": {
+        "name": "Spirit Flash",
+        "type": "Fire",
+        "category": "Special",
+        "power": 80,
+        "accuracy": 100,
+        "description": "Captures the target's essence with a burning flash, lowering their Attack and Sp. Attack"
+      },
+      "pokedex_entry": "This ancient camera Pokemon was once used in sacred island ceremonies to preserve the spirits of ancestors. The volcanic glass lens burns with eternal fire, and legends say it can trap souls within its spectral film. Islanders believe seeing its flash means a departed loved one is trying to communicate.",
+      "category": "The Soul Camera Pokemon",
+      "height_m": 1.2,
+      "weight_kg": 18.5,
+      "bst": 525,
+      "tier": "fully_evolved",
+      "concept": "a haunted vintage camera that captures souls",
+      "culture": "polynesian",
+      "moveset": {
+        "level_up_moves": [
+          {
+            "level": 1,
+            "move": "Night Shade",
+            "type": "ghost",
+            "power": null,
+            "category": "special"
+          },
+          {
+            "level": 5,
+            "move": "Growl",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 10,
+            "move": "Confuse Ray",
+            "type": "ghost",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 15,
+            "move": "Incinerate",
+            "type": "fire",
+            "power": 60,
+            "category": "special"
+          },
+          {
+            "level": 20,
+            "move": "Leer",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 25,
+            "move": "Will-O-Wisp",
+            "type": "fire",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 30,
+            "move": "Hex",
+            "type": "ghost",
+            "power": 65,
+            "category": "special"
+          },
+          {
+            "level": 35,
+            "move": "Swift",
+            "type": "normal",
+            "power": 60,
+            "category": "special"
+          },
+          {
+            "level": 40,
+            "move": "Overheat",
+            "type": "fire",
+            "power": 130,
+            "category": "special"
+          },
+          {
+            "level": 45,
+            "move": "Sunny Day",
+            "type": "fire",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 50,
+            "move": "Hyper Beam",
+            "type": "normal",
+            "power": 150,
+            "category": "special"
+          }
+        ],
+        "tm_moves": [
+          {
+            "move": "Incinerate",
+            "type": "fire",
+            "power": 60,
+            "reason": "STAB"
+          },
+          {
+            "move": "Flamethrower",
+            "type": "fire",
+            "power": 90,
+            "reason": "STAB"
+          },
+          {
+            "move": "Hex",
+            "type": "ghost",
+            "power": 65,
+            "reason": "STAB"
+          },
+          {
+            "move": "Shadow Ball",
+            "type": "ghost",
+            "power": 80,
+            "reason": "STAB"
+          },
+          {
+            "move": "Blizzard",
+            "type": "ice",
+            "power": 110,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Solar Beam",
+            "type": "grass",
+            "power": 120,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Thunderbolt",
+            "type": "electric",
+            "power": 90,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Protect",
+            "type": "normal",
+            "power": null,
+            "reason": "Utility"
+          }
+        ],
+        "egg_moves": [
+          {
+            "move": "Blaze Kick",
+            "type": "fire",
+            "power": 85
+          },
+          {
+            "move": "Flare Blitz",
+            "type": "fire",
+            "power": 120
+          },
+          {
+            "move": "Shadow Claw",
+            "type": "ghost",
+            "power": 70
+          },
+          {
+            "move": "Shadow Sneak",
+            "type": "ghost",
+            "power": 40
+          }
+        ],
+        "current_moves": [
+          "Swift",
+          "Overheat",
+          "Sunny Day",
+          "Hyper Beam"
+        ]
+      },
+      "image_path": "outputs\\makoloa_20260106_201127_378815_6829.png",
+      "image_prompt": "Fire type pokemon, a haunted vintage camera that captures souls, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+      "is_shiny": false,
+      "json_path": "outputs\\makoloa_data.json",
+      "trainer": "NL",
+      "random_generated": true,
+      "dex_number": 20,
+      "added_at": "2026-01-06T20:11:27.384817",
+      "id": "pkmn_0020"
     }
   ],
-  "next_dex_number": 20,
+  "next_dex_number": 21,
   "created_at": "2026-01-05T23:25:41.275963"
 }

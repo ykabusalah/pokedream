@@ -10,45 +10,70 @@ const TYPE_COLORS = {
   Steel: '#B8B8D0', Fairy: '#EE99AC'
 };
 
+const TYPE_ICONS = {
+  Normal: '⚪', Fire: '🔥', Water: '💧', Electric: '⚡',
+  Grass: '🌿', Ice: '❄️', Fighting: '👊', Poison: '☠️',
+  Ground: '🌍', Flying: '🪶', Psychic: '🔮', Bug: '🐛',
+  Rock: '🪨', Ghost: '👻', Dragon: '🐲', Dark: '🌑',
+  Steel: '⚙️', Fairy: '✨'
+};
+
 const POKEMON_TYPES = Object.keys(TYPE_COLORS);
 
 // Pokemon card component
 const PokemonCard = ({ pokemon, onClick }) => {
   const primaryType = pokemon.types?.[0] || 'Normal';
+  const secondaryType = pokemon.types?.[1];
   
   return (
     <div 
       onClick={onClick}
-      className="bg-gray-800 rounded-lg p-3 cursor-pointer hover:scale-105 transition-all hover:ring-2 hover:ring-amber-500"
+      className="group relative rounded-xl overflow-hidden cursor-pointer transition-all duration-300 hover:scale-105 hover:z-10"
+      style={{
+        background: `linear-gradient(135deg, ${TYPE_COLORS[primaryType]}40, ${TYPE_COLORS[secondaryType || primaryType]}20)`
+      }}
     >
-      <div className="text-xs text-gray-500 mb-1">
-        #{String(pokemon.dex_number).padStart(3, '0')}
-      </div>
-      
-      {pokemon.image_path ? (
-        <img 
-          src={`${API_URL}/${pokemon.image_path}`}
-          alt={pokemon.name}
-          className="w-full aspect-square object-contain bg-gray-700 rounded mb-2"
-        />
-      ) : (
-        <div className="w-full aspect-square bg-gray-700 rounded mb-2 flex items-center justify-center text-4xl">
-          ?
+      {/* Shiny indicator */}
+      {pokemon.is_shiny && (
+        <div className="absolute top-2 right-2 z-10">
+          <span className="text-yellow-400 text-lg animate-pulse">✨</span>
         </div>
       )}
       
-      <div className="font-bold text-sm truncate">{pokemon.name}</div>
-      
-      <div className="flex gap-1 mt-1 flex-wrap">
-        {pokemon.types?.map(type => (
-          <span 
-            key={type}
-            className="text-xs px-2 py-0.5 rounded text-white"
-            style={{ backgroundColor: TYPE_COLORS[type] }}
-          >
-            {type}
-          </span>
-        ))}
+      {/* Card content */}
+      <div className="p-3 bg-gray-900/80 backdrop-blur-sm h-full border border-gray-800 rounded-xl group-hover:border-gray-600 transition-colors">
+        <div className="text-xs text-gray-500 font-mono mb-1">
+          #{String(pokemon.dex_number).padStart(3, '0')}
+        </div>
+        
+        {pokemon.image_path ? (
+          <div className="relative aspect-square mb-2 rounded-lg overflow-hidden bg-gray-800">
+            <img 
+              src={`${API_URL}/${pokemon.image_path}`}
+              alt={pokemon.name}
+              className="w-full h-full object-contain transition-transform group-hover:scale-110"
+            />
+          </div>
+        ) : (
+          <div className="aspect-square bg-gray-800 rounded-lg mb-2 flex items-center justify-center text-4xl text-gray-600">
+            ?
+          </div>
+        )}
+        
+        <div className="font-bold text-sm text-white truncate mb-2">{pokemon.name}</div>
+        
+        <div className="flex gap-1 flex-wrap">
+          {pokemon.types?.map(type => (
+            <span 
+              key={type}
+              className="text-xs px-2 py-0.5 rounded-full text-white flex items-center gap-1"
+              style={{ backgroundColor: TYPE_COLORS[type] }}
+            >
+              <span className="text-[10px]">{TYPE_ICONS[type]}</span>
+              {type}
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -56,17 +81,37 @@ const PokemonCard = ({ pokemon, onClick }) => {
 
 // Empty state
 const EmptyState = ({ onGenerate }) => (
-  <div className="text-center py-16">
-    <div className="text-6xl mb-4">📭</div>
-    <h2 className="text-2xl font-bold mb-2">No Pokémon Yet!</h2>
-    <p className="text-gray-400 mb-6">Your Pokédex is empty. Create your first AI-generated Pokémon!</p>
+  <div className="text-center py-20">
+    <div className="text-8xl mb-6 opacity-50">📭</div>
+    <h2 className="text-3xl font-bold mb-3 text-white">No Pokémon Yet!</h2>
+    <p className="text-gray-400 mb-8 max-w-md mx-auto">
+      Your Pokédex is empty. Create your first AI-generated Pokémon and start building your collection!
+    </p>
     <button
       onClick={onGenerate}
-      className="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-white font-bold rounded-lg transition-all"
+      className="px-8 py-4 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white font-bold rounded-xl transition-all shadow-lg shadow-red-500/20 flex items-center gap-2 mx-auto"
     >
-      Create Your First Pokémon
+      <span>⚡</span> Create Your First Pokémon
     </button>
   </div>
+);
+
+// Type filter button
+const TypeFilter = ({ type, selected, onClick }) => (
+  <button
+    onClick={onClick}
+    className={`
+      px-3 py-1.5 rounded-full text-xs font-bold transition-all duration-200 flex items-center gap-1
+      ${selected 
+        ? 'ring-2 ring-white ring-offset-2 ring-offset-gray-900 scale-110' 
+        : 'opacity-60 hover:opacity-100'
+      }
+    `}
+    style={{ backgroundColor: TYPE_COLORS[type] }}
+  >
+    <span>{TYPE_ICONS[type]}</span>
+    {type}
+  </button>
 );
 
 export default function Pokedex({ onNavigate }) {
@@ -125,52 +170,56 @@ export default function Pokedex({ onNavigate }) {
   };
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white">
-      {/* Header */}
-      <div className="bg-gray-900 border-b border-gray-800">
+    <div className="min-h-screen text-white">
+      {/* Header Section */}
+      <div className="bg-gray-900/50 border-b border-gray-800">
         <div className="max-w-6xl mx-auto px-4 py-6">
-          {/* Top nav row with home button */}
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-4">
-              {/* HOME BUTTON */}
-              <button
-                onClick={() => onNavigate('generator')}
-                className="text-xl font-bold text-white hover:text-amber-400 transition-all"
-              >
-                🔴 PokéDream
-              </button>
-              <span className="text-gray-600">|</span>
-              <div>
-                <h1 className="text-2xl font-bold">Oneira Pokédex</h1>
-                <p className="text-gray-400 text-sm">
-                  {stats ? `${stats.total} Pokémon discovered` : 'Loading...'}
-                  {stats?.shinies > 0 && ` • ${stats.shinies} shiny`}
-                </p>
-              </div>
+          {/* Title and Stats */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+            <div>
+              <h1 className="text-3xl font-bold flex items-center gap-3">
+                <span>📖</span>
+                Oneira Pokédex
+              </h1>
+              <p className="text-gray-400 mt-1">
+                {stats ? (
+                  <>
+                    <span className="text-white font-bold">{stats.total}</span> Pokémon discovered
+                    {stats.shinies > 0 && (
+                      <span className="ml-2">
+                        • <span className="text-yellow-400">✨ {stats.shinies}</span> shiny
+                      </span>
+                    )}
+                  </>
+                ) : 'Loading...'}
+              </p>
             </div>
             <button
               onClick={() => onNavigate('generator')}
-              className="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-white font-bold rounded-lg transition-all"
+              className="px-6 py-3 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white font-bold rounded-xl transition-all shadow-lg shadow-red-500/20 flex items-center gap-2"
             >
-              + Create New
+              <span>⚡</span> Create New
             </button>
           </div>
           
           {/* Search */}
-          <div className="flex gap-2 mb-4">
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
-              placeholder="Search Pokémon..."
-              className="flex-1 bg-gray-800 text-white px-4 py-2 rounded-lg outline-none focus:ring-2 focus:ring-amber-500"
-            />
+          <div className="flex gap-2 mb-6">
+            <div className="flex-1 relative">
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+                placeholder="Search Pokémon..."
+                className="w-full bg-gray-800 text-white pl-10 pr-4 py-3 rounded-xl outline-none focus:ring-2 focus:ring-red-500 border border-gray-700"
+              />
+              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">🔍</span>
+            </div>
             <button
               onClick={handleSearch}
-              className="px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-all"
+              className="px-6 py-3 bg-gray-800 hover:bg-gray-700 rounded-xl transition-all border border-gray-700 font-medium"
             >
-              🔍
+              Search
             </button>
           </div>
           
@@ -178,27 +227,23 @@ export default function Pokedex({ onNavigate }) {
           <div className="flex gap-2 flex-wrap">
             <button
               onClick={() => setSelectedType(null)}
-              className={`px-3 py-1 rounded-full text-sm font-bold transition-all ${
-                !selectedType 
+              className={`
+                px-4 py-1.5 rounded-full text-xs font-bold transition-all duration-200
+                ${!selectedType 
                   ? 'bg-white text-gray-900' 
-                  : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
-              }`}
+                  : 'bg-gray-800 text-gray-300 hover:bg-gray-700 border border-gray-700'
+                }
+              `}
             >
-              All
+              All Types
             </button>
             {POKEMON_TYPES.map(type => (
-              <button
+              <TypeFilter
                 key={type}
+                type={type}
+                selected={selectedType === type}
                 onClick={() => setSelectedType(type === selectedType ? null : type)}
-                className={`px-3 py-1 rounded-full text-sm font-bold transition-all ${
-                  selectedType === type 
-                    ? 'ring-2 ring-white ring-offset-2 ring-offset-gray-900' 
-                    : 'opacity-70 hover:opacity-100'
-                }`}
-                style={{ backgroundColor: TYPE_COLORS[type], color: 'white' }}
-              >
-                {type}
-              </button>
+              />
             ))}
           </div>
         </div>
@@ -207,8 +252,10 @@ export default function Pokedex({ onNavigate }) {
       {/* Content */}
       <div className="max-w-6xl mx-auto px-4 py-8">
         {loading ? (
-          <div className="text-center py-16">
-            <div className="animate-spin w-12 h-12 border-4 border-amber-500 border-t-transparent rounded-full mx-auto mb-4" />
+          <div className="text-center py-20">
+            <div className="relative w-16 h-16 mx-auto mb-4">
+              <div className="absolute inset-0 border-4 border-red-500 border-t-transparent rounded-full animate-spin"/>
+            </div>
             <p className="text-gray-400">Loading Pokédex...</p>
           </div>
         ) : pokemon.length === 0 ? (
@@ -227,8 +274,8 @@ export default function Pokedex({ onNavigate }) {
       </div>
       
       {/* Footer */}
-      <div className="text-center py-8 text-gray-600 text-sm">
-        PokéDream • Oneira Region • {stats?.total || 0} Pokémon
+      <div className="text-center py-8 text-gray-600 text-sm border-t border-gray-800 mt-8">
+        <p>PokéDream • Oneira Region • {stats?.total || 0} Pokémon Discovered</p>
       </div>
     </div>
   );
