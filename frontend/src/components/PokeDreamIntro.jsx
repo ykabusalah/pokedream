@@ -2,7 +2,116 @@ import { useState, useEffect } from 'react';
 
 const API_URL = 'http://localhost:8000';
 
-// Blaine's responses for blank names
+// ============================================
+// VISIT TRACKING HELPERS (NEW IN COMMIT 2)
+// ============================================
+const getVisitCount = () => {
+  return parseInt(localStorage.getItem('pokedream_visit_count') || '0', 10);
+};
+
+const incrementVisitCount = () => {
+  const count = getVisitCount() + 1;
+  localStorage.setItem('pokedream_visit_count', count.toString());
+  return count;
+};
+
+// ============================================
+// HIDDEN MILESTONE DIALOGUE (NEW IN COMMIT 2)
+// ============================================
+const getMilestoneDialogue = (visitCount, name) => {
+  const milestones = {
+    5: [
+      { text: `${name}! Back again? That's 5 visits now!`, type: "speech" },
+      { text: `You know, dedication like yours reminds me of my days training Fire-types on Cinnabar...`, type: "speech" },
+      { text: `Before the volcano incident, of course. *adjusts sunglasses*`, type: "speech" },
+    ],
+    10: [
+      { text: `Well, well! ${name}, visit number 10!`, type: "speech" },
+      { text: `At this point, you might know the Oneira region better than I do!`, type: "speech" },
+      { text: `Here's a riddle: What gets stronger every time it's created?`, type: "speech" },
+      { text: `...Your imagination!`, type: "speech" },
+    ],
+    25: [
+      { text: `${name}... 25 visits. I'm genuinely impressed.`, type: "speech" },
+      { text: `You've become a true Pokémon researcher. Professor Oak would be proud.`, type: "speech" },
+      { text: `Between you and me... I think your Pokédex might be more interesting than the official one!`, type: "speech" },
+    ],
+    50: [
+      { text: `*Blaine removes his sunglasses in shock*`, type: "speech" },
+      { text: `${name}... 50 visits?! You're not a trainer anymore...`, type: "speech" },
+      { text: `You're a LEGEND. The Oneira region owes you a debt of gratitude.`, type: "speech" },
+      { text: `I hereby grant you the unofficial title of "Pokémon Dream Master"!`, type: "speech" },
+    ],
+    100: [
+      { text: `...`, type: "speech" },
+      { text: `${name}. 100 visits.`, type: "speech" },
+      { text: `I... I don't have a riddle for this. I'm speechless.`, type: "speech" },
+      { text: `You've created more Pokémon than some entire regions have discovered.`, type: "speech" },
+      { text: `Thank you. Truly. For believing in dreams.`, type: "speech" },
+    ],
+  };
+
+  return milestones[visitCount] || null;
+};
+
+// Varied returning user dialogue (keeps it fresh)
+const getReturningUserDialogue = (visitCount, name) => {
+  // Check for milestone first
+  const milestone = getMilestoneDialogue(visitCount, name);
+  if (milestone) {
+    return [...milestone, { text: `Now, let's create some more Pokémon!`, type: "speech" }];
+  }
+
+  // Regular returning dialogue - varies based on visit count
+  const dialogueOptions = [
+    [
+      { text: `Oh! Well, well, well... if it isn't ${name}!`, type: "speech" },
+      { text: "I knew you'd come crawling back. They always do.", type: "speech" },
+      { text: "What's the matter? Couldn't resist my charming personality?", type: "speech" },
+      { text: "...Or was it the AI-generated Pokémon? It's the Pokémon, isn't it.", type: "speech" },
+      { text: "Let's make some more, shall we?", type: "speech" },
+    ],
+    [
+      { text: `${name}! Welcome back to the Oneira region!`, type: "speech" },
+      { text: "The servers are warm, the AI is ready, and I've got new riddles!", type: "speech" },
+      { text: "Here's one: What sleeps in your mind but wakes up on screen?", type: "speech" },
+      { text: "...A dream Pokémon! Get it? ...You don't want to hear the riddles? Fine, fine.", type: "speech" },
+      { text: "Let's just make some Pokémon then!", type: "speech" },
+    ],
+    [
+      { text: `Ah, ${name}! The dream researcher returns!`, type: "speech" },
+      { text: "I was just calibrating the neural networks. Perfect timing!", type: "speech" },
+      { text: "Your Pokédex awaits. What will you create today?", type: "speech" },
+    ],
+    [
+      { text: `${name}! *adjusts suitcase excitedly*`, type: "speech" },
+      { text: "I've been experimenting with new algorithms since your last visit!", type: "speech" },
+      { text: "The Pokémon we can create now... they're even more magnificent!", type: "speech" },
+      { text: "Ready to see what dreams await?", type: "speech" },
+    ],
+    [
+      { text: `Back so soon, ${name}?`, type: "speech" },
+      { text: "Not that I'm complaining! Business has been... well, you're my only visitor.", type: "speech" },
+      { text: "But that just means more GPU power for YOUR Pokémon!", type: "speech" },
+      { text: "Oh! Before we start - a riddle: What has no body but lives in every trainer's heart?", type: "speech" },
+      { text: "...The dream of a new Pokémon! Now let's make that dream real!", type: "speech" },
+    ],
+    [
+      { text: `${name}! Excellent timing!`, type: "speech" },
+      { text: "I was just about to take a coffee break, but Pokémon creation is MORE important!", type: "speech" },
+      { text: "...Don't tell anyone I said that. Professors need their coffee.", type: "speech" },
+      { text: "Anyway, let's dream up some new creatures!", type: "speech" },
+    ],
+  ];
+
+  // Pick dialogue based on visit count to ensure variety
+  const index = visitCount % dialogueOptions.length;
+  return dialogueOptions[index];
+};
+
+// ============================================
+// BLAINE'S NAME VALIDATION RESPONSES
+// ============================================
 const BLANK_NAME_RESPONSES = [
   "A blank name? What are you, a Ditto trying to blend in?",
   "You DO have a name, right? Even my Magmar has a name!",
@@ -12,7 +121,6 @@ const BLANK_NAME_RESPONSES = [
   "Nice try, but 'nothing' isn't a name. Trust me, I've checked the records.",
 ];
 
-// Blaine's responses for inappropriate names
 const INAPPROPRIATE_NAME_RESPONSES = [
   "Whoa there! Let's keep it family-friendly. This isn't the Celadon Game Corner!",
   "I've seen some things in my Gym Leader days, but that name? No way.",
@@ -20,12 +128,15 @@ const INAPPROPRIATE_NAME_RESPONSES = [
   "That name would get us both banned from the Pokémon League. Next!",
 ];
 
-// Blaine's responses for too-short names
 const SHORT_NAME_RESPONSES = [
   "That's a bit short, don't you think? Give me at least 2 characters to work with!",
   "One letter? Even Unown uses more than that! Try again.",
   "I need at least 2 characters. My old eyes can't read anything shorter!",
 ];
+
+// ============================================
+// UI COMPONENTS
+// ============================================
 
 // Typewriter effect
 const TypewriterText = ({ text, speed = 35, isActive, onComplete }) => {
@@ -68,7 +179,8 @@ const Sparkle = ({ x, delay }) => (
 // Blaine sprite with suitcase - aligned to Blaine's visual center
 const BlaineSprite = () => {
   // Adjust this value to align suitcase with Blaine's head
-  const suitcaseOffset = 16; 
+  // Negative = move left, Positive = move right
+  const suitcaseOffset = -4; // pixels - tweak as needed
   
   return (
     <div 
@@ -89,20 +201,20 @@ const BlaineSprite = () => {
         style={{ marginLeft: `${suitcaseOffset}px` }}
       >
         <svg viewBox="0 0 60 35" className="w-16 h-10" style={{ imageRendering: 'pixelated' }}>
-        {/* Suitcase body */}
-        <rect x="5" y="8" width="50" height="25" rx="3" fill="#8B4513" stroke="#5D2E0C" strokeWidth="2" />
-        {/* Top band */}
-        <rect x="5" y="8" width="50" height="6" rx="2" fill="#A0522D" />
-        {/* Handle */}
-        <rect x="24" y="2" width="12" height="8" rx="2" fill="#5D2E0C" />
-        <rect x="26" y="4" width="8" height="4" rx="1" fill="#8B4513" />
-        {/* Latches */}
-        <rect x="15" y="18" width="6" height="4" rx="1" fill="#DAA520" stroke="#B8860B" strokeWidth="1" />
-        <rect x="39" y="18" width="6" height="4" rx="1" fill="#DAA520" stroke="#B8860B" strokeWidth="1" />
-        {/* Center clasp */}
-        <rect x="26" y="16" width="8" height="6" rx="1" fill="#DAA520" stroke="#B8860B" strokeWidth="1" />
-        <circle cx="30" cy="19" r="2" fill="#B8860B" />
-      </svg>
+          {/* Suitcase body */}
+          <rect x="5" y="8" width="50" height="25" rx="3" fill="#8B4513" stroke="#5D2E0C" strokeWidth="2" />
+          {/* Top band */}
+          <rect x="5" y="8" width="50" height="6" rx="2" fill="#A0522D" />
+          {/* Handle */}
+          <rect x="24" y="2" width="12" height="8" rx="2" fill="#5D2E0C" />
+          <rect x="26" y="4" width="8" height="4" rx="1" fill="#8B4513" />
+          {/* Latches */}
+          <rect x="15" y="18" width="6" height="4" rx="1" fill="#DAA520" stroke="#B8860B" strokeWidth="1" />
+          <rect x="39" y="18" width="6" height="4" rx="1" fill="#DAA520" stroke="#B8860B" strokeWidth="1" />
+          {/* Center clasp */}
+          <rect x="26" y="16" width="8" height="6" rx="1" fill="#DAA520" stroke="#B8860B" strokeWidth="1" />
+          <circle cx="30" cy="19" r="2" fill="#B8860B" />
+        </svg>
       </div>
     </div>
   );
@@ -142,6 +254,9 @@ const DialogBox = ({ speaker, children, showArrow, onClick }) => (
   </div>
 );
 
+// ============================================
+// MAIN COMPONENT
+// ============================================
 export default function PokeDreamIntro({ onComplete, savedTrainerName }) {
   const [phase, setPhase] = useState('black');
   const [dialogIndex, setDialogIndex] = useState(0);
@@ -151,9 +266,16 @@ export default function PokeDreamIntro({ onComplete, savedTrainerName }) {
   const [isValidating, setIsValidating] = useState(false);
   const [blaineResponse, setBlaineResponse] = useState(null);
   const [showProfessor, setShowProfessor] = useState(false);
+  const [visitCount, setVisitCount] = useState(0);
   
   // Check if returning user
   const isReturningUser = !!savedTrainerName;
+
+  // Track visit on mount (NEW IN COMMIT 2)
+  useEffect(() => {
+    const count = incrementVisitCount();
+    setVisitCount(count);
+  }, []);
 
   // Dialogs for NEW users
   const newUserDialogs = [
@@ -179,16 +301,10 @@ export default function PokeDreamIntro({ onComplete, savedTrainerName }) {
     { text: "Let's go!", type: "speech" },
   ];
 
-  // Dialogs for RETURNING users (short and funny)
-  const returningUserDialogs = [
-    { text: `Oh! Well, well, well... if it isn't ${savedTrainerName}!`, type: "speech" },
-    { text: "I knew you'd come crawling back. They always do.", type: "speech" },
-    { text: "What's the matter? Couldn't resist my charming personality?", type: "speech" },
-    { text: "...Or was it the AI-generated Pokémon? It's the Pokémon, isn't it.", type: "speech" },
-    { text: "No matter! Professor Blaine is ALWAYS ready to create more digital creatures!", type: "speech" },
-    { text: "The lab is warmed up, the servers are humming, and my incredibly legal AI is ready to go!", type: "speech" },
-    { text: "Let's make some more Pokémon, shall we?", type: "speech" },
-  ];
+  // Get returning user dialogs dynamically based on visit count (UPDATED IN COMMIT 2)
+  const returningUserDialogs = isReturningUser 
+    ? getReturningUserDialogue(visitCount, savedTrainerName)
+    : [];
 
   // Choose dialog set based on user type
   const dialogs = isReturningUser ? returningUserDialogs : newUserDialogs;
@@ -215,24 +331,19 @@ export default function PokeDreamIntro({ onComplete, savedTrainerName }) {
   };
 
   const handleContinue = () => {
-    // If showing a Blaine error response, dismiss it and go back to name input
     if (blaineResponse) {
       setBlaineResponse(null);
       setTextComplete(false);
       return;
     }
     
-    // Don't advance if text is still typing
     if (!textComplete && currentDialog?.type === 'speech') return;
-    
-    // Don't advance if we're on name input - must use the OK button
     if (currentDialog?.type === 'nameInput') return;
     
     if (dialogIndex < dialogs.length - 1) {
       setDialogIndex(d => d + 1);
       setTextComplete(false);
     } else {
-      // Save name to localStorage and complete
       const finalName = isReturningUser ? savedTrainerName : confirmedName;
       if (finalName) {
         localStorage.setItem('pokedream_trainer_name', finalName);
@@ -244,7 +355,6 @@ export default function PokeDreamIntro({ onComplete, savedTrainerName }) {
   const handleNameSubmit = async () => {
     const name = trainerName.trim();
     
-    // Check for blank name
     if (!name) {
       const randomMsg = BLANK_NAME_RESPONSES[Math.floor(Math.random() * BLANK_NAME_RESPONSES.length)];
       setBlaineResponse(randomMsg);
@@ -252,7 +362,6 @@ export default function PokeDreamIntro({ onComplete, savedTrainerName }) {
       return;
     }
     
-    // Check length (minimum 2 characters)
     if (name.length < 2) {
       const randomMsg = SHORT_NAME_RESPONSES[Math.floor(Math.random() * SHORT_NAME_RESPONSES.length)];
       setBlaineResponse(randomMsg);
@@ -263,7 +372,6 @@ export default function PokeDreamIntro({ onComplete, savedTrainerName }) {
     setIsValidating(true);
     
     try {
-      // Validate name with backend
       const res = await fetch(`${API_URL}/api/validate-name`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -283,7 +391,6 @@ export default function PokeDreamIntro({ onComplete, savedTrainerName }) {
         setTextComplete(false);
       }
     } catch (err) {
-      // If API fails, do basic validation and allow
       if (name.length >= 2 && name.length <= 20) {
         setConfirmedName(name);
         setDialogIndex(d => d + 1);
@@ -336,10 +443,10 @@ export default function PokeDreamIntro({ onComplete, savedTrainerName }) {
         ))}
       </div>
 
-      {/* Main content - centered container */}
+      {/* Main content */}
       <div className="relative z-10 flex flex-col items-center justify-center p-4 w-full min-h-screen">
         <div className="flex flex-col items-center w-full max-w-xl">
-          {/* Blaine sprite - centered wrapper */}
+          {/* Blaine sprite - show immediately for returning users */}
           {showProfessor && (isReturningUser || dialogIndex >= 3) && (
             <div className="w-full max-w-md mx-auto flex justify-center mb-4">
               <BlaineSprite />
@@ -360,7 +467,6 @@ export default function PokeDreamIntro({ onComplete, savedTrainerName }) {
                 onComplete={() => setTextComplete(true)} 
               />
               
-              {/* Name input field (new users only) */}
               {currentDialog.type === 'nameInput' && textComplete && !blaineResponse && (
                 <div className="flex gap-2 mt-3">
                   <input
