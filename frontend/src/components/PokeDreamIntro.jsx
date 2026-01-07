@@ -352,6 +352,25 @@ export default function PokeDreamIntro({ onComplete, savedTrainerName }) {
     }
   };
 
+  // Keyboard support for advancing dialogue (Enter and Space)
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      // Don't trigger if user is typing in the name input
+      if (currentDialog?.type === 'nameInput' && textComplete && !blaineResponse) {
+        return;
+      }
+      
+      // Enter or Space advances dialogue
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        handleContinue();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [textComplete, blaineResponse, dialogIndex, currentDialog]);
+
   const handleNameSubmit = async () => {
     const name = trainerName.trim();
     
