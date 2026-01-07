@@ -477,7 +477,7 @@ export default function PokemonGenerator({ trainerName, onNavigate }) {
         
         {/* Loading State */}
         {isGenerating && (
-          <div className="text-center py-12">
+          <div className="flex flex-col items-center justify-center py-12">
             <PokeballSpinner />
             <p className="text-gray-400 mt-6 animate-pulse">
               {mode === 'random' ? 'The AI is cooking up something wild...' : 'Creating your Pokémon...'}
