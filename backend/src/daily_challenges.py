@@ -5,7 +5,7 @@ Generates rotating daily challenges to encourage diverse Pokemon creation.
 
 import json
 import hashlib
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 from pathlib import Path
 from typing import Optional
 
@@ -43,8 +43,8 @@ THEMES = [
     "a mythical beast", "a piece of furniture", "a sports equipment",
     "a cosmic object", "a garden plant", "a winter holiday",
     "a tropical fruit", "a construction vehicle", "a nocturnal animal",
-    "a ancient artifact", "a natural disaster", "a carnival attraction",
-    "a breakfast food", "a office supply", "a vintage toy",
+    "an ancient artifact", "a natural disaster", "a carnival attraction",
+    "a breakfast food", "an office supply", "a vintage toy",
     "a haunted object", "a robot companion", "a forest spirit"
 ]
 
@@ -101,11 +101,14 @@ def generate_daily_challenge() -> dict:
     tomorrow = datetime(now.year, now.month, now.day) + timedelta(days=1)
     seconds_until_reset = (tomorrow - now).seconds
     
+    # Only include types that actually exist (filter out None)
+    types = [t for t in [replacements.get("type1"), replacements.get("type2")] if t]
+    
     return {
         "id": f"daily_{date.today().isoformat()}",
         "challenge": challenge_text,
         "date": date.today().isoformat(),
-        "types": [replacements.get("type1"), replacements.get("type2")],
+        "types": types,
         "culture": replacements.get("culture"),
         "theme": replacements.get("theme"),
         "seconds_until_reset": seconds_until_reset,
@@ -126,10 +129,6 @@ def check_challenge_completion(pokemon: dict, challenge: dict) -> bool:
     # In a production app, you might use AI to verify
     
     return True
-
-
-# Import timedelta (was missing)
-from datetime import timedelta
 
 
 class DailyChallengeDB:

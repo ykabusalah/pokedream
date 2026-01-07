@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import DailyChallenge from './DailyChallenge';
 
 const API_URL = 'http://localhost:8000';
 
@@ -24,13 +25,9 @@ const POKEMON_TYPES = Object.keys(TYPE_COLORS);
 const PokeballSpinner = () => (
   <div className="relative w-20 h-20 animate-spin">
     <svg viewBox="0 0 100 100" className="w-full h-full">
-      {/* Top half - red */}
       <path d="M 50 5 A 45 45 0 0 1 95 50 L 65 50 A 15 15 0 0 0 35 50 L 5 50 A 45 45 0 0 1 50 5" fill="#EF4444"/>
-      {/* Bottom half - white */}
       <path d="M 50 95 A 45 45 0 0 1 5 50 L 35 50 A 15 15 0 0 0 65 50 L 95 50 A 45 45 0 0 1 50 95" fill="#F8F8F8"/>
-      {/* Center line */}
       <rect x="5" y="47" width="90" height="6" fill="#333"/>
-      {/* Center button */}
       <circle cx="50" cy="50" r="12" fill="#F8F8F8" stroke="#333" strokeWidth="4"/>
       <circle cx="50" cy="50" r="6" fill="#333"/>
     </svg>
@@ -40,7 +37,6 @@ const PokeballSpinner = () => (
 // Lab Background Pattern
 const LabBackground = () => (
   <div className="absolute inset-0 overflow-hidden pointer-events-none">
-    {/* Grid pattern */}
     <div 
       className="absolute inset-0 opacity-5"
       style={{
@@ -51,7 +47,6 @@ const LabBackground = () => (
         backgroundSize: '40px 40px'
       }}
     />
-    {/* Pokéball watermarks */}
     <div className="absolute top-10 right-10 opacity-5">
       <svg viewBox="0 0 100 100" className="w-32 h-32">
         <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="4"/>
@@ -66,7 +61,6 @@ const LabBackground = () => (
         <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="4"/>
       </svg>
     </div>
-    {/* Gradient overlay */}
     <div className="absolute inset-0 bg-gradient-to-b from-red-950/20 via-transparent to-gray-950"/>
   </div>
 );
@@ -117,7 +111,6 @@ const PokemonCard = ({ pokemon, imageKey }) => {
   
   return (
     <div className="relative">
-      {/* Shiny sparkle effect */}
       {is_shiny && (
         <div className="absolute -inset-4 pointer-events-none">
           {[...Array(12)].map((_, i) => (
@@ -144,7 +137,6 @@ const PokemonCard = ({ pokemon, imageKey }) => {
         }}
       >
         <div className="bg-gray-900 rounded-xl p-5">
-          {/* Header */}
           <div className="flex justify-between items-start mb-3">
             <div>
               <div className="text-xs text-gray-500 font-mono">#{String(dex_number || 0).padStart(3, '0')}</div>
@@ -164,14 +156,12 @@ const PokemonCard = ({ pokemon, imageKey }) => {
             </div>
           </div>
           
-          {/* Shiny badge */}
           {is_shiny && (
             <div className="absolute top-3 right-3 px-3 py-1 bg-gradient-to-r from-yellow-400 to-amber-500 text-black text-xs font-bold rounded-full animate-pulse shadow-lg">
               ✨ SHINY ✨
             </div>
           )}
           
-          {/* Image */}
           {imageUrl && (
             <div 
               className="relative mb-4 rounded-xl overflow-hidden"
@@ -190,7 +180,6 @@ const PokemonCard = ({ pokemon, imageKey }) => {
             </div>
           )}
           
-          {/* Stats */}
           {stats && (
             <div className="space-y-2 mb-4 p-3 bg-gray-800/50 rounded-xl">
               <StatBar label="HP" value={stats.hp} color="#ef4444" />
@@ -202,7 +191,6 @@ const PokemonCard = ({ pokemon, imageKey }) => {
             </div>
           )}
           
-          {/* Moves */}
           {moveset?.current_moves && (
             <div className="mb-4">
               <h3 className="text-xs font-bold text-gray-500 mb-2 uppercase tracking-wider">Moves</h3>
@@ -219,7 +207,6 @@ const PokemonCard = ({ pokemon, imageKey }) => {
             </div>
           )}
           
-          {/* Lore */}
           {lore?.pokedex_entry && (
             <div className="p-3 bg-gray-800/50 rounded-xl border-l-4 border-amber-500">
               <p className="text-sm text-gray-400 italic">"{lore.pokedex_entry}"</p>
@@ -253,7 +240,7 @@ const TypeBadge = ({ type, selected, onClick }) => (
   </button>
 );
 
-export default function PokemonGenerator({ trainerName, onNavigate }) {
+export default function PokemonGenerator({ trainerName, trainerId, onNavigate }) {
   const [description, setDescription] = useState('');
   const [selectedTypes, setSelectedTypes] = useState([]);
   const [isGenerating, setIsGenerating] = useState(false);
@@ -262,6 +249,7 @@ export default function PokemonGenerator({ trainerName, onNavigate }) {
   const [mode, setMode] = useState('simple');
   const [imageKey, setImageKey] = useState(Date.now());
   const [showErrorPopup, setShowErrorPopup] = useState(false);
+  const [activeChallenge, setActiveChallenge] = useState(null);
 
   const toggleType = (type) => {
     if (selectedTypes.includes(type)) {
@@ -271,9 +259,89 @@ export default function PokemonGenerator({ trainerName, onNavigate }) {
     }
   };
 
+  // Handler for when user clicks "Try It" on the daily challenge
+  const handleUseChallenge = (challengeData) => {
+    setActiveChallenge(challengeData);
+    
+    // Build description from challenge text
+    const desc = challengeData.challengeText || '';
+    setDescription(desc);
+    
+    // Switch to advanced mode if types are specified
+    if (challengeData.types?.length > 0) {
+      setMode('advanced');
+      setSelectedTypes(challengeData.types);
+    } else {
+      setMode('simple');
+    }
+    
+    // Auto-generate if flagged
+    if (challengeData.autoGenerate) {
+      // Small delay to let state update, then generate
+      setTimeout(() => {
+        handleGenerateWithChallenge(desc, challengeData);
+      }, 100);
+    }
+  };
+
+  // Special generate function for challenges that uses passed data directly
+  const handleGenerateWithChallenge = async (desc, challengeData) => {
+    if (!desc.trim()) return;
+    
+    setPokemon(null);
+    setImageKey(Date.now());
+    setIsGenerating(true);
+    setError(null);
+    setShowErrorPopup(false);
+    
+    try {
+      const types = challengeData.types || [];
+      const endpoint = types.length > 0 ? '/api/generate' : '/api/quick-generate';
+      
+      const body = types.length > 0 
+        ? { 
+            concept: desc, 
+            types: types,
+            culture: challengeData.culture || 'original',
+            trainer_name: trainerName,
+            challenge_id: challengeData.challengeId
+          }
+        : { 
+            description: desc, 
+            trainer_name: trainerName,
+            challenge_id: challengeData.challengeId 
+          };
+      
+      const res = await fetch(`${API_URL}${endpoint}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      });
+      
+      if (!res.ok) {
+        const errData = await res.json().catch(() => ({}));
+        throw new Error(errData.detail || 'Generation failed');
+      }
+      
+      const data = await res.json();
+      setPokemon(data.pokemon || data);
+      
+      // Clear active challenge after successful generation
+      setActiveChallenge(null);
+      
+    } catch (err) {
+      console.error('Generation error:', err);
+      setError(err.message);
+      setShowErrorPopup(true);
+    } finally {
+      setIsGenerating(false);
+    }
+  };
+
   const getBlaineMessage = () => {
     if (isGenerating) return "The machine is whirring... this is my favorite part!";
     if (pokemon) return `${pokemon.name}! A fine specimen! ${pokemon.is_shiny ? "AND IT'S SHINY! Quick, save it!" : ""}`;
+    if (activeChallenge) return "Ooh, taking on the daily challenge? Show me what you've got!";
     if (mode === 'random') return "Feeling lucky? My randomizer has produced some... interesting results.";
     if (mode === 'advanced') return "Ah, a trainer who knows what they want! Choose your types wisely.";
     return "Describe your dream Pokémon! Be creative - the AI loves weird concepts.";
@@ -296,13 +364,18 @@ export default function PokemonGenerator({ trainerName, onNavigate }) {
         body = { trainer_name: trainerName };
       } else if (mode === 'simple') {
         endpoint = '/api/quick-generate';
-        body = { description, trainer_name: trainerName };
+        body = { 
+          description, 
+          trainer_name: trainerName,
+          challenge_id: activeChallenge?.challengeId 
+        };
       } else {
         endpoint = '/api/generate';
         body = { 
           concept: description, 
           types: selectedTypes.length ? selectedTypes : undefined,
-          trainer_name: trainerName 
+          trainer_name: trainerName,
+          challenge_id: activeChallenge?.challengeId
         };
       }
       
@@ -319,6 +392,9 @@ export default function PokemonGenerator({ trainerName, onNavigate }) {
       
       const data = await res.json();
       setPokemon(data.pokemon || data);
+      
+      // Clear active challenge after successful generation
+      setActiveChallenge(null);
       
     } catch (err) {
       console.error('Generation error:', err);
@@ -339,7 +415,35 @@ export default function PokemonGenerator({ trainerName, onNavigate }) {
           <BlaineHelper message={getBlaineMessage()} />
         </div>
         
-        {/* Mode Toggle - Pokéball themed */}
+        {/* Daily Challenge */}
+        <div className="mb-6">
+          <DailyChallenge 
+            trainerId={trainerId} 
+            onUseChallenge={handleUseChallenge}
+          />
+        </div>
+        
+        {/* Active Challenge Indicator */}
+        {activeChallenge && (
+          <div className="mb-4 p-3 bg-purple-900/30 border border-purple-500/50 rounded-xl flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <span className="text-purple-400">🎯</span>
+              <span className="text-sm text-purple-200">Working on Daily Challenge</span>
+            </div>
+            <button
+              onClick={() => {
+                setActiveChallenge(null);
+                setSelectedTypes([]);
+                setDescription('');
+              }}
+              className="text-xs text-purple-400 hover:text-purple-300"
+            >
+              Cancel
+            </button>
+          </div>
+        )}
+        
+        {/* Mode Toggle */}
         <div className="flex justify-center gap-2 mb-6">
           {[
             { id: 'simple', label: 'Simple', icon: '📝' },
@@ -371,13 +475,14 @@ export default function PokemonGenerator({ trainerName, onNavigate }) {
           <div 
             className="rounded-2xl p-1 mb-8"
             style={{
-              background: 'linear-gradient(135deg, #DC2626, #991B1B, #DC2626)'
+              background: activeChallenge 
+                ? 'linear-gradient(135deg, #7C3AED, #5B21B6, #7C3AED)'
+                : 'linear-gradient(135deg, #DC2626, #991B1B, #DC2626)'
             }}
           >
             <div className="bg-gray-900 rounded-xl p-6">
-              {/* Screen effect header */}
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-3 h-3 rounded-full bg-red-500 animate-pulse"/>
+                <div className={`w-3 h-3 rounded-full ${activeChallenge ? 'bg-purple-500' : 'bg-red-500'} animate-pulse`}/>
                 <div className="w-3 h-3 rounded-full bg-yellow-500"/>
                 <div className="flex-1 h-1 bg-gray-800 rounded"/>
                 <span className="text-xs text-gray-500 font-mono">POKÉ-GENERATOR v1.0</span>
@@ -393,7 +498,6 @@ export default function PokemonGenerator({ trainerName, onNavigate }) {
                 }}
               />
               
-              {/* Type selector (advanced mode) */}
               {mode === 'advanced' && (
                 <div className="mb-4">
                   <p className="text-sm text-gray-400 mb-3 flex items-center gap-2">
@@ -420,15 +524,18 @@ export default function PokemonGenerator({ trainerName, onNavigate }) {
               <button
                 onClick={handleGenerate}
                 disabled={isGenerating || !description.trim()}
-                className="w-full py-4 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold rounded-xl transition-all shadow-lg shadow-red-500/20 flex items-center justify-center gap-2"
+                className={`w-full py-4 ${
+                  activeChallenge 
+                    ? 'bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-500 hover:to-purple-400 shadow-purple-500/20'
+                    : 'bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 shadow-red-500/20'
+                } disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold rounded-xl transition-all shadow-lg flex items-center justify-center gap-2`}
               >
                 <span className="text-xl">⚡</span>
-                {isGenerating ? 'Generating...' : 'Generate Pokémon'}
+                {isGenerating ? 'Generating...' : activeChallenge ? 'Complete Challenge!' : 'Generate Pokémon'}
               </button>
             </div>
           </div>
         ) : (
-          /* Random Mode UI */
           <div 
             className="rounded-2xl p-1 mb-8"
             style={{

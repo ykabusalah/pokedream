@@ -8,6 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from pathlib import Path
+from typing import Optional
 import uvicorn
 import traceback
 import random
@@ -15,6 +16,7 @@ import re
 
 from pokemon_generator import PokeDream
 from src.pokedex_db import get_db
+from src.daily_challenges import generate_daily_challenge, get_challenge_db
 
 # ==================== RANDOM GENERATION POOLS ====================
 
@@ -113,11 +115,13 @@ class GenerateRequest(BaseModel):
     body_type: str | None = None
     colors: list[str] | None = None
     trainer_name: str = "Trainer"
+    challenge_id: str | None = None
 
 
 class QuickGenerateRequest(BaseModel):
     description: str
     trainer_name: str = "Trainer"
+    challenge_id: str | None = None
 
 
 class RandomGenerateRequest(BaseModel):
@@ -126,6 +130,57 @@ class RandomGenerateRequest(BaseModel):
 
 class ValidateNameRequest(BaseModel):
     name: str
+
+
+class CompleteChallengeRequest(BaseModel):
+    trainer_id: str
+    pokemon_id: str
+
+
+# ==================== DAILY CHALLENGE ENDPOINTS ====================
+
+@app.get("/api/daily-challenge")
+def get_daily_challenge(trainer_id: Optional[str] = None):
+    """Get today's daily challenge."""
+    challenge = generate_daily_challenge()
+    
+    # Check if trainer has completed it
+    if trainer_id:
+        challenge_db = get_challenge_db()
+        challenge["completed"] = challenge_db.has_completed(trainer_id, challenge["id"])
+    else:
+        challenge["completed"] = False
+    
+    return challenge
+
+
+@app.post("/api/daily-challenge/complete")
+def complete_daily_challenge(req: CompleteChallengeRequest):
+    """Mark daily challenge as completed."""
+    challenge = generate_daily_challenge()
+    challenge_db = get_challenge_db()
+    
+    # Check if already completed
+    if challenge_db.has_completed(req.trainer_id, challenge["id"]):
+        return {"success": False, "message": "Challenge already completed today"}
+    
+    # Mark as completed
+    challenge_db.mark_completed(req.trainer_id, challenge["id"], req.pokemon_id)
+    
+    return {"success": True, "message": "Challenge completed!", "challenge_id": challenge["id"]}
+
+
+@app.get("/api/daily-challenge/history/{trainer_id}")
+def get_challenge_history(trainer_id: str):
+    """Get trainer's challenge completion history."""
+    challenge_db = get_challenge_db()
+    completions = challenge_db.get_trainer_completions(trainer_id)
+    total = challenge_db.get_completion_count(trainer_id)
+    
+    return {
+        "completions": completions,
+        "total_completed": total
+    }
 
 
 # ==================== MAIN ENDPOINTS ====================
@@ -151,6 +206,16 @@ def generate_pokemon(req: GenerateRequest):
 
         db = get_db()
         pokemon = db.add_pokemon(pokemon)
+
+        # If this was for a challenge, mark it complete
+        if req.challenge_id:
+            try:
+                challenge_db = get_challenge_db()
+                trainer_id = str(hash(req.trainer_name) % 100000000)
+                challenge_db.mark_completed(trainer_id, req.challenge_id, pokemon.get("id", ""))
+                pokemon["challenge_completed"] = True
+            except Exception as e:
+                print(f"Failed to mark challenge complete: {e}")
 
         return {"success": True, "pokemon": pokemon}
     except Exception as e:
@@ -222,6 +287,16 @@ def quick_generate(req: QuickGenerateRequest):
 
         db = get_db()
         pokemon = db.add_pokemon(pokemon)
+
+        # If this was for a challenge, mark it complete
+        if req.challenge_id:
+            try:
+                challenge_db = get_challenge_db()
+                trainer_id = str(hash(req.trainer_name) % 100000000)
+                challenge_db.mark_completed(trainer_id, req.challenge_id, pokemon.get("id", ""))
+                pokemon["challenge_completed"] = True
+            except Exception as e:
+                print(f"Failed to mark challenge complete: {e}")
 
         return {"success": True, "pokemon": pokemon}
     except Exception as e:

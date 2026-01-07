@@ -4409,8 +4409,1026 @@
       "dex_number": 23,
       "added_at": "2026-01-07T14:52:16.459008",
       "id": "pkmn_0023"
+    },
+    {
+      "name": "Kukulon",
+      "types": [
+        "Normal",
+        "Flying"
+      ],
+      "stats": {
+        "hp": 90,
+        "attack": 75,
+        "defense": 80,
+        "sp_attack": 105,
+        "sp_defense": 85,
+        "speed": 90
+      },
+      "abilities": [
+        "Serene Grace",
+        "Wind Rider",
+        "Aerilate"
+      ],
+      "signature_move": {
+        "name": "Feathered Serpent",
+        "type": "Flying",
+        "category": "Special",
+        "power": 90,
+        "accuracy": 95,
+        "description": "The user summons ancient winds in a spiraling attack. May cause the target to flinch."
+      },
+      "pokedex_entry": "Kukulon soars through ancient ruins, its iridescent feathers catching moonlight as it glides silently overhead. Legend says it appears to travelers who have lost their way, guiding them to safety with gentle calls that echo through stone corridors. Its elaborate tail feathers were once considered sacred symbols of wisdom and protection.",
+      "category": "The Feathered Serpent Pokemon",
+      "height_m": 2.8,
+      "weight_kg": 45.5,
+      "bst": 525,
+      "tier": "fully_evolved",
+      "concept": "A Pok\u00e9mon inspired by Mayan mythology...",
+      "culture": "mexico",
+      "moveset": {
+        "level_up_moves": [
+          {
+            "level": 1,
+            "move": "Leer",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 5,
+            "move": "Growl",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 10,
+            "move": "Gust",
+            "type": "flying",
+            "power": 40,
+            "category": "special"
+          },
+          {
+            "level": 15,
+            "move": "Tailwind",
+            "type": "flying",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 20,
+            "move": "Roost",
+            "type": "flying",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 25,
+            "move": "Protect",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 30,
+            "move": "Air Cutter",
+            "type": "flying",
+            "power": 60,
+            "category": "special"
+          },
+          {
+            "level": 35,
+            "move": "Swords Dance",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 40,
+            "move": "Hyper Voice",
+            "type": "normal",
+            "power": 90,
+            "category": "special"
+          },
+          {
+            "level": 45,
+            "move": "Swift",
+            "type": "normal",
+            "power": 60,
+            "category": "special"
+          },
+          {
+            "level": 50,
+            "move": "Hyper Beam",
+            "type": "normal",
+            "power": 150,
+            "category": "special"
+          }
+        ],
+        "tm_moves": [
+          {
+            "move": "Swift",
+            "type": "normal",
+            "power": 60,
+            "reason": "STAB"
+          },
+          {
+            "move": "Hyper Voice",
+            "type": "normal",
+            "power": 90,
+            "reason": "STAB"
+          },
+          {
+            "move": "Air Cutter",
+            "type": "flying",
+            "power": 60,
+            "reason": "STAB"
+          },
+          {
+            "move": "Air Slash",
+            "type": "flying",
+            "power": 75,
+            "reason": "STAB"
+          },
+          {
+            "move": "Electro Ball",
+            "type": "electric",
+            "power": null,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Energy Ball",
+            "type": "grass",
+            "power": 90,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Heat Wave",
+            "type": "fire",
+            "power": 95,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Protect",
+            "type": "normal",
+            "power": null,
+            "reason": "Utility"
+          }
+        ],
+        "egg_moves": [
+          {
+            "move": "Quick Attack",
+            "type": "normal",
+            "power": 40
+          },
+          {
+            "move": "Slash",
+            "type": "normal",
+            "power": 70
+          },
+          {
+            "move": "Take Down",
+            "type": "normal",
+            "power": 90
+          },
+          {
+            "move": "Double-Edge",
+            "type": "normal",
+            "power": 120
+          }
+        ],
+        "current_moves": [
+          "Swords Dance",
+          "Hyper Voice",
+          "Swift",
+          "Hyper Beam"
+        ]
+      },
+      "image_path": "outputs\\kukulon_20260107_161539_524179_7041.png",
+      "image_prompt": "Normal type pokemon, A Pok\u00e9mon inspired by Mayan mythology..., pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+      "is_shiny": false,
+      "json_path": "outputs\\kukulon_data.json",
+      "trainer": "NL",
+      "dex_number": 24,
+      "added_at": "2026-01-07T16:15:39.538758",
+      "id": "pkmn_0024",
+      "challenge_completed": true
+    },
+    {
+      "name": "Itzamuk",
+      "types": [
+        "Normal",
+        "Flying"
+      ],
+      "stats": {
+        "hp": 95,
+        "attack": 85,
+        "defense": 70,
+        "sp_attack": 105,
+        "sp_defense": 80,
+        "speed": 90
+      },
+      "abilities": [
+        "Keen Eye",
+        "Big Pecks",
+        "Storm Drain"
+      ],
+      "signature_move": {
+        "name": "Feathered Serpent",
+        "type": "Flying",
+        "category": "Special",
+        "power": 90,
+        "accuracy": 85,
+        "description": "Strikes with mystical wind serpents. May cause the target to flinch."
+      },
+      "pokedex_entry": "This majestic Pok\u00e9mon soars through ancient temple ruins, its colorful plumage resembling sacred artwork. It is said to possess the wisdom of forgotten civilizations and can predict weather patterns by reading the wind. Local legends claim it guides lost travelers through jungle paths.",
+      "category": "The Wisdom Bird Pokemon",
+      "height_m": 1.8,
+      "weight_kg": 32.5,
+      "bst": 525,
+      "tier": "fully_evolved",
+      "concept": "Create a Pok\u00e9mon inspired by Mayan mythology",
+      "culture": "mexico",
+      "moveset": {
+        "level_up_moves": [
+          {
+            "level": 1,
+            "move": "Gust",
+            "type": "flying",
+            "power": 40,
+            "category": "special"
+          },
+          {
+            "level": 5,
+            "move": "Growl",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 10,
+            "move": "Leer",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 15,
+            "move": "Air Cutter",
+            "type": "flying",
+            "power": 60,
+            "category": "special"
+          },
+          {
+            "level": 20,
+            "move": "Air Slash",
+            "type": "flying",
+            "power": 75,
+            "category": "special"
+          },
+          {
+            "level": 25,
+            "move": "Swift",
+            "type": "normal",
+            "power": 60,
+            "category": "special"
+          },
+          {
+            "level": 30,
+            "move": "Tailwind",
+            "type": "flying",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 35,
+            "move": "Hyper Beam",
+            "type": "normal",
+            "power": 150,
+            "category": "special"
+          },
+          {
+            "level": 40,
+            "move": "Hyper Voice",
+            "type": "normal",
+            "power": 90,
+            "category": "special"
+          },
+          {
+            "level": 45,
+            "move": "Swords Dance",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 50,
+            "move": "Protect",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          }
+        ],
+        "tm_moves": [
+          {
+            "move": "Swift",
+            "type": "normal",
+            "power": 60,
+            "reason": "STAB"
+          },
+          {
+            "move": "Hyper Voice",
+            "type": "normal",
+            "power": 90,
+            "reason": "STAB"
+          },
+          {
+            "move": "Air Cutter",
+            "type": "flying",
+            "power": 60,
+            "reason": "STAB"
+          },
+          {
+            "move": "Air Slash",
+            "type": "flying",
+            "power": 75,
+            "reason": "STAB"
+          },
+          {
+            "move": "Thunderbolt",
+            "type": "electric",
+            "power": 90,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Leaf Storm",
+            "type": "grass",
+            "power": 130,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Heat Wave",
+            "type": "fire",
+            "power": 95,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Protect",
+            "type": "normal",
+            "power": null,
+            "reason": "Utility"
+          }
+        ],
+        "egg_moves": [
+          {
+            "move": "Quick Attack",
+            "type": "normal",
+            "power": 40
+          },
+          {
+            "move": "Slash",
+            "type": "normal",
+            "power": 70
+          },
+          {
+            "move": "Take Down",
+            "type": "normal",
+            "power": 90
+          },
+          {
+            "move": "Double-Edge",
+            "type": "normal",
+            "power": 120
+          }
+        ],
+        "current_moves": [
+          "Hyper Beam",
+          "Hyper Voice",
+          "Swords Dance",
+          "Protect"
+        ]
+      },
+      "image_path": "outputs\\itzamuk_20260107_161810_420660_8637.png",
+      "image_prompt": "Normal type pokemon, Create a Pok\u00e9mon inspired by Mayan mythology, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+      "is_shiny": false,
+      "json_path": "outputs\\itzamuk_data.json",
+      "trainer": "NL",
+      "dex_number": 25,
+      "added_at": "2026-01-07T16:18:10.437251",
+      "id": "pkmn_0025",
+      "challenge_completed": true
+    },
+    {
+      "name": "Quetzul",
+      "types": [
+        "Normal",
+        "Flying"
+      ],
+      "stats": {
+        "hp": 90,
+        "attack": 85,
+        "defense": 75,
+        "sp_attack": 110,
+        "sp_defense": 95,
+        "speed": 85
+      },
+      "abilities": [
+        "Keen Eye",
+        "Magic Guard",
+        "Serene Grace"
+      ],
+      "signature_move": {
+        "name": "Sacred Glyph",
+        "type": "Normal",
+        "category": "Special",
+        "power": 80,
+        "accuracy": 100,
+        "description": "Ancient symbols appear and strike the target. May cause confusion."
+      },
+      "pokedex_entry": "This majestic Pok\u00e9mon soars through ancient ruins, its feathered wings shimmering with mystical energy. Legends say Quetzul once served as messengers between earth and sky, carrying prayers to the heavens. Its haunting call can be heard echoing through jungle temples at dawn.",
+      "category": "The Feathered Serpent Pokemon",
+      "height_m": 2.8,
+      "weight_kg": 45.5,
+      "bst": 540,
+      "tier": "fully_evolved",
+      "concept": "Create a Pok\u00e9mon inspired by Mayan mythology",
+      "culture": "mexico",
+      "moveset": {
+        "level_up_moves": [
+          {
+            "level": 1,
+            "move": "Leer",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 5,
+            "move": "Growl",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 10,
+            "move": "Gust",
+            "type": "flying",
+            "power": 40,
+            "category": "special"
+          },
+          {
+            "level": 15,
+            "move": "Air Cutter",
+            "type": "flying",
+            "power": 60,
+            "category": "special"
+          },
+          {
+            "level": 20,
+            "move": "Protect",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 25,
+            "move": "Air Slash",
+            "type": "flying",
+            "power": 75,
+            "category": "special"
+          },
+          {
+            "level": 30,
+            "move": "Swift",
+            "type": "normal",
+            "power": 60,
+            "category": "special"
+          },
+          {
+            "level": 35,
+            "move": "Hyper Voice",
+            "type": "normal",
+            "power": 90,
+            "category": "special"
+          },
+          {
+            "level": 40,
+            "move": "Hurricane",
+            "type": "flying",
+            "power": 110,
+            "category": "special"
+          },
+          {
+            "level": 45,
+            "move": "Roost",
+            "type": "flying",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 50,
+            "move": "Hyper Beam",
+            "type": "normal",
+            "power": 150,
+            "category": "special"
+          }
+        ],
+        "tm_moves": [
+          {
+            "move": "Swift",
+            "type": "normal",
+            "power": 60,
+            "reason": "STAB"
+          },
+          {
+            "move": "Hyper Voice",
+            "type": "normal",
+            "power": 90,
+            "reason": "STAB"
+          },
+          {
+            "move": "Air Cutter",
+            "type": "flying",
+            "power": 60,
+            "reason": "STAB"
+          },
+          {
+            "move": "Air Slash",
+            "type": "flying",
+            "power": 75,
+            "reason": "STAB"
+          },
+          {
+            "move": "Thunderbolt",
+            "type": "electric",
+            "power": 90,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Giga Drain",
+            "type": "grass",
+            "power": 75,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Incinerate",
+            "type": "fire",
+            "power": 60,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Protect",
+            "type": "normal",
+            "power": null,
+            "reason": "Utility"
+          }
+        ],
+        "egg_moves": [
+          {
+            "move": "Quick Attack",
+            "type": "normal",
+            "power": 40
+          },
+          {
+            "move": "Slash",
+            "type": "normal",
+            "power": 70
+          },
+          {
+            "move": "Take Down",
+            "type": "normal",
+            "power": 90
+          },
+          {
+            "move": "Double-Edge",
+            "type": "normal",
+            "power": 120
+          }
+        ],
+        "current_moves": [
+          "Hyper Voice",
+          "Hurricane",
+          "Roost",
+          "Hyper Beam"
+        ]
+      },
+      "image_path": "outputs\\quetzul_20260107_162307_834998_4916.png",
+      "image_prompt": "Normal type pokemon, Create a Pok\u00e9mon inspired by Mayan mythology, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+      "is_shiny": false,
+      "json_path": "outputs\\quetzul_data.json",
+      "trainer": "NL",
+      "dex_number": 26,
+      "added_at": "2026-01-07T16:23:07.848609",
+      "id": "pkmn_0026"
+    },
+    {
+      "name": "Coatlux",
+      "types": [
+        "Normal",
+        "Flying"
+      ],
+      "stats": {
+        "hp": 85,
+        "attack": 75,
+        "defense": 80,
+        "sp_attack": 110,
+        "sp_defense": 95,
+        "speed": 85
+      },
+      "abilities": [
+        "Serene Grace",
+        "Keen Eye",
+        "Solar Power"
+      ],
+      "signature_move": {
+        "name": "Feathered Serpent",
+        "type": "Normal",
+        "category": "Special",
+        "power": 90,
+        "accuracy": 100,
+        "description": "A spiraling attack that may cause the target to flinch. Power increases in harsh sunlight."
+      },
+      "pokedex_entry": "This majestic Pok\u00e9mon is said to bridge the earthbound and celestial realms with its graceful flight. Ancient carvings depict Coatlux as a messenger of wisdom, using its colorful plumage to create mesmerizing patterns in the sky. It appears during important celestial events, blessing those who witness its dance.",
+      "category": "The Plumed Serpent Pokemon",
+      "height_m": 3.2,
+      "weight_kg": 45.8,
+      "bst": 530,
+      "tier": "fully_evolved",
+      "concept": "Create a Pok\u00e9mon inspired by Mayan mythology",
+      "culture": "mexico",
+      "moveset": {
+        "level_up_moves": [
+          {
+            "level": 1,
+            "move": "Gust",
+            "type": "flying",
+            "power": 40,
+            "category": "special"
+          },
+          {
+            "level": 5,
+            "move": "Leer",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 10,
+            "move": "Growl",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 15,
+            "move": "Roost",
+            "type": "flying",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 20,
+            "move": "Swords Dance",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 25,
+            "move": "Protect",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 30,
+            "move": "Tailwind",
+            "type": "flying",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 35,
+            "move": "Hyper Voice",
+            "type": "normal",
+            "power": 90,
+            "category": "special"
+          },
+          {
+            "level": 40,
+            "move": "Hurricane",
+            "type": "flying",
+            "power": 110,
+            "category": "special"
+          },
+          {
+            "level": 45,
+            "move": "Hyper Beam",
+            "type": "normal",
+            "power": 150,
+            "category": "special"
+          },
+          {
+            "level": 50,
+            "move": "Air Cutter",
+            "type": "flying",
+            "power": 60,
+            "category": "special"
+          }
+        ],
+        "tm_moves": [
+          {
+            "move": "Swift",
+            "type": "normal",
+            "power": 60,
+            "reason": "STAB"
+          },
+          {
+            "move": "Hyper Voice",
+            "type": "normal",
+            "power": 90,
+            "reason": "STAB"
+          },
+          {
+            "move": "Air Cutter",
+            "type": "flying",
+            "power": 60,
+            "reason": "STAB"
+          },
+          {
+            "move": "Air Slash",
+            "type": "flying",
+            "power": 75,
+            "reason": "STAB"
+          },
+          {
+            "move": "Heat Wave",
+            "type": "fire",
+            "power": 95,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Solar Beam",
+            "type": "grass",
+            "power": 120,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Hydro Pump",
+            "type": "water",
+            "power": 110,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Protect",
+            "type": "normal",
+            "power": null,
+            "reason": "Utility"
+          }
+        ],
+        "egg_moves": [
+          {
+            "move": "Quick Attack",
+            "type": "normal",
+            "power": 40
+          },
+          {
+            "move": "Slash",
+            "type": "normal",
+            "power": 70
+          },
+          {
+            "move": "Take Down",
+            "type": "normal",
+            "power": 90
+          },
+          {
+            "move": "Double-Edge",
+            "type": "normal",
+            "power": 120
+          }
+        ],
+        "current_moves": [
+          "Hyper Voice",
+          "Hurricane",
+          "Hyper Beam",
+          "Air Cutter"
+        ]
+      },
+      "image_path": "outputs\\coatlux_20260107_171112_226527_9783.png",
+      "image_prompt": "Normal type pokemon, Create a Pok\u00e9mon inspired by Mayan mythology, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+      "is_shiny": false,
+      "json_path": "outputs\\coatlux_data.json",
+      "trainer": "NL",
+      "dex_number": 27,
+      "added_at": "2026-01-07T17:11:12.243105",
+      "id": "pkmn_0027",
+      "challenge_completed": true
+    },
+    {
+      "name": "Wayabak",
+      "types": [
+        "Normal",
+        "Flying"
+      ],
+      "stats": {
+        "hp": 95,
+        "attack": 85,
+        "defense": 75,
+        "sp_attack": 110,
+        "sp_defense": 90,
+        "speed": 75
+      },
+      "abilities": [
+        "Keen Eye",
+        "Magic Guard",
+        "Prankster"
+      ],
+      "signature_move": {
+        "name": "Starfall Vision",
+        "type": "Normal",
+        "category": "Special",
+        "power": 85,
+        "accuracy": 90,
+        "description": "The user calls down celestial energy based on ancient calculations. May lower the target's accuracy."
+      },
+      "pokedex_entry": "This wise Pokemon was revered by ancient civilizations for its ability to predict celestial events with perfect accuracy. Its elaborate tail feathers are said to map the movement of stars across the night sky. Wayabak builds intricate stepped perches that mirror sacred architectural designs.",
+      "category": "The Stargazer Pokemon",
+      "height_m": 1.8,
+      "weight_kg": 42.5,
+      "bst": 530,
+      "tier": "fully_evolved",
+      "concept": "Create a Pok\u00e9mon inspired by Mayan mythology",
+      "culture": "mexico",
+      "moveset": {
+        "level_up_moves": [
+          {
+            "level": 1,
+            "move": "Leer",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 5,
+            "move": "Growl",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 10,
+            "move": "Gust",
+            "type": "flying",
+            "power": 40,
+            "category": "special"
+          },
+          {
+            "level": 15,
+            "move": "Tailwind",
+            "type": "flying",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 20,
+            "move": "Swords Dance",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 25,
+            "move": "Air Cutter",
+            "type": "flying",
+            "power": 60,
+            "category": "special"
+          },
+          {
+            "level": 30,
+            "move": "Swift",
+            "type": "normal",
+            "power": 60,
+            "category": "special"
+          },
+          {
+            "level": 35,
+            "move": "Hyper Voice",
+            "type": "normal",
+            "power": 90,
+            "category": "special"
+          },
+          {
+            "level": 40,
+            "move": "Hyper Beam",
+            "type": "normal",
+            "power": 150,
+            "category": "special"
+          },
+          {
+            "level": 45,
+            "move": "Hurricane",
+            "type": "flying",
+            "power": 110,
+            "category": "special"
+          },
+          {
+            "level": 50,
+            "move": "Roost",
+            "type": "flying",
+            "power": null,
+            "category": "status"
+          }
+        ],
+        "tm_moves": [
+          {
+            "move": "Swift",
+            "type": "normal",
+            "power": 60,
+            "reason": "STAB"
+          },
+          {
+            "move": "Hyper Voice",
+            "type": "normal",
+            "power": 90,
+            "reason": "STAB"
+          },
+          {
+            "move": "Air Cutter",
+            "type": "flying",
+            "power": 60,
+            "reason": "STAB"
+          },
+          {
+            "move": "Air Slash",
+            "type": "flying",
+            "power": 75,
+            "reason": "STAB"
+          },
+          {
+            "move": "Fire Blast",
+            "type": "fire",
+            "power": 110,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Giga Drain",
+            "type": "grass",
+            "power": 75,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Scald",
+            "type": "water",
+            "power": 80,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Protect",
+            "type": "normal",
+            "power": null,
+            "reason": "Utility"
+          }
+        ],
+        "egg_moves": [
+          {
+            "move": "Quick Attack",
+            "type": "normal",
+            "power": 40
+          },
+          {
+            "move": "Slash",
+            "type": "normal",
+            "power": 70
+          },
+          {
+            "move": "Take Down",
+            "type": "normal",
+            "power": 90
+          },
+          {
+            "move": "Double-Edge",
+            "type": "normal",
+            "power": 120
+          }
+        ],
+        "current_moves": [
+          "Hyper Voice",
+          "Hyper Beam",
+          "Hurricane",
+          "Roost"
+        ]
+      },
+      "image_path": "outputs\\wayabak_20260107_171317_393323_8485.png",
+      "image_prompt": "Normal type pokemon, Create a Pok\u00e9mon inspired by Mayan mythology, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+      "is_shiny": false,
+      "json_path": "outputs\\wayabak_data.json",
+      "trainer": "NL",
+      "dex_number": 28,
+      "added_at": "2026-01-07T17:13:17.401360",
+      "id": "pkmn_0028"
     }
   ],
-  "next_dex_number": 24,
+  "next_dex_number": 29,
   "created_at": "2026-01-05T23:25:41.275963"
 }
