@@ -1,11 +1,26 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import PokeDreamIntro from './components/PokeDreamIntro';
 import PokemonGenerator from './components/PokemonGenerator';
 import Pokedex from './components/Pokedex';
 import PokemonDetail from './components/PokemonDetail';
 import TrainerProfile from './components/TrainerProfile';
 
-// Pokéball Logo Component
+// ============================================
+// TIME TRACKING HELPERS (NEW IN COMMIT 3)
+// ============================================
+
+const getTotalTimeSpent = () => {
+  return parseInt(localStorage.getItem('pokedream_total_time_seconds') || '0', 10);
+};
+
+const saveTotalTime = (seconds) => {
+  localStorage.setItem('pokedream_total_time_seconds', seconds.toString());
+};
+
+// ============================================
+// POKEBALL LOGO COMPONENT
+// ============================================
+
 const PokeballLogo = ({ size = 32 }) => (
   <svg viewBox="0 0 100 100" width={size} height={size} className="drop-shadow-lg">
     {/* Top half - red */}
@@ -33,7 +48,10 @@ const PokeballLogo = ({ size = 32 }) => (
   </svg>
 );
 
-// Nav Link Component
+// ============================================
+// NAV LINK COMPONENT
+// ============================================
+
 const NavLink = ({ onClick, active, children }) => (
   <button
     onClick={onClick}
@@ -49,7 +67,10 @@ const NavLink = ({ onClick, active, children }) => (
   </button>
 );
 
-// Main Navigation Bar
+// ============================================
+// MAIN NAVIGATION BAR
+// ============================================
+
 const NavBar = ({ currentPage, trainerName, onNavigate }) => (
   <nav className="sticky top-0 z-50 bg-gray-950/95 backdrop-blur-sm border-b border-gray-800">
     {/* Red accent line at top */}
@@ -132,6 +153,10 @@ const NavBar = ({ currentPage, trainerName, onNavigate }) => (
   </nav>
 );
 
+// ============================================
+// MAIN APP COMPONENT
+// ============================================
+
 export default function App() {
   // Check if returning user (has saved name)
   const [savedTrainerName] = useState(() => {
@@ -147,6 +172,62 @@ export default function App() {
   
   const [selectedDexNumber, setSelectedDexNumber] = useState(null);
 
+  // ============================================
+  // GLOBAL TIME TRACKING (NEW IN COMMIT 3)
+  // ============================================
+  
+  // Store the timestamp when the app first loaded (this session)
+  const [sessionStart] = useState(() => Date.now());
+  
+  // Active time for this visit (updates every second)
+  const [activeSeconds, setActiveSeconds] = useState(0);
+  
+  // Total time from all PREVIOUS sessions (loaded once from localStorage)
+  const [previousTotalSeconds] = useState(() => getTotalTimeSpent());
+
+  // Update active time every second
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const elapsed = Math.floor((Date.now() - sessionStart) / 1000);
+      setActiveSeconds(elapsed);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [sessionStart]);
+
+  // Save time when user leaves the page
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      const finalActiveSeconds = Math.floor((Date.now() - sessionStart) / 1000);
+      const newTotal = previousTotalSeconds + finalActiveSeconds;
+      saveTotalTime(newTotal);
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, [sessionStart, previousTotalSeconds]);
+
+  // Also save periodically (every 60 seconds) in case of crash
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const currentActiveSeconds = Math.floor((Date.now() - sessionStart) / 1000);
+      const newTotal = previousTotalSeconds + currentActiveSeconds;
+      saveTotalTime(newTotal);
+    }, 60000);
+
+    return () => clearInterval(interval);
+  }, [sessionStart, previousTotalSeconds]);
+
+  // Calculate total time (previous sessions + current active time)
+  const totalSeconds = previousTotalSeconds + activeSeconds;
+
+  // ============================================
+  // NAVIGATION HANDLERS
+  // ============================================
+
   const handleIntroComplete = (name) => {
     setTrainerName(name);
     localStorage.setItem('pokedream_trainer_name', name);
@@ -160,11 +241,15 @@ export default function App() {
     setCurrentPage(page);
   };
 
-  const handleChangeName = () => {
-    // Clear saved name and go back to intro
-    localStorage.removeItem('pokedream_trainer_name');
-    setCurrentPage('intro');
+  const handleChangeName = (newName) => {
+    // Update the name in state and localStorage
+    localStorage.setItem('pokedream_trainer_name', newName);
+    setTrainerName(newName);
   };
+
+  // ============================================
+  // RENDER
+  // ============================================
 
   // Intro (new users get full intro, returning users get welcome back)
   if (currentPage === 'intro') {
@@ -194,7 +279,7 @@ export default function App() {
     );
   }
 
-  // Trainer Profile
+  // Trainer Profile - pass time tracking props
   if (currentPage === 'profile') {
     return (
       <div className="min-h-screen bg-gray-950">
@@ -203,6 +288,8 @@ export default function App() {
           trainerName={trainerName} 
           onNavigate={handleNavigate}
           onChangeName={handleChangeName}
+          activeSeconds={activeSeconds}
+          totalSeconds={totalSeconds}
         />
       </div>
     );

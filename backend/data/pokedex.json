@@ -3809,8 +3809,608 @@
       "dex_number": 20,
       "added_at": "2026-01-06T20:11:27.384817",
       "id": "pkmn_0020"
+    },
+    {
+      "name": "Voltavis",
+      "types": [
+        "Electric",
+        "Flying"
+      ],
+      "stats": {
+        "hp": 75,
+        "attack": 85,
+        "defense": 70,
+        "sp_attack": 115,
+        "sp_defense": 80,
+        "speed": 105
+      },
+      "abilities": [
+        "Static",
+        "Keen Eye",
+        "Lightning Rod"
+      ],
+      "signature_move": {
+        "name": "Thunderstrike Dive",
+        "type": "Electric",
+        "category": "Physical",
+        "power": 90,
+        "accuracy": 95,
+        "description": "The user dives from great heights while charged with electricity. This move has increased critical hit ratio."
+      },
+      "pokedex_entry": "Voltavis soars through storm clouds, collecting electrical energy in its brilliant yellow plumage. When it spots prey below, it can dive at incredible speeds while wreathed in lightning. Its feathers glow brightest during thunderstorms, serving as a beacon to guide lost travelers to safety.",
+      "category": "The Thunder Wing Pokemon",
+      "height_m": 1.8,
+      "weight_kg": 42.5,
+      "bst": 530,
+      "tier": "fully_evolved",
+      "concept": "yellow lightning bird",
+      "culture": "original",
+      "moveset": {
+        "level_up_moves": [
+          {
+            "level": 1,
+            "move": "Gust",
+            "type": "flying",
+            "power": 40,
+            "category": "special"
+          },
+          {
+            "level": 5,
+            "move": "Leer",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 10,
+            "move": "Thunder Shock",
+            "type": "electric",
+            "power": 40,
+            "category": "special"
+          },
+          {
+            "level": 15,
+            "move": "Air Slash",
+            "type": "flying",
+            "power": 75,
+            "category": "special"
+          },
+          {
+            "level": 20,
+            "move": "Thunder Wave",
+            "type": "electric",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 25,
+            "move": "Volt Switch",
+            "type": "electric",
+            "power": 70,
+            "category": "special"
+          },
+          {
+            "level": 30,
+            "move": "Electric Terrain",
+            "type": "electric",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 35,
+            "move": "Hyper Voice",
+            "type": "normal",
+            "power": 90,
+            "category": "special"
+          },
+          {
+            "level": 40,
+            "move": "Air Cutter",
+            "type": "flying",
+            "power": 60,
+            "category": "special"
+          },
+          {
+            "level": 45,
+            "move": "Hurricane",
+            "type": "flying",
+            "power": 110,
+            "category": "special"
+          },
+          {
+            "level": 50,
+            "move": "Electro Ball",
+            "type": "electric",
+            "power": null,
+            "category": "special"
+          }
+        ],
+        "tm_moves": [
+          {
+            "move": "Electro Ball",
+            "type": "electric",
+            "power": null,
+            "reason": "STAB"
+          },
+          {
+            "move": "Thunderbolt",
+            "type": "electric",
+            "power": 90,
+            "reason": "STAB"
+          },
+          {
+            "move": "Air Cutter",
+            "type": "flying",
+            "power": 60,
+            "reason": "STAB"
+          },
+          {
+            "move": "Air Slash",
+            "type": "flying",
+            "power": 75,
+            "reason": "STAB"
+          },
+          {
+            "move": "Freeze-Dry",
+            "type": "ice",
+            "power": 70,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Hydro Pump",
+            "type": "water",
+            "power": 110,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Fire Blast",
+            "type": "fire",
+            "power": 110,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Protect",
+            "type": "normal",
+            "power": null,
+            "reason": "Utility"
+          }
+        ],
+        "egg_moves": [
+          {
+            "move": "Wild Charge",
+            "type": "electric",
+            "power": 90
+          },
+          {
+            "move": "Volt Tackle",
+            "type": "electric",
+            "power": 120
+          },
+          {
+            "move": "Brave Bird",
+            "type": "flying",
+            "power": 120
+          },
+          {
+            "move": "Air Cutter",
+            "type": "flying",
+            "power": 60
+          }
+        ],
+        "current_moves": [
+          "Hyper Voice",
+          "Air Cutter",
+          "Hurricane",
+          "Electro Ball"
+        ]
+      },
+      "image_path": "outputs\\voltavis_20260107_144256_447294_9689.png",
+      "image_prompt": "Electric/Flying type pokemon, yellow lightning bird, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+      "is_shiny": false,
+      "json_path": "outputs\\voltavis_data.json",
+      "trainer": "NL",
+      "dex_number": 21,
+      "added_at": "2026-01-07T14:42:56.461560",
+      "id": "pkmn_0021"
+    },
+    {
+      "name": "Tajilux",
+      "types": [
+        "Dragon",
+        "Fire"
+      ],
+      "stats": {
+        "hp": 85,
+        "attack": 70,
+        "defense": 80,
+        "sp_attack": 120,
+        "sp_defense": 95,
+        "speed": 85
+      },
+      "abilities": [
+        "Blaze",
+        "Defiant",
+        "Flame Body"
+      ],
+      "signature_move": {
+        "name": "Crown of Flames",
+        "type": "Fire",
+        "category": "Special",
+        "power": 90,
+        "accuracy": 100,
+        "description": "The user spreads its magnificent plumage, releasing searing embers that may burn the target and boost the user's Sp.Attack."
+      },
+      "pokedex_entry": "Tajilux displays its blazing tail feathers in elaborate courtship dances that can be seen from miles away across desert dunes. Each ember that falls from its plumage is said to grant good fortune to those pure of heart. Ancient tales speak of sultans who kept these majestic Pokemon as symbols of their divine right to rule.",
+      "category": "The Royal Flame Pokemon",
+      "height_m": 2.1,
+      "weight_kg": 68.5,
+      "bst": 535,
+      "tier": "fully_evolved",
+      "concept": "a flaming peacock with ember feathers",
+      "culture": "arabian",
+      "moveset": {
+        "level_up_moves": [
+          {
+            "level": 1,
+            "move": "Leer",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 5,
+            "move": "Growl",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 10,
+            "move": "Dragon Breath",
+            "type": "dragon",
+            "power": 60,
+            "category": "special"
+          },
+          {
+            "level": 15,
+            "move": "Dragon Dance",
+            "type": "dragon",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 20,
+            "move": "Swift",
+            "type": "normal",
+            "power": 60,
+            "category": "special"
+          },
+          {
+            "level": 25,
+            "move": "Sunny Day",
+            "type": "fire",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 30,
+            "move": "Incinerate",
+            "type": "fire",
+            "power": 60,
+            "category": "special"
+          },
+          {
+            "level": 35,
+            "move": "Hyper Beam",
+            "type": "normal",
+            "power": 150,
+            "category": "special"
+          },
+          {
+            "level": 40,
+            "move": "Hyper Voice",
+            "type": "normal",
+            "power": 90,
+            "category": "special"
+          },
+          {
+            "level": 45,
+            "move": "Heat Wave",
+            "type": "fire",
+            "power": 95,
+            "category": "special"
+          },
+          {
+            "level": 50,
+            "move": "Will-O-Wisp",
+            "type": "fire",
+            "power": null,
+            "category": "status"
+          }
+        ],
+        "tm_moves": [
+          {
+            "move": "Dragon Pulse",
+            "type": "dragon",
+            "power": 85,
+            "reason": "STAB"
+          },
+          {
+            "move": "Draco Meteor",
+            "type": "dragon",
+            "power": 130,
+            "reason": "STAB"
+          },
+          {
+            "move": "Incinerate",
+            "type": "fire",
+            "power": 60,
+            "reason": "STAB"
+          },
+          {
+            "move": "Flamethrower",
+            "type": "fire",
+            "power": 90,
+            "reason": "STAB"
+          },
+          {
+            "move": "Thunderbolt",
+            "type": "electric",
+            "power": 90,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Scald",
+            "type": "water",
+            "power": 80,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Ice Beam",
+            "type": "ice",
+            "power": 90,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Protect",
+            "type": "normal",
+            "power": null,
+            "reason": "Utility"
+          }
+        ],
+        "egg_moves": [
+          {
+            "move": "Blaze Kick",
+            "type": "fire",
+            "power": 85
+          },
+          {
+            "move": "Flare Blitz",
+            "type": "fire",
+            "power": 120
+          }
+        ],
+        "current_moves": [
+          "Hyper Beam",
+          "Hyper Voice",
+          "Heat Wave",
+          "Will-O-Wisp"
+        ]
+      },
+      "image_path": "outputs\\tajilux_20260107_145130_455831_8840.png",
+      "image_prompt": "Dragon type pokemon, a flaming peacock with ember feathers, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+      "is_shiny": false,
+      "json_path": "outputs\\tajilux_data.json",
+      "trainer": "NL",
+      "random_generated": true,
+      "dex_number": 22,
+      "added_at": "2026-01-07T14:51:30.468590",
+      "id": "pkmn_0022"
+    },
+    {
+      "name": "Phantusk",
+      "types": [
+        "Fighting",
+        "Ghost"
+      ],
+      "stats": {
+        "hp": 85,
+        "attack": 110,
+        "defense": 75,
+        "sp_attack": 65,
+        "sp_defense": 80,
+        "speed": 105
+      },
+      "abilities": [
+        "Iron Fist",
+        "Scrappy",
+        "Cursed Body"
+      ],
+      "signature_move": {
+        "name": "Phantom Strike",
+        "type": "Fighting",
+        "category": "Physical",
+        "power": 85,
+        "accuracy": 90,
+        "description": "A ghostly punch that phases through the target's defenses, ignoring stat changes"
+      },
+      "pokedex_entry": "This Pokemon's spectral head floats above its muscular dragon body, allowing it to see into both the physical and spiritual realms. Ancient warriors believed Phantusk served as guardians between worlds, training both the living and the dead. Its phantom head can detach completely during battle, confusing opponents while its body continues fighting.",
+      "category": "The Spirit Warrior Pokemon",
+      "height_m": 2.1,
+      "weight_kg": 78.5,
+      "bst": 520,
+      "tier": "fully_evolved",
+      "concept": "a fighting dragon with a ghost head",
+      "culture": "original",
+      "moveset": {
+        "level_up_moves": [
+          {
+            "level": 1,
+            "move": "Tackle",
+            "type": "normal",
+            "power": 40,
+            "category": "physical"
+          },
+          {
+            "level": 5,
+            "move": "Confuse Ray",
+            "type": "ghost",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 10,
+            "move": "Mach Punch",
+            "type": "fighting",
+            "power": 40,
+            "category": "physical"
+          },
+          {
+            "level": 15,
+            "move": "Lick",
+            "type": "ghost",
+            "power": 30,
+            "category": "physical"
+          },
+          {
+            "level": 20,
+            "move": "Will-O-Wisp",
+            "type": "fire",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 25,
+            "move": "Take Down",
+            "type": "normal",
+            "power": 90,
+            "category": "physical"
+          },
+          {
+            "level": 30,
+            "move": "Bulk Up",
+            "type": "fighting",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 35,
+            "move": "Aura Sphere",
+            "type": "fighting",
+            "power": 80,
+            "category": "physical"
+          },
+          {
+            "level": 40,
+            "move": "Phantom Force",
+            "type": "ghost",
+            "power": 90,
+            "category": "physical"
+          },
+          {
+            "level": 45,
+            "move": "Giga Impact",
+            "type": "normal",
+            "power": 150,
+            "category": "physical"
+          },
+          {
+            "level": 50,
+            "move": "Double-Edge",
+            "type": "normal",
+            "power": 120,
+            "category": "physical"
+          }
+        ],
+        "tm_moves": [
+          {
+            "move": "Brick Break",
+            "type": "fighting",
+            "power": 75,
+            "reason": "STAB"
+          },
+          {
+            "move": "Drain Punch",
+            "type": "fighting",
+            "power": 75,
+            "reason": "STAB"
+          },
+          {
+            "move": "Shadow Claw",
+            "type": "ghost",
+            "power": 70,
+            "reason": "STAB"
+          },
+          {
+            "move": "Phantom Force",
+            "type": "ghost",
+            "power": 90,
+            "reason": "STAB"
+          },
+          {
+            "move": "Volt Tackle",
+            "type": "electric",
+            "power": 120,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Waterfall",
+            "type": "water",
+            "power": 80,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Fire Punch",
+            "type": "fire",
+            "power": 75,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Protect",
+            "type": "normal",
+            "power": null,
+            "reason": "Utility"
+          }
+        ],
+        "egg_moves": [
+          {
+            "move": "Karate Chop",
+            "type": "fighting",
+            "power": 50
+          },
+          {
+            "move": "Mach Punch",
+            "type": "fighting",
+            "power": 40
+          },
+          {
+            "move": "Drain Punch",
+            "type": "fighting",
+            "power": 75
+          },
+          {
+            "move": "Vacuum Wave",
+            "type": "fighting",
+            "power": 40
+          }
+        ],
+        "current_moves": [
+          "Aura Sphere",
+          "Phantom Force",
+          "Giga Impact",
+          "Double-Edge"
+        ]
+      },
+      "image_path": "outputs\\phantusk_20260107_145216_443163_5312.png",
+      "image_prompt": "Fighting/Ghost type pokemon, a fighting dragon with a ghost head, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+      "is_shiny": false,
+      "json_path": "outputs\\phantusk_data.json",
+      "trainer": "NL",
+      "dex_number": 23,
+      "added_at": "2026-01-07T14:52:16.459008",
+      "id": "pkmn_0023"
     }
   ],
-  "next_dex_number": 21,
+  "next_dex_number": 24,
   "created_at": "2026-01-05T23:25:41.275963"
 }
