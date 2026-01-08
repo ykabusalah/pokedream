@@ -4,6 +4,7 @@ import PokemonGenerator from './components/PokemonGenerator';
 import Pokedex from './components/Pokedex';
 import PokemonDetail from './components/PokemonDetail';
 import TrainerProfile from './components/TrainerProfile';
+import Tournament from './components/Tournament';
 import AchievementPopup, { ACHIEVEMENTS, checkNewAchievements } from './components/AchievementPopup';
 
 const API_URL = 'http://localhost:8000';
@@ -131,6 +132,12 @@ const NavBar = ({ currentPage, trainerName, onNavigate }) => (
           >
             📖 Pokédex
           </NavLink>
+          <NavLink 
+            onClick={() => onNavigate('tournament')} 
+            active={currentPage === 'tournament'}
+          >
+            🏆 Tournament
+          </NavLink>
         </div>
         
         <button
@@ -166,6 +173,12 @@ const NavBar = ({ currentPage, trainerName, onNavigate }) => (
         active={currentPage === 'pokedex'}
       >
         📖 Pokédex
+      </NavLink>
+      <NavLink 
+        onClick={() => onNavigate('tournament')} 
+        active={currentPage === 'tournament'}
+      >
+        🏆 Tournament
       </NavLink>
     </div>
   </nav>
@@ -352,7 +365,18 @@ export default function App() {
     return (
       <div className="min-h-screen bg-gray-950">
         <NavBar currentPage={currentPage} trainerName={trainerName} onNavigate={handleNavigate} />
-        <Pokedex onNavigate={handleNavigate} />
+        <Pokedex onNavigate={handleNavigate} trainerId={trainerId} />
+        {achievementPopup}
+      </div>
+    );
+  }
+
+  // Tournament
+  if (currentPage === 'tournament') {
+    return (
+      <div className="min-h-screen bg-gray-950">
+        <NavBar currentPage={currentPage} trainerName={trainerName} onNavigate={handleNavigate} />
+        <Tournament trainerId={trainerId} onNavigate={handleNavigate} />
         {achievementPopup}
       </div>
     );

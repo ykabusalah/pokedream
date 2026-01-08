@@ -17,6 +17,8 @@ import re
 from pokemon_generator import PokeDream
 from src.pokedex_db import get_db
 from src.daily_challenges import generate_daily_challenge, get_challenge_db
+from src.tournament_system import get_tournament_system
+from src.voting_system import get_voting_system
 
 # ==================== RANDOM GENERATION POOLS ====================
 
@@ -105,6 +107,31 @@ app.mount("/outputs", StaticFiles(directory="outputs"), name="outputs")
 
 generator = PokeDream()
 
+# ==================== AUTO-CREATE TOURNAMENT ON STARTUP ====================
+
+@app.on_event("startup")
+async def startup_event():
+    """Auto-create tournament if none exists."""
+    try:
+        tournament_system = get_tournament_system()
+        current = tournament_system.get_current_tournament()
+        
+        if not current:
+            db = get_db()
+            pokemon_count = db.get_count()
+            
+            # Only create if we have at least 16 Pokémon
+            if pokemon_count >= 16:
+                tournament = tournament_system.create_tournament(db)
+                print(f"✓ Auto-created tournament: {tournament['id']}")
+                print(f"  Participants: {len(tournament['participants'])} Pokémon")
+            else:
+                print(f"⚠ Need at least 16 Pokémon to create tournament (current: {pokemon_count})")
+        else:
+            print(f"✓ Active tournament exists: {current['id']}")
+    except Exception as e:
+        print(f"⚠ Failed to auto-create tournament: {e}")
+
 # ==================== REQUEST MODELS ====================
 
 class GenerateRequest(BaseModel):
@@ -138,6 +165,12 @@ class ValidateNameRequest(BaseModel):
 class CompleteChallengeRequest(BaseModel):
     trainer_id: str
     pokemon_id: str
+
+
+class VoteRequest(BaseModel):
+    matchup_id: str
+    trainer_id: str
+    pokemon_id: int
 
 
 # ==================== DAILY CHALLENGE ENDPOINTS ====================
@@ -465,24 +498,272 @@ def get_trainer_recent(trainer_id: str, limit: int = 10):
 
 
 @app.get("/api/trainer/{trainer_id}/pokemon")
-def get_trainer_pokemon(trainer_id: str, limit: int = 50, offset: int = 0):
-    """Get all Pokemon for a specific trainer."""
+def get_trainer_pokemon(trainer_id: str, type: str = None, limit: int = 50, offset: int = 0):
+    """Get Pokemon for a specific trainer (optionally filtered by type)."""
     db = get_db()
     all_pokemon = db.get_all()
-    
+
     # Filter by trainer_id
     trainer_pokemon = [p for p in all_pokemon if p.get("trainer_id") == trainer_id]
+
+    # Optional type filter
+    if type:
+        trainer_pokemon = [p for p in trainer_pokemon if type in p.get("types", [])]
+
     total = len(trainer_pokemon)
-    
+
     # Sort by dex_number (most recent first) and paginate
     trainer_pokemon.sort(key=lambda p: p.get("dex_number", 0), reverse=True)
     trainer_pokemon = trainer_pokemon[offset:offset + limit]
-    
+
     return {
         "pokemon": trainer_pokemon,
         "total": total,
         "limit": limit,
         "offset": offset
+    }
+
+
+@app.get("/api/trainer/{trainer_id}/pokemon/search")
+def search_trainer_pokemon(trainer_id: str, q: str, type: str = None, limit: int = 50, offset: int = 0):
+    """Search a trainer's Pokemon by name (optionally filtered by type)."""
+    db = get_db()
+    all_pokemon = db.get_all()
+
+    # Filter by trainer_id first
+    trainer_pokemon = [p for p in all_pokemon if p.get("trainer_id") == trainer_id]
+
+    # Apply search
+    q_lower = q.lower()
+    trainer_pokemon = [p for p in trainer_pokemon if q_lower in p.get("name", "").lower()]
+
+    # Optional type filter
+    if type:
+        trainer_pokemon = [p for p in trainer_pokemon if type in p.get("types", [])]
+
+    total = len(trainer_pokemon)
+
+    # Sort by dex_number (most recent first) and paginate
+    trainer_pokemon.sort(key=lambda p: p.get("dex_number", 0), reverse=True)
+    trainer_pokemon = trainer_pokemon[offset:offset + limit]
+
+    return {
+        "pokemon": trainer_pokemon,
+        "total": total,
+        "limit": limit,
+        "offset": offset
+    }
+
+
+# ==================== TOURNAMENT ENDPOINTS ====================
+
+@app.get("/api/tournament/current")
+def get_current_tournament():
+    """Get the currently active tournament."""
+    tournament_system = get_tournament_system()
+    tournament = tournament_system.get_current_tournament()
+    
+    if not tournament:
+        return {"tournament": None, "message": "No active tournament"}
+    
+    # Enrich with actual Pokémon data
+    db = get_db()
+    enriched_bracket = {}
+    
+    for round_key, matchups in tournament["bracket"].items():
+        enriched_matchups = []
+        
+        for matchup in matchups:
+            pokemon_a = None
+            pokemon_b = None
+            
+            if matchup["pokemon_a_id"]:
+                pokemon_a = db.get_by_dex_number(matchup["pokemon_a_id"])
+            
+            if matchup["pokemon_b_id"]:
+                pokemon_b = db.get_by_dex_number(matchup["pokemon_b_id"])
+            
+            enriched_matchups.append({
+                **matchup,
+                "pokemon_a": pokemon_a,
+                "pokemon_b": pokemon_b
+            })
+        
+        enriched_bracket[round_key] = enriched_matchups
+    
+    tournament["bracket"] = enriched_bracket
+    
+    return {"tournament": tournament}
+
+
+@app.get("/api/tournament/current/matchups")
+def get_current_matchups(trainer_id: Optional[str] = None):
+    """Get active matchups for voting in current tournament."""
+    tournament_system = get_tournament_system()
+    voting_system = get_voting_system()
+    
+    tournament = tournament_system.get_current_tournament()
+    
+    if not tournament:
+        return {"matchups": [], "message": "No active tournament"}
+    
+    matchups = tournament_system.get_active_matchups(tournament["id"])
+    
+    # Enrich with Pokémon data and vote counts
+    db = get_db()
+    enriched_matchups = []
+    
+    for matchup in matchups:
+        pokemon_a = db.get_by_dex_number(matchup["pokemon_a_id"])
+        pokemon_b = db.get_by_dex_number(matchup["pokemon_b_id"])
+        
+        # Get vote counts
+        votes = voting_system.get_matchup_votes(matchup["matchup_id"])
+        votes_a = votes.get(matchup["pokemon_a_id"], 0)
+        votes_b = votes.get(matchup["pokemon_b_id"], 0)
+        
+        # Check if trainer has voted
+        has_voted = False
+        if trainer_id:
+            has_voted = voting_system.has_voted(matchup["matchup_id"], trainer_id)
+        
+        enriched_matchups.append({
+            "matchup_id": matchup["matchup_id"],
+            "pokemon_a": pokemon_a,
+            "pokemon_b": pokemon_b,
+            "votes_a": votes_a,
+            "votes_b": votes_b,
+            "has_voted": has_voted,
+            "status": matchup["status"]
+        })
+    
+    return {
+        "tournament": {
+            "id": tournament["id"],
+            "season": tournament["season"],
+            "week": tournament["week"],
+            "current_round": tournament["current_round"],
+            "start_date": tournament["start_date"],
+            "end_date": tournament["end_date"]
+        },
+        "matchups": enriched_matchups
+    }
+
+
+@app.post("/api/tournament/vote")
+def cast_tournament_vote(req: VoteRequest):
+    """Cast a vote in a tournament matchup."""
+    voting_system = get_voting_system()
+    tournament_system = get_tournament_system()
+    
+    # Verify tournament exists and is active
+    tournament = tournament_system.get_current_tournament()
+    if not tournament:
+        raise HTTPException(status_code=404, detail="No active tournament")
+    
+    # Verify matchup exists and is active
+    matchups = tournament_system.get_active_matchups(tournament["id"])
+    matchup = next((m for m in matchups if m["matchup_id"] == req.matchup_id), None)
+    
+    if not matchup:
+        raise HTTPException(status_code=404, detail="Matchup not found or not active")
+    
+    # Verify trainer isn't voting on their own Pokémon
+    db = get_db()
+    pokemon = db.get_by_dex_number(req.pokemon_id)
+    
+    if pokemon and pokemon.get("trainer_id") == req.trainer_id:
+        raise HTTPException(status_code=400, detail="You cannot vote for your own Pokémon")
+    
+    # Cast vote
+    result = voting_system.cast_vote(
+        matchup_id=req.matchup_id,
+        trainer_id=req.trainer_id,
+        pokemon_id=req.pokemon_id
+    )
+    
+    if not result["success"]:
+        raise HTTPException(status_code=400, detail=result["message"])
+    
+    return result
+
+
+@app.get("/api/tournament/history")
+def get_tournament_history(limit: int = 10):
+    """Get past tournaments."""
+    tournament_system = get_tournament_system()
+    tournaments = tournament_system.get_tournament_history(limit)
+    
+    return {"tournaments": tournaments}
+
+
+@app.get("/api/tournament/{tournament_id}")
+def get_tournament_details(tournament_id: str):
+    """Get details for a specific tournament."""
+    tournament_system = get_tournament_system()
+    tournament = tournament_system._get_tournament_by_id(tournament_id)
+    
+    if not tournament:
+        raise HTTPException(status_code=404, detail="Tournament not found")
+    
+    # Enrich with Pokémon data
+    db = get_db()
+    enriched_bracket = {}
+    
+    for round_key, matchups in tournament["bracket"].items():
+        enriched_matchups = []
+        
+        for matchup in matchups:
+            pokemon_a = None
+            pokemon_b = None
+            
+            if matchup["pokemon_a_id"]:
+                pokemon_a = db.get_by_dex_number(matchup["pokemon_a_id"])
+            
+            if matchup["pokemon_b_id"]:
+                pokemon_b = db.get_by_dex_number(matchup["pokemon_b_id"])
+            
+            enriched_matchups.append({
+                **matchup,
+                "pokemon_a": pokemon_a,
+                "pokemon_b": pokemon_b
+            })
+        
+        enriched_bracket[round_key] = enriched_matchups
+    
+    tournament["bracket"] = enriched_bracket
+    
+    return {"tournament": tournament}
+
+
+@app.get("/api/trainer/{trainer_id}/tournament-stats")
+def get_trainer_tournament_stats(trainer_id: str):
+    """Get tournament participation stats for a trainer."""
+    voting_system = get_voting_system()
+    tournament_system = get_tournament_system()
+    db = get_db()
+    
+    # Get voting stats
+    voting_stats = voting_system.get_trainer_voting_stats(trainer_id)
+    
+    # Get Pokémon in tournaments
+    trainer_pokemon = db.get_by_trainer(trainer_id)
+    tournament = tournament_system.get_current_tournament()
+    
+    pokemon_in_current = []
+    if tournament:
+        for pokemon in trainer_pokemon:
+            if pokemon["dex_number"] in tournament["participants"]:
+                # Get vote count
+                total_votes = voting_system.get_pokemon_total_votes(pokemon["dex_number"])
+                pokemon_in_current.append({
+                    **pokemon,
+                    "total_votes": total_votes
+                })
+    
+    return {
+        "voting_stats": voting_stats,
+        "pokemon_in_current_tournament": pokemon_in_current
     }
 
 

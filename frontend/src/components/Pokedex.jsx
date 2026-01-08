@@ -21,11 +21,11 @@ const TYPE_ICONS = {
 const POKEMON_TYPES = Object.keys(TYPE_COLORS);
 
 // Pokemon card component
-const PokemonCard = ({ pokemon, onClick }) => {
+const PokemonCard = ({ pokemon, onClick, isMine }) => {
   const primaryType = pokemon.types?.[0] || 'Normal';
   const secondaryType = pokemon.types?.[1];
   
-  return (
+  return(
     <div 
       onClick={onClick}
       className="group relative rounded-xl overflow-hidden cursor-pointer transition-all duration-300 hover:scale-105 hover:z-10"
@@ -33,17 +33,35 @@ const PokemonCard = ({ pokemon, onClick }) => {
         background: `linear-gradient(135deg, ${TYPE_COLORS[primaryType]}40, ${TYPE_COLORS[secondaryType || primaryType]}20)`
       }}
     >
-      {/* Shiny indicator */}
-      {pokemon.is_shiny && (
-        <div className="absolute top-2 right-2 z-10">
-          <span className="text-yellow-400 text-lg animate-pulse">✨</span>
-        </div>
-      )}
-      
-      {/* Card content */}
+{/* Card content */}
       <div className="p-3 bg-gray-900/80 backdrop-blur-sm h-full border border-gray-800 rounded-xl group-hover:border-gray-600 transition-colors">
-        <div className="text-xs text-gray-500 font-mono mb-1">
-          #{String(pokemon.dex_number).padStart(3, '0')}
+        <div className="flex items-center justify-between mb-1">
+          <div className="text-xs text-gray-500 font-mono">
+            #{String(pokemon.dex_number).padStart(3, '0')}
+          </div>
+
+          <div className="flex items-center gap-2">
+            {/* Created by you indicator (shown in Global view for your own Pokémon) */}
+            {isMine && (
+              <span
+                className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-black/40 border border-white/20 text-cyan-200"
+                title="Created by you"
+              >
+                <span className="-translate-y-0.55 inline-block leading-none">★</span>
+              </span>
+
+            )}
+
+            {/* Shiny indicator */}
+            {pokemon.is_shiny && (
+              <span
+                className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-black/40 border border-white/20"
+                title="Shiny Pokémon"
+              >
+                <span className="text-yellow-400 text-lg leading-none">✨</span>
+              </span>
+            )}
+          </div>
         </div>
         
         {pokemon.image_path ? (
@@ -114,24 +132,35 @@ const TypeFilter = ({ type, selected, onClick }) => (
   </button>
 );
 
-export default function Pokedex({ onNavigate }) {
+export default function Pokedex({ onNavigate, trainerId: trainerIdProp }) {
   const [pokemon, setPokemon] = useState([]);
   const [loading, setLoading] = useState(true);
   const [stats, setStats] = useState(null);
   const [selectedType, setSelectedType] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
 
+  // Scope: local (this trainer) vs global (all trainers)
+  const [scope, setScope] = useState('local'); // 'local' | 'global'
+
+  // Resolve trainerId (App should pass it, but we also fallback to localStorage)
+  const trainerId = trainerIdProp || localStorage.getItem('pokedream_trainer_id');
+
   useEffect(() => {
     loadPokedex();
     loadStats();
-  }, [selectedType]);
+  }, [selectedType, scope, trainerId]);
 
   const loadPokedex = async () => {
     setLoading(true);
     try {
-      const url = selectedType 
-        ? `${API_URL}/api/pokedex?type=${selectedType}`
+      const baseUrl = scope === 'local'
+        ? `${API_URL}/api/trainer/${trainerId}/pokemon`
         : `${API_URL}/api/pokedex`;
+
+      const url = selectedType
+        ? `${baseUrl}?type=${encodeURIComponent(selectedType)}`
+        : baseUrl;
+
       const res = await fetch(url);
       const data = await res.json();
       setPokemon(data.pokemon || []);
@@ -144,7 +173,10 @@ export default function Pokedex({ onNavigate }) {
 
   const loadStats = async () => {
     try {
-      const res = await fetch(`${API_URL}/api/pokedex/stats`);
+      const url = scope === 'local'
+        ? `${API_URL}/api/trainer/${trainerId}/stats`
+        : `${API_URL}/api/pokedex/stats`;
+      const res = await fetch(url);
       const data = await res.json();
       setStats(data);
     } catch (err) {
@@ -159,9 +191,20 @@ export default function Pokedex({ onNavigate }) {
     }
     setLoading(true);
     try {
-      const res = await fetch(`${API_URL}/api/pokedex/search?q=${encodeURIComponent(searchQuery)}`);
-      const data = await res.json();
-      setPokemon(data.pokemon || []);
+      if (scope === 'local') {
+        const baseUrl = `${API_URL}/api/trainer/${trainerId}/pokemon/search?q=${encodeURIComponent(searchQuery)}`;
+        const url = selectedType ? `${baseUrl}&type=${encodeURIComponent(selectedType)}` : baseUrl;
+        const res = await fetch(url);
+        const data = await res.json();
+        setPokemon(data.pokemon || []);
+      } else {
+        const res = await fetch(`${API_URL}/api/pokedex/search?q=${encodeURIComponent(searchQuery)}`);
+        const data = await res.json();
+        // Apply type filter client-side for global search results, since /api/pokedex/search doesn't accept type
+        const results = (data.pokemon || []);
+        const filtered = selectedType ? results.filter(p => (p.types || []).includes(selectedType)) : results;
+        setPokemon(filtered);
+      }
     } catch (err) {
       console.error('Search failed:', err);
     } finally {
@@ -169,7 +212,12 @@ export default function Pokedex({ onNavigate }) {
     }
   };
 
-  return (
+
+  const footerLabel = scope === 'local' ? 'My Collection' : 'World Collection';
+
+
+
+  return(
     <div className="min-h-screen text-white">
       {/* Header Section */}
       <div className="bg-gray-900/50 border-b border-gray-800">
@@ -179,7 +227,7 @@ export default function Pokedex({ onNavigate }) {
             <div>
               <h1 className="text-3xl font-bold flex items-center gap-3">
                 <span>📖</span>
-                Oneira Pokédex
+                {scope === 'local' ? 'My Oneira Pokédex' : 'Global Oneira Pokédex'}
               </h1>
               <p className="text-gray-400 mt-1">
                 {stats ? (
@@ -193,6 +241,25 @@ export default function Pokedex({ onNavigate }) {
                   </>
                 ) : 'Loading...'}
               </p>
+
+              <div className="mt-3 inline-flex rounded-xl overflow-hidden border border-gray-700">
+                <button
+                  onClick={() => setScope('local')}
+                  className={`px-4 py-2 text-sm font-bold transition-all ${
+                    scope === 'local' ? 'bg-white text-gray-900' : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                  }`}
+                >
+                  👤 My Pokédex
+                </button>
+                <button
+                  onClick={() => setScope('global')}
+                  className={`px-4 py-2 text-sm font-bold transition-all ${
+                    scope === 'global' ? 'bg-white text-gray-900' : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                  }`}
+                >
+                  🌎 Global Pokédex
+                </button>
+              </div>
             </div>
             <button
               onClick={() => onNavigate('generator')}
@@ -266,6 +333,7 @@ export default function Pokedex({ onNavigate }) {
               <PokemonCard 
                 key={p.id || p.dex_number} 
                 pokemon={p}
+                isMine={scope === 'global' && trainerId && p.trainer_id === trainerId}
                 onClick={() => onNavigate('pokemon', p.dex_number)}
               />
             ))}
@@ -275,7 +343,7 @@ export default function Pokedex({ onNavigate }) {
       
       {/* Footer */}
       <div className="text-center py-8 text-gray-600 text-sm border-t border-gray-800 mt-8">
-        <p>PokéDream • Oneira Region • {stats?.total || 0} Pokémon Discovered</p>
+        <p>{footerLabel} • Oneira Region • {stats?.total || 0} Pokémon Discovered</p>
       </div>
     </div>
   );

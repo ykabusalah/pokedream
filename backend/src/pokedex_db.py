@@ -93,6 +93,35 @@ class PokedexDB:
         """Get all Pokemon created by a specific trainer."""
         return [p for p in self.data["pokemon"] 
                 if p.get("trainer_id") == trainer_id]
+
+
+    def get_by_trainer_and_type(self, trainer_id: str, pokemon_type: str) -> list:
+        """Get all Pokemon created by a trainer that match a specific type."""
+        return [p for p in self.data["pokemon"]
+                if p.get("trainer_id") == trainer_id and pokemon_type in p.get("types", [])]
+
+    def search_by_trainer(self, trainer_id: str, query: str) -> list:
+        """Search a trainer's Pokemon by name."""
+        q = query.lower()
+        return [p for p in self.data["pokemon"]
+                if p.get("trainer_id") == trainer_id and q in p.get("name", "").lower()]
+
+    def get_stats_for_trainer(self, trainer_id: str) -> dict:
+        """Get Pokédex statistics for a specific trainer."""
+        pokemon = [p for p in self.data["pokemon"] if p.get("trainer_id") == trainer_id]
+
+        type_counts = {}
+        for p in pokemon:
+            for t in p.get("types", []):
+                type_counts[t] = type_counts.get(t, 0) + 1
+
+        return {
+            "total": len(pokemon),
+            "shinies": len([p for p in pokemon if p.get("is_shiny")]),
+            "type_counts": type_counts,
+            "region": self.data["region"],
+            "trainer_id": trainer_id,
+        }
     
     def get_shinies(self) -> list:
         """Get all shiny Pokemon."""
