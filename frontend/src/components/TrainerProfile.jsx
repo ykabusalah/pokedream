@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { ACHIEVEMENTS } from './AchievementPopup';
 
 const API_URL = 'http://localhost:8000';
 
@@ -9,36 +10,6 @@ const TYPE_COLORS = {
   Rock: '#B8A038', Ghost: '#705898', Dragon: '#7038F8', Dark: '#705848',
   Steel: '#B8B8D0', Fairy: '#EE99AC'
 };
-
-const ACHIEVEMENTS = [
-  // Creation milestones
-  { id: 'first', icon: '🥚', title: 'First Steps', desc: 'Create your first Pokémon', check: s => s.total >= 1 },
-  { id: 'five', icon: '⭐', title: 'Budding Trainer', desc: 'Create 5 Pokémon', check: s => s.total >= 5 },
-  { id: 'ten', icon: '🏆', title: 'Rising Star', desc: 'Create 10 Pokémon', check: s => s.total >= 10 },
-  { id: 'twentyfive', icon: '👑', title: 'Regional Expert', desc: 'Create 25 Pokémon', check: s => s.total >= 25 },
-  { id: 'fifty', icon: '🌟', title: 'Pokémon Master', desc: 'Create 50 Pokémon', check: s => s.total >= 50 },
-  { id: 'hundred', icon: '💫', title: 'Living Legend', desc: 'Create 100 Pokémon', check: s => s.total >= 100 },
-  
-  // Shiny achievements
-  { id: 'shiny', icon: '✨', title: 'Lucky Find', desc: 'Find a shiny Pokémon', check: s => s.shinies >= 1 },
-  { id: 'shiny3', icon: '🔮', title: 'Fortune Favors', desc: 'Find 3 shiny Pokémon', check: s => s.shinies >= 3 },
-  { id: 'shiny5', icon: '💎', title: 'Shiny Hunter', desc: 'Find 5 shiny Pokémon', check: s => s.shinies >= 5 },
-  { id: 'shiny10', icon: '🌠', title: 'Shiny Collector', desc: 'Find 10 shiny Pokémon', check: s => s.shinies >= 10 },
-  
-  // Type diversity
-  { id: 'types5', icon: '🎨', title: 'Type Explorer', desc: 'Discover 5 different types', check: s => Object.keys(s.type_counts || {}).length >= 5 },
-  { id: 'types10', icon: '🎭', title: 'Type Enthusiast', desc: 'Discover 10 different types', check: s => Object.keys(s.type_counts || {}).length >= 10 },
-  { id: 'types15', icon: '🎪', title: 'Type Specialist', desc: 'Discover 15 different types', check: s => Object.keys(s.type_counts || {}).length >= 15 },
-  { id: 'types18', icon: '🌈', title: 'Type Master', desc: 'Discover all 18 types', check: s => Object.keys(s.type_counts || {}).length >= 18 },
-  
-  // Type specialists (5+ of one type)
-  { id: 'fire_fan', icon: '🔥', title: 'Fire Enthusiast', desc: 'Create 5 Fire-type Pokémon', check: s => (s.type_counts?.Fire || 0) >= 5 },
-  { id: 'water_fan', icon: '💧', title: 'Water Enthusiast', desc: 'Create 5 Water-type Pokémon', check: s => (s.type_counts?.Water || 0) >= 5 },
-  { id: 'grass_fan', icon: '🌿', title: 'Grass Enthusiast', desc: 'Create 5 Grass-type Pokémon', check: s => (s.type_counts?.Grass || 0) >= 5 },
-  { id: 'dragon_fan', icon: '🐲', title: 'Dragon Tamer', desc: 'Create 5 Dragon-type Pokémon', check: s => (s.type_counts?.Dragon || 0) >= 5 },
-  { id: 'ghost_fan', icon: '👻', title: 'Ghost Whisperer', desc: 'Create 5 Ghost-type Pokémon', check: s => (s.type_counts?.Ghost || 0) >= 5 },
-  { id: 'psychic_fan', icon: '🔮', title: 'Mind Bender', desc: 'Create 5 Psychic-type Pokémon', check: s => (s.type_counts?.Psychic || 0) >= 5 },
-];
 
 // ============================================
 // POKÉBALL BACKGROUND

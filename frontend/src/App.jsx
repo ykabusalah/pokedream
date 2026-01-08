@@ -4,9 +4,12 @@ import PokemonGenerator from './components/PokemonGenerator';
 import Pokedex from './components/Pokedex';
 import PokemonDetail from './components/PokemonDetail';
 import TrainerProfile from './components/TrainerProfile';
+import AchievementPopup, { ACHIEVEMENTS, checkNewAchievements } from './components/AchievementPopup';
+
+const API_URL = 'http://localhost:8000';
 
 // ============================================
-// TIME TRACKING HELPERS (NEW IN COMMIT 3)
+// TIME TRACKING HELPERS
 // ============================================
 
 const getTotalTimeSpent = () => {
@@ -18,32 +21,39 @@ const saveTotalTime = (seconds) => {
 };
 
 // ============================================
+// ACHIEVEMENT TRACKING HELPERS
+// ============================================
+
+const getUnlockedAchievements = () => {
+  const saved = localStorage.getItem('pokedream_unlocked_achievements');
+  return saved ? JSON.parse(saved) : [];
+};
+
+const saveUnlockedAchievements = (achievementIds) => {
+  localStorage.setItem('pokedream_unlocked_achievements', JSON.stringify(achievementIds));
+};
+
+// ============================================
 // POKEBALL LOGO COMPONENT
 // ============================================
 
 const PokeballLogo = ({ size = 32 }) => (
   <svg viewBox="0 0 100 100" width={size} height={size} className="drop-shadow-lg">
-    {/* Top half - red */}
     <path 
       d="M 50 5 A 45 45 0 0 1 95 50 L 65 50 A 15 15 0 0 0 35 50 L 5 50 A 45 45 0 0 1 50 5" 
       fill="#DC2626"
       stroke="#1a1a1a"
       strokeWidth="3"
     />
-    {/* Bottom half - white */}
     <path 
       d="M 50 95 A 45 45 0 0 1 5 50 L 35 50 A 15 15 0 0 0 65 50 L 95 50 A 45 45 0 0 1 50 95" 
       fill="#F5F5F5"
       stroke="#1a1a1a"
       strokeWidth="3"
     />
-    {/* Center band */}
     <rect x="5" y="46" width="90" height="8" fill="#1a1a1a"/>
-    {/* Center button outer */}
     <circle cx="50" cy="50" r="14" fill="#F5F5F5" stroke="#1a1a1a" strokeWidth="3"/>
-    {/* Center button inner */}
     <circle cx="50" cy="50" r="8" fill="#1a1a1a"/>
-    {/* Shine effect */}
     <ellipse cx="35" cy="30" rx="8" ry="5" fill="white" opacity="0.3" transform="rotate(-30 35 30)"/>
   </svg>
 );
@@ -73,12 +83,10 @@ const NavLink = ({ onClick, active, children }) => (
 
 const NavBar = ({ currentPage, trainerName, onNavigate }) => (
   <nav className="sticky top-0 z-50 bg-gray-950/95 backdrop-blur-sm border-b border-gray-800">
-    {/* Red accent line at top */}
     <div className="h-1 bg-gradient-to-r from-red-600 via-red-500 to-red-600"/>
     
     <div className="max-w-6xl mx-auto px-4">
       <div className="flex items-center justify-between h-16">
-        {/* Logo */}
         <button
           onClick={() => onNavigate('generator')}
           className="flex items-center gap-3 group"
@@ -96,7 +104,6 @@ const NavBar = ({ currentPage, trainerName, onNavigate }) => (
           </div>
         </button>
         
-        {/* Center Nav Links */}
         <div className="hidden sm:flex items-center gap-2">
           <NavLink 
             onClick={() => onNavigate('generator')} 
@@ -112,7 +119,6 @@ const NavBar = ({ currentPage, trainerName, onNavigate }) => (
           </NavLink>
         </div>
         
-        {/* Trainer Profile */}
         <button
           onClick={() => onNavigate('profile')}
           className={`
@@ -123,7 +129,6 @@ const NavBar = ({ currentPage, trainerName, onNavigate }) => (
             }
           `}
         >
-          {/* Trainer avatar placeholder */}
           <div className="w-8 h-8 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-white font-bold text-sm shadow-lg">
             {trainerName?.charAt(0)?.toUpperCase() || 'T'}
           </div>
@@ -135,7 +140,6 @@ const NavBar = ({ currentPage, trainerName, onNavigate }) => (
       </div>
     </div>
     
-    {/* Mobile nav */}
     <div className="sm:hidden flex justify-center gap-4 pb-3 px-4">
       <NavLink 
         onClick={() => onNavigate('generator')} 
@@ -158,12 +162,10 @@ const NavBar = ({ currentPage, trainerName, onNavigate }) => (
 // ============================================
 
 export default function App() {
-  // Check if returning user (has saved name)
   const [savedTrainerName] = useState(() => {
     return localStorage.getItem('pokedream_trainer_name') || null;
   });
   
-  // Always start with intro (but returning users get short welcome back)
   const [currentPage, setCurrentPage] = useState('intro');
   
   const [trainerName, setTrainerName] = useState(() => {
@@ -173,56 +175,101 @@ export default function App() {
   const [selectedDexNumber, setSelectedDexNumber] = useState(null);
 
   // ============================================
-  // GLOBAL TIME TRACKING (NEW IN COMMIT 3)
+  // GLOBAL TIME TRACKING
   // ============================================
   
-  // Store the timestamp when the app first loaded (this session)
   const [sessionStart] = useState(() => Date.now());
-  
-  // Active time for this visit (updates every second)
   const [activeSeconds, setActiveSeconds] = useState(0);
-  
-  // Total time from all PREVIOUS sessions (loaded once from localStorage)
   const [previousTotalSeconds] = useState(() => getTotalTimeSpent());
 
-  // Update active time every second
   useEffect(() => {
     const interval = setInterval(() => {
       const elapsed = Math.floor((Date.now() - sessionStart) / 1000);
       setActiveSeconds(elapsed);
     }, 1000);
-
     return () => clearInterval(interval);
   }, [sessionStart]);
 
-  // Save time when user leaves the page
   useEffect(() => {
     const handleBeforeUnload = () => {
       const finalActiveSeconds = Math.floor((Date.now() - sessionStart) / 1000);
       const newTotal = previousTotalSeconds + finalActiveSeconds;
       saveTotalTime(newTotal);
     };
-
     window.addEventListener('beforeunload', handleBeforeUnload);
-    
-    return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
-    };
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload);
   }, [sessionStart, previousTotalSeconds]);
 
-  // Also save periodically (every 60 seconds) in case of crash
   useEffect(() => {
     const interval = setInterval(() => {
       const currentActiveSeconds = Math.floor((Date.now() - sessionStart) / 1000);
       const newTotal = previousTotalSeconds + currentActiveSeconds;
       saveTotalTime(newTotal);
     }, 60000);
-
     return () => clearInterval(interval);
   }, [sessionStart, previousTotalSeconds]);
 
-  // Calculate total time (previous sessions + current active time)
   const totalSeconds = previousTotalSeconds + activeSeconds;
+
+  // ============================================
+  // ACHIEVEMENT TRACKING
+  // ============================================
+  
+  const [achievementQueue, setAchievementQueue] = useState([]);
+  const [currentAchievement, setCurrentAchievement] = useState(null);
+  const [unlockedAchievementIds, setUnlockedAchievementIds] = useState(() => getUnlockedAchievements());
+
+  // Process achievement queue - show one at a time
+  useEffect(() => {
+    if (!currentAchievement && achievementQueue.length > 0) {
+      setCurrentAchievement(achievementQueue[0]);
+      setAchievementQueue(prev => prev.slice(1));
+    }
+  }, [achievementQueue, currentAchievement]);
+
+  // Check for new achievements based on current stats
+  const checkAchievementsFromStats = (stats) => {
+    if (!stats) return;
+    
+    const newlyUnlocked = [];
+    
+    for (const achievement of ACHIEVEMENTS) {
+      const isUnlocked = achievement.check(stats);
+      const wasAlreadyUnlocked = unlockedAchievementIds.includes(achievement.id);
+      
+      if (isUnlocked && !wasAlreadyUnlocked) {
+        newlyUnlocked.push(achievement);
+      }
+    }
+    
+    if (newlyUnlocked.length > 0) {
+      // Update unlocked list
+      const newUnlockedIds = [
+        ...unlockedAchievementIds,
+        ...newlyUnlocked.map(a => a.id)
+      ];
+      setUnlockedAchievementIds(newUnlockedIds);
+      saveUnlockedAchievements(newUnlockedIds);
+      
+      // Queue the popups
+      setAchievementQueue(prev => [...prev, ...newlyUnlocked]);
+    }
+  };
+
+  // Called after Pokemon creation to check achievements
+  const handlePokemonCreated = async () => {
+    try {
+      const res = await fetch(`${API_URL}/api/pokedex/stats`);
+      const stats = await res.json();
+      checkAchievementsFromStats(stats);
+    } catch (err) {
+      console.error('Failed to check achievements:', err);
+    }
+  };
+
+  const handleAchievementClose = () => {
+    setCurrentAchievement(null);
+  };
 
   // ============================================
   // NAVIGATION HANDLERS
@@ -242,7 +289,6 @@ export default function App() {
   };
 
   const handleChangeName = (newName) => {
-    // Update the name in state and localStorage
     localStorage.setItem('pokedream_trainer_name', newName);
     setTrainerName(newName);
   };
@@ -251,9 +297,22 @@ export default function App() {
   // RENDER
   // ============================================
 
-  // Intro (new users get full intro, returning users get welcome back)
+  // Achievement popup (always rendered, shows when there's an achievement)
+  const achievementPopup = (
+    <AchievementPopup 
+      achievement={currentAchievement} 
+      onClose={handleAchievementClose} 
+    />
+  );
+
+  // Intro
   if (currentPage === 'intro') {
-    return <PokeDreamIntro onComplete={handleIntroComplete} savedTrainerName={savedTrainerName} />;
+    return (
+      <>
+        <PokeDreamIntro onComplete={handleIntroComplete} savedTrainerName={savedTrainerName} />
+        {achievementPopup}
+      </>
+    );
   }
 
   // Pokemon Detail
@@ -265,6 +324,7 @@ export default function App() {
           dexNumber={selectedDexNumber} 
           onNavigate={handleNavigate}
         />
+        {achievementPopup}
       </div>
     );
   }
@@ -275,11 +335,12 @@ export default function App() {
       <div className="min-h-screen bg-gray-950">
         <NavBar currentPage={currentPage} trainerName={trainerName} onNavigate={handleNavigate} />
         <Pokedex onNavigate={handleNavigate} />
+        {achievementPopup}
       </div>
     );
   }
 
-  // Trainer Profile - pass time tracking props
+  // Trainer Profile
   if (currentPage === 'profile') {
     return (
       <div className="min-h-screen bg-gray-950">
@@ -291,6 +352,7 @@ export default function App() {
           activeSeconds={activeSeconds}
           totalSeconds={totalSeconds}
         />
+        {achievementPopup}
       </div>
     );
   }
@@ -302,7 +364,9 @@ export default function App() {
       <PokemonGenerator 
         trainerName={trainerName} 
         onNavigate={handleNavigate}
+        onPokemonCreated={handlePokemonCreated}
       />
+      {achievementPopup}
     </div>
   );
 }

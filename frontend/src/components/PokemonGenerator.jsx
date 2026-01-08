@@ -341,7 +341,7 @@ const TypeBadge = ({ type, selected, onClick }) => (
   </button>
 );
 
-export default function PokemonGenerator({ trainerName, trainerId, onNavigate }) {
+export default function PokemonGenerator({ trainerName, trainerId, onNavigate, onPokemonCreated }) {
   const [description, setDescription] = useState('');
   const [selectedTypes, setSelectedTypes] = useState([]);
   const [isGenerating, setIsGenerating] = useState(false);
@@ -429,6 +429,11 @@ export default function PokemonGenerator({ trainerName, trainerId, onNavigate })
       
       // Clear active challenge after successful generation
       setActiveChallenge(null);
+      
+      // Notify parent to check achievements
+      if (onPokemonCreated) {
+        onPokemonCreated(data.pokemon || data);
+      }
       
     } catch (err) {
       console.error('Generation error:', err);
