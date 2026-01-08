@@ -5,6 +5,7 @@ import Pokedex from './components/Pokedex';
 import PokemonDetail from './components/PokemonDetail';
 import TrainerProfile from './components/TrainerProfile';
 import Tournament from './components/Tournament';
+import HallOfFame from './components/HallOfFame';
 import AchievementPopup, { ACHIEVEMENTS, checkNewAchievements } from './components/AchievementPopup';
 
 const API_URL = 'http://localhost:8000';
@@ -138,6 +139,12 @@ const NavBar = ({ currentPage, trainerName, onNavigate }) => (
           >
             🏆 Tournament
           </NavLink>
+          <NavLink 
+            onClick={() => onNavigate('hall-of-fame')} 
+            active={currentPage === 'hall-of-fame'}
+          >
+            🏛️ Hall of Fame
+          </NavLink>
         </div>
         
         <button
@@ -161,24 +168,30 @@ const NavBar = ({ currentPage, trainerName, onNavigate }) => (
       </div>
     </div>
     
-    <div className="sm:hidden flex justify-center gap-4 pb-3 px-4">
+    <div className="sm:hidden flex justify-center gap-2 pb-3 px-2">
       <NavLink 
         onClick={() => onNavigate('generator')} 
         active={currentPage === 'generator'}
       >
-        ⚡ Generator
+        ⚡
       </NavLink>
       <NavLink 
         onClick={() => onNavigate('pokedex')} 
         active={currentPage === 'pokedex'}
       >
-        📖 Pokédex
+        📖
       </NavLink>
       <NavLink 
         onClick={() => onNavigate('tournament')} 
         active={currentPage === 'tournament'}
       >
-        🏆 Tournament
+        🏆
+      </NavLink>
+      <NavLink 
+        onClick={() => onNavigate('hall-of-fame')} 
+        active={currentPage === 'hall-of-fame'}
+      >
+        🏛️
       </NavLink>
     </div>
   </nav>
@@ -377,6 +390,17 @@ export default function App() {
       <div className="min-h-screen bg-gray-950">
         <NavBar currentPage={currentPage} trainerName={trainerName} onNavigate={handleNavigate} />
         <Tournament trainerId={trainerId} onNavigate={handleNavigate} />
+        {achievementPopup}
+      </div>
+    );
+  }
+
+  // Hall of Fame
+  if (currentPage === 'hall-of-fame') {
+    return (
+      <div className="min-h-screen bg-gray-950">
+        <NavBar currentPage={currentPage} trainerName={trainerName} onNavigate={handleNavigate} />
+        <HallOfFame trainerId={trainerId} onNavigate={handleNavigate} />
         {achievementPopup}
       </div>
     );

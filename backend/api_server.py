@@ -19,6 +19,7 @@ from src.pokedex_db import get_db
 from src.daily_challenges import generate_daily_challenge, get_challenge_db
 from src.tournament_system import get_tournament_system
 from src.voting_system import get_voting_system
+from src.hall_of_fame import get_hall_of_fame
 
 # ==================== RANDOM GENERATION POOLS ====================
 
@@ -171,6 +172,19 @@ class VoteRequest(BaseModel):
     matchup_id: str
     trainer_id: str
     pokemon_id: int
+
+
+class InductChampionRequest(BaseModel):
+    pokemon_id: int
+    tournament_id: str
+    total_votes: int
+    creator_quote: str | None = None
+
+
+class InductProfessorsChoiceRequest(BaseModel):
+    pokemon_id: int
+    reason: str
+    creator_quote: str | None = None
 
 
 # ==================== DAILY CHALLENGE ENDPOINTS ====================
@@ -767,7 +781,118 @@ def get_trainer_tournament_stats(trainer_id: str):
     }
 
 
-# ==================== RUN SERVER ====================
+# ==================== HALL OF FAME ENDPOINTS ====================
+
+@app.get("/api/hall-of-fame")
+def get_hall_of_fame_inductees(type: str = None):
+    """
+    Get all Hall of Fame inductees.
+    
+    Query params:
+        type: Filter by induction type (champion, fan_favorite, professors_choice)
+    """
+    hof = get_hall_of_fame()
+    db = get_db()
+    
+    inductees = hof.get_all_inductees(induction_type=type)
+    
+    # Enrich with Pokémon data
+    enriched = []
+    for inductee in inductees:
+        pokemon = db.get_by_dex_number(inductee["pokemon_id"])
+        if pokemon:
+            enriched.append({
+                **inductee,
+                "pokemon": pokemon
+            })
+    
+    # Sort by induction date (most recent first)
+    enriched.sort(key=lambda x: x["induction_date"], reverse=True)
+    
+    return {"inductees": enriched, "total": len(enriched)}
+
+
+@app.get("/api/hall-of-fame/stats")
+def get_hall_of_fame_stats():
+    """Get Hall of Fame statistics."""
+    hof = get_hall_of_fame()
+    return hof.get_stats()
+
+
+@app.get("/api/hall-of-fame/{pokemon_id}")
+def get_hall_of_fame_inductee(pokemon_id: int):
+    """Get Hall of Fame details for a specific Pokémon."""
+    hof = get_hall_of_fame()
+    db = get_db()
+    
+    inductee = hof.get_inductee(pokemon_id)
+    if not inductee:
+        raise HTTPException(status_code=404, detail="Pokémon not in Hall of Fame")
+    
+    pokemon = db.get_by_dex_number(pokemon_id)
+    
+    return {
+        **inductee,
+        "pokemon": pokemon
+    }
+
+
+@app.post("/api/hall-of-fame/induct-champion")
+def induct_champion(req: InductChampionRequest):
+    """Induct a tournament champion into the Hall of Fame."""
+    hof = get_hall_of_fame()
+    db = get_db()
+    tournament_system = get_tournament_system()
+    
+    # Verify Pokémon exists
+    pokemon = db.get_by_dex_number(req.pokemon_id)
+    if not pokemon:
+        raise HTTPException(status_code=404, detail="Pokémon not found")
+    
+    # Verify tournament exists
+    tournament = tournament_system._get_tournament_by_id(req.tournament_id)
+    if not tournament:
+        raise HTTPException(status_code=404, detail="Tournament not found")
+    
+    # Induct as champion
+    result = hof.induct_champion(
+        pokemon_id=req.pokemon_id,
+        tournament_id=req.tournament_id,
+        total_votes=req.total_votes,
+        creator_quote=req.creator_quote
+    )
+    
+    if not result["success"]:
+        raise HTTPException(status_code=400, detail=result["message"])
+    
+    return result
+
+
+@app.post("/api/hall-of-fame/induct-professors-choice")
+def induct_professors_choice(req: InductProfessorsChoiceRequest):
+    """Induct a Pokémon as Professor's Choice into the Hall of Fame."""
+    hof = get_hall_of_fame()
+    db = get_db()
+    
+    # Verify Pokémon exists
+    pokemon = db.get_by_dex_number(req.pokemon_id)
+    if not pokemon:
+        raise HTTPException(status_code=404, detail="Pokémon not found")
+    
+    # Induct as Professor's Choice
+    result = hof.induct_professors_choice(
+        pokemon_id=req.pokemon_id,
+        reason=req.reason,
+        creator_quote=req.creator_quote
+    )
+    
+    if not result["success"]:
+        raise HTTPException(status_code=400, detail=result["message"])
+    
+    return result
+
+
+# ==================== SERVER ====================
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)

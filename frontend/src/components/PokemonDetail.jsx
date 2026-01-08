@@ -81,7 +81,7 @@ export default function PokemonDetail({ dexNumber, onNavigate }) {
     return (
       <div className="min-h-screen bg-gray-950 flex items-center justify-center">
         <div className="text-center">
-          <div className="text-6xl mb-4">❓</div>
+          <div className="text-6xl mb-4">?</div>
           <h2 className="text-2xl font-bold text-white mb-2">Pokémon Not Found</h2>
           <p className="text-gray-400 mb-6">This Pokémon doesn't exist in the Oneira Pokédex.</p>
           <button
@@ -98,7 +98,7 @@ export default function PokemonDetail({ dexNumber, onNavigate }) {
   const { 
     name, types, stats, pokedex_entry, moveset, image_path, 
     is_shiny, dex_number: dexNum, abilities, signature_move,
-    category, height_m, weight_kg, trainer, added_at
+    category, height_m, weight_kg, trainer, added_at, hall_of_fame_badge
   } = pokemon;
   
   const imageUrl = image_path ? `${API_URL}/${image_path}` : null;
@@ -130,6 +130,14 @@ export default function PokemonDetail({ dexNumber, onNavigate }) {
               className="bg-gray-900 rounded-2xl p-6 relative"
               style={{ border: '3px solid #374151' }}
             >
+              {/* Hall of Fame Badge */}
+              {hall_of_fame_badge && (
+                <div className="absolute top-4 left-4 bg-gradient-to-r from-amber-500 to-yellow-500 text-white px-3 py-1 rounded-full text-sm font-bold flex items-center gap-1 shadow-lg z-10">
+                  <span>🏆</span> {hall_of_fame_badge}
+                </div>
+              )}
+              
+              {/* Shiny Badge */}
               {is_shiny && (
                 <div className="absolute top-4 right-4 bg-yellow-500 text-black px-3 py-1 rounded-full text-sm font-bold flex items-center gap-1">
                   ✨ SHINY

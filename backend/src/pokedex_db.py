@@ -94,7 +94,6 @@ class PokedexDB:
         return [p for p in self.data["pokemon"] 
                 if p.get("trainer_id") == trainer_id]
 
-
     def get_by_trainer_and_type(self, trainer_id: str, pokemon_type: str) -> list:
         """Get all Pokemon created by a trainer that match a specific type."""
         return [p for p in self.data["pokemon"]
@@ -162,6 +161,31 @@ class PokedexDB:
             "type_counts": type_counts,
             "region": self.data["region"],
         }
+    
+    # ==================== HALL OF FAME METHODS ====================
+    
+    def update_pokemon_hof_badge(self, pokemon_id: int, badge: str) -> bool:
+        """
+        Add Hall of Fame badge to a Pokémon.
+        
+        Args:
+            pokemon_id: Pokédex number
+            badge: Badge string (e.g., "Champion (S1W1)")
+        
+        Returns:
+            True if successful, False if Pokémon not found
+        """
+        pokemon = self.get_by_dex_number(pokemon_id)
+        if not pokemon:
+            return False
+        
+        pokemon["hall_of_fame_badge"] = badge
+        self._save()
+        return True
+
+    def get_hall_of_fame_pokemon(self) -> list:
+        """Get all Pokémon with Hall of Fame badges."""
+        return [p for p in self.data["pokemon"] if p.get("hall_of_fame_badge")]
 
 
 # Global instance
