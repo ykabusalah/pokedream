@@ -37,6 +37,7 @@ const PokeballSpinner = () => (
 // Lab Background Pattern
 const LabBackground = () => (
   <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    {/* Grid pattern */}
     <div 
       className="absolute inset-0 opacity-5"
       style={{
@@ -47,20 +48,120 @@ const LabBackground = () => (
         backgroundSize: '40px 40px'
       }}
     />
-    <div className="absolute top-10 right-10 opacity-5">
+    
+    {/* === OUTER EDGE POKÉBALLS === */}
+    
+    {/* Pokéball - top right (large) */}
+    <div className="absolute top-12 right-8 opacity-[0.07]">
       <svg viewBox="0 0 100 100" className="w-32 h-32">
         <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="4"/>
         <path d="M 5 50 L 95 50" stroke="white" strokeWidth="4"/>
         <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="4"/>
       </svg>
     </div>
-    <div className="absolute bottom-20 left-10 opacity-5">
+    
+    {/* Pokéball - top left (medium) */}
+    <div className="absolute top-20 left-6 opacity-[0.06]">
       <svg viewBox="0 0 100 100" className="w-24 h-24">
         <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="4"/>
         <path d="M 5 50 L 95 50" stroke="white" strokeWidth="4"/>
         <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="4"/>
       </svg>
     </div>
+    
+    {/* Pokéball - bottom left (medium) */}
+    <div className="absolute bottom-24 left-8 opacity-[0.07]">
+      <svg viewBox="0 0 100 100" className="w-24 h-24">
+        <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="4"/>
+        <path d="M 5 50 L 95 50" stroke="white" strokeWidth="4"/>
+        <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="4"/>
+      </svg>
+    </div>
+    
+    {/* Pokéball - bottom right (large) */}
+    <div className="absolute bottom-16 right-6 opacity-[0.06]">
+      <svg viewBox="0 0 100 100" className="w-28 h-28">
+        <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="4"/>
+        <path d="M 5 50 L 95 50" stroke="white" strokeWidth="4"/>
+        <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="4"/>
+      </svg>
+    </div>
+    
+    {/* === INNER POKÉBALLS - NEAR MENU === */}
+    
+    {/* Pokéball - left of menu top (medium) */}
+    <div className="absolute top-48 left-[15%] opacity-[0.05]">
+      <svg viewBox="0 0 100 100" className="w-20 h-20">
+        <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="4"/>
+        <path d="M 5 50 L 95 50" stroke="white" strokeWidth="4"/>
+        <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="4"/>
+      </svg>
+    </div>
+    
+    {/* Pokéball - right of menu top (small) */}
+    <div className="absolute top-40 right-[15%] opacity-[0.05]">
+      <svg viewBox="0 0 100 100" className="w-16 h-16">
+        <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="5"/>
+        <path d="M 5 50 L 95 50" stroke="white" strokeWidth="5"/>
+        <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="5"/>
+      </svg>
+    </div>
+    
+    {/* Pokéball - left of menu middle (large) */}
+    <div className="absolute top-[45%] left-[12%] opacity-[0.06]">
+      <svg viewBox="0 0 100 100" className="w-24 h-24">
+        <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="4"/>
+        <path d="M 5 50 L 95 50" stroke="white" strokeWidth="4"/>
+        <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="4"/>
+      </svg>
+    </div>
+    
+    {/* Pokéball - right of menu middle (medium) */}
+    <div className="absolute top-[50%] right-[12%] opacity-[0.06]">
+      <svg viewBox="0 0 100 100" className="w-22 h-22">
+        <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="4"/>
+        <path d="M 5 50 L 95 50" stroke="white" strokeWidth="4"/>
+        <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="4"/>
+      </svg>
+    </div>
+    
+    {/* Pokéball - left of menu lower (small) */}
+    <div className="absolute top-[65%] left-[18%] opacity-[0.05]">
+      <svg viewBox="0 0 100 100" className="w-14 h-14">
+        <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="5"/>
+        <path d="M 5 50 L 95 50" stroke="white" strokeWidth="5"/>
+        <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="5"/>
+      </svg>
+    </div>
+    
+    {/* Pokéball - right of menu lower (small) */}
+    <div className="absolute top-[70%] right-[16%] opacity-[0.05]">
+      <svg viewBox="0 0 100 100" className="w-16 h-16">
+        <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="5"/>
+        <path d="M 5 50 L 95 50" stroke="white" strokeWidth="5"/>
+        <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="5"/>
+      </svg>
+    </div>
+    
+    {/* Pokéball - left near bottom (tiny) */}
+    <div className="absolute bottom-36 left-[20%] opacity-[0.04]">
+      <svg viewBox="0 0 100 100" className="w-12 h-12">
+        <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="6"/>
+        <path d="M 5 50 L 95 50" stroke="white" strokeWidth="6"/>
+        <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="6"/>
+      </svg>
+    </div>
+    
+    {/* Pokéball - right near bottom (tiny) */}
+    <div className="absolute bottom-44 right-[20%] opacity-[0.04]">
+      <svg viewBox="0 0 100 100" className="w-10 h-10">
+        <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="7"/>
+        <path d="M 5 50 L 95 50" stroke="white" strokeWidth="7"/>
+        <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="7"/>
+      </svg>
+    </div>
+    
+    {/* Gradient overlay */}
     <div className="absolute inset-0 bg-gradient-to-b from-red-950/20 via-transparent to-gray-950"/>
   </div>
 );

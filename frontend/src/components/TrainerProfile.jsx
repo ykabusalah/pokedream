@@ -23,6 +23,137 @@ const ACHIEVEMENTS = [
 ];
 
 // ============================================
+// POKÉBALL BACKGROUND
+// ============================================
+
+const PokeballBackground = () => (
+  <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    {/* Grid pattern */}
+    <div 
+      className="absolute inset-0 opacity-5"
+      style={{
+        backgroundImage: `
+          linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
+        `,
+        backgroundSize: '40px 40px'
+      }}
+    />
+    
+    {/* Pokéball - top left (large) */}
+    <div className="absolute top-8 left-12 opacity-[0.06]">
+      <svg viewBox="0 0 100 100" className="w-28 h-28">
+        <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="4"/>
+        <path d="M 5 50 L 95 50" stroke="white" strokeWidth="4"/>
+        <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="4"/>
+      </svg>
+    </div>
+    
+    {/* Pokéball - top right (small) */}
+    <div className="absolute top-24 right-16 opacity-[0.05]">
+      <svg viewBox="0 0 100 100" className="w-16 h-16">
+        <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="5"/>
+        <path d="M 5 50 L 95 50" stroke="white" strokeWidth="5"/>
+        <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="5"/>
+      </svg>
+    </div>
+    
+    {/* Pokéball - right upper (medium) */}
+    <div className="absolute top-[30%] right-6 opacity-[0.07]">
+      <svg viewBox="0 0 100 100" className="w-24 h-24">
+        <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="4"/>
+        <path d="M 5 50 L 95 50" stroke="white" strokeWidth="4"/>
+        <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="4"/>
+      </svg>
+    </div>
+    
+    {/* Pokéball - left middle (tiny) */}
+    <div className="absolute top-[35%] left-4 opacity-[0.04]">
+      <svg viewBox="0 0 100 100" className="w-12 h-12">
+        <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="6"/>
+        <path d="M 5 50 L 95 50" stroke="white" strokeWidth="6"/>
+        <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="6"/>
+      </svg>
+    </div>
+    
+    {/* Pokéball - left of content (medium) */}
+    <div className="absolute top-[42%] left-[10%] opacity-[0.06]">
+      <svg viewBox="0 0 100 100" className="w-20 h-20">
+        <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="4"/>
+        <path d="M 5 50 L 95 50" stroke="white" strokeWidth="4"/>
+        <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="4"/>
+      </svg>
+    </div>
+    
+    {/* Pokéball - right of content (small) */}
+    <div className="absolute top-[55%] right-[14%] opacity-[0.05]">
+      <svg viewBox="0 0 100 100" className="w-14 h-14">
+        <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="5"/>
+        <path d="M 5 50 L 95 50" stroke="white" strokeWidth="5"/>
+        <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="5"/>
+      </svg>
+    </div>
+    
+    {/* Pokéball - left lower (large) */}
+    <div className="absolute top-[60%] left-[18%] opacity-[0.06]">
+      <svg viewBox="0 0 100 100" className="w-26 h-26">
+        <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="4"/>
+        <path d="M 5 50 L 95 50" stroke="white" strokeWidth="4"/>
+        <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="4"/>
+      </svg>
+    </div>
+    
+    {/* Pokéball - right lower (tiny) */}
+    <div className="absolute top-[72%] right-8 opacity-[0.04]">
+      <svg viewBox="0 0 100 100" className="w-10 h-10">
+        <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="7"/>
+        <path d="M 5 50 L 95 50" stroke="white" strokeWidth="7"/>
+        <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="7"/>
+      </svg>
+    </div>
+    
+    {/* Pokéball - bottom left (medium) */}
+    <div className="absolute bottom-32 left-6 opacity-[0.05]">
+      <svg viewBox="0 0 100 100" className="w-20 h-20">
+        <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="4"/>
+        <path d="M 5 50 L 95 50" stroke="white" strokeWidth="4"/>
+        <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="4"/>
+      </svg>
+    </div>
+    
+    {/* Pokéball - bottom right (large) */}
+    <div className="absolute bottom-20 right-12 opacity-[0.07]">
+      <svg viewBox="0 0 100 100" className="w-32 h-32">
+        <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="4"/>
+        <path d="M 5 50 L 95 50" stroke="white" strokeWidth="4"/>
+        <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="4"/>
+      </svg>
+    </div>
+    
+    {/* Pokéball - bottom center left (small) */}
+    <div className="absolute bottom-12 left-[25%] opacity-[0.05]">
+      <svg viewBox="0 0 100 100" className="w-16 h-16">
+        <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="5"/>
+        <path d="M 5 50 L 95 50" stroke="white" strokeWidth="5"/>
+        <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="5"/>
+      </svg>
+    </div>
+    
+    {/* Pokéball - bottom center right (tiny) */}
+    <div className="absolute bottom-40 right-[22%] opacity-[0.04]">
+      <svg viewBox="0 0 100 100" className="w-12 h-12">
+        <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="6"/>
+        <path d="M 5 50 L 95 50" stroke="white" strokeWidth="6"/>
+        <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="6"/>
+      </svg>
+    </div>
+    
+    {/* Gradient overlay - amber tint for trainer page */}
+    <div className="absolute inset-0 bg-gradient-to-b from-amber-950/20 via-transparent to-gray-950"/>
+  </div>
+);
+
+// ============================================
 // TIME FORMATTING HELPERS
 // ============================================
 
@@ -60,7 +191,7 @@ const formatTimeDetailed = (totalSeconds) => {
 
 function StatCard({ icon, label, value, sub, accent }) {
   return (
-    <div className={`bg-gray-900 rounded-xl p-4 border transition-all ${
+    <div className={`bg-gray-900/80 backdrop-blur-sm rounded-xl p-4 border transition-all ${
       accent ? 'border-amber-500/50 bg-amber-500/5' : 'border-gray-800'
     }`}>
       <div className="flex items-center gap-2 mb-2">
@@ -167,22 +298,25 @@ export default function TrainerProfile({ trainerName, onNavigate, onChangeName, 
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center py-20">
-        <div className="text-center">
-          <div className="animate-spin w-12 h-12 border-4 border-amber-500 border-t-transparent rounded-full mx-auto mb-4" />
-          <p className="text-gray-400">Loading trainer data...</p>
+      <div className="min-h-screen bg-gray-950 relative">
+        <PokeballBackground />
+        <div className="relative z-10 flex items-center justify-center py-20">
+          <div className="text-center">
+            <div className="animate-spin w-12 h-12 border-4 border-amber-500 border-t-transparent rounded-full mx-auto mb-4" />
+            <p className="text-gray-400">Loading trainer data...</p>
+          </div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="text-white">
-      {/* NO NAVBAR HERE - App.jsx wraps this component with NavBar */}
+    <div className="min-h-screen bg-gray-950 text-white relative">
+      <PokeballBackground />
       
-      <div className="max-w-5xl mx-auto px-4 py-8">
+      <div className="relative z-10 max-w-5xl mx-auto px-4 py-8">
         {/* Profile Header Card */}
-        <div className="bg-gray-900 rounded-2xl border border-gray-800 overflow-hidden mb-8">
+        <div className="bg-gray-900/80 backdrop-blur-sm rounded-2xl border border-gray-800 overflow-hidden mb-8">
           <div className="h-24 bg-gradient-to-r from-amber-500/20 via-orange-500/20 to-red-500/20" />
           <div className="px-6 pb-6 -mt-12">
             <div className="flex flex-col sm:flex-row items-center sm:items-end gap-4">
@@ -214,7 +348,7 @@ export default function TrainerProfile({ trainerName, onNavigate, onChangeName, 
                       className="text-green-500 hover:text-green-400 text-xl"
                       title="Save"
                     >
-                      ✓
+                      ✔
                     </button>
                     <button 
                       onClick={handleCancelEdit} 
@@ -274,7 +408,7 @@ export default function TrainerProfile({ trainerName, onNavigate, onChangeName, 
         {/* Two Column Layout */}
         <div className="grid md:grid-cols-2 gap-8">
           {/* Left: Achievements */}
-          <div className="bg-gray-900 rounded-2xl border border-gray-800 p-6">
+          <div className="bg-gray-900/80 backdrop-blur-sm rounded-2xl border border-gray-800 p-6">
             <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
               🏆 Achievements
               <span className="text-sm font-normal text-gray-500">{unlockedAchievements.length}/{ACHIEVEMENTS.length}</span>
@@ -296,7 +430,7 @@ export default function TrainerProfile({ trainerName, onNavigate, onChangeName, 
                       <div className={`font-medium text-sm ${unlocked ? 'text-amber-400' : 'text-gray-500'}`}>{a.title}</div>
                       <div className="text-xs text-gray-500 truncate">{a.desc}</div>
                     </div>
-                    {unlocked && <span className="text-green-500 text-lg">✓</span>}
+                    {unlocked && <span className="text-green-500 text-lg">✔</span>}
                   </div>
                 );
               })}
@@ -306,7 +440,7 @@ export default function TrainerProfile({ trainerName, onNavigate, onChangeName, 
           {/* Right: Type Distribution + Recent */}
           <div className="space-y-8">
             {/* Type Distribution */}
-            <div className="bg-gray-900 rounded-2xl border border-gray-800 p-6">
+            <div className="bg-gray-900/80 backdrop-blur-sm rounded-2xl border border-gray-800 p-6">
               <h2 className="text-lg font-bold mb-4">📊 Type Distribution</h2>
               {typeCounts.length === 0 ? (
                 <p className="text-gray-500 text-sm">Create some Pokémon to see your type distribution!</p>
@@ -337,7 +471,7 @@ export default function TrainerProfile({ trainerName, onNavigate, onChangeName, 
             </div>
 
             {/* Recent Creations */}
-            <div className="bg-gray-900 rounded-2xl border border-gray-800 p-6">
+            <div className="bg-gray-900/80 backdrop-blur-sm rounded-2xl border border-gray-800 p-6">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-lg font-bold">🕐 Recent Creations</h2>
                 <button 

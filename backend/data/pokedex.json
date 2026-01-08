@@ -5427,8 +5427,201 @@
       "dex_number": 28,
       "added_at": "2026-01-07T17:13:17.401360",
       "id": "pkmn_0028"
+    },
+    {
+      "name": "Magifax",
+      "types": [
+        "Ice",
+        "Psychic"
+      ],
+      "stats": {
+        "hp": 78,
+        "attack": 55,
+        "defense": 70,
+        "sp_attack": 125,
+        "sp_defense": 95,
+        "speed": 102
+      },
+      "abilities": [
+        "Snow Warning",
+        "Magic Guard",
+        "Arcane Frost"
+      ],
+      "signature_move": {
+        "name": "Blizzard Hex",
+        "type": "Ice",
+        "category": "Special",
+        "power": 90,
+        "accuracy": 85,
+        "description": "A mystical ice attack that may freeze the target and lower their Special Defense"
+      },
+      "pokedex_entry": "This ancient Pokemon is said to have mastered both ice magic and psychic powers through centuries of meditation in frozen caves. Its crystalline staff can summon devastating blizzards with a single thought. Legends speak of wise Magifax that once guided lost travelers through treacherous mountain passes.",
+      "category": "The Frost Sage Pokemon",
+      "height_m": 1.8,
+      "weight_kg": 65.2,
+      "bst": 525,
+      "tier": "fully_evolved",
+      "concept": "an ice wizard pokemon",
+      "culture": "original",
+      "moveset": {
+        "level_up_moves": [
+          {
+            "level": 1,
+            "move": "Leer",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 5,
+            "move": "Mist",
+            "type": "ice",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 10,
+            "move": "Confusion",
+            "type": "psychic",
+            "power": 50,
+            "category": "special"
+          },
+          {
+            "level": 15,
+            "move": "Powder Snow",
+            "type": "ice",
+            "power": 40,
+            "category": "special"
+          },
+          {
+            "level": 20,
+            "move": "Swift",
+            "type": "normal",
+            "power": 60,
+            "category": "special"
+          },
+          {
+            "level": 25,
+            "move": "Icy Wind",
+            "type": "ice",
+            "power": 55,
+            "category": "special"
+          },
+          {
+            "level": 30,
+            "move": "Psybeam",
+            "type": "psychic",
+            "power": 65,
+            "category": "special"
+          },
+          {
+            "level": 35,
+            "move": "Hyper Voice",
+            "type": "normal",
+            "power": 90,
+            "category": "special"
+          },
+          {
+            "level": 40,
+            "move": "Hyper Beam",
+            "type": "normal",
+            "power": 150,
+            "category": "special"
+          },
+          {
+            "level": 45,
+            "move": "Ice Beam",
+            "type": "ice",
+            "power": 90,
+            "category": "special"
+          },
+          {
+            "level": 50,
+            "move": "Future Sight",
+            "type": "psychic",
+            "power": 120,
+            "category": "special"
+          }
+        ],
+        "tm_moves": [
+          {
+            "move": "Ice Beam",
+            "type": "ice",
+            "power": 90,
+            "reason": "STAB"
+          },
+          {
+            "move": "Blizzard",
+            "type": "ice",
+            "power": 110,
+            "reason": "STAB"
+          },
+          {
+            "move": "Psybeam",
+            "type": "psychic",
+            "power": 65,
+            "reason": "STAB"
+          },
+          {
+            "move": "Psychic",
+            "type": "psychic",
+            "power": 90,
+            "reason": "STAB"
+          },
+          {
+            "move": "Energy Ball",
+            "type": "grass",
+            "power": 90,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Incinerate",
+            "type": "fire",
+            "power": 60,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Electro Ball",
+            "type": "electric",
+            "power": null,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Protect",
+            "type": "normal",
+            "power": null,
+            "reason": "Utility"
+          }
+        ],
+        "egg_moves": [
+          {
+            "move": "Ice Shard",
+            "type": "ice",
+            "power": 40
+          },
+          {
+            "move": "Psycho Cut",
+            "type": "psychic",
+            "power": 70
+          }
+        ],
+        "current_moves": [
+          "Hyper Voice",
+          "Hyper Beam",
+          "Ice Beam",
+          "Future Sight"
+        ]
+      },
+      "image_path": "outputs\\magifax_20260107_191801_504109_9746.png",
+      "image_prompt": "Ice type pokemon, an ice wizard pokemon, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+      "is_shiny": false,
+      "json_path": "outputs\\magifax_data.json",
+      "trainer": "NL",
+      "dex_number": 29,
+      "added_at": "2026-01-07T19:18:01.513938",
+      "id": "pkmn_0029"
     }
   ],
-  "next_dex_number": 29,
+  "next_dex_number": 30,
   "created_at": "2026-01-05T23:25:41.275963"
 }
