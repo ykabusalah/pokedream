@@ -199,7 +199,7 @@ function StatCard({ icon, label, value, sub, accent }) {
 // MAIN COMPONENT
 // ============================================
 
-export default function TrainerProfile({ trainerName, onNavigate, onChangeName, activeSeconds = 0, totalSeconds = 0 }) {
+export default function TrainerProfile({ trainerName, trainerId, onNavigate, onChangeName, activeSeconds = 0, totalSeconds = 0 }) {
   const [stats, setStats] = useState(null);
   const [recentPokemon, setRecentPokemon] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -222,8 +222,8 @@ export default function TrainerProfile({ trainerName, onNavigate, onChangeName, 
   const fetchData = async () => {
     try {
       const [statsRes, recentRes] = await Promise.all([
-        fetch(`${API_URL}/api/pokedex/stats`),
-        fetch(`${API_URL}/api/pokedex/recent?limit=6`)
+        fetch(`${API_URL}/api/trainer/${trainerId}/stats`),
+        fetch(`${API_URL}/api/trainer/${trainerId}/recent?limit=6`)
       ]);
       const statsData = await statsRes.json();
       const recentData = await recentRes.json();

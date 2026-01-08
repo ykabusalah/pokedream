@@ -21,6 +21,20 @@ const saveTotalTime = (seconds) => {
 };
 
 // ============================================
+// TRAINER ID HELPERS
+// ============================================
+
+const getOrCreateTrainerId = () => {
+  let trainerId = localStorage.getItem('pokedream_trainer_id');
+  if (!trainerId) {
+    // Generate a unique ID (timestamp + random)
+    trainerId = `trainer_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    localStorage.setItem('pokedream_trainer_id', trainerId);
+  }
+  return trainerId;
+};
+
+// ============================================
 // ACHIEVEMENT TRACKING HELPERS
 // ============================================
 
@@ -172,6 +186,9 @@ export default function App() {
     return localStorage.getItem('pokedream_trainer_name') || 'Trainer';
   });
   
+  // Unique trainer ID for tracking personal stats
+  const [trainerId] = useState(() => getOrCreateTrainerId());
+  
   const [selectedDexNumber, setSelectedDexNumber] = useState(null);
 
   // ============================================
@@ -259,7 +276,8 @@ export default function App() {
   // Called after Pokemon creation to check achievements
   const handlePokemonCreated = async () => {
     try {
-      const res = await fetch(`${API_URL}/api/pokedex/stats`);
+      // Fetch trainer-specific stats
+      const res = await fetch(`${API_URL}/api/trainer/${trainerId}/stats`);
       const stats = await res.json();
       checkAchievementsFromStats(stats);
     } catch (err) {
@@ -346,7 +364,8 @@ export default function App() {
       <div className="min-h-screen bg-gray-950">
         <NavBar currentPage={currentPage} trainerName={trainerName} onNavigate={handleNavigate} />
         <TrainerProfile 
-          trainerName={trainerName} 
+          trainerName={trainerName}
+          trainerId={trainerId}
           onNavigate={handleNavigate}
           onChangeName={handleChangeName}
           activeSeconds={activeSeconds}
@@ -362,7 +381,8 @@ export default function App() {
     <div className="min-h-screen bg-gray-950">
       <NavBar currentPage={currentPage} trainerName={trainerName} onNavigate={handleNavigate} />
       <PokemonGenerator 
-        trainerName={trainerName} 
+        trainerName={trainerName}
+        trainerId={trainerId}
         onNavigate={handleNavigate}
         onPokemonCreated={handlePokemonCreated}
       />

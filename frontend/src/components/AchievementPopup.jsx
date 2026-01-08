@@ -7,18 +7,15 @@ export default function AchievementPopup({ achievement, onClose }) {
   useEffect(() => {
     if (achievement) {
       // Trigger enter animation
-      setTimeout(() => setIsVisible(true), 50);
-      
-      // Auto-dismiss after 4 seconds
-      const timer = setTimeout(() => {
-        handleClose();
-      }, 4000);
-      
-      return () => clearTimeout(timer);
+      const enter = setTimeout(() => setIsVisible(true), 50);
+      return () => clearTimeout(enter);
+    } else {
+      // Reset animation state when there is no achievement
+      setIsVisible(false);
+      setIsLeaving(false);
     }
   }, [achievement]);
-
-  const handleClose = () => {
+const handleClose = () => {
     setIsLeaving(true);
     setTimeout(() => {
       setIsVisible(false);
@@ -39,8 +36,16 @@ export default function AchievementPopup({ achievement, onClose }) {
     >
       <div 
         className="relative bg-gradient-to-r from-amber-600 to-yellow-500 rounded-2xl p-1 shadow-2xl shadow-amber-500/30"
-        onClick={handleClose}
-      >
+>
+        <button
+          type="button"
+          className="achievement-close-button absolute top-3 right-3 z-20 rounded-full bg-black/30 hover:bg-black/50 text-white w-8 h-8 flex items-center justify-center"
+          onClick={(e) => { e.stopPropagation(); handleClose(); }}
+          aria-label="Dismiss achievement"
+          title="Dismiss"
+        >
+          ✕
+        </button>
         {/* Sparkle effects */}
         <div className="absolute -inset-2 pointer-events-none">
           {[...Array(8)].map((_, i) => (

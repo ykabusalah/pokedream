@@ -405,11 +405,13 @@ export default function PokemonGenerator({ trainerName, trainerId, onNavigate, o
             types: types,
             culture: challengeData.culture || 'original',
             trainer_name: trainerName,
+            trainer_id: trainerId,
             challenge_id: challengeData.challengeId
           }
         : { 
             description: desc, 
             trainer_name: trainerName,
+            trainer_id: trainerId,
             challenge_id: challengeData.challengeId 
           };
       
@@ -467,12 +469,13 @@ export default function PokemonGenerator({ trainerName, trainerId, onNavigate, o
       
       if (mode === 'random') {
         endpoint = '/api/random-generate';
-        body = { trainer_name: trainerName };
+        body = { trainer_name: trainerName, trainer_id: trainerId };
       } else if (mode === 'simple') {
         endpoint = '/api/quick-generate';
         body = { 
           description, 
           trainer_name: trainerName,
+          trainer_id: trainerId,
           challenge_id: activeChallenge?.challengeId 
         };
       } else {
@@ -481,6 +484,7 @@ export default function PokemonGenerator({ trainerName, trainerId, onNavigate, o
           concept: description, 
           types: selectedTypes.length ? selectedTypes : undefined,
           trainer_name: trainerName,
+          trainer_id: trainerId,
           challenge_id: activeChallenge?.challengeId
         };
       }
@@ -501,6 +505,11 @@ export default function PokemonGenerator({ trainerName, trainerId, onNavigate, o
       
       // Clear active challenge after successful generation
       setActiveChallenge(null);
+      
+      // Notify parent to check achievements
+      if (onPokemonCreated) {
+        onPokemonCreated(data.pokemon || data);
+      }
       
     } catch (err) {
       console.error('Generation error:', err);

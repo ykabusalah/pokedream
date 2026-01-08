@@ -115,17 +115,20 @@ class GenerateRequest(BaseModel):
     body_type: str | None = None
     colors: list[str] | None = None
     trainer_name: str = "Trainer"
+    trainer_id: str | None = None
     challenge_id: str | None = None
 
 
 class QuickGenerateRequest(BaseModel):
     description: str
     trainer_name: str = "Trainer"
+    trainer_id: str | None = None
     challenge_id: str | None = None
 
 
 class RandomGenerateRequest(BaseModel):
     trainer_name: str = "Trainer"
+    trainer_id: str | None = None
 
 
 class ValidateNameRequest(BaseModel):
@@ -203,16 +206,16 @@ def generate_pokemon(req: GenerateRequest):
             colors=req.colors
         )
         pokemon["trainer"] = req.trainer_name
+        pokemon["trainer_id"] = req.trainer_id
 
         db = get_db()
         pokemon = db.add_pokemon(pokemon)
 
         # If this was for a challenge, mark it complete
-        if req.challenge_id:
+        if req.challenge_id and req.trainer_id:
             try:
                 challenge_db = get_challenge_db()
-                trainer_id = str(hash(req.trainer_name) % 100000000)
-                challenge_db.mark_completed(trainer_id, req.challenge_id, pokemon.get("id", ""))
+                challenge_db.mark_completed(req.trainer_id, req.challenge_id, pokemon.get("id", ""))
                 pokemon["challenge_completed"] = True
             except Exception as e:
                 print(f"Failed to mark challenge complete: {e}")
@@ -284,16 +287,16 @@ def quick_generate(req: QuickGenerateRequest):
             tier="fully_evolved"
         )
         pokemon["trainer"] = req.trainer_name
+        pokemon["trainer_id"] = req.trainer_id
 
         db = get_db()
         pokemon = db.add_pokemon(pokemon)
 
         # If this was for a challenge, mark it complete
-        if req.challenge_id:
+        if req.challenge_id and req.trainer_id:
             try:
                 challenge_db = get_challenge_db()
-                trainer_id = str(hash(req.trainer_name) % 100000000)
-                challenge_db.mark_completed(trainer_id, req.challenge_id, pokemon.get("id", ""))
+                challenge_db.mark_completed(req.trainer_id, req.challenge_id, pokemon.get("id", ""))
                 pokemon["challenge_completed"] = True
             except Exception as e:
                 print(f"Failed to mark challenge complete: {e}")
@@ -321,6 +324,7 @@ def random_generate(req: RandomGenerateRequest):
             tier="fully_evolved"
         )
         pokemon["trainer"] = req.trainer_name
+        pokemon["trainer_id"] = req.trainer_id
         pokemon["random_generated"] = True
 
         db = get_db()
@@ -416,6 +420,70 @@ def get_shiny_pokemon():
     """Get all shiny Pokemon."""
     db = get_db()
     return {"pokemon": db.get_shinies()}
+
+
+# ==================== TRAINER-SPECIFIC ENDPOINTS ====================
+
+@app.get("/api/trainer/{trainer_id}/stats")
+def get_trainer_stats(trainer_id: str):
+    """Get stats for a specific trainer's Pokemon."""
+    db = get_db()
+    all_pokemon = db.get_all()
+    
+    # Filter by trainer_id
+    trainer_pokemon = [p for p in all_pokemon if p.get("trainer_id") == trainer_id]
+    
+    # Calculate stats
+    total = len(trainer_pokemon)
+    shinies = len([p for p in trainer_pokemon if p.get("is_shiny")])
+    
+    type_counts = {}
+    for p in trainer_pokemon:
+        for t in p.get("types", []):
+            if t:
+                type_counts[t] = type_counts.get(t, 0) + 1
+    
+    return {
+        "total": total,
+        "shinies": shinies,
+        "type_counts": type_counts,
+        "trainer_id": trainer_id
+    }
+
+
+@app.get("/api/trainer/{trainer_id}/recent")
+def get_trainer_recent(trainer_id: str, limit: int = 10):
+    """Get recently created Pokemon for a specific trainer."""
+    db = get_db()
+    all_pokemon = db.get_all()
+    
+    # Filter by trainer_id and sort by dex_number (most recent first)
+    trainer_pokemon = [p for p in all_pokemon if p.get("trainer_id") == trainer_id]
+    trainer_pokemon.sort(key=lambda p: p.get("dex_number", 0), reverse=True)
+    
+    return {"pokemon": trainer_pokemon[:limit]}
+
+
+@app.get("/api/trainer/{trainer_id}/pokemon")
+def get_trainer_pokemon(trainer_id: str, limit: int = 50, offset: int = 0):
+    """Get all Pokemon for a specific trainer."""
+    db = get_db()
+    all_pokemon = db.get_all()
+    
+    # Filter by trainer_id
+    trainer_pokemon = [p for p in all_pokemon if p.get("trainer_id") == trainer_id]
+    total = len(trainer_pokemon)
+    
+    # Sort by dex_number (most recent first) and paginate
+    trainer_pokemon.sort(key=lambda p: p.get("dex_number", 0), reverse=True)
+    trainer_pokemon = trainer_pokemon[offset:offset + limit]
+    
+    return {
+        "pokemon": trainer_pokemon,
+        "total": total,
+        "limit": limit,
+        "offset": offset
+    }
 
 
 # ==================== RUN SERVER ====================

@@ -5814,8 +5814,1171 @@
       "dex_number": 30,
       "added_at": "2026-01-07T20:05:59.115766",
       "id": "pkmn_0030"
+    },
+    {
+      "name": "Bambusai",
+      "types": [
+        "Grass",
+        "Dragon"
+      ],
+      "stats": {
+        "hp": 88,
+        "attack": 105,
+        "defense": 95,
+        "sp_attack": 85,
+        "sp_defense": 90,
+        "speed": 67
+      },
+      "abilities": [
+        "Overgrow",
+        "Defiant",
+        "Sap Sipper"
+      ],
+      "signature_move": {
+        "name": "Jade Spear Rush",
+        "type": "Grass",
+        "category": "Physical",
+        "power": 85,
+        "accuracy": 90,
+        "description": "The user charges with razor-sharp bamboo spears. Has a high critical hit ratio and may lower the target's Defense."
+      },
+      "pokedex_entry": "This majestic Pokemon grows bamboo-like scales that harden into jade over centuries. Ancient scrolls depict Bambusai as guardians of sacred groves, using their serpentine bodies to weave through dense forests. The melodic creaking of their scales is said to bring good fortune to those who hear it.",
+      "category": "The Jade Grove Pokemon",
+      "height_m": 4.2,
+      "weight_kg": 156.8,
+      "bst": 530,
+      "tier": "fully_evolved",
+      "concept": "grass dragon",
+      "culture": "china",
+      "moveset": {
+        "level_up_moves": [
+          {
+            "level": 1,
+            "move": "Tackle",
+            "type": "normal",
+            "power": 40,
+            "category": "physical"
+          },
+          {
+            "level": 5,
+            "move": "Quick Attack",
+            "type": "normal",
+            "power": 40,
+            "category": "physical"
+          },
+          {
+            "level": 10,
+            "move": "Pound",
+            "type": "normal",
+            "power": 40,
+            "category": "physical"
+          },
+          {
+            "level": 15,
+            "move": "Sleep Powder",
+            "type": "grass",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 20,
+            "move": "Dragon Dance",
+            "type": "dragon",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 25,
+            "move": "Dragon Claw",
+            "type": "dragon",
+            "power": 80,
+            "category": "physical"
+          },
+          {
+            "level": 30,
+            "move": "Headbutt",
+            "type": "normal",
+            "power": 70,
+            "category": "physical"
+          },
+          {
+            "level": 35,
+            "move": "Take Down",
+            "type": "normal",
+            "power": 90,
+            "category": "physical"
+          },
+          {
+            "level": 40,
+            "move": "Seed Bomb",
+            "type": "grass",
+            "power": 80,
+            "category": "physical"
+          },
+          {
+            "level": 45,
+            "move": "Dragon Rush",
+            "type": "dragon",
+            "power": 100,
+            "category": "physical"
+          },
+          {
+            "level": 50,
+            "move": "Power Whip",
+            "type": "grass",
+            "power": 120,
+            "category": "physical"
+          }
+        ],
+        "tm_moves": [
+          {
+            "move": "Seed Bomb",
+            "type": "grass",
+            "power": 80,
+            "reason": "STAB"
+          },
+          {
+            "move": "Leaf Blade",
+            "type": "grass",
+            "power": 90,
+            "reason": "STAB"
+          },
+          {
+            "move": "Dragon Claw",
+            "type": "dragon",
+            "power": 80,
+            "reason": "STAB"
+          },
+          {
+            "move": "Dragon Rush",
+            "type": "dragon",
+            "power": 100,
+            "reason": "STAB"
+          },
+          {
+            "move": "Waterfall",
+            "type": "water",
+            "power": 80,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Avalanche",
+            "type": "ice",
+            "power": 60,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Thunder Punch",
+            "type": "electric",
+            "power": 75,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Protect",
+            "type": "normal",
+            "power": null,
+            "reason": "Utility"
+          }
+        ],
+        "egg_moves": [
+          {
+            "move": "Razor Leaf",
+            "type": "grass",
+            "power": 55
+          },
+          {
+            "move": "Leaf Blade",
+            "type": "grass",
+            "power": 90
+          },
+          {
+            "move": "Wood Hammer",
+            "type": "grass",
+            "power": 120
+          },
+          {
+            "move": "Absorb",
+            "type": "grass",
+            "power": 20
+          }
+        ],
+        "current_moves": [
+          "Take Down",
+          "Seed Bomb",
+          "Dragon Rush",
+          "Power Whip"
+        ]
+      },
+      "image_path": "outputs\\bambusai_20260107_201639_283899_4044.png",
+      "image_prompt": "Grass/Dragon type pokemon, grass dragon, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+      "is_shiny": false,
+      "json_path": "outputs\\bambusai_data.json",
+      "trainer": "blitz",
+      "trainer_id": "trainer_1767834649053_39uj4od82",
+      "dex_number": 31,
+      "added_at": "2026-01-07T20:16:39.293676",
+      "id": "pkmn_0031"
+    },
+    {
+      "name": "Craigmon",
+      "types": [
+        "Normal",
+        null
+      ],
+      "stats": {
+        "hp": 95,
+        "attack": 85,
+        "defense": 80,
+        "sp_attack": 70,
+        "sp_defense": 85,
+        "speed": 105
+      },
+      "abilities": [
+        "Normalize",
+        "Simple",
+        "Adaptability"
+      ],
+      "signature_move": {
+        "name": "Ordinary Slam",
+        "type": "Normal",
+        "category": "Physical",
+        "power": 90,
+        "accuracy": 85,
+        "description": "An unremarkable but surprisingly effective tackle that gains power based on the user's contentment with being average"
+      },
+      "pokedex_entry": "Craigmon is known for its remarkably unremarkable nature, blending seamlessly into any environment through sheer ordinariness. Despite its plain appearance, it possesses surprising resilience and adaptability that allows it to thrive where flashier Pokemon fail. Its greatest strength lies in being consistently dependable rather than exceptionally powerful.",
+      "category": "The Ordinary Pokemon",
+      "height_m": 1.2,
+      "weight_kg": 45.5,
+      "bst": 520,
+      "tier": "fully_evolved",
+      "concept": "craig",
+      "culture": "original",
+      "moveset": {
+        "level_up_moves": [
+          {
+            "level": 1,
+            "move": "Quick Attack",
+            "type": "normal",
+            "power": 40,
+            "category": "physical"
+          },
+          {
+            "level": 5,
+            "move": "Tackle",
+            "type": "normal",
+            "power": 40,
+            "category": "physical"
+          },
+          {
+            "level": 10,
+            "move": "Pound",
+            "type": "normal",
+            "power": 40,
+            "category": "physical"
+          },
+          {
+            "level": 15,
+            "move": "Protect",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 20,
+            "move": "Leer",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 25,
+            "move": "Growl",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 30,
+            "move": "Body Slam",
+            "type": "normal",
+            "power": 85,
+            "category": "physical"
+          },
+          {
+            "level": 35,
+            "move": "Slash",
+            "type": "normal",
+            "power": 70,
+            "category": "physical"
+          },
+          {
+            "level": 40,
+            "move": "Take Down",
+            "type": "normal",
+            "power": 90,
+            "category": "physical"
+          },
+          {
+            "level": 45,
+            "move": "Headbutt",
+            "type": "normal",
+            "power": 70,
+            "category": "physical"
+          },
+          {
+            "level": 50,
+            "move": "Swords Dance",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          }
+        ],
+        "tm_moves": [
+          {
+            "move": "Headbutt",
+            "type": "normal",
+            "power": 70,
+            "reason": "STAB"
+          },
+          {
+            "move": "Slash",
+            "type": "normal",
+            "power": 70,
+            "reason": "STAB"
+          },
+          {
+            "move": "Aqua Tail",
+            "type": "water",
+            "power": 90,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Leaf Blade",
+            "type": "grass",
+            "power": 90,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Thunder Punch",
+            "type": "electric",
+            "power": 75,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Protect",
+            "type": "normal",
+            "power": null,
+            "reason": "Utility"
+          },
+          {
+            "move": "Rest",
+            "type": "psychic",
+            "power": null,
+            "reason": "Recovery"
+          }
+        ],
+        "egg_moves": [
+          {
+            "move": "Quick Attack",
+            "type": "normal",
+            "power": 40
+          },
+          {
+            "move": "Slash",
+            "type": "normal",
+            "power": 70
+          },
+          {
+            "move": "Take Down",
+            "type": "normal",
+            "power": 90
+          },
+          {
+            "move": "Double-Edge",
+            "type": "normal",
+            "power": 120
+          }
+        ],
+        "current_moves": [
+          "Slash",
+          "Take Down",
+          "Headbutt",
+          "Swords Dance"
+        ]
+      },
+      "image_path": "outputs\\craigmon_20260107_202010_512343_5088.png",
+      "image_prompt": "Normal type pokemon, craig, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+      "is_shiny": false,
+      "json_path": "outputs\\craigmon_data.json",
+      "trainer": "craig",
+      "trainer_id": "trainer_1767835191557_gvqwpt1dr",
+      "dex_number": 32,
+      "added_at": "2026-01-07T20:20:10.529195",
+      "id": "pkmn_0032"
+    },
+    {
+      "name": "Bouldric",
+      "types": [
+        "Rock",
+        null
+      ],
+      "stats": {
+        "hp": 95,
+        "attack": 110,
+        "defense": 130,
+        "sp_attack": 65,
+        "sp_defense": 85,
+        "speed": 40
+      },
+      "abilities": [
+        "Sturdy",
+        "Rock Head",
+        "Solid Rock"
+      ],
+      "signature_move": {
+        "name": "Boulder Barrage",
+        "type": "Rock",
+        "category": "Physical",
+        "power": 90,
+        "accuracy": 85,
+        "description": "Hurls massive stone chunks that may cause flinching. Hits 2-3 times."
+      },
+      "pokedex_entry": "Ancient legends speak of stone guardians that protected mountain passes from invaders. Bouldric's body is carved from the hardest granite, allowing it to withstand tremendous impacts without breaking. When threatened, it can reshape its limbs into devastating hammers and shields.",
+      "category": "The Stone Guardian Pokemon",
+      "height_m": 2.8,
+      "weight_kg": 485.2,
+      "bst": 525,
+      "tier": "fully_evolved",
+      "concept": "ROCK GOLEM",
+      "culture": "original",
+      "moveset": {
+        "level_up_moves": [
+          {
+            "level": 1,
+            "move": "Quick Attack",
+            "type": "normal",
+            "power": 40,
+            "category": "physical"
+          },
+          {
+            "level": 5,
+            "move": "Scratch",
+            "type": "normal",
+            "power": 40,
+            "category": "physical"
+          },
+          {
+            "level": 10,
+            "move": "Growl",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 15,
+            "move": "Rock Polish",
+            "type": "rock",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 20,
+            "move": "Headbutt",
+            "type": "normal",
+            "power": 70,
+            "category": "physical"
+          },
+          {
+            "level": 25,
+            "move": "Slash",
+            "type": "normal",
+            "power": 70,
+            "category": "physical"
+          },
+          {
+            "level": 30,
+            "move": "Rock Throw",
+            "type": "rock",
+            "power": 50,
+            "category": "physical"
+          },
+          {
+            "level": 35,
+            "move": "Rock Slide",
+            "type": "rock",
+            "power": 75,
+            "category": "physical"
+          },
+          {
+            "level": 40,
+            "move": "Head Smash",
+            "type": "rock",
+            "power": 150,
+            "category": "physical"
+          },
+          {
+            "level": 45,
+            "move": "Stone Edge",
+            "type": "rock",
+            "power": 100,
+            "category": "physical"
+          },
+          {
+            "level": 50,
+            "move": "Body Slam",
+            "type": "normal",
+            "power": 85,
+            "category": "physical"
+          }
+        ],
+        "tm_moves": [
+          {
+            "move": "Rock Tomb",
+            "type": "rock",
+            "power": 60,
+            "reason": "STAB"
+          },
+          {
+            "move": "Rock Slide",
+            "type": "rock",
+            "power": 75,
+            "reason": "STAB"
+          },
+          {
+            "move": "Aqua Tail",
+            "type": "water",
+            "power": 90,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Seed Bomb",
+            "type": "grass",
+            "power": 80,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Spark",
+            "type": "electric",
+            "power": 65,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Protect",
+            "type": "normal",
+            "power": null,
+            "reason": "Utility"
+          },
+          {
+            "move": "Rest",
+            "type": "psychic",
+            "power": null,
+            "reason": "Recovery"
+          }
+        ],
+        "egg_moves": [
+          {
+            "move": "Stone Edge",
+            "type": "rock",
+            "power": 100
+          },
+          {
+            "move": "Head Smash",
+            "type": "rock",
+            "power": 150
+          }
+        ],
+        "current_moves": [
+          "Rock Slide",
+          "Head Smash",
+          "Stone Edge",
+          "Body Slam"
+        ]
+      },
+      "image_path": "outputs\\bouldric_20260107_203202_999003_3056.png",
+      "image_prompt": "Rock type pokemon, ROCK GOLEM, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+      "is_shiny": false,
+      "json_path": "outputs\\bouldric_data.json",
+      "trainer": "blitz",
+      "trainer_id": "trainer_1767834649053_39uj4od82",
+      "dex_number": 33,
+      "added_at": "2026-01-07T20:32:03.010236",
+      "id": "pkmn_0033"
+    },
+    {
+      "name": "Kreval",
+      "types": [
+        "Ice",
+        "Rock"
+      ],
+      "stats": {
+        "hp": 95,
+        "attack": 110,
+        "defense": 130,
+        "sp_attack": 65,
+        "sp_defense": 85,
+        "speed": 35
+      },
+      "abilities": [
+        "Solid Rock",
+        "Ice Body",
+        "Filter"
+      ],
+      "signature_move": {
+        "name": "Glacier Crush",
+        "type": "Ice",
+        "category": "Physical",
+        "power": 90,
+        "accuracy": 85,
+        "description": "The user compresses ice around its fists and delivers a crushing blow. May lower the target's Defense."
+      },
+      "pokedex_entry": "Ancient ice golems that form naturally in the deepest glacial caverns where ice and stone merge over millennia. Their crystalline cores pulse with frigid energy, allowing them to reshape their bodies at will. When threatened, they can compress their ice-rock composition to become nearly indestructible.",
+      "category": "The Frost Golem Pokemon",
+      "height_m": 2.8,
+      "weight_kg": 285.5,
+      "bst": 520,
+      "tier": "fully_evolved",
+      "concept": "ice golem",
+      "culture": "original",
+      "moveset": {
+        "level_up_moves": [
+          {
+            "level": 1,
+            "move": "Growl",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 5,
+            "move": "Scratch",
+            "type": "normal",
+            "power": 40,
+            "category": "physical"
+          },
+          {
+            "level": 10,
+            "move": "Ice Shard",
+            "type": "ice",
+            "power": 40,
+            "category": "physical"
+          },
+          {
+            "level": 15,
+            "move": "Take Down",
+            "type": "normal",
+            "power": 90,
+            "category": "physical"
+          },
+          {
+            "level": 20,
+            "move": "Leer",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 25,
+            "move": "Ice Punch",
+            "type": "ice",
+            "power": 75,
+            "category": "physical"
+          },
+          {
+            "level": 30,
+            "move": "Body Slam",
+            "type": "normal",
+            "power": 85,
+            "category": "physical"
+          },
+          {
+            "level": 35,
+            "move": "Rock Polish",
+            "type": "rock",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 40,
+            "move": "Avalanche",
+            "type": "ice",
+            "power": 60,
+            "category": "physical"
+          },
+          {
+            "level": 45,
+            "move": "Extreme Speed",
+            "type": "normal",
+            "power": 80,
+            "category": "physical"
+          },
+          {
+            "level": 50,
+            "move": "Slash",
+            "type": "normal",
+            "power": 70,
+            "category": "physical"
+          }
+        ],
+        "tm_moves": [
+          {
+            "move": "Ice Punch",
+            "type": "ice",
+            "power": 75,
+            "reason": "STAB"
+          },
+          {
+            "move": "Ice Fang",
+            "type": "ice",
+            "power": 65,
+            "reason": "STAB"
+          },
+          {
+            "move": "Rock Tomb",
+            "type": "rock",
+            "power": 60,
+            "reason": "STAB"
+          },
+          {
+            "move": "Rock Slide",
+            "type": "rock",
+            "power": 75,
+            "reason": "STAB"
+          },
+          {
+            "move": "Aqua Tail",
+            "type": "water",
+            "power": 90,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Leaf Blade",
+            "type": "grass",
+            "power": 90,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Thunder Punch",
+            "type": "electric",
+            "power": 75,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Protect",
+            "type": "normal",
+            "power": null,
+            "reason": "Utility"
+          }
+        ],
+        "egg_moves": [
+          {
+            "move": "Ice Shard",
+            "type": "ice",
+            "power": 40
+          },
+          {
+            "move": "Stone Edge",
+            "type": "rock",
+            "power": 100
+          },
+          {
+            "move": "Head Smash",
+            "type": "rock",
+            "power": 150
+          }
+        ],
+        "current_moves": [
+          "Rock Polish",
+          "Avalanche",
+          "Extreme Speed",
+          "Slash"
+        ]
+      },
+      "image_path": "outputs\\kreval_20260107_203219_913952_5764.png",
+      "image_prompt": "Ice type pokemon, ice golem, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+      "is_shiny": false,
+      "json_path": "outputs\\kreval_data.json",
+      "trainer": "blitz",
+      "trainer_id": "trainer_1767834649053_39uj4od82",
+      "dex_number": 34,
+      "added_at": "2026-01-07T20:32:19.922343",
+      "id": "pkmn_0034"
+    },
+    {
+      "name": "Pyrrok",
+      "types": [
+        "Fire",
+        "Rock"
+      ],
+      "stats": {
+        "hp": 85,
+        "attack": 110,
+        "defense": 95,
+        "sp_attack": 75,
+        "sp_defense": 80,
+        "speed": 55
+      },
+      "abilities": [
+        "Flame Body",
+        "Solid Rock",
+        "Molten Armor"
+      ],
+      "signature_move": {
+        "name": "Molten Barrage",
+        "type": "Fire",
+        "category": "Physical",
+        "power": 90,
+        "accuracy": 85,
+        "description": "Hurls chunks of molten rock at the target. May cause burn and lower Speed."
+      },
+      "pokedex_entry": "Pyrrok's body is composed of volcanic rock heated to extreme temperatures by an internal furnace. Ancient legends speak of these Pokemon emerging from dormant volcanoes to protect sacred flame sites. Its fists burn hot enough to melt steel, leaving glowing handprints on whatever it touches.",
+      "category": "The Forge Pokemon",
+      "height_m": 2.1,
+      "weight_kg": 240.5,
+      "bst": 500,
+      "tier": "fully_evolved",
+      "concept": "fire golem",
+      "culture": "original",
+      "moveset": {
+        "level_up_moves": [
+          {
+            "level": 1,
+            "move": "Scratch",
+            "type": "normal",
+            "power": 40,
+            "category": "physical"
+          },
+          {
+            "level": 5,
+            "move": "Ember",
+            "type": "fire",
+            "power": 40,
+            "category": "physical"
+          },
+          {
+            "level": 10,
+            "move": "Growl",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 15,
+            "move": "Quick Attack",
+            "type": "normal",
+            "power": 40,
+            "category": "physical"
+          },
+          {
+            "level": 20,
+            "move": "Stealth Rock",
+            "type": "rock",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 25,
+            "move": "Rock Tomb",
+            "type": "rock",
+            "power": 60,
+            "category": "physical"
+          },
+          {
+            "level": 30,
+            "move": "Body Slam",
+            "type": "normal",
+            "power": 85,
+            "category": "physical"
+          },
+          {
+            "level": 35,
+            "move": "Flame Wheel",
+            "type": "fire",
+            "power": 60,
+            "category": "physical"
+          },
+          {
+            "level": 40,
+            "move": "Double-Edge",
+            "type": "normal",
+            "power": 120,
+            "category": "physical"
+          },
+          {
+            "level": 45,
+            "move": "Headbutt",
+            "type": "normal",
+            "power": 70,
+            "category": "physical"
+          },
+          {
+            "level": 50,
+            "move": "Take Down",
+            "type": "normal",
+            "power": 90,
+            "category": "physical"
+          }
+        ],
+        "tm_moves": [
+          {
+            "move": "Flame Wheel",
+            "type": "fire",
+            "power": 60,
+            "reason": "STAB"
+          },
+          {
+            "move": "Fire Punch",
+            "type": "fire",
+            "power": 75,
+            "reason": "STAB"
+          },
+          {
+            "move": "Rock Tomb",
+            "type": "rock",
+            "power": 60,
+            "reason": "STAB"
+          },
+          {
+            "move": "Rock Slide",
+            "type": "rock",
+            "power": 75,
+            "reason": "STAB"
+          },
+          {
+            "move": "Liquidation",
+            "type": "water",
+            "power": 85,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Ice Fang",
+            "type": "ice",
+            "power": 65,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Thunder Punch",
+            "type": "electric",
+            "power": 75,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Protect",
+            "type": "normal",
+            "power": null,
+            "reason": "Utility"
+          }
+        ],
+        "egg_moves": [
+          {
+            "move": "Blaze Kick",
+            "type": "fire",
+            "power": 85
+          },
+          {
+            "move": "Flare Blitz",
+            "type": "fire",
+            "power": 120
+          },
+          {
+            "move": "Stone Edge",
+            "type": "rock",
+            "power": 100
+          },
+          {
+            "move": "Head Smash",
+            "type": "rock",
+            "power": 150
+          }
+        ],
+        "current_moves": [
+          "Flame Wheel",
+          "Double-Edge",
+          "Headbutt",
+          "Take Down"
+        ]
+      },
+      "image_path": "outputs\\pyrrok_20260107_203236_139628_4246.png",
+      "image_prompt": "Fire type pokemon, fire golem, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+      "is_shiny": false,
+      "json_path": "outputs\\pyrrok_data.json",
+      "trainer": "blitz",
+      "trainer_id": "trainer_1767834649053_39uj4od82",
+      "dex_number": 35,
+      "added_at": "2026-01-07T20:32:36.151703",
+      "id": "pkmn_0035"
+    },
+    {
+      "name": "Ramenyx",
+      "types": [
+        "Normal",
+        null
+      ],
+      "stats": {
+        "hp": 95,
+        "attack": 70,
+        "defense": 85,
+        "sp_attack": 105,
+        "sp_defense": 90,
+        "speed": 80
+      },
+      "abilities": [
+        "Tangled Up",
+        "Thick Fat",
+        "Gooey"
+      ],
+      "signature_move": {
+        "name": "Noodle Whip",
+        "type": "Normal",
+        "category": "Physical",
+        "power": 85,
+        "accuracy": 90,
+        "description": "The user lashes out with stretchy noodle appendages that may lower the target's Speed."
+      },
+      "pokedex_entry": "Ramenyx's body is composed entirely of flexible, steaming noodles that can stretch to incredible lengths. It generates heat from within to keep its noodle body warm and pliable, releasing aromatic steam that can calm aggressive Pokemon. When threatened, it tangles opponents in its endless coils.",
+      "category": "The Noodle Pokemon",
+      "height_m": 1.8,
+      "weight_kg": 42.5,
+      "bst": 525,
+      "tier": "fully_evolved",
+      "concept": "a noodle monster\n",
+      "culture": "original",
+      "moveset": {
+        "level_up_moves": [
+          {
+            "level": 1,
+            "move": "Leer",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 5,
+            "move": "Growl",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 15,
+            "move": "Swords Dance",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 20,
+            "move": "Protect",
+            "type": "normal",
+            "power": null,
+            "category": "status"
+          },
+          {
+            "level": 25,
+            "move": "Swift",
+            "type": "normal",
+            "power": 60,
+            "category": "special"
+          },
+          {
+            "level": 35,
+            "move": "Hyper Beam",
+            "type": "normal",
+            "power": 150,
+            "category": "special"
+          },
+          {
+            "level": 40,
+            "move": "Hyper Voice",
+            "type": "normal",
+            "power": 90,
+            "category": "special"
+          }
+        ],
+        "tm_moves": [
+          {
+            "move": "Swift",
+            "type": "normal",
+            "power": 60,
+            "reason": "STAB"
+          },
+          {
+            "move": "Hyper Voice",
+            "type": "normal",
+            "power": 90,
+            "reason": "STAB"
+          },
+          {
+            "move": "Hydro Pump",
+            "type": "water",
+            "power": 110,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Leaf Storm",
+            "type": "grass",
+            "power": 130,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Thunderbolt",
+            "type": "electric",
+            "power": 90,
+            "reason": "Coverage"
+          },
+          {
+            "move": "Protect",
+            "type": "normal",
+            "power": null,
+            "reason": "Utility"
+          },
+          {
+            "move": "Rest",
+            "type": "psychic",
+            "power": null,
+            "reason": "Recovery"
+          }
+        ],
+        "egg_moves": [
+          {
+            "move": "Quick Attack",
+            "type": "normal",
+            "power": 40
+          },
+          {
+            "move": "Slash",
+            "type": "normal",
+            "power": 70
+          },
+          {
+            "move": "Take Down",
+            "type": "normal",
+            "power": 90
+          },
+          {
+            "move": "Double-Edge",
+            "type": "normal",
+            "power": 120
+          }
+        ],
+        "current_moves": [
+          "Protect",
+          "Swift",
+          "Hyper Beam",
+          "Hyper Voice"
+        ]
+      },
+      "image_path": "outputs\\ramenyx_20260107_203725_337790_5652.png",
+      "image_prompt": "Normal type pokemon, a noodle monster\n, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+      "is_shiny": false,
+      "json_path": "outputs\\ramenyx_data.json",
+      "trainer": "katie",
+      "trainer_id": "trainer_1767836222892_3sucj9k7g",
+      "dex_number": 36,
+      "added_at": "2026-01-07T20:37:25.348746",
+      "id": "pkmn_0036"
     }
   ],
-  "next_dex_number": 31,
+  "next_dex_number": 37,
   "created_at": "2026-01-05T23:25:41.275963"
 }
