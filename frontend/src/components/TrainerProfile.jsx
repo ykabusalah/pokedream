@@ -11,15 +11,33 @@ const TYPE_COLORS = {
 };
 
 const ACHIEVEMENTS = [
+  // Creation milestones
   { id: 'first', icon: '🥚', title: 'First Steps', desc: 'Create your first Pokémon', check: s => s.total >= 1 },
   { id: 'five', icon: '⭐', title: 'Budding Trainer', desc: 'Create 5 Pokémon', check: s => s.total >= 5 },
   { id: 'ten', icon: '🏆', title: 'Rising Star', desc: 'Create 10 Pokémon', check: s => s.total >= 10 },
   { id: 'twentyfive', icon: '👑', title: 'Regional Expert', desc: 'Create 25 Pokémon', check: s => s.total >= 25 },
   { id: 'fifty', icon: '🌟', title: 'Pokémon Master', desc: 'Create 50 Pokémon', check: s => s.total >= 50 },
+  { id: 'hundred', icon: '💫', title: 'Living Legend', desc: 'Create 100 Pokémon', check: s => s.total >= 100 },
+  
+  // Shiny achievements
   { id: 'shiny', icon: '✨', title: 'Lucky Find', desc: 'Find a shiny Pokémon', check: s => s.shinies >= 1 },
+  { id: 'shiny3', icon: '🔮', title: 'Fortune Favors', desc: 'Find 3 shiny Pokémon', check: s => s.shinies >= 3 },
   { id: 'shiny5', icon: '💎', title: 'Shiny Hunter', desc: 'Find 5 shiny Pokémon', check: s => s.shinies >= 5 },
+  { id: 'shiny10', icon: '🌠', title: 'Shiny Collector', desc: 'Find 10 shiny Pokémon', check: s => s.shinies >= 10 },
+  
+  // Type diversity
   { id: 'types5', icon: '🎨', title: 'Type Explorer', desc: 'Discover 5 different types', check: s => Object.keys(s.type_counts || {}).length >= 5 },
+  { id: 'types10', icon: '🎭', title: 'Type Enthusiast', desc: 'Discover 10 different types', check: s => Object.keys(s.type_counts || {}).length >= 10 },
+  { id: 'types15', icon: '🎪', title: 'Type Specialist', desc: 'Discover 15 different types', check: s => Object.keys(s.type_counts || {}).length >= 15 },
   { id: 'types18', icon: '🌈', title: 'Type Master', desc: 'Discover all 18 types', check: s => Object.keys(s.type_counts || {}).length >= 18 },
+  
+  // Type specialists (5+ of one type)
+  { id: 'fire_fan', icon: '🔥', title: 'Fire Enthusiast', desc: 'Create 5 Fire-type Pokémon', check: s => (s.type_counts?.Fire || 0) >= 5 },
+  { id: 'water_fan', icon: '💧', title: 'Water Enthusiast', desc: 'Create 5 Water-type Pokémon', check: s => (s.type_counts?.Water || 0) >= 5 },
+  { id: 'grass_fan', icon: '🌿', title: 'Grass Enthusiast', desc: 'Create 5 Grass-type Pokémon', check: s => (s.type_counts?.Grass || 0) >= 5 },
+  { id: 'dragon_fan', icon: '🐲', title: 'Dragon Tamer', desc: 'Create 5 Dragon-type Pokémon', check: s => (s.type_counts?.Dragon || 0) >= 5 },
+  { id: 'ghost_fan', icon: '👻', title: 'Ghost Whisperer', desc: 'Create 5 Ghost-type Pokémon', check: s => (s.type_counts?.Ghost || 0) >= 5 },
+  { id: 'psychic_fan', icon: '🔮', title: 'Mind Bender', desc: 'Create 5 Psychic-type Pokémon', check: s => (s.type_counts?.Psychic || 0) >= 5 },
 ];
 
 // ============================================
@@ -216,6 +234,7 @@ export default function TrainerProfile({ trainerName, onNavigate, onChangeName, 
   const [loading, setLoading] = useState(true);
   const [showNameEdit, setShowNameEdit] = useState(false);
   const [newName, setNewName] = useState(trainerName);
+  const [showAllAchievements, setShowAllAchievements] = useState(false);
 
   // ============================================
   // DATA FETCHING
@@ -372,7 +391,7 @@ export default function TrainerProfile({ trainerName, onNavigate, onChangeName, 
               </div>
 
               {favoriteType && (
-                <div className="text-center">
+                <div className="text-center mt-12">
                   <div className="text-xs text-gray-500 mb-1">Favorite Type</div>
                   <span 
                     className="px-4 py-2 rounded-full font-bold text-white text-sm inline-block"
@@ -409,12 +428,21 @@ export default function TrainerProfile({ trainerName, onNavigate, onChangeName, 
         <div className="grid md:grid-cols-2 gap-8">
           {/* Left: Achievements */}
           <div className="bg-gray-900/80 backdrop-blur-sm rounded-2xl border border-gray-800 p-6">
-            <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
-              🏆 Achievements
-              <span className="text-sm font-normal text-gray-500">{unlockedAchievements.length}/{ACHIEVEMENTS.length}</span>
-            </h2>
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-lg font-bold flex items-center gap-2">
+                🏆 Achievements
+                <span className="text-sm font-normal text-gray-500">{unlockedAchievements.length}/{ACHIEVEMENTS.length}</span>
+              </h2>
+              <button
+                onClick={() => setShowAllAchievements(true)}
+                className="text-amber-400 hover:text-amber-300 text-sm"
+              >
+                View All →
+              </button>
+            </div>
             <div className="space-y-3">
-              {ACHIEVEMENTS.map(a => {
+              {/* Show first 6 achievements (prioritize locked/upcoming ones) */}
+              {[...ACHIEVEMENTS.filter(a => !stats || !a.check(stats)), ...unlockedAchievements].slice(0, 6).map(a => {
                 const unlocked = stats && a.check(stats);
                 return (
                   <div 
@@ -435,6 +463,14 @@ export default function TrainerProfile({ trainerName, onNavigate, onChangeName, 
                 );
               })}
             </div>
+            {ACHIEVEMENTS.length > 6 && (
+              <button
+                onClick={() => setShowAllAchievements(true)}
+                className="w-full mt-4 py-2 text-sm text-gray-400 hover:text-amber-400 transition-colors"
+              >
+                +{ACHIEVEMENTS.length - 6} more achievements
+              </button>
+            )}
           </div>
 
           {/* Right: Type Distribution + Recent */}
@@ -539,6 +575,54 @@ export default function TrainerProfile({ trainerName, onNavigate, onChangeName, 
           </button>
         </div>
       </div>
+      
+      {/* Achievements Modal */}
+      {showAllAchievements && (
+        <div 
+          className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4"
+          onClick={() => setShowAllAchievements(false)}
+        >
+          <div 
+            className="bg-gray-900 rounded-2xl border border-gray-700 max-w-lg w-full max-h-[80vh] overflow-hidden"
+            onClick={e => e.stopPropagation()}
+          >
+            <div className="p-4 border-b border-gray-800 flex items-center justify-between">
+              <h2 className="text-xl font-bold flex items-center gap-2">
+                🏆 All Achievements
+                <span className="text-sm font-normal text-gray-500">{unlockedAchievements.length}/{ACHIEVEMENTS.length}</span>
+              </h2>
+              <button
+                onClick={() => setShowAllAchievements(false)}
+                className="text-gray-400 hover:text-white text-2xl"
+              >
+                ✕
+              </button>
+            </div>
+            <div className="p-4 overflow-y-auto max-h-[calc(80vh-80px)] space-y-2">
+              {ACHIEVEMENTS.map(a => {
+                const unlocked = stats && a.check(stats);
+                return (
+                  <div 
+                    key={a.id}
+                    className={`flex items-center gap-3 p-3 rounded-xl transition-all ${
+                      unlocked 
+                        ? 'bg-amber-500/10 border border-amber-500/30' 
+                        : 'bg-gray-800/50 border border-gray-700/50 opacity-50'
+                    }`}
+                  >
+                    <span className={`text-2xl ${unlocked ? '' : 'grayscale'}`}>{a.icon}</span>
+                    <div className="flex-1 min-w-0">
+                      <div className={`font-medium text-sm ${unlocked ? 'text-amber-400' : 'text-gray-500'}`}>{a.title}</div>
+                      <div className="text-xs text-gray-500 truncate">{a.desc}</div>
+                    </div>
+                    {unlocked && <span className="text-green-500 text-lg">✔</span>}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
