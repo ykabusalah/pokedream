@@ -24,6 +24,9 @@ COPY --from=builder /app/dist /usr/share/nginx/html
 # Copy nginx config
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
+# Railway (and many platforms) expect the container to listen on $PORT.
+# Most nginx configs default to `listen 80;` so we rewrite it at runtime.
+# If PORT isn't set, we fall back to 80 for local runs.
 EXPOSE 80
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["sh", "-c", "sed -i -E 's/listen[[:space:]]+80;/listen '${PORT:-80}';/g' /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"]

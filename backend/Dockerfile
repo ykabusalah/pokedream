@@ -17,8 +17,8 @@ COPY . .
 # Create directories for data and outputs
 RUN mkdir -p /app/data /app/outputs
 
-# Expose port (Railway sets $PORT)
+# Railway sets $PORT at runtime; 8000 is fine for local runs
 EXPOSE 8000
 
-# Start command
+# Start the server (shell-form CMD ensures $PORT is expanded)
 CMD ["sh", "-c", "uvicorn api_server:app --host 0.0.0.0 --port ${PORT:-8000}"]
