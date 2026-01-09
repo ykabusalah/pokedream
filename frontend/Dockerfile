@@ -21,12 +21,24 @@ FROM nginx:alpine
 # Copy built files
 COPY --from=builder /app/dist /usr/share/nginx/html
 
-# Copy nginx config
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Create nginx config template with PORT placeholder
+RUN echo 'server { \
+    listen PORT_PLACEHOLDER; \
+    server_name _; \
+    root /usr/share/nginx/html; \
+    index index.html; \
+    location / { \
+        try_files $uri $uri/ /index.html; \
+    } \
+    location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2)$ { \
+        expires 1y; \
+        add_header Cache-Control "public, immutable"; \
+    } \
+    gzip on; \
+    gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript; \
+}' > /etc/nginx/conf.d/default.conf
 
-# Railway (and many platforms) expect the container to listen on $PORT.
-# Most nginx configs default to `listen 80;` so we rewrite it at runtime.
-# If PORT isn't set, we fall back to 80 for local runs.
 EXPOSE 80
 
-CMD ["sh", "-c", "sed -i -E 's/listen[[:space:]]+80;/listen '${PORT:-80}';/g' /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"]
+# Replace PORT_PLACEHOLDER with actual PORT at runtime (with debug output)
+CMD ["sh", "-c", "echo '=== Railway PORT: '${PORT:-80}' ===' && sed -i \"s/PORT_PLACEHOLDER/${PORT:-80}/g\" /etc/nginx/conf.d/default.conf && echo '=== Final nginx config ===' && cat /etc/nginx/conf.d/default.conf && echo '=== Starting nginx ===' && nginx -g 'daemon off;'"]
