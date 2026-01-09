@@ -8,7 +8,7 @@ import Tournament from './components/Tournament';
 import HallOfFame from './components/HallOfFame';
 import AchievementPopup, { ACHIEVEMENTS, checkNewAchievements } from './components/AchievementPopup';
 
-const API_URL = 'http://localhost:8000';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
 // ============================================
 // TIME TRACKING HELPERS

@@ -3,6 +3,7 @@ PokeDream API Server
 Connects the React frontend to the Python generator.
 """
 
+import os
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
@@ -96,15 +97,34 @@ COMPILED_PATTERNS = [re.compile(p, re.IGNORECASE) for p in BLOCKED_PATTERNS]
 
 app = FastAPI(title="PokeDream API")
 
+# CORS configuration - allow frontend URLs from environment
+cors_origins = [
+    "http://localhost:5173",
+    "http://localhost:3000",
+]
+
+# Add production frontend URL if set
+frontend_url = os.getenv("FRONTEND_URL")
+if frontend_url:
+    cors_origins.append(frontend_url)
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:3000"],
+    allow_origins=cors_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
+# Mount static files for Pokemon images
+outputs_dir = Path("outputs")
+outputs_dir.mkdir(exist_ok=True)
 app.mount("/outputs", StaticFiles(directory="outputs"), name="outputs")
+
+# Mount public folder if it exists (for assets like blaine.png)
+public_dir = Path("public")
+if public_dir.exists():
+    app.mount("/public", StaticFiles(directory="public"), name="public")
 
 generator = PokeDream()
 
@@ -116,11 +136,11 @@ async def startup_event():
     try:
         tournament_system = get_tournament_system()
         current = tournament_system.get_current_tournament()
-        
+
         if not current:
             db = get_db()
             pokemon_count = db.get_count()
-            
+
             # Only create if we have at least 16 Pokémon
             if pokemon_count >= 16:
                 tournament = tournament_system.create_tournament(db)
@@ -193,14 +213,14 @@ class InductProfessorsChoiceRequest(BaseModel):
 def get_daily_challenge(trainer_id: Optional[str] = None):
     """Get today's daily challenge."""
     challenge = generate_daily_challenge()
-    
+
     # Check if trainer has completed it
     if trainer_id:
         challenge_db = get_challenge_db()
         challenge["completed"] = challenge_db.has_completed(trainer_id, challenge["id"])
     else:
         challenge["completed"] = False
-    
+
     return challenge
 
 
@@ -209,14 +229,14 @@ def complete_daily_challenge(req: CompleteChallengeRequest):
     """Mark daily challenge as completed."""
     challenge = generate_daily_challenge()
     challenge_db = get_challenge_db()
-    
+
     # Check if already completed
     if challenge_db.has_completed(req.trainer_id, challenge["id"]):
         return {"success": False, "message": "Challenge already completed today"}
-    
+
     # Mark as completed
     challenge_db.mark_completed(req.trainer_id, challenge["id"], req.pokemon_id)
-    
+
     return {"success": True, "message": "Challenge completed!", "challenge_id": challenge["id"]}
 
 
@@ -226,7 +246,7 @@ def get_challenge_history(trainer_id: str):
     challenge_db = get_challenge_db()
     completions = challenge_db.get_trainer_completions(trainer_id)
     total = challenge_db.get_completion_count(trainer_id)
-    
+
     return {
         "completions": completions,
         "total_completed": total
@@ -238,6 +258,12 @@ def get_challenge_history(trainer_id: str):
 @app.get("/")
 def root():
     return {"status": "PokeDream API running", "version": "1.0", "region": "Oneira"}
+
+
+@app.get("/health")
+def health_check():
+    """Health check endpoint for Railway."""
+    return {"status": "healthy", "service": "pokedream-api"}
 
 
 @app.post("/api/generate")
@@ -476,20 +502,20 @@ def get_trainer_stats(trainer_id: str):
     """Get stats for a specific trainer's Pokemon."""
     db = get_db()
     all_pokemon = db.get_all()
-    
+
     # Filter by trainer_id
     trainer_pokemon = [p for p in all_pokemon if p.get("trainer_id") == trainer_id]
-    
+
     # Calculate stats
     total = len(trainer_pokemon)
     shinies = len([p for p in trainer_pokemon if p.get("is_shiny")])
-    
+
     type_counts = {}
     for p in trainer_pokemon:
         for t in p.get("types", []):
             if t:
                 type_counts[t] = type_counts.get(t, 0) + 1
-    
+
     return {
         "total": total,
         "shinies": shinies,
@@ -503,11 +529,11 @@ def get_trainer_recent(trainer_id: str, limit: int = 10):
     """Get recently created Pokemon for a specific trainer."""
     db = get_db()
     all_pokemon = db.get_all()
-    
+
     # Filter by trainer_id and sort by dex_number (most recent first)
     trainer_pokemon = [p for p in all_pokemon if p.get("trainer_id") == trainer_id]
     trainer_pokemon.sort(key=lambda p: p.get("dex_number", 0), reverse=True)
-    
+
     return {"pokemon": trainer_pokemon[:limit]}
 
 
@@ -576,37 +602,37 @@ def get_current_tournament():
     """Get the currently active tournament."""
     tournament_system = get_tournament_system()
     tournament = tournament_system.get_current_tournament()
-    
+
     if not tournament:
         return {"tournament": None, "message": "No active tournament"}
-    
+
     # Enrich with actual Pokémon data
     db = get_db()
     enriched_bracket = {}
-    
+
     for round_key, matchups in tournament["bracket"].items():
         enriched_matchups = []
-        
+
         for matchup in matchups:
             pokemon_a = None
             pokemon_b = None
-            
+
             if matchup["pokemon_a_id"]:
                 pokemon_a = db.get_by_dex_number(matchup["pokemon_a_id"])
-            
+
             if matchup["pokemon_b_id"]:
                 pokemon_b = db.get_by_dex_number(matchup["pokemon_b_id"])
-            
+
             enriched_matchups.append({
                 **matchup,
                 "pokemon_a": pokemon_a,
                 "pokemon_b": pokemon_b
             })
-        
+
         enriched_bracket[round_key] = enriched_matchups
-    
+
     tournament["bracket"] = enriched_bracket
-    
+
     return {"tournament": tournament}
 
 
@@ -615,32 +641,32 @@ def get_current_matchups(trainer_id: Optional[str] = None):
     """Get active matchups for voting in current tournament."""
     tournament_system = get_tournament_system()
     voting_system = get_voting_system()
-    
+
     tournament = tournament_system.get_current_tournament()
-    
+
     if not tournament:
         return {"matchups": [], "message": "No active tournament"}
-    
+
     matchups = tournament_system.get_active_matchups(tournament["id"])
-    
+
     # Enrich with Pokémon data and vote counts
     db = get_db()
     enriched_matchups = []
-    
+
     for matchup in matchups:
         pokemon_a = db.get_by_dex_number(matchup["pokemon_a_id"])
         pokemon_b = db.get_by_dex_number(matchup["pokemon_b_id"])
-        
+
         # Get vote counts
         votes = voting_system.get_matchup_votes(matchup["matchup_id"])
         votes_a = votes.get(matchup["pokemon_a_id"], 0)
         votes_b = votes.get(matchup["pokemon_b_id"], 0)
-        
+
         # Check if trainer has voted
         has_voted = False
         if trainer_id:
             has_voted = voting_system.has_voted(matchup["matchup_id"], trainer_id)
-        
+
         enriched_matchups.append({
             "matchup_id": matchup["matchup_id"],
             "pokemon_a": pokemon_a,
@@ -650,7 +676,7 @@ def get_current_matchups(trainer_id: Optional[str] = None):
             "has_voted": has_voted,
             "status": matchup["status"]
         })
-    
+
     return {
         "tournament": {
             "id": tournament["id"],
@@ -669,36 +695,36 @@ def cast_tournament_vote(req: VoteRequest):
     """Cast a vote in a tournament matchup."""
     voting_system = get_voting_system()
     tournament_system = get_tournament_system()
-    
+
     # Verify tournament exists and is active
     tournament = tournament_system.get_current_tournament()
     if not tournament:
         raise HTTPException(status_code=404, detail="No active tournament")
-    
+
     # Verify matchup exists and is active
     matchups = tournament_system.get_active_matchups(tournament["id"])
     matchup = next((m for m in matchups if m["matchup_id"] == req.matchup_id), None)
-    
+
     if not matchup:
         raise HTTPException(status_code=404, detail="Matchup not found or not active")
-    
+
     # Verify trainer isn't voting on their own Pokémon
     db = get_db()
     pokemon = db.get_by_dex_number(req.pokemon_id)
-    
+
     if pokemon and pokemon.get("trainer_id") == req.trainer_id:
         raise HTTPException(status_code=400, detail="You cannot vote for your own Pokémon")
-    
+
     # Cast vote
     result = voting_system.cast_vote(
         matchup_id=req.matchup_id,
         trainer_id=req.trainer_id,
         pokemon_id=req.pokemon_id
     )
-    
+
     if not result["success"]:
         raise HTTPException(status_code=400, detail=result["message"])
-    
+
     return result
 
 
@@ -707,7 +733,7 @@ def get_tournament_history(limit: int = 10):
     """Get past tournaments."""
     tournament_system = get_tournament_system()
     tournaments = tournament_system.get_tournament_history(limit)
-    
+
     return {"tournaments": tournaments}
 
 
@@ -716,37 +742,37 @@ def get_tournament_details(tournament_id: str):
     """Get details for a specific tournament."""
     tournament_system = get_tournament_system()
     tournament = tournament_system._get_tournament_by_id(tournament_id)
-    
+
     if not tournament:
         raise HTTPException(status_code=404, detail="Tournament not found")
-    
+
     # Enrich with Pokémon data
     db = get_db()
     enriched_bracket = {}
-    
+
     for round_key, matchups in tournament["bracket"].items():
         enriched_matchups = []
-        
+
         for matchup in matchups:
             pokemon_a = None
             pokemon_b = None
-            
+
             if matchup["pokemon_a_id"]:
                 pokemon_a = db.get_by_dex_number(matchup["pokemon_a_id"])
-            
+
             if matchup["pokemon_b_id"]:
                 pokemon_b = db.get_by_dex_number(matchup["pokemon_b_id"])
-            
+
             enriched_matchups.append({
                 **matchup,
                 "pokemon_a": pokemon_a,
                 "pokemon_b": pokemon_b
             })
-        
+
         enriched_bracket[round_key] = enriched_matchups
-    
+
     tournament["bracket"] = enriched_bracket
-    
+
     return {"tournament": tournament}
 
 
@@ -756,14 +782,14 @@ def get_trainer_tournament_stats(trainer_id: str):
     voting_system = get_voting_system()
     tournament_system = get_tournament_system()
     db = get_db()
-    
+
     # Get voting stats
     voting_stats = voting_system.get_trainer_voting_stats(trainer_id)
-    
+
     # Get Pokémon in tournaments
     trainer_pokemon = db.get_by_trainer(trainer_id)
     tournament = tournament_system.get_current_tournament()
-    
+
     pokemon_in_current = []
     if tournament:
         for pokemon in trainer_pokemon:
@@ -774,7 +800,7 @@ def get_trainer_tournament_stats(trainer_id: str):
                     **pokemon,
                     "total_votes": total_votes
                 })
-    
+
     return {
         "voting_stats": voting_stats,
         "pokemon_in_current_tournament": pokemon_in_current
@@ -787,15 +813,15 @@ def get_trainer_tournament_stats(trainer_id: str):
 def get_hall_of_fame_inductees(type: str = None):
     """
     Get all Hall of Fame inductees.
-    
+
     Query params:
         type: Filter by induction type (champion, fan_favorite, professors_choice)
     """
     hof = get_hall_of_fame()
     db = get_db()
-    
+
     inductees = hof.get_all_inductees(induction_type=type)
-    
+
     # Enrich with Pokémon data
     enriched = []
     for inductee in inductees:
@@ -805,10 +831,10 @@ def get_hall_of_fame_inductees(type: str = None):
                 **inductee,
                 "pokemon": pokemon
             })
-    
+
     # Sort by induction date (most recent first)
     enriched.sort(key=lambda x: x["induction_date"], reverse=True)
-    
+
     return {"inductees": enriched, "total": len(enriched)}
 
 
@@ -824,13 +850,13 @@ def get_hall_of_fame_inductee(pokemon_id: int):
     """Get Hall of Fame details for a specific Pokémon."""
     hof = get_hall_of_fame()
     db = get_db()
-    
+
     inductee = hof.get_inductee(pokemon_id)
     if not inductee:
         raise HTTPException(status_code=404, detail="Pokémon not in Hall of Fame")
-    
+
     pokemon = db.get_by_dex_number(pokemon_id)
-    
+
     return {
         **inductee,
         "pokemon": pokemon
@@ -843,17 +869,17 @@ def induct_champion(req: InductChampionRequest):
     hof = get_hall_of_fame()
     db = get_db()
     tournament_system = get_tournament_system()
-    
+
     # Verify Pokémon exists
     pokemon = db.get_by_dex_number(req.pokemon_id)
     if not pokemon:
         raise HTTPException(status_code=404, detail="Pokémon not found")
-    
+
     # Verify tournament exists
     tournament = tournament_system._get_tournament_by_id(req.tournament_id)
     if not tournament:
         raise HTTPException(status_code=404, detail="Tournament not found")
-    
+
     # Induct as champion
     result = hof.induct_champion(
         pokemon_id=req.pokemon_id,
@@ -861,10 +887,10 @@ def induct_champion(req: InductChampionRequest):
         total_votes=req.total_votes,
         creator_quote=req.creator_quote
     )
-    
+
     if not result["success"]:
         raise HTTPException(status_code=400, detail=result["message"])
-    
+
     return result
 
 
@@ -873,26 +899,27 @@ def induct_professors_choice(req: InductProfessorsChoiceRequest):
     """Induct a Pokémon as Professor's Choice into the Hall of Fame."""
     hof = get_hall_of_fame()
     db = get_db()
-    
+
     # Verify Pokémon exists
     pokemon = db.get_by_dex_number(req.pokemon_id)
     if not pokemon:
         raise HTTPException(status_code=404, detail="Pokémon not found")
-    
+
     # Induct as Professor's Choice
     result = hof.induct_professors_choice(
         pokemon_id=req.pokemon_id,
         reason=req.reason,
         creator_quote=req.creator_quote
     )
-    
+
     if not result["success"]:
         raise HTTPException(status_code=400, detail=result["message"])
-    
+
     return result
 
 
 # ==================== SERVER ====================
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    port = int(os.getenv("PORT", 8000))
+    uvicorn.run(app, host="0.0.0.0", port=port)
