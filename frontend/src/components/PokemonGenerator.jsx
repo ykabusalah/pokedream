@@ -38,7 +38,7 @@ const PokeballSpinner = () => (
 const LabBackground = () => (
   <div className="absolute inset-0 overflow-hidden pointer-events-none">
     {/* Grid pattern */}
-    <div 
+    <div
       className="absolute inset-0 opacity-5"
       style={{
         backgroundImage: `
@@ -48,9 +48,9 @@ const LabBackground = () => (
         backgroundSize: '40px 40px'
       }}
     />
-    
+
     {/* === OUTER EDGE POKÉBALLS === */}
-    
+
     {/* Pokéball - top right (large) */}
     <div className="absolute top-12 right-8 opacity-[0.07]">
       <svg viewBox="0 0 100 100" className="w-32 h-32">
@@ -59,7 +59,7 @@ const LabBackground = () => (
         <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="4"/>
       </svg>
     </div>
-    
+
     {/* Pokéball - top left (medium) */}
     <div className="absolute top-20 left-6 opacity-[0.06]">
       <svg viewBox="0 0 100 100" className="w-24 h-24">
@@ -68,7 +68,7 @@ const LabBackground = () => (
         <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="4"/>
       </svg>
     </div>
-    
+
     {/* Pokéball - bottom left (medium) */}
     <div className="absolute bottom-24 left-8 opacity-[0.07]">
       <svg viewBox="0 0 100 100" className="w-24 h-24">
@@ -77,7 +77,7 @@ const LabBackground = () => (
         <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="4"/>
       </svg>
     </div>
-    
+
     {/* Pokéball - bottom right (large) */}
     <div className="absolute bottom-16 right-6 opacity-[0.06]">
       <svg viewBox="0 0 100 100" className="w-28 h-28">
@@ -86,9 +86,9 @@ const LabBackground = () => (
         <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="4"/>
       </svg>
     </div>
-    
+
     {/* === INNER POKÉBALLS - NEAR MENU === */}
-    
+
     {/* Pokéball - left of menu top (medium) */}
     <div className="absolute top-48 left-[15%] opacity-[0.05]">
       <svg viewBox="0 0 100 100" className="w-20 h-20">
@@ -97,7 +97,7 @@ const LabBackground = () => (
         <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="4"/>
       </svg>
     </div>
-    
+
     {/* Pokéball - right of menu top (small) */}
     <div className="absolute top-40 right-[15%] opacity-[0.05]">
       <svg viewBox="0 0 100 100" className="w-16 h-16">
@@ -106,7 +106,7 @@ const LabBackground = () => (
         <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="5"/>
       </svg>
     </div>
-    
+
     {/* Pokéball - left of menu middle (large) */}
     <div className="absolute top-[45%] left-[12%] opacity-[0.06]">
       <svg viewBox="0 0 100 100" className="w-24 h-24">
@@ -115,7 +115,7 @@ const LabBackground = () => (
         <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="4"/>
       </svg>
     </div>
-    
+
     {/* Pokéball - right of menu middle (medium) */}
     <div className="absolute top-[50%] right-[12%] opacity-[0.06]">
       <svg viewBox="0 0 100 100" className="w-22 h-22">
@@ -124,7 +124,7 @@ const LabBackground = () => (
         <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="4"/>
       </svg>
     </div>
-    
+
     {/* Pokéball - left of menu lower (small) */}
     <div className="absolute top-[65%] left-[18%] opacity-[0.05]">
       <svg viewBox="0 0 100 100" className="w-14 h-14">
@@ -133,7 +133,7 @@ const LabBackground = () => (
         <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="5"/>
       </svg>
     </div>
-    
+
     {/* Pokéball - right of menu lower (small) */}
     <div className="absolute top-[70%] right-[16%] opacity-[0.05]">
       <svg viewBox="0 0 100 100" className="w-16 h-16">
@@ -142,7 +142,7 @@ const LabBackground = () => (
         <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="5"/>
       </svg>
     </div>
-    
+
     {/* Pokéball - left near bottom (tiny) */}
     <div className="absolute bottom-36 left-[20%] opacity-[0.04]">
       <svg viewBox="0 0 100 100" className="w-12 h-12">
@@ -151,7 +151,7 @@ const LabBackground = () => (
         <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="6"/>
       </svg>
     </div>
-    
+
     {/* Pokéball - right near bottom (tiny) */}
     <div className="absolute bottom-44 right-[20%] opacity-[0.04]">
       <svg viewBox="0 0 100 100" className="w-10 h-10">
@@ -160,7 +160,7 @@ const LabBackground = () => (
         <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="7"/>
       </svg>
     </div>
-    
+
     {/* Gradient overlay */}
     <div className="absolute inset-0 bg-gradient-to-b from-red-950/20 via-transparent to-gray-950"/>
   </div>
@@ -170,14 +170,14 @@ const LabBackground = () => (
 const BlaineHelper = ({ message }) => (
   <div className="flex items-end gap-3 mb-6">
     <div className="relative">
-      <img 
-        src="/blaine.png" 
-        alt="Blaine" 
+      <img
+        src="/blaine.png"
+        alt="Blaine"
         className="w-16 h-16 object-contain"
         style={{ imageRendering: 'pixelated' }}
       />
     </div>
-    <div 
+    <div
       className="bg-white text-gray-800 px-4 py-2 rounded-xl rounded-bl-none text-sm max-w-xs shadow-lg"
       style={{ border: '2px solid #666' }}
     >
@@ -191,10 +191,10 @@ const StatBar = ({ label, value, color }) => (
   <div className="flex items-center gap-2 text-sm">
     <span className="w-16 text-gray-300 font-medium">{label}</span>
     <div className="flex-1 h-3 bg-gray-800 rounded-full overflow-hidden border border-gray-700">
-      <div 
+      <div
         className="h-full rounded-full transition-all duration-700 ease-out"
-        style={{ 
-          width: `${(value / 255) * 100}%`, 
+        style={{
+          width: `${(value / 255) * 100}%`,
           backgroundColor: color,
           boxShadow: `0 0 10px ${color}50`
         }}
@@ -209,7 +209,7 @@ const PokemonCard = ({ pokemon, imageKey }) => {
   const { name, types, stats, moveset, lore, image_path, is_shiny, dex_number } = pokemon;
   const primaryType = types?.[0] || 'Normal';
   const imageUrl = image_path ? `${API_URL}/${image_path}?t=${imageKey}` : null;
-  
+
   return (
     <div className="relative">
       {is_shiny && (
@@ -228,11 +228,11 @@ const PokemonCard = ({ pokemon, imageKey }) => {
           ))}
         </div>
       )}
-      
-      <div 
+
+      <div
         className="relative rounded-2xl p-1 max-w-md mx-auto"
         style={{
-          background: is_shiny 
+          background: is_shiny
             ? 'linear-gradient(135deg, #ffd700, #ffed4a, #ffd700, #ff6b6b, #ffd700)'
             : `linear-gradient(135deg, ${TYPE_COLORS[primaryType]}, ${TYPE_COLORS[types?.[1]] || TYPE_COLORS[primaryType]})`
         }}
@@ -245,7 +245,7 @@ const PokemonCard = ({ pokemon, imageKey }) => {
             </div>
             <div className="flex gap-1">
               {types?.map(type => (
-                <div 
+                <div
                   key={type}
                   className="px-3 py-1 rounded-full text-xs font-bold text-white flex items-center gap-1"
                   style={{ backgroundColor: TYPE_COLORS[type] }}
@@ -256,22 +256,22 @@ const PokemonCard = ({ pokemon, imageKey }) => {
               ))}
             </div>
           </div>
-          
+
           {is_shiny && (
             <div className="absolute top-3 right-3 px-3 py-1 bg-gradient-to-r from-yellow-400 to-amber-500 text-black text-xs font-bold rounded-full animate-pulse shadow-lg">
               ✨ SHINY ✨
             </div>
           )}
-          
+
           {imageUrl && (
-            <div 
+            <div
               className="relative mb-4 rounded-xl overflow-hidden"
               style={{
                 background: `linear-gradient(180deg, ${TYPE_COLORS[primaryType]}30 0%, transparent 100%)`
               }}
             >
-              <img 
-                src={imageUrl} 
+              <img
+                src={imageUrl}
                 alt={name}
                 className="w-full aspect-square object-contain"
               />
@@ -280,7 +280,7 @@ const PokemonCard = ({ pokemon, imageKey }) => {
               )}
             </div>
           )}
-          
+
           {stats && (
             <div className="space-y-2 mb-4 p-3 bg-gray-800/50 rounded-xl">
               <StatBar label="HP" value={stats.hp} color="#ef4444" />
@@ -291,14 +291,14 @@ const PokemonCard = ({ pokemon, imageKey }) => {
               <StatBar label="Speed" value={stats.speed} color="#ec4899" />
             </div>
           )}
-          
+
           {moveset?.current_moves && (
             <div className="mb-4">
               <h3 className="text-xs font-bold text-gray-500 mb-2 uppercase tracking-wider">Moves</h3>
               <div className="flex flex-wrap gap-2">
                 {moveset.current_moves.map(move => (
-                  <span 
-                    key={move} 
+                  <span
+                    key={move}
                     className="px-3 py-1 bg-gray-800 rounded-lg text-sm text-gray-300 border border-gray-700"
                   >
                     {move}
@@ -307,7 +307,7 @@ const PokemonCard = ({ pokemon, imageKey }) => {
               </div>
             </div>
           )}
-          
+
           {lore?.pokedex_entry && (
             <div className="p-3 bg-gray-800/50 rounded-xl border-l-4 border-amber-500">
               <p className="text-sm text-gray-400 italic">"{lore.pokedex_entry}"</p>
@@ -326,12 +326,12 @@ const TypeBadge = ({ type, selected, onClick }) => (
     className={`
       relative px-3 py-2 rounded-lg text-sm font-bold transition-all duration-200
       flex items-center gap-1.5
-      ${selected 
-        ? 'scale-110 shadow-lg ring-2 ring-white ring-offset-2 ring-offset-gray-900' 
+      ${selected
+        ? 'scale-110 shadow-lg ring-2 ring-white ring-offset-2 ring-offset-gray-900'
         : 'opacity-70 hover:opacity-100 hover:scale-105'
       }
     `}
-    style={{ 
+    style={{
       backgroundColor: TYPE_COLORS[type],
       boxShadow: selected ? `0 0 20px ${TYPE_COLORS[type]}80` : 'none'
     }}
@@ -363,11 +363,11 @@ export default function PokemonGenerator({ trainerName, trainerId, onNavigate, o
   // Handler for when user clicks "Try It" on the daily challenge
   const handleUseChallenge = (challengeData) => {
     setActiveChallenge(challengeData);
-    
+
     // Build description from challenge text
     const desc = challengeData.challengeText || '';
     setDescription(desc);
-    
+
     // Switch to advanced mode if types are specified
     if (challengeData.types?.length > 0) {
       setMode('advanced');
@@ -375,7 +375,7 @@ export default function PokemonGenerator({ trainerName, trainerId, onNavigate, o
     } else {
       setMode('simple');
     }
-    
+
     // Auto-generate if flagged
     if (challengeData.autoGenerate) {
       // Small delay to let state update, then generate
@@ -388,55 +388,55 @@ export default function PokemonGenerator({ trainerName, trainerId, onNavigate, o
   // Special generate function for challenges that uses passed data directly
   const handleGenerateWithChallenge = async (desc, challengeData) => {
     if (!desc.trim()) return;
-    
+
     setPokemon(null);
     setImageKey(Date.now());
     setIsGenerating(true);
     setError(null);
     setShowErrorPopup(false);
-    
+
     try {
       const types = challengeData.types || [];
       const endpoint = types.length > 0 ? '/api/generate' : '/api/quick-generate';
-      
-      const body = types.length > 0 
-        ? { 
-            concept: desc, 
+
+      const body = types.length > 0
+        ? {
+            concept: desc,
             types: types,
             culture: challengeData.culture || 'original',
             trainer_name: trainerName,
             trainer_id: trainerId,
             challenge_id: challengeData.challengeId
           }
-        : { 
-            description: desc, 
+        : {
+            description: desc,
             trainer_name: trainerName,
             trainer_id: trainerId,
-            challenge_id: challengeData.challengeId 
+            challenge_id: challengeData.challengeId
           };
-      
+
       const res = await fetch(`${API_URL}${endpoint}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body)
       });
-      
+
       if (!res.ok) {
         const errData = await res.json().catch(() => ({}));
         throw new Error(errData.detail || 'Generation failed');
       }
-      
+
       const data = await res.json();
       setPokemon(data.pokemon || data);
-      
+
       // Clear active challenge after successful generation
       setActiveChallenge(null);
-      
+
       // Notify parent to check achievements
       if (onPokemonCreated) {
         onPokemonCreated(data.pokemon || data);
       }
-      
+
     } catch (err) {
       console.error('Generation error:', err);
       setError(err.message);
@@ -457,60 +457,60 @@ export default function PokemonGenerator({ trainerName, trainerId, onNavigate, o
 
   const handleGenerate = async () => {
     if (mode !== 'random' && !description.trim()) return;
-    
+
     setPokemon(null);
     setImageKey(Date.now());
     setIsGenerating(true);
     setError(null);
     setShowErrorPopup(false);
-    
+
     try {
       let endpoint, body;
-      
+
       if (mode === 'random') {
         endpoint = '/api/random-generate';
         body = { trainer_name: trainerName, trainer_id: trainerId };
       } else if (mode === 'simple') {
         endpoint = '/api/quick-generate';
-        body = { 
-          description, 
+        body = {
+          description,
           trainer_name: trainerName,
           trainer_id: trainerId,
-          challenge_id: activeChallenge?.challengeId 
+          challenge_id: activeChallenge?.challengeId
         };
       } else {
         endpoint = '/api/generate';
-        body = { 
-          concept: description, 
+        body = {
+          concept: description,
           types: selectedTypes.length ? selectedTypes : undefined,
           trainer_name: trainerName,
           trainer_id: trainerId,
           challenge_id: activeChallenge?.challengeId
         };
       }
-      
+
       const res = await fetch(`${API_URL}${endpoint}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body)
       });
-      
+
       if (!res.ok) {
         const errData = await res.json().catch(() => ({}));
         throw new Error(errData.detail || 'Generation failed');
       }
-      
+
       const data = await res.json();
       setPokemon(data.pokemon || data);
-      
+
       // Clear active challenge after successful generation
       setActiveChallenge(null);
-      
+
       // Notify parent to check achievements
       if (onPokemonCreated) {
         onPokemonCreated(data.pokemon || data);
       }
-      
+
     } catch (err) {
       console.error('Generation error:', err);
       setError(err.message);
@@ -523,21 +523,21 @@ export default function PokemonGenerator({ trainerName, trainerId, onNavigate, o
   return (
     <div className="min-h-screen bg-gray-950 text-white relative">
       <LabBackground />
-      
+
       <div className="relative z-10 p-4 max-w-2xl mx-auto">
         {/* Blaine Helper */}
         <div className="pt-6">
           <BlaineHelper message={getBlaineMessage()} />
         </div>
-        
+
         {/* Daily Challenge */}
         <div className="mb-6">
-          <DailyChallenge 
-            trainerId={trainerId} 
+          <DailyChallenge
+            trainerId={trainerId}
             onUseChallenge={handleUseChallenge}
           />
         </div>
-        
+
         {/* Active Challenge Indicator */}
         {activeChallenge && (
           <div className="mb-4 p-3 bg-purple-900/30 border border-purple-500/50 rounded-xl flex items-center justify-between">
@@ -557,21 +557,21 @@ export default function PokemonGenerator({ trainerName, trainerId, onNavigate, o
             </button>
           </div>
         )}
-        
+
         {/* Mode Toggle */}
-        <div className="flex justify-center gap-2 mb-6">
+        <div className="grid grid-cols-3 gap-2 mb-6">
           {[
             { id: 'simple', label: 'Simple', icon: '📝' },
             { id: 'advanced', label: 'Advanced', icon: '⚙️' },
-            { id: 'random', label: 'Surprise Me', icon: '🎲' }
+            { id: 'random', label: 'Surprise', icon: '🎲' }
           ].map(m => (
             <button
               key={m.id}
               onClick={() => setMode(m.id)}
               className={`
-                px-5 py-3 rounded-full font-bold transition-all duration-200
-                flex items-center gap-2
-                ${mode === m.id 
+                px-3 py-3 rounded-full font-bold transition-all duration-200
+                flex items-center justify-center gap-1.5 text-sm
+                ${mode === m.id
                   ? m.id === 'random'
                     ? 'bg-purple-500 text-white shadow-lg shadow-purple-500/30 scale-105'
                     : 'bg-red-500 text-white shadow-lg shadow-red-500/30 scale-105'
@@ -580,17 +580,17 @@ export default function PokemonGenerator({ trainerName, trainerId, onNavigate, o
               `}
             >
               <span>{m.icon}</span>
-              {m.label}
+              <span className="hidden xs:inline sm:inline">{m.label}</span>
             </button>
           ))}
         </div>
-        
+
         {/* Input Form */}
         {mode !== 'random' ? (
-          <div 
+          <div
             className="rounded-2xl p-1 mb-8"
             style={{
-              background: activeChallenge 
+              background: activeChallenge
                 ? 'linear-gradient(135deg, #7C3AED, #5B21B6, #7C3AED)'
                 : 'linear-gradient(135deg, #DC2626, #991B1B, #DC2626)'
             }}
@@ -602,7 +602,7 @@ export default function PokemonGenerator({ trainerName, trainerId, onNavigate, o
                 <div className="flex-1 h-1 bg-gray-800 rounded"/>
                 <span className="text-xs text-gray-500 font-mono">POKÉ-GENERATOR v1.0</span>
               </div>
-              
+
               <textarea
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
@@ -612,7 +612,7 @@ export default function PokemonGenerator({ trainerName, trainerId, onNavigate, o
                   textShadow: '0 0 10px rgba(74, 222, 128, 0.3)'
                 }}
               />
-              
+
               {mode === 'advanced' && (
                 <div className="mb-4">
                   <p className="text-sm text-gray-400 mb-3 flex items-center gap-2">
@@ -635,12 +635,12 @@ export default function PokemonGenerator({ trainerName, trainerId, onNavigate, o
                   </div>
                 </div>
               )}
-              
+
               <button
                 onClick={handleGenerate}
                 disabled={isGenerating || !description.trim()}
                 className={`w-full py-4 ${
-                  activeChallenge 
+                  activeChallenge
                     ? 'bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-500 hover:to-purple-400 shadow-purple-500/20'
                     : 'bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 shadow-red-500/20'
                 } disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold rounded-xl transition-all shadow-lg flex items-center justify-center gap-2`}
@@ -651,7 +651,7 @@ export default function PokemonGenerator({ trainerName, trainerId, onNavigate, o
             </div>
           </div>
         ) : (
-          <div 
+          <div
             className="rounded-2xl p-1 mb-8"
             style={{
               background: 'linear-gradient(135deg, #7C3AED, #5B21B6, #7C3AED)'
@@ -674,11 +674,11 @@ export default function PokemonGenerator({ trainerName, trainerId, onNavigate, o
             </div>
           </div>
         )}
-        
+
         {/* Error Popup */}
         {showErrorPopup && (
           <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
-            <div 
+            <div
               className="rounded-2xl p-1 max-w-sm w-full"
               style={{ background: 'linear-gradient(135deg, #DC2626, #991B1B)' }}
             >
@@ -696,7 +696,7 @@ export default function PokemonGenerator({ trainerName, trainerId, onNavigate, o
             </div>
           </div>
         )}
-        
+
         {/* Loading State */}
         {isGenerating && (
           <div className="flex flex-col items-center justify-center py-12">
@@ -707,26 +707,26 @@ export default function PokemonGenerator({ trainerName, trainerId, onNavigate, o
             <p className="text-gray-600 text-sm mt-2">This may take 15-30 seconds</p>
           </div>
         )}
-        
+
         {/* Pokemon Result */}
         {pokemon && !isGenerating && <PokemonCard pokemon={pokemon} imageKey={imageKey} />}
-        
+
         {/* Post-creation options */}
         {pokemon && !isGenerating && (
-          <div className="flex justify-center gap-4 mt-6 pb-8">
+          <div className="flex flex-col sm:flex-row justify-center gap-3 mt-6 pb-8">
             <button
               onClick={() => {
                 setPokemon(null);
                 setDescription('');
                 setSelectedTypes([]);
               }}
-              className="px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white font-bold rounded-xl transition-all border border-gray-700 flex items-center gap-2"
+              className="px-5 py-3 bg-gray-800 hover:bg-gray-700 text-white font-bold rounded-xl transition-all border border-gray-700 flex items-center justify-center gap-2"
             >
               <span>🔄</span> Create Another
             </button>
             <button
               onClick={() => onNavigate && onNavigate('pokedex')}
-              className="px-6 py-3 bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-white font-bold rounded-xl transition-all shadow-lg shadow-amber-500/20 flex items-center gap-2"
+              className="px-5 py-3 bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-white font-bold rounded-xl transition-all shadow-lg shadow-amber-500/20 flex items-center justify-center gap-2"
             >
               <span>📖</span> View in Pokédex
             </button>

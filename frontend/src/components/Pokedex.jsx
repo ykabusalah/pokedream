@@ -24,9 +24,9 @@ const POKEMON_TYPES = Object.keys(TYPE_COLORS);
 const PokemonCard = ({ pokemon, onClick, isMine }) => {
   const primaryType = pokemon.types?.[0] || 'Normal';
   const secondaryType = pokemon.types?.[1];
-  
+
   return(
-    <div 
+    <div
       onClick={onClick}
       className="group relative rounded-xl overflow-hidden cursor-pointer transition-all duration-300 hover:scale-105 hover:z-10"
       style={{
@@ -40,33 +40,32 @@ const PokemonCard = ({ pokemon, onClick, isMine }) => {
             #{String(pokemon.dex_number).padStart(3, '0')}
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5">
             {/* Created by you indicator (shown in Global view for your own Pokémon) */}
             {isMine && (
               <span
-                className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-black/40 border border-white/20 text-cyan-200"
+                className="inline-flex items-center justify-center px-1.5 py-0.5 rounded bg-gradient-to-r from-cyan-500/80 to-blue-500/80 text-white text-[10px] font-bold shadow-sm"
                 title="Created by you"
               >
-                <span className="-translate-y-0.55 inline-block leading-none">★</span>
+                YOURS
               </span>
-
             )}
 
             {/* Shiny indicator */}
             {pokemon.is_shiny && (
               <span
-                className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-black/40 border border-white/20"
+                className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-amber-500/20 border border-amber-400/40"
                 title="Shiny Pokémon"
               >
-                <span className="text-yellow-400 text-lg leading-none">✨</span>
+                <span className="text-amber-300 text-xs">✨</span>
               </span>
             )}
           </div>
         </div>
-        
+
         {pokemon.image_path ? (
           <div className="relative aspect-square mb-2 rounded-lg overflow-hidden bg-gray-800">
-            <img 
+            <img
               src={`${API_URL}/${pokemon.image_path}`}
               alt={pokemon.name}
               className="w-full h-full object-contain transition-transform group-hover:scale-110"
@@ -77,12 +76,12 @@ const PokemonCard = ({ pokemon, onClick, isMine }) => {
             ?
           </div>
         )}
-        
+
         <div className="font-bold text-sm text-white truncate mb-2">{pokemon.name}</div>
-        
+
         <div className="flex gap-1 flex-wrap">
           {pokemon.types?.map(type => (
-            <span 
+            <span
               key={type}
               className="text-xs px-2 py-0.5 rounded-full text-white flex items-center gap-1"
               style={{ backgroundColor: TYPE_COLORS[type] }}
@@ -120,8 +119,8 @@ const TypeFilter = ({ type, selected, onClick }) => (
     onClick={onClick}
     className={`
       px-3 py-1.5 rounded-full text-xs font-bold transition-all duration-200 flex items-center gap-1
-      ${selected 
-        ? 'ring-2 ring-white ring-offset-2 ring-offset-gray-900 scale-110' 
+      ${selected
+        ? 'ring-2 ring-white ring-offset-2 ring-offset-gray-900 scale-110'
         : 'opacity-60 hover:opacity-100'
       }
     `}
@@ -268,7 +267,7 @@ export default function Pokedex({ onNavigate, trainerId: trainerIdProp }) {
               <span>⚡</span> Create New
             </button>
           </div>
-          
+
           {/* Search */}
           <div className="flex gap-2 mb-6">
             <div className="flex-1 relative">
@@ -289,15 +288,15 @@ export default function Pokedex({ onNavigate, trainerId: trainerIdProp }) {
               Search
             </button>
           </div>
-          
+
           {/* Type filters */}
           <div className="flex gap-2 flex-wrap">
             <button
               onClick={() => setSelectedType(null)}
               className={`
                 px-4 py-1.5 rounded-full text-xs font-bold transition-all duration-200
-                ${!selectedType 
-                  ? 'bg-white text-gray-900' 
+                ${!selectedType
+                  ? 'bg-white text-gray-900'
                   : 'bg-gray-800 text-gray-300 hover:bg-gray-700 border border-gray-700'
                 }
               `}
@@ -315,7 +314,7 @@ export default function Pokedex({ onNavigate, trainerId: trainerIdProp }) {
           </div>
         </div>
       </div>
-      
+
       {/* Content */}
       <div className="max-w-6xl mx-auto px-4 py-8">
         {loading ? (
@@ -330,8 +329,8 @@ export default function Pokedex({ onNavigate, trainerId: trainerIdProp }) {
         ) : (
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
             {pokemon.map(p => (
-              <PokemonCard 
-                key={p.id || p.dex_number} 
+              <PokemonCard
+                key={p.id || p.dex_number}
                 pokemon={p}
                 isMine={scope === 'global' && trainerId && p.trainer_id === trainerId}
                 onClick={() => onNavigate('pokemon', p.dex_number)}
@@ -340,7 +339,7 @@ export default function Pokedex({ onNavigate, trainerId: trainerIdProp }) {
           </div>
         )}
       </div>
-      
+
       {/* Footer */}
       <div className="text-center py-8 text-gray-600 text-sm border-t border-gray-800 mt-8">
         <p>{footerLabel} • Oneira Region • {stats?.total || 0} Pokémon Discovered</p>

@@ -17,9 +17,9 @@ const Badge = ({ type }) => {
     fan_favorite: { icon: '❤️', color: 'from-pink-500 to-rose-500', label: 'Fan Favorite' },
     professors_choice: { icon: '🎓', color: 'from-blue-500 to-indigo-500', label: "Professor's Pick" }
   };
-  
+
   const badge = badges[type] || badges.champion;
-  
+
   return (
     <div className={`inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gradient-to-r ${badge.color} text-white text-xs font-bold shadow-lg`}>
       <span>{badge.icon}</span>
@@ -32,7 +32,7 @@ const Badge = ({ type }) => {
 const InducteeCard = ({ inductee, onClick, isMine }) => {
   const pokemon = inductee.pokemon;
   const primaryType = pokemon.types?.[0] || 'Normal';
-  
+
   return (
     <div
       onClick={onClick}
@@ -43,27 +43,27 @@ const InducteeCard = ({ inductee, onClick, isMine }) => {
     >
       {/* Shine effect */}
       <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-      
+
       <div className="relative p-4 bg-gray-900/80 backdrop-blur-sm border border-gray-800 group-hover:border-amber-500/50 transition-colors rounded-xl">
         {/* Badge */}
         <div className="absolute top-3 left-3 z-10">
           <Badge type={inductee.induction_type} />
         </div>
-        
+
         {/* Owner indicator */}
         {isMine && (
           <div className="absolute top-3 right-3 z-10 bg-cyan-500 text-white text-xs px-2 py-1 rounded-full">
             ⭐ Yours
           </div>
         )}
-        
+
         {/* Shiny indicator */}
         {pokemon.is_shiny && (
           <div className="absolute top-10 right-3 z-10">
             <span className="text-2xl">✨</span>
           </div>
         )}
-        
+
         {/* Image */}
         <div className="aspect-square mb-3 mt-8">
           {pokemon.image_path ? (
@@ -76,14 +76,14 @@ const InducteeCard = ({ inductee, onClick, isMine }) => {
             <div className="w-full h-full flex items-center justify-center text-6xl">?</div>
           )}
         </div>
-        
+
         {/* Info */}
         <div className="text-center">
           <div className="text-xs text-gray-500 mb-1">
             #{String(pokemon.dex_number).padStart(3, '0')}
           </div>
           <h3 className="text-white font-bold text-lg mb-2">{pokemon.name}</h3>
-          
+
           {/* Types */}
           <div className="flex justify-center gap-1 mb-2">
             {pokemon.types?.map(type => (
@@ -96,12 +96,12 @@ const InducteeCard = ({ inductee, onClick, isMine }) => {
               </span>
             ))}
           </div>
-          
+
           {/* Badge text */}
           <div className="text-xs text-amber-400 font-medium">
             {inductee.badge}
           </div>
-          
+
           {/* Votes (if applicable) */}
           {inductee.total_votes && (
             <div className="text-xs text-gray-500 mt-1">
@@ -122,25 +122,25 @@ export default function HallOfFame({ trainerId, onNavigate }) {
   const [filter, setFilter] = useState('all');
   const [sortBy, setSortBy] = useState('newest');
   const [stats, setStats] = useState(null);
-  
+
   useEffect(() => {
     fetchHallOfFame();
   }, []);
-  
+
   useEffect(() => {
     applyFiltersAndSort();
   }, [inductees, filter, sortBy]);
-  
+
   const fetchHallOfFame = async () => {
     try {
       const [inducteesRes, statsRes] = await Promise.all([
         fetch(`${API_URL}/api/hall-of-fame`),
         fetch(`${API_URL}/api/hall-of-fame/stats`)
       ]);
-      
+
       const inducteesData = await inducteesRes.json();
       const statsData = await statsRes.json();
-      
+
       setInductees(inducteesData.inductees || []);
       setStats(statsData);
     } catch (err) {
@@ -149,15 +149,15 @@ export default function HallOfFame({ trainerId, onNavigate }) {
       setLoading(false);
     }
   };
-  
+
   const applyFiltersAndSort = () => {
     let filtered = [...inductees];
-    
+
     // Apply filter
     if (filter !== 'all') {
       filtered = filtered.filter(i => i.induction_type === filter);
     }
-    
+
     // Apply sort
     if (sortBy === 'newest') {
       filtered.sort((a, b) => new Date(b.induction_date) - new Date(a.induction_date));
@@ -166,10 +166,10 @@ export default function HallOfFame({ trainerId, onNavigate }) {
     } else if (sortBy === 'votes') {
       filtered.sort((a, b) => (b.total_votes || 0) - (a.total_votes || 0));
     }
-    
+
     setFilteredInductees(filtered);
   };
-  
+
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-950 text-white flex items-center justify-center">
@@ -180,7 +180,7 @@ export default function HallOfFame({ trainerId, onNavigate }) {
       </div>
     );
   }
-  
+
   return (
     <div className="min-h-screen bg-gray-950 text-white">
       {/* Header */}
@@ -193,7 +193,7 @@ export default function HallOfFame({ trainerId, onNavigate }) {
             </h1>
             <p className="text-gray-400">Oneira's Greatest Pokémon</p>
           </div>
-          
+
           {/* Stats */}
           {stats && (
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
@@ -215,13 +215,14 @@ export default function HallOfFame({ trainerId, onNavigate }) {
               </div>
             </div>
           )}
-          
+
           {/* Filters */}
-          <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
-            <div className="flex gap-2 flex-wrap justify-center sm:justify-start">
+          <div className="flex flex-col gap-4">
+            {/* Filter buttons - grid on mobile/tablet, flex on desktop */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 lg:flex gap-2">
               <button
                 onClick={() => setFilter('all')}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                className={`px-3 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${
                   filter === 'all'
                     ? 'bg-amber-500 text-white'
                     : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
@@ -231,7 +232,7 @@ export default function HallOfFame({ trainerId, onNavigate }) {
               </button>
               <button
                 onClick={() => setFilter('champion')}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                className={`px-3 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${
                   filter === 'champion'
                     ? 'bg-amber-500 text-white'
                     : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
@@ -241,17 +242,17 @@ export default function HallOfFame({ trainerId, onNavigate }) {
               </button>
               <button
                 onClick={() => setFilter('fan_favorite')}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                className={`px-3 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${
                   filter === 'fan_favorite'
                     ? 'bg-pink-500 text-white'
                     : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
                 }`}
               >
-                ❤️ Fan Favorites
+                ❤️ Favorites
               </button>
               <button
                 onClick={() => setFilter('professors_choice')}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                className={`px-3 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${
                   filter === 'professors_choice'
                     ? 'bg-blue-500 text-white'
                     : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
@@ -260,20 +261,23 @@ export default function HallOfFame({ trainerId, onNavigate }) {
                 🎓 Prof's Picks
               </button>
             </div>
-            
-            <select
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value)}
-              className="bg-gray-800 text-white px-4 py-2 rounded-lg text-sm border border-gray-700 outline-none"
-            >
-              <option value="newest">Newest First</option>
-              <option value="oldest">Oldest First</option>
-              <option value="votes">Most Votes</option>
-            </select>
+
+            {/* Sort dropdown - full width on mobile, auto on larger */}
+            <div className="flex justify-center sm:justify-end">
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
+                className="bg-gray-800 text-white px-4 py-2 rounded-lg text-sm border border-gray-700 outline-none w-full sm:w-auto"
+              >
+                <option value="newest">Newest First</option>
+                <option value="oldest">Oldest First</option>
+                <option value="votes">Most Votes</option>
+              </select>
+            </div>
           </div>
         </div>
       </div>
-      
+
       {/* Inductees Grid */}
       <div className="max-w-6xl mx-auto px-4 py-8">
         {filteredInductees.length === 0 ? (

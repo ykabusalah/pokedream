@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PokeDreamIntro from './components/PokeDreamIntro';
 import PokemonGenerator from './components/PokemonGenerator';
 import Pokedex from './components/Pokedex';
@@ -55,14 +55,14 @@ const saveUnlockedAchievements = (achievementIds) => {
 
 const PokeballLogo = ({ size = 32 }) => (
   <svg viewBox="0 0 100 100" width={size} height={size} className="drop-shadow-lg">
-    <path 
-      d="M 50 5 A 45 45 0 0 1 95 50 L 65 50 A 15 15 0 0 0 35 50 L 5 50 A 45 45 0 0 1 50 5" 
+    <path
+      d="M 50 5 A 45 45 0 0 1 95 50 L 65 50 A 15 15 0 0 0 35 50 L 5 50 A 45 45 0 0 1 50 5"
       fill="#DC2626"
       stroke="#1a1a1a"
       strokeWidth="3"
     />
-    <path 
-      d="M 50 95 A 45 45 0 0 1 5 50 L 35 50 A 15 15 0 0 0 65 50 L 95 50 A 45 45 0 0 1 50 95" 
+    <path
+      d="M 50 95 A 45 45 0 0 1 5 50 L 35 50 A 15 15 0 0 0 65 50 L 95 50 A 45 45 0 0 1 50 95"
       fill="#F5F5F5"
       stroke="#1a1a1a"
       strokeWidth="3"
@@ -78,18 +78,20 @@ const PokeballLogo = ({ size = 32 }) => (
 // NAV LINK COMPONENT
 // ============================================
 
-const NavLink = ({ onClick, active, children }) => (
+const NavLink = ({ onClick, active, icon, label, shortLabel }) => (
   <button
     onClick={onClick}
     className={`
-      px-4 py-2 rounded-lg font-medium transition-all duration-200
-      ${active 
-        ? 'bg-red-500/20 text-red-400 border border-red-500/30' 
+      px-3 py-2 rounded-lg font-medium transition-all duration-200 whitespace-nowrap text-sm
+      ${active
+        ? 'bg-red-500/20 text-red-400 border border-red-500/30'
         : 'text-gray-400 hover:text-white hover:bg-gray-800'
       }
     `}
   >
-    {children}
+    <span className="md:hidden">{icon}</span>
+    <span className="hidden md:inline lg:hidden">{icon} {shortLabel || label}</span>
+    <span className="hidden lg:inline">{icon} {label}</span>
   </button>
 );
 
@@ -100,7 +102,7 @@ const NavLink = ({ onClick, active, children }) => (
 const NavBar = ({ currentPage, trainerName, onNavigate }) => (
   <nav className="sticky top-0 z-50 bg-gray-950/95 backdrop-blur-sm border-b border-gray-800">
     <div className="h-1 bg-gradient-to-r from-red-600 via-red-500 to-red-600"/>
-    
+
     <div className="max-w-6xl mx-auto px-4">
       <div className="flex items-center justify-between h-16">
         <button
@@ -119,38 +121,40 @@ const NavBar = ({ currentPage, trainerName, onNavigate }) => (
             </span>
           </div>
         </button>
-        
-        <div className="hidden sm:flex items-center gap-2">
-          <NavLink 
-            onClick={() => onNavigate('generator')} 
+
+        <div className="flex items-center gap-1">
+          <NavLink
+            onClick={() => onNavigate('generator')}
             active={currentPage === 'generator'}
-          >
-            ⚡ Generator
-          </NavLink>
-          <NavLink 
-            onClick={() => onNavigate('pokedex')} 
+            icon="⚡"
+            label="Generator"
+          />
+          <NavLink
+            onClick={() => onNavigate('pokedex')}
             active={currentPage === 'pokedex'}
-          >
-            📖 Pokédex
-          </NavLink>
-          <NavLink 
-            onClick={() => onNavigate('tournament')} 
+            icon="📖"
+            label="Pokédex"
+          />
+          <NavLink
+            onClick={() => onNavigate('tournament')}
             active={currentPage === 'tournament'}
-          >
-            🏆 Tournament
-          </NavLink>
-          <NavLink 
-            onClick={() => onNavigate('hall-of-fame')} 
+            icon="🏆"
+            label="Tournament"
+            shortLabel="Tourney"
+          />
+          <NavLink
+            onClick={() => onNavigate('hall-of-fame')}
             active={currentPage === 'hall-of-fame'}
-          >
-            🏛️ Hall of Fame
-          </NavLink>
+            icon="🏛️"
+            label="Hall of Fame"
+            shortLabel="Fame"
+          />
         </div>
-        
+
         <button
           onClick={() => onNavigate('profile')}
           className={`
-            flex items-center gap-3 px-4 py-2 rounded-xl transition-all duration-200
+            flex items-center gap-3 px-3 py-2 rounded-xl transition-all duration-200
             ${currentPage === 'profile'
               ? 'bg-amber-500/20 border border-amber-500/30'
               : 'hover:bg-gray-800 border border-transparent'
@@ -160,39 +164,12 @@ const NavBar = ({ currentPage, trainerName, onNavigate }) => (
           <div className="w-8 h-8 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-white font-bold text-sm shadow-lg">
             {trainerName?.charAt(0)?.toUpperCase() || 'T'}
           </div>
-          <div className="hidden sm:block text-left">
+          <div className="hidden lg:block text-left">
             <div className="text-sm font-medium text-white">{trainerName}</div>
             <div className="text-xs text-gray-500">Trainer</div>
           </div>
         </button>
       </div>
-    </div>
-    
-    <div className="sm:hidden flex justify-center gap-2 pb-3 px-2">
-      <NavLink 
-        onClick={() => onNavigate('generator')} 
-        active={currentPage === 'generator'}
-      >
-        ⚡
-      </NavLink>
-      <NavLink 
-        onClick={() => onNavigate('pokedex')} 
-        active={currentPage === 'pokedex'}
-      >
-        📖
-      </NavLink>
-      <NavLink 
-        onClick={() => onNavigate('tournament')} 
-        active={currentPage === 'tournament'}
-      >
-        🏆
-      </NavLink>
-      <NavLink 
-        onClick={() => onNavigate('hall-of-fame')} 
-        active={currentPage === 'hall-of-fame'}
-      >
-        🏛️
-      </NavLink>
     </div>
   </nav>
 );
@@ -205,59 +182,92 @@ export default function App() {
   const [savedTrainerName] = useState(() => {
     return localStorage.getItem('pokedream_trainer_name') || null;
   });
-  
+
   const [currentPage, setCurrentPage] = useState('intro');
-  
+
   const [trainerName, setTrainerName] = useState(() => {
     return localStorage.getItem('pokedream_trainer_name') || 'Trainer';
   });
-  
+
   // Unique trainer ID for tracking personal stats
   const [trainerId] = useState(() => getOrCreateTrainerId());
-  
+
   const [selectedDexNumber, setSelectedDexNumber] = useState(null);
 
   // ============================================
-  // GLOBAL TIME TRACKING
+  // GLOBAL TIME TRACKING (Only when tab is visible/active)
   // ============================================
-  
-  const [sessionStart] = useState(() => Date.now());
+
   const [activeSeconds, setActiveSeconds] = useState(0);
   const [previousTotalSeconds] = useState(() => getTotalTimeSpent());
+  const [isTabVisible, setIsTabVisible] = useState(() => !document.hidden);
+  const lastTickRef = useRef(Date.now());
 
+  // Track tab visibility changes
   useEffect(() => {
-    const interval = setInterval(() => {
-      const elapsed = Math.floor((Date.now() - sessionStart) / 1000);
-      setActiveSeconds(elapsed);
-    }, 1000);
-    return () => clearInterval(interval);
-  }, [sessionStart]);
+    const handleVisibilityChange = () => {
+      const nowVisible = !document.hidden;
+      setIsTabVisible(nowVisible);
 
+      if (nowVisible) {
+        // Tab became visible - reset the tick reference
+        lastTickRef.current = Date.now();
+      } else {
+        // Tab became hidden - save current progress
+        const newTotal = previousTotalSeconds + activeSeconds;
+        saveTotalTime(newTotal);
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
+  }, [previousTotalSeconds, activeSeconds]);
+
+  // Only increment time when tab is visible
+  useEffect(() => {
+    if (!isTabVisible) return;
+
+    const interval = setInterval(() => {
+      const now = Date.now();
+      const elapsed = Math.floor((now - lastTickRef.current) / 1000);
+
+      if (elapsed >= 1) {
+        setActiveSeconds(prev => prev + elapsed);
+        lastTickRef.current = now;
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [isTabVisible]);
+
+  // Save on page unload
   useEffect(() => {
     const handleBeforeUnload = () => {
-      const finalActiveSeconds = Math.floor((Date.now() - sessionStart) / 1000);
-      const newTotal = previousTotalSeconds + finalActiveSeconds;
+      const newTotal = previousTotalSeconds + activeSeconds;
       saveTotalTime(newTotal);
     };
     window.addEventListener('beforeunload', handleBeforeUnload);
     return () => window.removeEventListener('beforeunload', handleBeforeUnload);
-  }, [sessionStart, previousTotalSeconds]);
+  }, [previousTotalSeconds, activeSeconds]);
 
+  // Periodic save every minute (only when visible)
   useEffect(() => {
+    if (!isTabVisible) return;
+
     const interval = setInterval(() => {
-      const currentActiveSeconds = Math.floor((Date.now() - sessionStart) / 1000);
-      const newTotal = previousTotalSeconds + currentActiveSeconds;
+      const newTotal = previousTotalSeconds + activeSeconds;
       saveTotalTime(newTotal);
     }, 60000);
+
     return () => clearInterval(interval);
-  }, [sessionStart, previousTotalSeconds]);
+  }, [isTabVisible, previousTotalSeconds, activeSeconds]);
 
   const totalSeconds = previousTotalSeconds + activeSeconds;
 
   // ============================================
   // ACHIEVEMENT TRACKING
   // ============================================
-  
+
   const [achievementQueue, setAchievementQueue] = useState([]);
   const [currentAchievement, setCurrentAchievement] = useState(null);
   const [unlockedAchievementIds, setUnlockedAchievementIds] = useState(() => getUnlockedAchievements());
@@ -273,18 +283,18 @@ export default function App() {
   // Check for new achievements based on current stats
   const checkAchievementsFromStats = (stats) => {
     if (!stats) return;
-    
+
     const newlyUnlocked = [];
-    
+
     for (const achievement of ACHIEVEMENTS) {
       const isUnlocked = achievement.check(stats);
       const wasAlreadyUnlocked = unlockedAchievementIds.includes(achievement.id);
-      
+
       if (isUnlocked && !wasAlreadyUnlocked) {
         newlyUnlocked.push(achievement);
       }
     }
-    
+
     if (newlyUnlocked.length > 0) {
       // Update unlocked list
       const newUnlockedIds = [
@@ -293,7 +303,7 @@ export default function App() {
       ];
       setUnlockedAchievementIds(newUnlockedIds);
       saveUnlockedAchievements(newUnlockedIds);
-      
+
       // Queue the popups
       setAchievementQueue(prev => [...prev, ...newlyUnlocked]);
     }
@@ -343,9 +353,9 @@ export default function App() {
 
   // Achievement popup (always rendered, shows when there's an achievement)
   const achievementPopup = (
-    <AchievementPopup 
-      achievement={currentAchievement} 
-      onClose={handleAchievementClose} 
+    <AchievementPopup
+      achievement={currentAchievement}
+      onClose={handleAchievementClose}
     />
   );
 
@@ -364,8 +374,8 @@ export default function App() {
     return (
       <div className="min-h-screen bg-gray-950">
         <NavBar currentPage={currentPage} trainerName={trainerName} onNavigate={handleNavigate} />
-        <PokemonDetail 
-          dexNumber={selectedDexNumber} 
+        <PokemonDetail
+          dexNumber={selectedDexNumber}
           onNavigate={handleNavigate}
         />
         {achievementPopup}
@@ -411,7 +421,7 @@ export default function App() {
     return (
       <div className="min-h-screen bg-gray-950">
         <NavBar currentPage={currentPage} trainerName={trainerName} onNavigate={handleNavigate} />
-        <TrainerProfile 
+        <TrainerProfile
           trainerName={trainerName}
           trainerId={trainerId}
           onNavigate={handleNavigate}
@@ -428,7 +438,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-gray-950">
       <NavBar currentPage={currentPage} trainerName={trainerName} onNavigate={handleNavigate} />
-      <PokemonGenerator 
+      <PokemonGenerator
         trainerName={trainerName}
         trainerId={trainerId}
         onNavigate={handleNavigate}
