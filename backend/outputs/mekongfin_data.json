@@ -1,0 +1,197 @@
+{
+  "name": "Mekongfin",
+  "types": [
+    "Normal",
+    "Water"
+  ],
+  "stats": {
+    "hp": 95,
+    "attack": 85,
+    "defense": 80,
+    "sp_attack": 100,
+    "sp_defense": 90,
+    "speed": 75
+  },
+  "abilities": [
+    "Swift Swim",
+    "Filter",
+    "Adaptability"
+  ],
+  "signature_move": {
+    "name": "Delta Current",
+    "type": "Water",
+    "category": "Special",
+    "power": 90,
+    "accuracy": 85,
+    "description": "Creates a powerful river current that may lower the target's Speed"
+  },
+  "pokedex_entry": "This Pokemon swims gracefully through muddy river deltas, using its large fins to navigate swift currents. It is known to guide lost travelers along waterways during monsoon seasons. Local fishermen consider it a symbol of good fortune and abundant catches.",
+  "category": "The Delta Pokemon",
+  "height_m": 1.8,
+  "weight_kg": 68.5,
+  "bst": 525,
+  "tier": "fully_evolved",
+  "concept": "I need a vietnamese pokemon with fins",
+  "culture": "vietnam",
+  "moveset": {
+    "level_up_moves": [
+      {
+        "level": 1,
+        "move": "Leer",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 5,
+        "move": "Growl",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 10,
+        "move": "Water Gun",
+        "type": "water",
+        "power": 40,
+        "category": "special"
+      },
+      {
+        "level": 15,
+        "move": "Scald",
+        "type": "water",
+        "power": 80,
+        "category": "special"
+      },
+      {
+        "level": 20,
+        "move": "Swords Dance",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 25,
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 30,
+        "move": "Rain Dance",
+        "type": "water",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 35,
+        "move": "Bubble Beam",
+        "type": "water",
+        "power": 65,
+        "category": "special"
+      },
+      {
+        "level": 40,
+        "move": "Hyper Voice",
+        "type": "normal",
+        "power": 90,
+        "category": "special"
+      },
+      {
+        "level": 45,
+        "move": "Aqua Ring",
+        "type": "water",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 50,
+        "move": "Surf",
+        "type": "water",
+        "power": 90,
+        "category": "special"
+      }
+    ],
+    "tm_moves": [
+      {
+        "move": "Swift",
+        "type": "normal",
+        "power": 60,
+        "reason": "STAB"
+      },
+      {
+        "move": "Hyper Voice",
+        "type": "normal",
+        "power": 90,
+        "reason": "STAB"
+      },
+      {
+        "move": "Bubble Beam",
+        "type": "water",
+        "power": 65,
+        "reason": "STAB"
+      },
+      {
+        "move": "Scald",
+        "type": "water",
+        "power": 80,
+        "reason": "STAB"
+      },
+      {
+        "move": "Freeze-Dry",
+        "type": "ice",
+        "power": 70,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Overheat",
+        "type": "fire",
+        "power": 130,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Giga Drain",
+        "type": "grass",
+        "power": 75,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "reason": "Utility"
+      }
+    ],
+    "egg_moves": [
+      {
+        "move": "Quick Attack",
+        "type": "normal",
+        "power": 40
+      },
+      {
+        "move": "Slash",
+        "type": "normal",
+        "power": 70
+      },
+      {
+        "move": "Take Down",
+        "type": "normal",
+        "power": 90
+      },
+      {
+        "move": "Double-Edge",
+        "type": "normal",
+        "power": 120
+      }
+    ],
+    "current_moves": [
+      "Bubble Beam",
+      "Hyper Voice",
+      "Aqua Ring",
+      "Surf"
+    ]
+  },
+  "image_path": "outputs\\pokemon.png",
+  "image_prompt": "Normal type pokemon, I need a vietnamese pokemon with fins, ken sugimori style, official pokemon art, cute creature, white background, full body"
+}

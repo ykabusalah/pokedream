@@ -1,0 +1,192 @@
+{
+  "name": "Verdusk",
+  "types": [
+    "Grass",
+    null
+  ],
+  "stats": {
+    "hp": 95,
+    "attack": 110,
+    "defense": 85,
+    "sp_attack": 75,
+    "sp_defense": 90,
+    "speed": 65
+  },
+  "abilities": [
+    "Overgrow",
+    "Thick Fat",
+    "Sap Sipper"
+  ],
+  "signature_move": {
+    "name": "Forest Maul",
+    "type": "Grass",
+    "category": "Physical",
+    "power": 85,
+    "accuracy": 90,
+    "description": "The user strikes with moss-covered claws that may cause the target to flinch"
+  },
+  "pokedex_entry": "Verdusk's thick fur grows moss and small plants that provide camouflage in dense forests. It marks territory by leaving deep claw scratches on trees that sprout new growth. Despite its intimidating size, it gently tends to forest saplings.",
+  "category": "The Grove Guardian Pokemon",
+  "height_m": 2.1,
+  "weight_kg": 145.8,
+  "bst": 520,
+  "tier": "fully_evolved",
+  "concept": "a grass bear",
+  "culture": "original",
+  "moveset": {
+    "level_up_moves": [
+      {
+        "level": 1,
+        "move": "Scratch",
+        "type": "normal",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 5,
+        "move": "Tackle",
+        "type": "normal",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 10,
+        "move": "Leer",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 15,
+        "move": "Vine Whip",
+        "type": "grass",
+        "power": 45,
+        "category": "physical"
+      },
+      {
+        "level": 20,
+        "move": "Slash",
+        "type": "normal",
+        "power": 70,
+        "category": "physical"
+      },
+      {
+        "level": 25,
+        "move": "Quick Attack",
+        "type": "normal",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 30,
+        "move": "Take Down",
+        "type": "normal",
+        "power": 90,
+        "category": "physical"
+      },
+      {
+        "level": 35,
+        "move": "Power Whip",
+        "type": "grass",
+        "power": 120,
+        "category": "physical"
+      },
+      {
+        "level": 40,
+        "move": "Leaf Blade",
+        "type": "grass",
+        "power": 90,
+        "category": "physical"
+      },
+      {
+        "level": 45,
+        "move": "Wood Hammer",
+        "type": "grass",
+        "power": 120,
+        "category": "physical"
+      },
+      {
+        "level": 50,
+        "move": "Extreme Speed",
+        "type": "normal",
+        "power": 80,
+        "category": "physical"
+      }
+    ],
+    "tm_moves": [
+      {
+        "move": "Seed Bomb",
+        "type": "grass",
+        "power": 80,
+        "reason": "STAB"
+      },
+      {
+        "move": "Leaf Blade",
+        "type": "grass",
+        "power": 90,
+        "reason": "STAB"
+      },
+      {
+        "move": "Ice Punch",
+        "type": "ice",
+        "power": 75,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Wild Charge",
+        "type": "electric",
+        "power": 90,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Flame Wheel",
+        "type": "fire",
+        "power": 60,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "reason": "Utility"
+      },
+      {
+        "move": "Rest",
+        "type": "psychic",
+        "power": null,
+        "reason": "Recovery"
+      }
+    ],
+    "egg_moves": [
+      {
+        "move": "Razor Leaf",
+        "type": "grass",
+        "power": 55
+      },
+      {
+        "move": "Leaf Blade",
+        "type": "grass",
+        "power": 90
+      },
+      {
+        "move": "Wood Hammer",
+        "type": "grass",
+        "power": 120
+      },
+      {
+        "move": "Absorb",
+        "type": "grass",
+        "power": 20
+      }
+    ],
+    "current_moves": [
+      "Power Whip",
+      "Leaf Blade",
+      "Wood Hammer",
+      "Extreme Speed"
+    ]
+  },
+  "image_path": "outputs\\verdusk_20260106_200939_872655_5154.png",
+  "image_prompt": "Grass type pokemon, a grass bear, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+  "is_shiny": false
+}

@@ -1,0 +1,198 @@
+{
+  "name": "Bambusai",
+  "types": [
+    "Grass",
+    "Dragon"
+  ],
+  "stats": {
+    "hp": 88,
+    "attack": 105,
+    "defense": 95,
+    "sp_attack": 85,
+    "sp_defense": 90,
+    "speed": 67
+  },
+  "abilities": [
+    "Overgrow",
+    "Defiant",
+    "Sap Sipper"
+  ],
+  "signature_move": {
+    "name": "Jade Spear Rush",
+    "type": "Grass",
+    "category": "Physical",
+    "power": 85,
+    "accuracy": 90,
+    "description": "The user charges with razor-sharp bamboo spears. Has a high critical hit ratio and may lower the target's Defense."
+  },
+  "pokedex_entry": "This majestic Pokemon grows bamboo-like scales that harden into jade over centuries. Ancient scrolls depict Bambusai as guardians of sacred groves, using their serpentine bodies to weave through dense forests. The melodic creaking of their scales is said to bring good fortune to those who hear it.",
+  "category": "The Jade Grove Pokemon",
+  "height_m": 4.2,
+  "weight_kg": 156.8,
+  "bst": 530,
+  "tier": "fully_evolved",
+  "concept": "grass dragon",
+  "culture": "china",
+  "moveset": {
+    "level_up_moves": [
+      {
+        "level": 1,
+        "move": "Tackle",
+        "type": "normal",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 5,
+        "move": "Quick Attack",
+        "type": "normal",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 10,
+        "move": "Pound",
+        "type": "normal",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 15,
+        "move": "Sleep Powder",
+        "type": "grass",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 20,
+        "move": "Dragon Dance",
+        "type": "dragon",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 25,
+        "move": "Dragon Claw",
+        "type": "dragon",
+        "power": 80,
+        "category": "physical"
+      },
+      {
+        "level": 30,
+        "move": "Headbutt",
+        "type": "normal",
+        "power": 70,
+        "category": "physical"
+      },
+      {
+        "level": 35,
+        "move": "Take Down",
+        "type": "normal",
+        "power": 90,
+        "category": "physical"
+      },
+      {
+        "level": 40,
+        "move": "Seed Bomb",
+        "type": "grass",
+        "power": 80,
+        "category": "physical"
+      },
+      {
+        "level": 45,
+        "move": "Dragon Rush",
+        "type": "dragon",
+        "power": 100,
+        "category": "physical"
+      },
+      {
+        "level": 50,
+        "move": "Power Whip",
+        "type": "grass",
+        "power": 120,
+        "category": "physical"
+      }
+    ],
+    "tm_moves": [
+      {
+        "move": "Seed Bomb",
+        "type": "grass",
+        "power": 80,
+        "reason": "STAB"
+      },
+      {
+        "move": "Leaf Blade",
+        "type": "grass",
+        "power": 90,
+        "reason": "STAB"
+      },
+      {
+        "move": "Dragon Claw",
+        "type": "dragon",
+        "power": 80,
+        "reason": "STAB"
+      },
+      {
+        "move": "Dragon Rush",
+        "type": "dragon",
+        "power": 100,
+        "reason": "STAB"
+      },
+      {
+        "move": "Waterfall",
+        "type": "water",
+        "power": 80,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Avalanche",
+        "type": "ice",
+        "power": 60,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Thunder Punch",
+        "type": "electric",
+        "power": 75,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "reason": "Utility"
+      }
+    ],
+    "egg_moves": [
+      {
+        "move": "Razor Leaf",
+        "type": "grass",
+        "power": 55
+      },
+      {
+        "move": "Leaf Blade",
+        "type": "grass",
+        "power": 90
+      },
+      {
+        "move": "Wood Hammer",
+        "type": "grass",
+        "power": 120
+      },
+      {
+        "move": "Absorb",
+        "type": "grass",
+        "power": 20
+      }
+    ],
+    "current_moves": [
+      "Take Down",
+      "Seed Bomb",
+      "Dragon Rush",
+      "Power Whip"
+    ]
+  },
+  "image_path": "outputs\\bambusai_20260107_201639_283899_4044.png",
+  "image_prompt": "Grass/Dragon type pokemon, grass dragon, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+  "is_shiny": false
+}

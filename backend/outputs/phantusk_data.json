@@ -1,0 +1,198 @@
+{
+  "name": "Phantusk",
+  "types": [
+    "Fighting",
+    "Ghost"
+  ],
+  "stats": {
+    "hp": 85,
+    "attack": 110,
+    "defense": 75,
+    "sp_attack": 65,
+    "sp_defense": 80,
+    "speed": 105
+  },
+  "abilities": [
+    "Iron Fist",
+    "Scrappy",
+    "Cursed Body"
+  ],
+  "signature_move": {
+    "name": "Phantom Strike",
+    "type": "Fighting",
+    "category": "Physical",
+    "power": 85,
+    "accuracy": 90,
+    "description": "A ghostly punch that phases through the target's defenses, ignoring stat changes"
+  },
+  "pokedex_entry": "This Pokemon's spectral head floats above its muscular dragon body, allowing it to see into both the physical and spiritual realms. Ancient warriors believed Phantusk served as guardians between worlds, training both the living and the dead. Its phantom head can detach completely during battle, confusing opponents while its body continues fighting.",
+  "category": "The Spirit Warrior Pokemon",
+  "height_m": 2.1,
+  "weight_kg": 78.5,
+  "bst": 520,
+  "tier": "fully_evolved",
+  "concept": "a fighting dragon with a ghost head",
+  "culture": "original",
+  "moveset": {
+    "level_up_moves": [
+      {
+        "level": 1,
+        "move": "Tackle",
+        "type": "normal",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 5,
+        "move": "Confuse Ray",
+        "type": "ghost",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 10,
+        "move": "Mach Punch",
+        "type": "fighting",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 15,
+        "move": "Lick",
+        "type": "ghost",
+        "power": 30,
+        "category": "physical"
+      },
+      {
+        "level": 20,
+        "move": "Will-O-Wisp",
+        "type": "fire",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 25,
+        "move": "Take Down",
+        "type": "normal",
+        "power": 90,
+        "category": "physical"
+      },
+      {
+        "level": 30,
+        "move": "Bulk Up",
+        "type": "fighting",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 35,
+        "move": "Aura Sphere",
+        "type": "fighting",
+        "power": 80,
+        "category": "physical"
+      },
+      {
+        "level": 40,
+        "move": "Phantom Force",
+        "type": "ghost",
+        "power": 90,
+        "category": "physical"
+      },
+      {
+        "level": 45,
+        "move": "Giga Impact",
+        "type": "normal",
+        "power": 150,
+        "category": "physical"
+      },
+      {
+        "level": 50,
+        "move": "Double-Edge",
+        "type": "normal",
+        "power": 120,
+        "category": "physical"
+      }
+    ],
+    "tm_moves": [
+      {
+        "move": "Brick Break",
+        "type": "fighting",
+        "power": 75,
+        "reason": "STAB"
+      },
+      {
+        "move": "Drain Punch",
+        "type": "fighting",
+        "power": 75,
+        "reason": "STAB"
+      },
+      {
+        "move": "Shadow Claw",
+        "type": "ghost",
+        "power": 70,
+        "reason": "STAB"
+      },
+      {
+        "move": "Phantom Force",
+        "type": "ghost",
+        "power": 90,
+        "reason": "STAB"
+      },
+      {
+        "move": "Volt Tackle",
+        "type": "electric",
+        "power": 120,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Waterfall",
+        "type": "water",
+        "power": 80,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Fire Punch",
+        "type": "fire",
+        "power": 75,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "reason": "Utility"
+      }
+    ],
+    "egg_moves": [
+      {
+        "move": "Karate Chop",
+        "type": "fighting",
+        "power": 50
+      },
+      {
+        "move": "Mach Punch",
+        "type": "fighting",
+        "power": 40
+      },
+      {
+        "move": "Drain Punch",
+        "type": "fighting",
+        "power": 75
+      },
+      {
+        "move": "Vacuum Wave",
+        "type": "fighting",
+        "power": 40
+      }
+    ],
+    "current_moves": [
+      "Aura Sphere",
+      "Phantom Force",
+      "Giga Impact",
+      "Double-Edge"
+    ]
+  },
+  "image_path": "outputs\\phantusk_20260107_145216_443163_5312.png",
+  "image_prompt": "Fighting/Ghost type pokemon, a fighting dragon with a ghost head, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+  "is_shiny": false
+}

@@ -1,0 +1,198 @@
+{
+  "name": "Coatlux",
+  "types": [
+    "Normal",
+    "Flying"
+  ],
+  "stats": {
+    "hp": 85,
+    "attack": 75,
+    "defense": 80,
+    "sp_attack": 110,
+    "sp_defense": 95,
+    "speed": 85
+  },
+  "abilities": [
+    "Serene Grace",
+    "Keen Eye",
+    "Solar Power"
+  ],
+  "signature_move": {
+    "name": "Feathered Serpent",
+    "type": "Normal",
+    "category": "Special",
+    "power": 90,
+    "accuracy": 100,
+    "description": "A spiraling attack that may cause the target to flinch. Power increases in harsh sunlight."
+  },
+  "pokedex_entry": "This majestic Pok\u00e9mon is said to bridge the earthbound and celestial realms with its graceful flight. Ancient carvings depict Coatlux as a messenger of wisdom, using its colorful plumage to create mesmerizing patterns in the sky. It appears during important celestial events, blessing those who witness its dance.",
+  "category": "The Plumed Serpent Pokemon",
+  "height_m": 3.2,
+  "weight_kg": 45.8,
+  "bst": 530,
+  "tier": "fully_evolved",
+  "concept": "Create a Pok\u00e9mon inspired by Mayan mythology",
+  "culture": "mexico",
+  "moveset": {
+    "level_up_moves": [
+      {
+        "level": 1,
+        "move": "Gust",
+        "type": "flying",
+        "power": 40,
+        "category": "special"
+      },
+      {
+        "level": 5,
+        "move": "Leer",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 10,
+        "move": "Growl",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 15,
+        "move": "Roost",
+        "type": "flying",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 20,
+        "move": "Swords Dance",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 25,
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 30,
+        "move": "Tailwind",
+        "type": "flying",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 35,
+        "move": "Hyper Voice",
+        "type": "normal",
+        "power": 90,
+        "category": "special"
+      },
+      {
+        "level": 40,
+        "move": "Hurricane",
+        "type": "flying",
+        "power": 110,
+        "category": "special"
+      },
+      {
+        "level": 45,
+        "move": "Hyper Beam",
+        "type": "normal",
+        "power": 150,
+        "category": "special"
+      },
+      {
+        "level": 50,
+        "move": "Air Cutter",
+        "type": "flying",
+        "power": 60,
+        "category": "special"
+      }
+    ],
+    "tm_moves": [
+      {
+        "move": "Swift",
+        "type": "normal",
+        "power": 60,
+        "reason": "STAB"
+      },
+      {
+        "move": "Hyper Voice",
+        "type": "normal",
+        "power": 90,
+        "reason": "STAB"
+      },
+      {
+        "move": "Air Cutter",
+        "type": "flying",
+        "power": 60,
+        "reason": "STAB"
+      },
+      {
+        "move": "Air Slash",
+        "type": "flying",
+        "power": 75,
+        "reason": "STAB"
+      },
+      {
+        "move": "Heat Wave",
+        "type": "fire",
+        "power": 95,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Solar Beam",
+        "type": "grass",
+        "power": 120,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Hydro Pump",
+        "type": "water",
+        "power": 110,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "reason": "Utility"
+      }
+    ],
+    "egg_moves": [
+      {
+        "move": "Quick Attack",
+        "type": "normal",
+        "power": 40
+      },
+      {
+        "move": "Slash",
+        "type": "normal",
+        "power": 70
+      },
+      {
+        "move": "Take Down",
+        "type": "normal",
+        "power": 90
+      },
+      {
+        "move": "Double-Edge",
+        "type": "normal",
+        "power": 120
+      }
+    ],
+    "current_moves": [
+      "Hyper Voice",
+      "Hurricane",
+      "Hyper Beam",
+      "Air Cutter"
+    ]
+  },
+  "image_path": "outputs\\coatlux_20260107_171112_226527_9783.png",
+  "image_prompt": "Normal type pokemon, Create a Pok\u00e9mon inspired by Mayan mythology, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+  "is_shiny": false
+}

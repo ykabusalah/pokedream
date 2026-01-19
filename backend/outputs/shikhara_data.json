@@ -1,0 +1,197 @@
+{
+  "name": "Shikhara",
+  "types": [
+    "Rock",
+    "Fighting"
+  ],
+  "stats": {
+    "hp": 95,
+    "attack": 115,
+    "defense": 100,
+    "sp_attack": 65,
+    "sp_defense": 85,
+    "speed": 70
+  },
+  "abilities": [
+    "Steadfast",
+    "Rock Head",
+    "Inner Focus"
+  ],
+  "signature_move": {
+    "name": "Temple Crash",
+    "type": "Rock",
+    "category": "Physical",
+    "power": 90,
+    "accuracy": 95,
+    "description": "The user charges with the force of ancient stone pillars, ignoring the target's stat changes"
+  },
+  "pokedex_entry": "This loyal Pokemon has guarded sacred temples in mountain regions for over a thousand years. Its stone mane grows more ornate with age, and it can sense impure intentions from great distances. Local legends say it only awakens when sacred grounds are truly threatened.",
+  "category": "The Temple Guardian Pokemon",
+  "height_m": 1.8,
+  "weight_kg": 180.5,
+  "bst": 530,
+  "tier": "fully_evolved",
+  "concept": "temple guardian lion",
+  "culture": "nepal",
+  "moveset": {
+    "level_up_moves": [
+      {
+        "level": 1,
+        "move": "Scratch",
+        "type": "normal",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 5,
+        "move": "Tackle",
+        "type": "normal",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 10,
+        "move": "Pound",
+        "type": "normal",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 15,
+        "move": "Low Kick",
+        "type": "fighting",
+        "power": null,
+        "category": "physical"
+      },
+      {
+        "level": 20,
+        "move": "Bulk Up",
+        "type": "fighting",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 25,
+        "move": "Growl",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 30,
+        "move": "Detect",
+        "type": "fighting",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 35,
+        "move": "Stone Edge",
+        "type": "rock",
+        "power": 100,
+        "category": "physical"
+      },
+      {
+        "level": 40,
+        "move": "Rock Polish",
+        "type": "rock",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 45,
+        "move": "Close Combat",
+        "type": "fighting",
+        "power": 120,
+        "category": "physical"
+      },
+      {
+        "level": 50,
+        "move": "Stealth Rock",
+        "type": "rock",
+        "power": null,
+        "category": "status"
+      }
+    ],
+    "tm_moves": [
+      {
+        "move": "Rock Tomb",
+        "type": "rock",
+        "power": 60,
+        "reason": "STAB"
+      },
+      {
+        "move": "Rock Slide",
+        "type": "rock",
+        "power": 75,
+        "reason": "STAB"
+      },
+      {
+        "move": "Brick Break",
+        "type": "fighting",
+        "power": 75,
+        "reason": "STAB"
+      },
+      {
+        "move": "Drain Punch",
+        "type": "fighting",
+        "power": 75,
+        "reason": "STAB"
+      },
+      {
+        "move": "Power Whip",
+        "type": "grass",
+        "power": 120,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Thunder Punch",
+        "type": "electric",
+        "power": 75,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Blaze Kick",
+        "type": "fire",
+        "power": 85,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "reason": "Utility"
+      }
+    ],
+    "egg_moves": [
+      {
+        "move": "Stone Edge",
+        "type": "rock",
+        "power": 100
+      },
+      {
+        "move": "Head Smash",
+        "type": "rock",
+        "power": 150
+      },
+      {
+        "move": "Karate Chop",
+        "type": "fighting",
+        "power": 50
+      },
+      {
+        "move": "Mach Punch",
+        "type": "fighting",
+        "power": 40
+      }
+    ],
+    "current_moves": [
+      "Stone Edge",
+      "Rock Polish",
+      "Close Combat",
+      "Stealth Rock"
+    ]
+  },
+  "image_path": "outputs\\shikhara.png",
+  "image_prompt": "Rock/Fighting type pokemon creature, temple guardian lion, quadruped, gold and red and white colored, Himalayan, Nepalese, Buddhist inspired"
+}

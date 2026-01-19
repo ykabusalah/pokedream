@@ -1,0 +1,193 @@
+{
+  "name": "Kreval",
+  "types": [
+    "Ice",
+    "Rock"
+  ],
+  "stats": {
+    "hp": 95,
+    "attack": 110,
+    "defense": 130,
+    "sp_attack": 65,
+    "sp_defense": 85,
+    "speed": 35
+  },
+  "abilities": [
+    "Solid Rock",
+    "Ice Body",
+    "Filter"
+  ],
+  "signature_move": {
+    "name": "Glacier Crush",
+    "type": "Ice",
+    "category": "Physical",
+    "power": 90,
+    "accuracy": 85,
+    "description": "The user compresses ice around its fists and delivers a crushing blow. May lower the target's Defense."
+  },
+  "pokedex_entry": "Ancient ice golems that form naturally in the deepest glacial caverns where ice and stone merge over millennia. Their crystalline cores pulse with frigid energy, allowing them to reshape their bodies at will. When threatened, they can compress their ice-rock composition to become nearly indestructible.",
+  "category": "The Frost Golem Pokemon",
+  "height_m": 2.8,
+  "weight_kg": 285.5,
+  "bst": 520,
+  "tier": "fully_evolved",
+  "concept": "ice golem",
+  "culture": "original",
+  "moveset": {
+    "level_up_moves": [
+      {
+        "level": 1,
+        "move": "Growl",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 5,
+        "move": "Scratch",
+        "type": "normal",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 10,
+        "move": "Ice Shard",
+        "type": "ice",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 15,
+        "move": "Take Down",
+        "type": "normal",
+        "power": 90,
+        "category": "physical"
+      },
+      {
+        "level": 20,
+        "move": "Leer",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 25,
+        "move": "Ice Punch",
+        "type": "ice",
+        "power": 75,
+        "category": "physical"
+      },
+      {
+        "level": 30,
+        "move": "Body Slam",
+        "type": "normal",
+        "power": 85,
+        "category": "physical"
+      },
+      {
+        "level": 35,
+        "move": "Rock Polish",
+        "type": "rock",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 40,
+        "move": "Avalanche",
+        "type": "ice",
+        "power": 60,
+        "category": "physical"
+      },
+      {
+        "level": 45,
+        "move": "Extreme Speed",
+        "type": "normal",
+        "power": 80,
+        "category": "physical"
+      },
+      {
+        "level": 50,
+        "move": "Slash",
+        "type": "normal",
+        "power": 70,
+        "category": "physical"
+      }
+    ],
+    "tm_moves": [
+      {
+        "move": "Ice Punch",
+        "type": "ice",
+        "power": 75,
+        "reason": "STAB"
+      },
+      {
+        "move": "Ice Fang",
+        "type": "ice",
+        "power": 65,
+        "reason": "STAB"
+      },
+      {
+        "move": "Rock Tomb",
+        "type": "rock",
+        "power": 60,
+        "reason": "STAB"
+      },
+      {
+        "move": "Rock Slide",
+        "type": "rock",
+        "power": 75,
+        "reason": "STAB"
+      },
+      {
+        "move": "Aqua Tail",
+        "type": "water",
+        "power": 90,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Leaf Blade",
+        "type": "grass",
+        "power": 90,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Thunder Punch",
+        "type": "electric",
+        "power": 75,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "reason": "Utility"
+      }
+    ],
+    "egg_moves": [
+      {
+        "move": "Ice Shard",
+        "type": "ice",
+        "power": 40
+      },
+      {
+        "move": "Stone Edge",
+        "type": "rock",
+        "power": 100
+      },
+      {
+        "move": "Head Smash",
+        "type": "rock",
+        "power": 150
+      }
+    ],
+    "current_moves": [
+      "Rock Polish",
+      "Avalanche",
+      "Extreme Speed",
+      "Slash"
+    ]
+  },
+  "image_path": "outputs\\kreval_20260107_203219_913952_5764.png",
+  "image_prompt": "Ice type pokemon, ice golem, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+  "is_shiny": false
+}

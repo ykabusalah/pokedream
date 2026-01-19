@@ -1,0 +1,198 @@
+{
+  "name": "Voltavis",
+  "types": [
+    "Electric",
+    "Flying"
+  ],
+  "stats": {
+    "hp": 75,
+    "attack": 85,
+    "defense": 70,
+    "sp_attack": 115,
+    "sp_defense": 80,
+    "speed": 105
+  },
+  "abilities": [
+    "Static",
+    "Keen Eye",
+    "Lightning Rod"
+  ],
+  "signature_move": {
+    "name": "Thunderstrike Dive",
+    "type": "Electric",
+    "category": "Physical",
+    "power": 90,
+    "accuracy": 95,
+    "description": "The user dives from great heights while charged with electricity. This move has increased critical hit ratio."
+  },
+  "pokedex_entry": "Voltavis soars through storm clouds, collecting electrical energy in its brilliant yellow plumage. When it spots prey below, it can dive at incredible speeds while wreathed in lightning. Its feathers glow brightest during thunderstorms, serving as a beacon to guide lost travelers to safety.",
+  "category": "The Thunder Wing Pokemon",
+  "height_m": 1.8,
+  "weight_kg": 42.5,
+  "bst": 530,
+  "tier": "fully_evolved",
+  "concept": "yellow lightning bird",
+  "culture": "original",
+  "moveset": {
+    "level_up_moves": [
+      {
+        "level": 1,
+        "move": "Gust",
+        "type": "flying",
+        "power": 40,
+        "category": "special"
+      },
+      {
+        "level": 5,
+        "move": "Leer",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 10,
+        "move": "Thunder Shock",
+        "type": "electric",
+        "power": 40,
+        "category": "special"
+      },
+      {
+        "level": 15,
+        "move": "Air Slash",
+        "type": "flying",
+        "power": 75,
+        "category": "special"
+      },
+      {
+        "level": 20,
+        "move": "Thunder Wave",
+        "type": "electric",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 25,
+        "move": "Volt Switch",
+        "type": "electric",
+        "power": 70,
+        "category": "special"
+      },
+      {
+        "level": 30,
+        "move": "Electric Terrain",
+        "type": "electric",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 35,
+        "move": "Hyper Voice",
+        "type": "normal",
+        "power": 90,
+        "category": "special"
+      },
+      {
+        "level": 40,
+        "move": "Air Cutter",
+        "type": "flying",
+        "power": 60,
+        "category": "special"
+      },
+      {
+        "level": 45,
+        "move": "Hurricane",
+        "type": "flying",
+        "power": 110,
+        "category": "special"
+      },
+      {
+        "level": 50,
+        "move": "Electro Ball",
+        "type": "electric",
+        "power": null,
+        "category": "special"
+      }
+    ],
+    "tm_moves": [
+      {
+        "move": "Electro Ball",
+        "type": "electric",
+        "power": null,
+        "reason": "STAB"
+      },
+      {
+        "move": "Thunderbolt",
+        "type": "electric",
+        "power": 90,
+        "reason": "STAB"
+      },
+      {
+        "move": "Air Cutter",
+        "type": "flying",
+        "power": 60,
+        "reason": "STAB"
+      },
+      {
+        "move": "Air Slash",
+        "type": "flying",
+        "power": 75,
+        "reason": "STAB"
+      },
+      {
+        "move": "Freeze-Dry",
+        "type": "ice",
+        "power": 70,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Hydro Pump",
+        "type": "water",
+        "power": 110,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Fire Blast",
+        "type": "fire",
+        "power": 110,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "reason": "Utility"
+      }
+    ],
+    "egg_moves": [
+      {
+        "move": "Wild Charge",
+        "type": "electric",
+        "power": 90
+      },
+      {
+        "move": "Volt Tackle",
+        "type": "electric",
+        "power": 120
+      },
+      {
+        "move": "Brave Bird",
+        "type": "flying",
+        "power": 120
+      },
+      {
+        "move": "Air Cutter",
+        "type": "flying",
+        "power": 60
+      }
+    ],
+    "current_moves": [
+      "Hyper Voice",
+      "Air Cutter",
+      "Hurricane",
+      "Electro Ball"
+    ]
+  },
+  "image_path": "outputs\\voltavis_20260107_144256_447294_9689.png",
+  "image_prompt": "Electric/Flying type pokemon, yellow lightning bird, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+  "is_shiny": false
+}

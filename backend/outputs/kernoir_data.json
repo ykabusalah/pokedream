@@ -1,0 +1,198 @@
+{
+  "name": "Kernoir",
+  "types": [
+    "Ghost",
+    "Grass"
+  ],
+  "stats": {
+    "hp": 95,
+    "attack": 85,
+    "defense": 70,
+    "sp_attack": 110,
+    "sp_defense": 85,
+    "speed": 75
+  },
+  "abilities": [
+    "Harvest",
+    "Cursed Body",
+    "Stalk"
+  ],
+  "signature_move": {
+    "name": "Husk Drain",
+    "type": "Ghost",
+    "category": "Special",
+    "power": 80,
+    "accuracy": 100,
+    "description": "Drains the target's life force through spectral corn husks. Restores HP equal to half the damage dealt."
+  },
+  "pokedex_entry": "This Pokemon was once a bountiful cornfield that withered under a terrible curse. Its kernels glow with an eerie light, and farmers report hearing ghostly whispers emanating from corn mazes where Kernoir dwells. It feeds on the life force of crops, leaving barren husks in its wake.",
+  "category": "The Cursed Harvest Pokemon",
+  "height_m": 2.1,
+  "weight_kg": 67.5,
+  "bst": 520,
+  "tier": "fully_evolved",
+  "concept": "A CORN POKEMON TAHT'S HORROR",
+  "culture": "original",
+  "moveset": {
+    "level_up_moves": [
+      {
+        "level": 1,
+        "move": "Growl",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 5,
+        "move": "Leech Seed",
+        "type": "grass",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 10,
+        "move": "Night Shade",
+        "type": "ghost",
+        "power": null,
+        "category": "special"
+      },
+      {
+        "level": 15,
+        "move": "Will-O-Wisp",
+        "type": "fire",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 20,
+        "move": "Synthesis",
+        "type": "grass",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 25,
+        "move": "Giga Drain",
+        "type": "grass",
+        "power": 75,
+        "category": "special"
+      },
+      {
+        "level": 30,
+        "move": "Sleep Powder",
+        "type": "grass",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 35,
+        "move": "Hex",
+        "type": "ghost",
+        "power": 65,
+        "category": "special"
+      },
+      {
+        "level": 40,
+        "move": "Hyper Voice",
+        "type": "normal",
+        "power": 90,
+        "category": "special"
+      },
+      {
+        "level": 45,
+        "move": "Shadow Ball",
+        "type": "ghost",
+        "power": 80,
+        "category": "special"
+      },
+      {
+        "level": 50,
+        "move": "Leaf Storm",
+        "type": "grass",
+        "power": 130,
+        "category": "special"
+      }
+    ],
+    "tm_moves": [
+      {
+        "move": "Hex",
+        "type": "ghost",
+        "power": 65,
+        "reason": "STAB"
+      },
+      {
+        "move": "Shadow Ball",
+        "type": "ghost",
+        "power": 80,
+        "reason": "STAB"
+      },
+      {
+        "move": "Giga Drain",
+        "type": "grass",
+        "power": 75,
+        "reason": "STAB"
+      },
+      {
+        "move": "Energy Ball",
+        "type": "grass",
+        "power": 90,
+        "reason": "STAB"
+      },
+      {
+        "move": "Fire Blast",
+        "type": "fire",
+        "power": 110,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Hydro Pump",
+        "type": "water",
+        "power": 110,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Electro Ball",
+        "type": "electric",
+        "power": null,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "reason": "Utility"
+      }
+    ],
+    "egg_moves": [
+      {
+        "move": "Shadow Claw",
+        "type": "ghost",
+        "power": 70
+      },
+      {
+        "move": "Shadow Sneak",
+        "type": "ghost",
+        "power": 40
+      },
+      {
+        "move": "Razor Leaf",
+        "type": "grass",
+        "power": 55
+      },
+      {
+        "move": "Leaf Blade",
+        "type": "grass",
+        "power": 90
+      }
+    ],
+    "current_moves": [
+      "Hex",
+      "Hyper Voice",
+      "Shadow Ball",
+      "Leaf Storm"
+    ]
+  },
+  "image_path": "outputs\\kernoir_20260107_220710_540512_8843.png",
+  "image_prompt": "Normal type pokemon, A CORN POKEMON TAHT'S HORROR, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+  "is_shiny": false
+}

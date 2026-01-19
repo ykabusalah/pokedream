@@ -1,0 +1,197 @@
+{
+  "name": "Banhmos",
+  "types": [
+    "Ground",
+    "Grass"
+  ],
+  "stats": {
+    "hp": 95,
+    "attack": 105,
+    "defense": 85,
+    "sp_attack": 70,
+    "sp_defense": 80,
+    "speed": 90
+  },
+  "abilities": [
+    "Thick Fat",
+    "Sand Stream",
+    "Harvest"
+  ],
+  "signature_move": {
+    "name": "Savory Crunch",
+    "type": "Ground",
+    "category": "Physical",
+    "power": 85,
+    "accuracy": 95,
+    "description": "A crushing bite that may lower the target's Defense and has a chance to heal the user"
+  },
+  "pokedex_entry": "This Pokemon's body resembles a perfectly crafted sandwich, with layers of nutritious ingredients providing exceptional sustenance to allies. It roams busy marketplaces, sharing its aromatic presence with travelers seeking nourishment. The herbs growing from its back are said to enhance any meal's flavor.",
+  "category": "The Sandwich Pokemon",
+  "height_m": 1.2,
+  "weight_kg": 45.8,
+  "bst": 525,
+  "tier": "fully_evolved",
+  "concept": "a pokemon based around the banh mi sandwhich",
+  "culture": "vietnam",
+  "moveset": {
+    "level_up_moves": [
+      {
+        "level": 1,
+        "move": "Scratch",
+        "type": "normal",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 5,
+        "move": "Vine Whip",
+        "type": "grass",
+        "power": 45,
+        "category": "physical"
+      },
+      {
+        "level": 10,
+        "move": "Mud-Slap",
+        "type": "ground",
+        "power": 20,
+        "category": "physical"
+      },
+      {
+        "level": 15,
+        "move": "Headbutt",
+        "type": "normal",
+        "power": 70,
+        "category": "physical"
+      },
+      {
+        "level": 20,
+        "move": "Drill Run",
+        "type": "ground",
+        "power": 80,
+        "category": "physical"
+      },
+      {
+        "level": 25,
+        "move": "Dig",
+        "type": "ground",
+        "power": 80,
+        "category": "physical"
+      },
+      {
+        "level": 30,
+        "move": "Tackle",
+        "type": "normal",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 35,
+        "move": "Giga Impact",
+        "type": "normal",
+        "power": 150,
+        "category": "physical"
+      },
+      {
+        "level": 40,
+        "move": "Take Down",
+        "type": "normal",
+        "power": 90,
+        "category": "physical"
+      },
+      {
+        "level": 45,
+        "move": "Power Whip",
+        "type": "grass",
+        "power": 120,
+        "category": "physical"
+      },
+      {
+        "level": 50,
+        "move": "Sleep Powder",
+        "type": "grass",
+        "power": null,
+        "category": "status"
+      }
+    ],
+    "tm_moves": [
+      {
+        "move": "Dig",
+        "type": "ground",
+        "power": 80,
+        "reason": "STAB"
+      },
+      {
+        "move": "Bulldoze",
+        "type": "ground",
+        "power": 60,
+        "reason": "STAB"
+      },
+      {
+        "move": "Seed Bomb",
+        "type": "grass",
+        "power": 80,
+        "reason": "STAB"
+      },
+      {
+        "move": "Leaf Blade",
+        "type": "grass",
+        "power": 90,
+        "reason": "STAB"
+      },
+      {
+        "move": "Icicle Crash",
+        "type": "ice",
+        "power": 85,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Waterfall",
+        "type": "water",
+        "power": 80,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Fire Punch",
+        "type": "fire",
+        "power": 75,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "reason": "Utility"
+      }
+    ],
+    "egg_moves": [
+      {
+        "move": "Drill Run",
+        "type": "ground",
+        "power": 80
+      },
+      {
+        "move": "Razor Leaf",
+        "type": "grass",
+        "power": 55
+      },
+      {
+        "move": "Leaf Blade",
+        "type": "grass",
+        "power": 90
+      },
+      {
+        "move": "Wood Hammer",
+        "type": "grass",
+        "power": 120
+      }
+    ],
+    "current_moves": [
+      "Giga Impact",
+      "Take Down",
+      "Power Whip",
+      "Sleep Powder"
+    ]
+  },
+  "image_path": "outputs\\banhmos.png",
+  "image_prompt": "Ground type, a pokemon based around the banh mi sandwhich"
+}

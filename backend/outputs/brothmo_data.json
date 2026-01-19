@@ -1,0 +1,190 @@
+{
+  "name": "Brothmo",
+  "types": [
+    "Normal",
+    "Fire"
+  ],
+  "stats": {
+    "hp": 95,
+    "attack": 75,
+    "defense": 80,
+    "sp_attack": 105,
+    "sp_defense": 85,
+    "speed": 70
+  },
+  "abilities": [
+    "Steam Engine",
+    "Thick Fat",
+    "Aroma Veil"
+  ],
+  "signature_move": {
+    "name": "Spicy Broth",
+    "type": "Fire",
+    "category": "Special",
+    "power": 80,
+    "accuracy": 100,
+    "description": "A scalding broth attack that has a 30% chance to burn the target and restore the user's HP by 25% of damage dealt"
+  },
+  "pokedex_entry": "Brothmo carries a steaming bowl of aromatic broth within its body, which it uses to nourish allies and scald enemies. The spicy fragrance it emits can be detected from miles away, drawing hungry Pokemon from across the region. Its warm presence brings comfort to weary travelers during cold nights.",
+  "category": "The Noodle Broth Pokemon",
+  "height_m": 1.2,
+  "weight_kg": 48.5,
+  "bst": 510,
+  "tier": "fully_evolved",
+  "concept": "a pokemon based around bun bo hue (vietnamese food)",
+  "culture": "original",
+  "moveset": {
+    "level_up_moves": [
+      {
+        "level": 1,
+        "move": "Growl",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 5,
+        "move": "Leer",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 15,
+        "move": "Sunny Day",
+        "type": "fire",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 20,
+        "move": "Swift",
+        "type": "normal",
+        "power": 60,
+        "category": "special"
+      },
+      {
+        "level": 25,
+        "move": "Incinerate",
+        "type": "fire",
+        "power": 60,
+        "category": "special"
+      },
+      {
+        "level": 30,
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 35,
+        "move": "Overheat",
+        "type": "fire",
+        "power": 130,
+        "category": "special"
+      },
+      {
+        "level": 40,
+        "move": "Fire Blast",
+        "type": "fire",
+        "power": 110,
+        "category": "special"
+      },
+      {
+        "level": 45,
+        "move": "Swords Dance",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 50,
+        "move": "Will-O-Wisp",
+        "type": "fire",
+        "power": null,
+        "category": "status"
+      }
+    ],
+    "tm_moves": [
+      {
+        "move": "Swift",
+        "type": "normal",
+        "power": 60,
+        "reason": "STAB"
+      },
+      {
+        "move": "Hyper Voice",
+        "type": "normal",
+        "power": 90,
+        "reason": "STAB"
+      },
+      {
+        "move": "Incinerate",
+        "type": "fire",
+        "power": 60,
+        "reason": "STAB"
+      },
+      {
+        "move": "Flamethrower",
+        "type": "fire",
+        "power": 90,
+        "reason": "STAB"
+      },
+      {
+        "move": "Bubble Beam",
+        "type": "water",
+        "power": 65,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Thunder",
+        "type": "electric",
+        "power": 110,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Leaf Storm",
+        "type": "grass",
+        "power": 130,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "reason": "Utility"
+      }
+    ],
+    "egg_moves": [
+      {
+        "move": "Quick Attack",
+        "type": "normal",
+        "power": 40
+      },
+      {
+        "move": "Slash",
+        "type": "normal",
+        "power": 70
+      },
+      {
+        "move": "Take Down",
+        "type": "normal",
+        "power": 90
+      },
+      {
+        "move": "Double-Edge",
+        "type": "normal",
+        "power": 120
+      }
+    ],
+    "current_moves": [
+      "Overheat",
+      "Fire Blast",
+      "Swords Dance",
+      "Will-O-Wisp"
+    ]
+  },
+  "image_path": "outputs\\brothmo.png",
+  "image_prompt": "Normal type, a pokemon based around bun bo hue (vietnamese food)"
+}

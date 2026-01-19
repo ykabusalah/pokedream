@@ -1,0 +1,183 @@
+{
+  "name": "Beifeng",
+  "types": [
+    "Ice",
+    "Dragon"
+  ],
+  "stats": {
+    "hp": 85,
+    "attack": 95,
+    "defense": 90,
+    "sp_attack": 110,
+    "sp_defense": 85,
+    "speed": 75
+  },
+  "abilities": [
+    "Snow Warning",
+    "Refrigerate",
+    "Ice Body"
+  ],
+  "signature_move": {
+    "name": "Jade Blizzard",
+    "type": "Ice",
+    "category": "Special",
+    "power": 95,
+    "accuracy": 90,
+    "description": "Summons an ancient storm of jade-colored ice that may freeze the target and boost the user's Sp. Attack."
+  },
+  "pokedex_entry": "Ancient legends speak of this majestic dragon emerging from the highest mountain peaks during the harshest winters. Its crystalline scales are said to contain the wisdom of a thousand snowstorms, and its breath can freeze entire valleys in moments.",
+  "category": "The Jade Storm Pokemon",
+  "height_m": 3.2,
+  "weight_kg": 180.5,
+  "bst": 540,
+  "tier": "fully_evolved",
+  "concept": "ice dragon",
+  "culture": "china",
+  "moveset": {
+    "level_up_moves": [
+      {
+        "level": 1,
+        "move": "Dragon Breath",
+        "type": "dragon",
+        "power": 60,
+        "category": "special"
+      },
+      {
+        "level": 5,
+        "move": "Growl",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 10,
+        "move": "Icy Wind",
+        "type": "ice",
+        "power": 55,
+        "category": "special"
+      },
+      {
+        "level": 15,
+        "move": "Freeze-Dry",
+        "type": "ice",
+        "power": 70,
+        "category": "special"
+      },
+      {
+        "level": 20,
+        "move": "Swift",
+        "type": "normal",
+        "power": 60,
+        "category": "special"
+      },
+      {
+        "level": 25,
+        "move": "Dragon Dance",
+        "type": "dragon",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 30,
+        "move": "Powder Snow",
+        "type": "ice",
+        "power": 40,
+        "category": "special"
+      },
+      {
+        "level": 35,
+        "move": "Draco Meteor",
+        "type": "dragon",
+        "power": 130,
+        "category": "special"
+      },
+      {
+        "level": 40,
+        "move": "Hyper Beam",
+        "type": "normal",
+        "power": 150,
+        "category": "special"
+      },
+      {
+        "level": 45,
+        "move": "Hail",
+        "type": "ice",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 50,
+        "move": "Blizzard",
+        "type": "ice",
+        "power": 110,
+        "category": "special"
+      }
+    ],
+    "tm_moves": [
+      {
+        "move": "Ice Beam",
+        "type": "ice",
+        "power": 90,
+        "reason": "STAB"
+      },
+      {
+        "move": "Blizzard",
+        "type": "ice",
+        "power": 110,
+        "reason": "STAB"
+      },
+      {
+        "move": "Dragon Pulse",
+        "type": "dragon",
+        "power": 85,
+        "reason": "STAB"
+      },
+      {
+        "move": "Draco Meteor",
+        "type": "dragon",
+        "power": 130,
+        "reason": "STAB"
+      },
+      {
+        "move": "Overheat",
+        "type": "fire",
+        "power": 130,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Hydro Pump",
+        "type": "water",
+        "power": 110,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Energy Ball",
+        "type": "grass",
+        "power": 90,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "reason": "Utility"
+      }
+    ],
+    "egg_moves": [
+      {
+        "move": "Ice Shard",
+        "type": "ice",
+        "power": 40
+      }
+    ],
+    "current_moves": [
+      "Draco Meteor",
+      "Hyper Beam",
+      "Hail",
+      "Blizzard"
+    ]
+  },
+  "image_path": "outputs\\beifeng_20260109_140721_411683_6569.png",
+  "image_prompt": "Ice/Dragon type pokemon, ice dragon, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+  "is_shiny": false
+}

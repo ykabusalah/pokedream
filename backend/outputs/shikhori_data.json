@@ -1,0 +1,197 @@
+{
+  "name": "Shikhori",
+  "types": [
+    "Rock",
+    "Fighting"
+  ],
+  "stats": {
+    "hp": 85,
+    "attack": 110,
+    "defense": 105,
+    "sp_attack": 65,
+    "sp_defense": 90,
+    "speed": 70
+  },
+  "abilities": [
+    "Intimidate",
+    "Rock Head",
+    "Inner Focus"
+  ],
+  "signature_move": {
+    "name": "Sacred Roar",
+    "type": "Fighting",
+    "category": "Status",
+    "power": null,
+    "accuracy": 100,
+    "description": "Unleashes a protective roar that raises Attack and Defense while intimidating all opposing Pokemon"
+  },
+  "pokedex_entry": "This ancient Pokemon has guarded sacred temples in the mountains for over a thousand years. Its fierce expression and thunderous roar are said to ward off evil spirits and protect those with pure hearts. The intricate stone patterns on its body are believed to contain ancient blessings.",
+  "category": "The Temple Guardian Pokemon",
+  "height_m": 1.8,
+  "weight_kg": 195.5,
+  "bst": 525,
+  "tier": "fully_evolved",
+  "concept": "temple guardian lion",
+  "culture": "nepal",
+  "moveset": {
+    "level_up_moves": [
+      {
+        "level": 1,
+        "move": "Quick Attack",
+        "type": "normal",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 5,
+        "move": "Karate Chop",
+        "type": "fighting",
+        "power": 50,
+        "category": "physical"
+      },
+      {
+        "level": 10,
+        "move": "Growl",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 15,
+        "move": "Rock Polish",
+        "type": "rock",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 20,
+        "move": "Mach Punch",
+        "type": "fighting",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 25,
+        "move": "Rock Slide",
+        "type": "rock",
+        "power": 75,
+        "category": "physical"
+      },
+      {
+        "level": 30,
+        "move": "Rock Tomb",
+        "type": "rock",
+        "power": 60,
+        "category": "physical"
+      },
+      {
+        "level": 35,
+        "move": "Drain Punch",
+        "type": "fighting",
+        "power": 75,
+        "category": "physical"
+      },
+      {
+        "level": 40,
+        "move": "Body Slam",
+        "type": "normal",
+        "power": 85,
+        "category": "physical"
+      },
+      {
+        "level": 45,
+        "move": "Aura Sphere",
+        "type": "fighting",
+        "power": 80,
+        "category": "physical"
+      },
+      {
+        "level": 50,
+        "move": "High Jump Kick",
+        "type": "fighting",
+        "power": 130,
+        "category": "physical"
+      }
+    ],
+    "tm_moves": [
+      {
+        "move": "Rock Tomb",
+        "type": "rock",
+        "power": 60,
+        "reason": "STAB"
+      },
+      {
+        "move": "Rock Slide",
+        "type": "rock",
+        "power": 75,
+        "reason": "STAB"
+      },
+      {
+        "move": "Brick Break",
+        "type": "fighting",
+        "power": 75,
+        "reason": "STAB"
+      },
+      {
+        "move": "Drain Punch",
+        "type": "fighting",
+        "power": 75,
+        "reason": "STAB"
+      },
+      {
+        "move": "Aqua Tail",
+        "type": "water",
+        "power": 90,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Flare Blitz",
+        "type": "fire",
+        "power": 120,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Seed Bomb",
+        "type": "grass",
+        "power": 80,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "reason": "Utility"
+      }
+    ],
+    "egg_moves": [
+      {
+        "move": "Stone Edge",
+        "type": "rock",
+        "power": 100
+      },
+      {
+        "move": "Head Smash",
+        "type": "rock",
+        "power": 150
+      },
+      {
+        "move": "Karate Chop",
+        "type": "fighting",
+        "power": 50
+      },
+      {
+        "move": "Mach Punch",
+        "type": "fighting",
+        "power": 40
+      }
+    ],
+    "current_moves": [
+      "Drain Punch",
+      "Body Slam",
+      "Aura Sphere",
+      "High Jump Kick"
+    ]
+  },
+  "image_path": "outputs\\shikhori.png",
+  "image_prompt": "Rock/Fighting type, temple guardian lion, quadruped, gold and red and white colored, inspired by Nepalese culture, Himalayan mythology, Buddhist and Hindu influences, temple architecture, prayer flags, snow leopard, yak, rhododendron"
+}

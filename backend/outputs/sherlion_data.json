@@ -1,0 +1,197 @@
+{
+  "name": "Sherlion",
+  "types": [
+    "Rock",
+    "Fighting"
+  ],
+  "stats": {
+    "hp": 95,
+    "attack": 115,
+    "defense": 110,
+    "sp_attack": 65,
+    "sp_defense": 85,
+    "speed": 55
+  },
+  "abilities": [
+    "Intimidate",
+    "Rock Head",
+    "Justified"
+  ],
+  "signature_move": {
+    "name": "Guardian's Wrath",
+    "type": "Fighting",
+    "category": "Physical",
+    "power": 90,
+    "accuracy": 100,
+    "description": "A powerful strike that gains +1 priority when protecting an ally or when the user's HP is below half."
+  },
+  "pokedex_entry": "Ancient stone carvings depict Sherlion standing vigil at sacred mountain temples for centuries without moving. Its thunderous roar can be heard echoing through high-altitude valleys, warning intruders to stay away. Local legends say it only awakens to defend those pure of heart.",
+  "category": "The Temple Guardian Pokemon",
+  "height_m": 1.8,
+  "weight_kg": 285.0,
+  "bst": 525,
+  "tier": "fully_evolved",
+  "concept": "temple guardian lion",
+  "culture": "nepal",
+  "moveset": {
+    "level_up_moves": [
+      {
+        "level": 1,
+        "move": "Tackle",
+        "type": "normal",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 5,
+        "move": "Quick Attack",
+        "type": "normal",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 10,
+        "move": "Leer",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 15,
+        "move": "Scratch",
+        "type": "normal",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 20,
+        "move": "Bulk Up",
+        "type": "fighting",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 25,
+        "move": "Growl",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 30,
+        "move": "Rock Tomb",
+        "type": "rock",
+        "power": 60,
+        "category": "physical"
+      },
+      {
+        "level": 35,
+        "move": "Double-Edge",
+        "type": "normal",
+        "power": 120,
+        "category": "physical"
+      },
+      {
+        "level": 40,
+        "move": "Head Smash",
+        "type": "rock",
+        "power": 150,
+        "category": "physical"
+      },
+      {
+        "level": 45,
+        "move": "Drain Punch",
+        "type": "fighting",
+        "power": 75,
+        "category": "physical"
+      },
+      {
+        "level": 50,
+        "move": "High Jump Kick",
+        "type": "fighting",
+        "power": 130,
+        "category": "physical"
+      }
+    ],
+    "tm_moves": [
+      {
+        "move": "Rock Tomb",
+        "type": "rock",
+        "power": 60,
+        "reason": "STAB"
+      },
+      {
+        "move": "Rock Slide",
+        "type": "rock",
+        "power": 75,
+        "reason": "STAB"
+      },
+      {
+        "move": "Brick Break",
+        "type": "fighting",
+        "power": 75,
+        "reason": "STAB"
+      },
+      {
+        "move": "Drain Punch",
+        "type": "fighting",
+        "power": 75,
+        "reason": "STAB"
+      },
+      {
+        "move": "Flare Blitz",
+        "type": "fire",
+        "power": 120,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Leaf Blade",
+        "type": "grass",
+        "power": 90,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Wild Charge",
+        "type": "electric",
+        "power": 90,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "reason": "Utility"
+      }
+    ],
+    "egg_moves": [
+      {
+        "move": "Stone Edge",
+        "type": "rock",
+        "power": 100
+      },
+      {
+        "move": "Head Smash",
+        "type": "rock",
+        "power": 150
+      },
+      {
+        "move": "Karate Chop",
+        "type": "fighting",
+        "power": 50
+      },
+      {
+        "move": "Mach Punch",
+        "type": "fighting",
+        "power": 40
+      }
+    ],
+    "current_moves": [
+      "Double-Edge",
+      "Head Smash",
+      "Drain Punch",
+      "High Jump Kick"
+    ]
+  },
+  "image_path": "outputs\\sherlion.png",
+  "image_prompt": "Rock type, temple guardian lion, gold colored"
+}

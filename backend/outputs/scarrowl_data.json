@@ -1,0 +1,182 @@
+{
+  "name": "Scarrowl",
+  "types": [
+    "Dark",
+    "Psychic"
+  ],
+  "stats": {
+    "hp": 85,
+    "attack": 115,
+    "defense": 90,
+    "sp_attack": 95,
+    "sp_defense": 75,
+    "speed": 65
+  },
+  "abilities": [
+    "Intimidate",
+    "Frisk",
+    "Harvest"
+  ],
+  "signature_move": {
+    "name": "Piercing Gaze",
+    "type": "Psychic",
+    "category": "Special",
+    "power": 80,
+    "accuracy": 100,
+    "description": "A psychic attack that pierces through the target's defenses, ignoring stat changes and type resistances"
+  },
+  "pokedex_entry": "This mechanical guardian stands motionless in fields until threats approach, then strikes with devastating precision using its spear-like appendages. Its glowing eyes can hypnotize prey from great distances, making it an effective protector of crops and territory.",
+  "category": "The Sentinel Pokemon",
+  "height_m": 2.1,
+  "weight_kg": 67.5,
+  "bst": 525,
+  "tier": "fully_evolved",
+  "concept": "A scarecrow robot pokemon with spears for hands",
+  "culture": "original",
+  "moveset": {
+    "level_up_moves": [
+      {
+        "level": 1,
+        "move": "Scratch",
+        "type": "normal",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 5,
+        "move": "Tackle",
+        "type": "normal",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 10,
+        "move": "Bite",
+        "type": "dark",
+        "power": 60,
+        "category": "physical"
+      },
+      {
+        "level": 15,
+        "move": "Nasty Plot",
+        "type": "dark",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 20,
+        "move": "Throat Chop",
+        "type": "dark",
+        "power": 80,
+        "category": "physical"
+      },
+      {
+        "level": 25,
+        "move": "Feint Attack",
+        "type": "dark",
+        "power": 60,
+        "category": "physical"
+      },
+      {
+        "level": 30,
+        "move": "Psycho Cut",
+        "type": "psychic",
+        "power": 70,
+        "category": "physical"
+      },
+      {
+        "level": 35,
+        "move": "Slash",
+        "type": "normal",
+        "power": 70,
+        "category": "physical"
+      },
+      {
+        "level": 40,
+        "move": "Zen Headbutt",
+        "type": "psychic",
+        "power": 80,
+        "category": "physical"
+      },
+      {
+        "level": 45,
+        "move": "Calm Mind",
+        "type": "psychic",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 50,
+        "move": "Hypnosis",
+        "type": "psychic",
+        "power": null,
+        "category": "status"
+      }
+    ],
+    "tm_moves": [
+      {
+        "move": "Feint Attack",
+        "type": "dark",
+        "power": 60,
+        "reason": "STAB"
+      },
+      {
+        "move": "Crunch",
+        "type": "dark",
+        "power": 80,
+        "reason": "STAB"
+      },
+      {
+        "move": "Zen Headbutt",
+        "type": "psychic",
+        "power": 80,
+        "reason": "STAB"
+      },
+      {
+        "move": "Psycho Cut",
+        "type": "psychic",
+        "power": 70,
+        "reason": "STAB"
+      },
+      {
+        "move": "Flare Blitz",
+        "type": "fire",
+        "power": 120,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Wild Charge",
+        "type": "electric",
+        "power": 90,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Seed Bomb",
+        "type": "grass",
+        "power": 80,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "reason": "Utility"
+      }
+    ],
+    "egg_moves": [
+      {
+        "move": "Psycho Cut",
+        "type": "psychic",
+        "power": 70
+      }
+    ],
+    "current_moves": [
+      "Slash",
+      "Zen Headbutt",
+      "Calm Mind",
+      "Hypnosis"
+    ]
+  },
+  "image_path": "outputs\\pokemon.png",
+  "image_prompt": "Dark/Psychic type pokemon, A scarecrow robot pokemon with spears for hands, ken sugimori style, official pokemon art, cute creature, white background, full body"
+}

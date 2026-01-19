@@ -1,0 +1,197 @@
+{
+  "name": "Ricemak",
+  "types": [
+    "Electric",
+    "Grass"
+  ],
+  "stats": {
+    "hp": 85,
+    "attack": 95,
+    "defense": 70,
+    "sp_attack": 110,
+    "sp_defense": 80,
+    "speed": 85
+  },
+  "abilities": [
+    "Static",
+    "Harvest",
+    "Volt Absorb"
+  ],
+  "signature_move": {
+    "name": "Thunder Harvest",
+    "type": "Electric",
+    "category": "Special",
+    "power": 80,
+    "accuracy": 100,
+    "description": "Strikes with electrified rice stalks. May restore the user's held Berry."
+  },
+  "pokedex_entry": "Ricemak tends to vast fields of rice, using controlled lightning to stimulate crop growth. Its nimble hands can plant hundreds of seedlings in minutes, while its electric tail generates the perfect amount of energy for photosynthesis. Communities have revered this Pokemon for generations as a symbol of agricultural prosperity.",
+  "category": "The Rice Field Pokemon",
+  "height_m": 1.4,
+  "weight_kg": 32.5,
+  "bst": 525,
+  "tier": "fully_evolved",
+  "concept": "A pokemon inspired by Vietnamese farmers that's also a moneky",
+  "culture": "original",
+  "moveset": {
+    "level_up_moves": [
+      {
+        "level": 1,
+        "move": "Thunder Wave",
+        "type": "electric",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 5,
+        "move": "Growl",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 10,
+        "move": "Mega Drain",
+        "type": "grass",
+        "power": 40,
+        "category": "special"
+      },
+      {
+        "level": 15,
+        "move": "Absorb",
+        "type": "grass",
+        "power": 20,
+        "category": "special"
+      },
+      {
+        "level": 20,
+        "move": "Giga Drain",
+        "type": "grass",
+        "power": 75,
+        "category": "special"
+      },
+      {
+        "level": 25,
+        "move": "Leer",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 30,
+        "move": "Electric Terrain",
+        "type": "electric",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 35,
+        "move": "Electro Ball",
+        "type": "electric",
+        "power": null,
+        "category": "special"
+      },
+      {
+        "level": 40,
+        "move": "Volt Switch",
+        "type": "electric",
+        "power": 70,
+        "category": "special"
+      },
+      {
+        "level": 45,
+        "move": "Swift",
+        "type": "normal",
+        "power": 60,
+        "category": "special"
+      },
+      {
+        "level": 50,
+        "move": "Solar Beam",
+        "type": "grass",
+        "power": 120,
+        "category": "special"
+      }
+    ],
+    "tm_moves": [
+      {
+        "move": "Electro Ball",
+        "type": "electric",
+        "power": null,
+        "reason": "STAB"
+      },
+      {
+        "move": "Thunderbolt",
+        "type": "electric",
+        "power": 90,
+        "reason": "STAB"
+      },
+      {
+        "move": "Giga Drain",
+        "type": "grass",
+        "power": 75,
+        "reason": "STAB"
+      },
+      {
+        "move": "Energy Ball",
+        "type": "grass",
+        "power": 90,
+        "reason": "STAB"
+      },
+      {
+        "move": "Flamethrower",
+        "type": "fire",
+        "power": 90,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Blizzard",
+        "type": "ice",
+        "power": 110,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Focus Blast",
+        "type": "fighting",
+        "power": 120,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "reason": "Utility"
+      }
+    ],
+    "egg_moves": [
+      {
+        "move": "Wild Charge",
+        "type": "electric",
+        "power": 90
+      },
+      {
+        "move": "Volt Tackle",
+        "type": "electric",
+        "power": 120
+      },
+      {
+        "move": "Razor Leaf",
+        "type": "grass",
+        "power": 55
+      },
+      {
+        "move": "Leaf Blade",
+        "type": "grass",
+        "power": 90
+      }
+    ],
+    "current_moves": [
+      "Electro Ball",
+      "Volt Switch",
+      "Swift",
+      "Solar Beam"
+    ]
+  },
+  "image_path": "outputs\\pokemon.png",
+  "image_prompt": "Electric/Grass type pokemon, A pokemon inspired by Vietnamese farmers that's also a moneky, ken sugimori style, official pokemon art, cute creature, white background, full body"
+}

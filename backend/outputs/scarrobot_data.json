@@ -1,0 +1,176 @@
+{
+  "name": "Scarrobot",
+  "types": [
+    "Dark",
+    "Steel"
+  ],
+  "stats": {
+    "hp": 95,
+    "attack": 110,
+    "defense": 105,
+    "sp_attack": 65,
+    "sp_defense": 80,
+    "speed": 70
+  },
+  "abilities": [
+    "Intimidate",
+    "Iron Barbs",
+    "Harvest"
+  ],
+  "signature_move": {
+    "name": "Terror Field",
+    "type": "Dark",
+    "category": "Status",
+    "power": null,
+    "accuracy": 100,
+    "description": "Creates a field that lowers opposing Pokemon's Attack and Speed for 5 turns"
+  },
+  "pokedex_entry": "Built to protect crops from wild Pokemon, Scarrobot stands motionless in fields until threats approach. Its glowing red eyes can paralyze enemies with fear, while its razor-sharp claws extend to defend its territory. Despite its menacing appearance, it gently tends to the plants it guards.",
+  "category": "The Guardian Scarecrow Pokemon",
+  "height_m": 2.1,
+  "weight_kg": 78.5,
+  "bst": 525,
+  "tier": "fully_evolved",
+  "concept": "A scarecrow robot pokemon",
+  "culture": "original",
+  "moveset": {
+    "level_up_moves": [
+      {
+        "level": 1,
+        "move": "Leer",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 5,
+        "move": "Tackle",
+        "type": "normal",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 10,
+        "move": "Metal Claw",
+        "type": "steel",
+        "power": 50,
+        "category": "physical"
+      },
+      {
+        "level": 15,
+        "move": "Iron Defense",
+        "type": "steel",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 20,
+        "move": "Take Down",
+        "type": "normal",
+        "power": 90,
+        "category": "physical"
+      },
+      {
+        "level": 25,
+        "move": "Metal Sound",
+        "type": "steel",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 30,
+        "move": "Headbutt",
+        "type": "normal",
+        "power": 70,
+        "category": "physical"
+      },
+      {
+        "level": 35,
+        "move": "Sucker Punch",
+        "type": "dark",
+        "power": 70,
+        "category": "physical"
+      },
+      {
+        "level": 40,
+        "move": "Giga Impact",
+        "type": "normal",
+        "power": 150,
+        "category": "physical"
+      },
+      {
+        "level": 45,
+        "move": "Slash",
+        "type": "normal",
+        "power": 70,
+        "category": "physical"
+      },
+      {
+        "level": 50,
+        "move": "Meteor Mash",
+        "type": "steel",
+        "power": 90,
+        "category": "physical"
+      }
+    ],
+    "tm_moves": [
+      {
+        "move": "Feint Attack",
+        "type": "dark",
+        "power": 60,
+        "reason": "STAB"
+      },
+      {
+        "move": "Crunch",
+        "type": "dark",
+        "power": 80,
+        "reason": "STAB"
+      },
+      {
+        "move": "Iron Head",
+        "type": "steel",
+        "power": 80,
+        "reason": "STAB"
+      },
+      {
+        "move": "Iron Tail",
+        "type": "steel",
+        "power": 100,
+        "reason": "STAB"
+      },
+      {
+        "move": "Fire Fang",
+        "type": "fire",
+        "power": 65,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Thunder Punch",
+        "type": "electric",
+        "power": 75,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Leaf Blade",
+        "type": "grass",
+        "power": 90,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "reason": "Utility"
+      }
+    ],
+    "egg_moves": [],
+    "current_moves": [
+      "Sucker Punch",
+      "Giga Impact",
+      "Slash",
+      "Meteor Mash"
+    ]
+  },
+  "image_path": "outputs\\pokemon.png",
+  "image_prompt": "Dark/Steel type pokemon, A scarecrow robot pokemon, ken sugimori style, official pokemon art, cute creature, white background, full body"
+}

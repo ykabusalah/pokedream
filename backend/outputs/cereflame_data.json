@@ -1,0 +1,187 @@
+{
+  "name": "Cereflame",
+  "types": [
+    "Fire",
+    "Dragon"
+  ],
+  "stats": {
+    "hp": 85,
+    "attack": 110,
+    "defense": 80,
+    "sp_attack": 95,
+    "sp_defense": 75,
+    "speed": 85
+  },
+  "abilities": [
+    "Blaze",
+    "Intimidate",
+    "Solar Power"
+  ],
+  "signature_move": {
+    "name": "Golden Crunch",
+    "type": "Fire",
+    "category": "Physical",
+    "power": 90,
+    "accuracy": 95,
+    "description": "A fiery bite attack that may lower the target's Defense and has a chance to cause flinching"
+  },
+  "pokedex_entry": "Cereflame's perpetual grin and golden scales bring good fortune to those who encounter it at dawn. Ancient texts describe it as the guardian of harvest festivals, breathing flames that smell of toasted grains. Its cheerful demeanor masks incredible power, and it is said to dance in the sky during lunar celebrations.",
+  "category": "The Fortune Dragon Pokemon",
+  "height_m": 2.1,
+  "weight_kg": 68.5,
+  "bst": 530,
+  "tier": "fully_evolved",
+  "concept": "a fire dragon with cereal smile",
+  "culture": "china",
+  "moveset": {
+    "level_up_moves": [
+      {
+        "level": 1,
+        "move": "Quick Attack",
+        "type": "normal",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 5,
+        "move": "Leer",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 10,
+        "move": "Tackle",
+        "type": "normal",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 15,
+        "move": "Dragon Claw",
+        "type": "dragon",
+        "power": 80,
+        "category": "physical"
+      },
+      {
+        "level": 20,
+        "move": "Fire Punch",
+        "type": "fire",
+        "power": 75,
+        "category": "physical"
+      },
+      {
+        "level": 25,
+        "move": "Pound",
+        "type": "normal",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 30,
+        "move": "Growl",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 35,
+        "move": "Dragon Rush",
+        "type": "dragon",
+        "power": 100,
+        "category": "physical"
+      },
+      {
+        "level": 40,
+        "move": "Slash",
+        "type": "normal",
+        "power": 70,
+        "category": "physical"
+      },
+      {
+        "level": 45,
+        "move": "Extreme Speed",
+        "type": "normal",
+        "power": 80,
+        "category": "physical"
+      },
+      {
+        "level": 50,
+        "move": "Flare Blitz",
+        "type": "fire",
+        "power": 120,
+        "category": "physical"
+      }
+    ],
+    "tm_moves": [
+      {
+        "move": "Flame Wheel",
+        "type": "fire",
+        "power": 60,
+        "reason": "STAB"
+      },
+      {
+        "move": "Fire Punch",
+        "type": "fire",
+        "power": 75,
+        "reason": "STAB"
+      },
+      {
+        "move": "Dragon Claw",
+        "type": "dragon",
+        "power": 80,
+        "reason": "STAB"
+      },
+      {
+        "move": "Dragon Rush",
+        "type": "dragon",
+        "power": 100,
+        "reason": "STAB"
+      },
+      {
+        "move": "Liquidation",
+        "type": "water",
+        "power": 85,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Wild Charge",
+        "type": "electric",
+        "power": 90,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Avalanche",
+        "type": "ice",
+        "power": 60,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "reason": "Utility"
+      }
+    ],
+    "egg_moves": [
+      {
+        "move": "Blaze Kick",
+        "type": "fire",
+        "power": 85
+      },
+      {
+        "move": "Flare Blitz",
+        "type": "fire",
+        "power": 120
+      }
+    ],
+    "current_moves": [
+      "Dragon Rush",
+      "Slash",
+      "Extreme Speed",
+      "Flare Blitz"
+    ]
+  },
+  "image_path": "outputs\\cereflame_20260106_020818_918513_8327.png",
+  "image_prompt": "Fire/Dragon type pokemon, a fire dragon with cereal smile, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration"
+}

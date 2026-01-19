@@ -1,0 +1,182 @@
+{
+  "name": "Frostzen",
+  "types": [
+    "Ice",
+    "Dragon"
+  ],
+  "stats": {
+    "hp": 88,
+    "attack": 75,
+    "defense": 92,
+    "sp_attack": 115,
+    "sp_defense": 98,
+    "speed": 67
+  },
+  "abilities": [
+    "Snow Warning",
+    "Ice Body",
+    "Refrigerate"
+  ],
+  "signature_move": {
+    "name": "Jade Blizzard",
+    "type": "Ice",
+    "category": "Special",
+    "power": 90,
+    "accuracy": 85,
+    "description": "A mystical blizzard infused with ancient power that may freeze the target and lower their Speed."
+  },
+  "pokedex_entry": "Frostzen soars through mountain peaks shrouded in eternal winter, its crystalline scales gleaming like precious jade. Ancient legends speak of this Pokemon as a guardian of sacred temples, blessing those pure of heart with gentle snowfall. Its breath can freeze entire valleys, yet it shows mercy to travelers who show proper reverence.",
+  "category": "The Jade Frost Pokemon",
+  "height_m": 3.2,
+  "weight_kg": 185.5,
+  "bst": 535,
+  "tier": "fully_evolved",
+  "concept": "ice dragon",
+  "culture": "china",
+  "moveset": {
+    "level_up_moves": [
+      {
+        "level": 1,
+        "move": "Powder Snow",
+        "type": "ice",
+        "power": 40,
+        "category": "special"
+      },
+      {
+        "level": 5,
+        "move": "Icy Wind",
+        "type": "ice",
+        "power": 55,
+        "category": "special"
+      },
+      {
+        "level": 10,
+        "move": "Mist",
+        "type": "ice",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 15,
+        "move": "Dragon Breath",
+        "type": "dragon",
+        "power": 60,
+        "category": "special"
+      },
+      {
+        "level": 20,
+        "move": "Leer",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 25,
+        "move": "Dragon Dance",
+        "type": "dragon",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 30,
+        "move": "Growl",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 35,
+        "move": "Hyper Voice",
+        "type": "normal",
+        "power": 90,
+        "category": "special"
+      },
+      {
+        "level": 40,
+        "move": "Swift",
+        "type": "normal",
+        "power": 60,
+        "category": "special"
+      },
+      {
+        "level": 45,
+        "move": "Blizzard",
+        "type": "ice",
+        "power": 110,
+        "category": "special"
+      },
+      {
+        "level": 50,
+        "move": "Hyper Beam",
+        "type": "normal",
+        "power": 150,
+        "category": "special"
+      }
+    ],
+    "tm_moves": [
+      {
+        "move": "Ice Beam",
+        "type": "ice",
+        "power": 90,
+        "reason": "STAB"
+      },
+      {
+        "move": "Blizzard",
+        "type": "ice",
+        "power": 110,
+        "reason": "STAB"
+      },
+      {
+        "move": "Dragon Pulse",
+        "type": "dragon",
+        "power": 85,
+        "reason": "STAB"
+      },
+      {
+        "move": "Draco Meteor",
+        "type": "dragon",
+        "power": 130,
+        "reason": "STAB"
+      },
+      {
+        "move": "Volt Switch",
+        "type": "electric",
+        "power": 70,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Energy Ball",
+        "type": "grass",
+        "power": 90,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Surf",
+        "type": "water",
+        "power": 90,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "reason": "Utility"
+      }
+    ],
+    "egg_moves": [
+      {
+        "move": "Ice Shard",
+        "type": "ice",
+        "power": 40
+      }
+    ],
+    "current_moves": [
+      "Hyper Voice",
+      "Swift",
+      "Blizzard",
+      "Hyper Beam"
+    ]
+  },
+  "image_path": "outputs\\frostzen_20260105_235104_903175_5735.png",
+  "image_prompt": "Ice/Dragon type pokemon, ice dragon, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration"
+}

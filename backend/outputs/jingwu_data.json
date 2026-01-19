@@ -1,0 +1,183 @@
+{
+  "name": "Jingwu",
+  "types": [
+    "Ice",
+    "Dragon"
+  ],
+  "stats": {
+    "hp": 88,
+    "attack": 95,
+    "defense": 78,
+    "sp_attack": 115,
+    "sp_defense": 92,
+    "speed": 82
+  },
+  "abilities": [
+    "Snow Warning",
+    "Refrigerate",
+    "Ice Body"
+  ],
+  "signature_move": {
+    "name": "Jade Blizzard",
+    "type": "Ice",
+    "category": "Special",
+    "power": 100,
+    "accuracy": 85,
+    "description": "A mystical blizzard infused with ancient power that may freeze the target and pierces through protection moves"
+  },
+  "pokedex_entry": "Ancient legends speak of Jingwu as the guardian of sacred mountain peaks, where it creates crystalline palaces from ice and jade. Its breath can instantly freeze entire valleys, yet it is said to bring good fortune to those pure of heart. The intricate frost patterns on its scales are believed to contain ancient wisdom.",
+  "category": "The Jade Frost Pokemon",
+  "height_m": 3.2,
+  "weight_kg": 185.5,
+  "bst": 550,
+  "tier": "fully_evolved",
+  "concept": "ice dragon",
+  "culture": "china",
+  "moveset": {
+    "level_up_moves": [
+      {
+        "level": 1,
+        "move": "Growl",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 5,
+        "move": "Powder Snow",
+        "type": "ice",
+        "power": 40,
+        "category": "special"
+      },
+      {
+        "level": 10,
+        "move": "Leer",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 15,
+        "move": "Dragon Dance",
+        "type": "dragon",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 20,
+        "move": "Swift",
+        "type": "normal",
+        "power": 60,
+        "category": "special"
+      },
+      {
+        "level": 25,
+        "move": "Hail",
+        "type": "ice",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 30,
+        "move": "Mist",
+        "type": "ice",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 35,
+        "move": "Ice Beam",
+        "type": "ice",
+        "power": 90,
+        "category": "special"
+      },
+      {
+        "level": 40,
+        "move": "Freeze-Dry",
+        "type": "ice",
+        "power": 70,
+        "category": "special"
+      },
+      {
+        "level": 45,
+        "move": "Blizzard",
+        "type": "ice",
+        "power": 110,
+        "category": "special"
+      },
+      {
+        "level": 50,
+        "move": "Draco Meteor",
+        "type": "dragon",
+        "power": 130,
+        "category": "special"
+      }
+    ],
+    "tm_moves": [
+      {
+        "move": "Ice Beam",
+        "type": "ice",
+        "power": 90,
+        "reason": "STAB"
+      },
+      {
+        "move": "Blizzard",
+        "type": "ice",
+        "power": 110,
+        "reason": "STAB"
+      },
+      {
+        "move": "Dragon Pulse",
+        "type": "dragon",
+        "power": 85,
+        "reason": "STAB"
+      },
+      {
+        "move": "Draco Meteor",
+        "type": "dragon",
+        "power": 130,
+        "reason": "STAB"
+      },
+      {
+        "move": "Leaf Storm",
+        "type": "grass",
+        "power": 130,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Thunder",
+        "type": "electric",
+        "power": 110,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Incinerate",
+        "type": "fire",
+        "power": 60,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "reason": "Utility"
+      }
+    ],
+    "egg_moves": [
+      {
+        "move": "Ice Shard",
+        "type": "ice",
+        "power": 40
+      }
+    ],
+    "current_moves": [
+      "Ice Beam",
+      "Freeze-Dry",
+      "Blizzard",
+      "Draco Meteor"
+    ]
+  },
+  "image_path": "outputs\\jingwu_20260106_200321_408619_4140.png",
+  "image_prompt": "Ice/Dragon type pokemon, ice dragon, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+  "is_shiny": false
+}

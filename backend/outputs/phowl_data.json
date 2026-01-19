@@ -1,0 +1,197 @@
+{
+  "name": "Phowl",
+  "types": [
+    "Normal",
+    "Water"
+  ],
+  "stats": {
+    "hp": 95,
+    "attack": 65,
+    "defense": 80,
+    "sp_attack": 105,
+    "sp_defense": 85,
+    "speed": 70
+  },
+  "abilities": [
+    "Steam Engine",
+    "Liquid Ooze",
+    "Aroma Veil"
+  ],
+  "signature_move": {
+    "name": "Broth Burst",
+    "type": "Water",
+    "category": "Special",
+    "power": 90,
+    "accuracy": 100,
+    "description": "The user unleashes scalding hot broth that may burn the target and heals the user for 25% of damage dealt"
+  },
+  "pokedex_entry": "Phowl's bowl-shaped body constantly simmers with aromatic broth that can restore vitality to weary travelers. The steam rising from its head carries healing herbs that can cure minor ailments. It is said that sharing a meal with Phowl brings good fortune and strengthens bonds between people.",
+  "category": "The Nourishing Pokemon",
+  "height_m": 1.2,
+  "weight_kg": 34.5,
+  "bst": 500,
+  "tier": "fully_evolved",
+  "concept": "a pokemon based around a bowl of pho",
+  "culture": "original",
+  "moveset": {
+    "level_up_moves": [
+      {
+        "level": 1,
+        "move": "Growl",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 5,
+        "move": "Leer",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 10,
+        "move": "Water Gun",
+        "type": "water",
+        "power": 40,
+        "category": "special"
+      },
+      {
+        "level": 15,
+        "move": "Bubble Beam",
+        "type": "water",
+        "power": 65,
+        "category": "special"
+      },
+      {
+        "level": 20,
+        "move": "Scald",
+        "type": "water",
+        "power": 80,
+        "category": "special"
+      },
+      {
+        "level": 25,
+        "move": "Swift",
+        "type": "normal",
+        "power": 60,
+        "category": "special"
+      },
+      {
+        "level": 30,
+        "move": "Rain Dance",
+        "type": "water",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 35,
+        "move": "Surf",
+        "type": "water",
+        "power": 90,
+        "category": "special"
+      },
+      {
+        "level": 40,
+        "move": "Aqua Ring",
+        "type": "water",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 45,
+        "move": "Hydro Pump",
+        "type": "water",
+        "power": 110,
+        "category": "special"
+      },
+      {
+        "level": 50,
+        "move": "Hyper Beam",
+        "type": "normal",
+        "power": 150,
+        "category": "special"
+      }
+    ],
+    "tm_moves": [
+      {
+        "move": "Swift",
+        "type": "normal",
+        "power": 60,
+        "reason": "STAB"
+      },
+      {
+        "move": "Hyper Voice",
+        "type": "normal",
+        "power": 90,
+        "reason": "STAB"
+      },
+      {
+        "move": "Bubble Beam",
+        "type": "water",
+        "power": 65,
+        "reason": "STAB"
+      },
+      {
+        "move": "Scald",
+        "type": "water",
+        "power": 80,
+        "reason": "STAB"
+      },
+      {
+        "move": "Ice Beam",
+        "type": "ice",
+        "power": 90,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Thunder",
+        "type": "electric",
+        "power": 110,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Solar Beam",
+        "type": "grass",
+        "power": 120,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "reason": "Utility"
+      }
+    ],
+    "egg_moves": [
+      {
+        "move": "Quick Attack",
+        "type": "normal",
+        "power": 40
+      },
+      {
+        "move": "Slash",
+        "type": "normal",
+        "power": 70
+      },
+      {
+        "move": "Take Down",
+        "type": "normal",
+        "power": 90
+      },
+      {
+        "move": "Double-Edge",
+        "type": "normal",
+        "power": 120
+      }
+    ],
+    "current_moves": [
+      "Surf",
+      "Aqua Ring",
+      "Hydro Pump",
+      "Hyper Beam"
+    ]
+  },
+  "image_path": "outputs\\phowl.png",
+  "image_prompt": "Normal type, a pokemon based around a bowl of pho"
+}

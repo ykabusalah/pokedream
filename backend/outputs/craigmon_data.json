@@ -1,0 +1,192 @@
+{
+  "name": "Craigmon",
+  "types": [
+    "Normal",
+    null
+  ],
+  "stats": {
+    "hp": 95,
+    "attack": 85,
+    "defense": 80,
+    "sp_attack": 70,
+    "sp_defense": 85,
+    "speed": 105
+  },
+  "abilities": [
+    "Normalize",
+    "Simple",
+    "Adaptability"
+  ],
+  "signature_move": {
+    "name": "Ordinary Slam",
+    "type": "Normal",
+    "category": "Physical",
+    "power": 90,
+    "accuracy": 85,
+    "description": "An unremarkable but surprisingly effective tackle that gains power based on the user's contentment with being average"
+  },
+  "pokedex_entry": "Craigmon is known for its remarkably unremarkable nature, blending seamlessly into any environment through sheer ordinariness. Despite its plain appearance, it possesses surprising resilience and adaptability that allows it to thrive where flashier Pokemon fail. Its greatest strength lies in being consistently dependable rather than exceptionally powerful.",
+  "category": "The Ordinary Pokemon",
+  "height_m": 1.2,
+  "weight_kg": 45.5,
+  "bst": 520,
+  "tier": "fully_evolved",
+  "concept": "craig",
+  "culture": "original",
+  "moveset": {
+    "level_up_moves": [
+      {
+        "level": 1,
+        "move": "Quick Attack",
+        "type": "normal",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 5,
+        "move": "Tackle",
+        "type": "normal",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 10,
+        "move": "Pound",
+        "type": "normal",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 15,
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 20,
+        "move": "Leer",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 25,
+        "move": "Growl",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 30,
+        "move": "Body Slam",
+        "type": "normal",
+        "power": 85,
+        "category": "physical"
+      },
+      {
+        "level": 35,
+        "move": "Slash",
+        "type": "normal",
+        "power": 70,
+        "category": "physical"
+      },
+      {
+        "level": 40,
+        "move": "Take Down",
+        "type": "normal",
+        "power": 90,
+        "category": "physical"
+      },
+      {
+        "level": 45,
+        "move": "Headbutt",
+        "type": "normal",
+        "power": 70,
+        "category": "physical"
+      },
+      {
+        "level": 50,
+        "move": "Swords Dance",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      }
+    ],
+    "tm_moves": [
+      {
+        "move": "Headbutt",
+        "type": "normal",
+        "power": 70,
+        "reason": "STAB"
+      },
+      {
+        "move": "Slash",
+        "type": "normal",
+        "power": 70,
+        "reason": "STAB"
+      },
+      {
+        "move": "Aqua Tail",
+        "type": "water",
+        "power": 90,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Leaf Blade",
+        "type": "grass",
+        "power": 90,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Thunder Punch",
+        "type": "electric",
+        "power": 75,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "reason": "Utility"
+      },
+      {
+        "move": "Rest",
+        "type": "psychic",
+        "power": null,
+        "reason": "Recovery"
+      }
+    ],
+    "egg_moves": [
+      {
+        "move": "Quick Attack",
+        "type": "normal",
+        "power": 40
+      },
+      {
+        "move": "Slash",
+        "type": "normal",
+        "power": 70
+      },
+      {
+        "move": "Take Down",
+        "type": "normal",
+        "power": 90
+      },
+      {
+        "move": "Double-Edge",
+        "type": "normal",
+        "power": 120
+      }
+    ],
+    "current_moves": [
+      "Slash",
+      "Take Down",
+      "Headbutt",
+      "Swords Dance"
+    ]
+  },
+  "image_path": "outputs\\craigmon_20260107_202010_512343_5088.png",
+  "image_prompt": "Normal type pokemon, craig, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+  "is_shiny": false
+}

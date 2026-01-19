@@ -1,0 +1,187 @@
+{
+  "name": "Scarespike",
+  "types": [
+    "Dark",
+    "Rock"
+  ],
+  "stats": {
+    "hp": 85,
+    "attack": 120,
+    "defense": 95,
+    "sp_attack": 60,
+    "sp_defense": 80,
+    "speed": 75
+  },
+  "abilities": [
+    "Intimidate",
+    "Rock Head",
+    "Harvest"
+  ],
+  "signature_move": {
+    "name": "Piercing Sentinel",
+    "type": "Dark",
+    "category": "Physical",
+    "power": 85,
+    "accuracy": 95,
+    "description": "Strikes with spear-like arms. Always goes first if the target is switching out."
+  },
+  "pokedex_entry": "Built to guard fields from intruders, this mechanical Pokemon never sleeps or rests. Its spear-like arms can pierce through solid rock, and it stands motionless for days until detecting movement. Farmers say its glowing red eyes can be seen from miles away on moonless nights.",
+  "category": "The Sentinel Pokemon",
+  "height_m": 2.1,
+  "weight_kg": 78.5,
+  "bst": 515,
+  "tier": "fully_evolved",
+  "concept": "A scarecrow robot pokemon with spears for hands",
+  "culture": "original",
+  "moveset": {
+    "level_up_moves": [
+      {
+        "level": 1,
+        "move": "Quick Attack",
+        "type": "normal",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 5,
+        "move": "Leer",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 10,
+        "move": "Scratch",
+        "type": "normal",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 15,
+        "move": "Nasty Plot",
+        "type": "dark",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 20,
+        "move": "Tackle",
+        "type": "normal",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 25,
+        "move": "Crunch",
+        "type": "dark",
+        "power": 80,
+        "category": "physical"
+      },
+      {
+        "level": 30,
+        "move": "Slash",
+        "type": "normal",
+        "power": 70,
+        "category": "physical"
+      },
+      {
+        "level": 35,
+        "move": "Extreme Speed",
+        "type": "normal",
+        "power": 80,
+        "category": "physical"
+      },
+      {
+        "level": 40,
+        "move": "Knock Off",
+        "type": "dark",
+        "power": 65,
+        "category": "physical"
+      },
+      {
+        "level": 45,
+        "move": "Headbutt",
+        "type": "normal",
+        "power": 70,
+        "category": "physical"
+      },
+      {
+        "level": 50,
+        "move": "Head Smash",
+        "type": "rock",
+        "power": 150,
+        "category": "physical"
+      }
+    ],
+    "tm_moves": [
+      {
+        "move": "Feint Attack",
+        "type": "dark",
+        "power": 60,
+        "reason": "STAB"
+      },
+      {
+        "move": "Crunch",
+        "type": "dark",
+        "power": 80,
+        "reason": "STAB"
+      },
+      {
+        "move": "Rock Tomb",
+        "type": "rock",
+        "power": 60,
+        "reason": "STAB"
+      },
+      {
+        "move": "Rock Slide",
+        "type": "rock",
+        "power": 75,
+        "reason": "STAB"
+      },
+      {
+        "move": "Fire Punch",
+        "type": "fire",
+        "power": 75,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Thunder Punch",
+        "type": "electric",
+        "power": 75,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Seed Bomb",
+        "type": "grass",
+        "power": 80,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "reason": "Utility"
+      }
+    ],
+    "egg_moves": [
+      {
+        "move": "Stone Edge",
+        "type": "rock",
+        "power": 100
+      },
+      {
+        "move": "Head Smash",
+        "type": "rock",
+        "power": 150
+      }
+    ],
+    "current_moves": [
+      "Extreme Speed",
+      "Knock Off",
+      "Headbutt",
+      "Head Smash"
+    ]
+  },
+  "image_path": "outputs\\pokemon.png",
+  "image_prompt": "Dark/Rock type pokemon, A scarecrow robot pokemon with spears for hands, ken sugimori style, official pokemon art, cute creature, white background, full body"
+}

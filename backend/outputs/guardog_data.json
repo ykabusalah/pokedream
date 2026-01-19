@@ -1,0 +1,197 @@
+{
+  "name": "Guardog",
+  "types": [
+    "Bug",
+    "Fighting"
+  ],
+  "stats": {
+    "hp": 95,
+    "attack": 125,
+    "defense": 80,
+    "sp_attack": 45,
+    "sp_defense": 75,
+    "speed": 105
+  },
+  "abilities": [
+    "Intimidate",
+    "Technician",
+    "No Guard"
+  ],
+  "signature_move": {
+    "name": "Piercing Thrust",
+    "type": "Fighting",
+    "category": "Physical",
+    "power": 90,
+    "accuracy": 100,
+    "description": "A powerful spear thrust that ignores the target's stat changes and never misses."
+  },
+  "pokedex_entry": "Built to protect crops from pest Pokemon, Guardog patrols farmlands with unwavering vigilance. Its razor-sharp spear arms can extend and rotate at incredible speeds, creating a defensive barrier. Despite its intimidating appearance, it shows remarkable gentleness toward smaller Pokemon that pose no threat to the fields it guards.",
+  "category": "The Sentinel Pokemon",
+  "height_m": 2.1,
+  "weight_kg": 78.5,
+  "bst": 525,
+  "tier": "fully_evolved",
+  "concept": "A scarecrow robot pokemon with spears for hands",
+  "culture": "original",
+  "moveset": {
+    "level_up_moves": [
+      {
+        "level": 1,
+        "move": "Tackle",
+        "type": "normal",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 5,
+        "move": "Quick Attack",
+        "type": "normal",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 10,
+        "move": "Growl",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 15,
+        "move": "Drain Punch",
+        "type": "fighting",
+        "power": 75,
+        "category": "physical"
+      },
+      {
+        "level": 20,
+        "move": "Slash",
+        "type": "normal",
+        "power": 70,
+        "category": "physical"
+      },
+      {
+        "level": 25,
+        "move": "Scratch",
+        "type": "normal",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 30,
+        "move": "Brick Break",
+        "type": "fighting",
+        "power": 75,
+        "category": "physical"
+      },
+      {
+        "level": 35,
+        "move": "High Jump Kick",
+        "type": "fighting",
+        "power": 130,
+        "category": "physical"
+      },
+      {
+        "level": 40,
+        "move": "Double-Edge",
+        "type": "normal",
+        "power": 120,
+        "category": "physical"
+      },
+      {
+        "level": 45,
+        "move": "Take Down",
+        "type": "normal",
+        "power": 90,
+        "category": "physical"
+      },
+      {
+        "level": 50,
+        "move": "Megahorn",
+        "type": "bug",
+        "power": 120,
+        "category": "physical"
+      }
+    ],
+    "tm_moves": [
+      {
+        "move": "Bug Bite",
+        "type": "bug",
+        "power": 60,
+        "reason": "STAB"
+      },
+      {
+        "move": "X-Scissor",
+        "type": "bug",
+        "power": 80,
+        "reason": "STAB"
+      },
+      {
+        "move": "Brick Break",
+        "type": "fighting",
+        "power": 75,
+        "reason": "STAB"
+      },
+      {
+        "move": "Drain Punch",
+        "type": "fighting",
+        "power": 75,
+        "reason": "STAB"
+      },
+      {
+        "move": "Blaze Kick",
+        "type": "fire",
+        "power": 85,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Wild Charge",
+        "type": "electric",
+        "power": 90,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Seed Bomb",
+        "type": "grass",
+        "power": 80,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "reason": "Utility"
+      }
+    ],
+    "egg_moves": [
+      {
+        "move": "Leech Life",
+        "type": "bug",
+        "power": 80
+      },
+      {
+        "move": "Karate Chop",
+        "type": "fighting",
+        "power": 50
+      },
+      {
+        "move": "Mach Punch",
+        "type": "fighting",
+        "power": 40
+      },
+      {
+        "move": "Drain Punch",
+        "type": "fighting",
+        "power": 75
+      }
+    ],
+    "current_moves": [
+      "High Jump Kick",
+      "Double-Edge",
+      "Take Down",
+      "Megahorn"
+    ]
+  },
+  "image_path": "outputs\\pokemon.png",
+  "image_prompt": "Bug/Fighting type pokemon, A scarecrow robot pokemon with spears for hands, ken sugimori style, official pokemon art, cute creature, white background, full body"
+}

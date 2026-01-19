@@ -1,0 +1,183 @@
+{
+  "name": "Eclairok",
+  "types": [
+    "Dark",
+    "Fairy"
+  ],
+  "stats": {
+    "hp": 95,
+    "attack": 75,
+    "defense": 80,
+    "sp_attack": 110,
+    "sp_defense": 95,
+    "speed": 70
+  },
+  "abilities": [
+    "Sweet Veil",
+    "Gluttony",
+    "Magic Guard"
+  ],
+  "signature_move": {
+    "name": "Cursed Cream",
+    "type": "Dark",
+    "category": "Special",
+    "power": 85,
+    "accuracy": 90,
+    "description": "The user sprays dark magical cream that may lower the target's Sp.Defense and has a chance to badly poison"
+  },
+  "pokedex_entry": "This Pokemon's body is filled with enchanted cream that becomes more potent under moonlight. Eclairok are known to gather in abandoned bakeries, where their magical filling slowly seeps into forgotten pastries. Despite their ominous appearance, they are surprisingly gentle and often leave sweet treats for kind-hearted travelers.",
+  "category": "The Enchanted Pastry Pokemon",
+  "height_m": 1.2,
+  "weight_kg": 28.5,
+  "bst": 525,
+  "tier": "fully_evolved",
+  "concept": "a pastry creature filled with magical cream",
+  "culture": "original",
+  "moveset": {
+    "level_up_moves": [
+      {
+        "level": 1,
+        "move": "Fairy Wind",
+        "type": "fairy",
+        "power": 40,
+        "category": "special"
+      },
+      {
+        "level": 5,
+        "move": "Leer",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 10,
+        "move": "Sweet Kiss",
+        "type": "fairy",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 15,
+        "move": "Charm",
+        "type": "fairy",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 20,
+        "move": "Growl",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 25,
+        "move": "Taunt",
+        "type": "dark",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 30,
+        "move": "Snarl",
+        "type": "dark",
+        "power": 55,
+        "category": "special"
+      },
+      {
+        "level": 35,
+        "move": "Swift",
+        "type": "normal",
+        "power": 60,
+        "category": "special"
+      },
+      {
+        "level": 40,
+        "move": "Hyper Voice",
+        "type": "normal",
+        "power": 90,
+        "category": "special"
+      },
+      {
+        "level": 45,
+        "move": "Dazzling Gleam",
+        "type": "fairy",
+        "power": 80,
+        "category": "special"
+      },
+      {
+        "level": 50,
+        "move": "Moonlight",
+        "type": "fairy",
+        "power": null,
+        "category": "status"
+      }
+    ],
+    "tm_moves": [
+      {
+        "move": "Snarl",
+        "type": "dark",
+        "power": 55,
+        "reason": "STAB"
+      },
+      {
+        "move": "Dark Pulse",
+        "type": "dark",
+        "power": 80,
+        "reason": "STAB"
+      },
+      {
+        "move": "Draining Kiss",
+        "type": "fairy",
+        "power": 50,
+        "reason": "STAB"
+      },
+      {
+        "move": "Dazzling Gleam",
+        "type": "fairy",
+        "power": 80,
+        "reason": "STAB"
+      },
+      {
+        "move": "Giga Drain",
+        "type": "grass",
+        "power": 75,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Thunderbolt",
+        "type": "electric",
+        "power": 90,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Heat Wave",
+        "type": "fire",
+        "power": 95,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "reason": "Utility"
+      }
+    ],
+    "egg_moves": [
+      {
+        "move": "Draining Kiss",
+        "type": "fairy",
+        "power": 50
+      }
+    ],
+    "current_moves": [
+      "Swift",
+      "Hyper Voice",
+      "Dazzling Gleam",
+      "Moonlight"
+    ]
+  },
+  "image_path": "outputs\\eclairok_20260106_200306_952058_5292.png",
+  "image_prompt": "Dark type pokemon, a pastry creature filled with magical cream, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+  "is_shiny": false
+}

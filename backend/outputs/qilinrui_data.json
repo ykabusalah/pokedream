@@ -1,0 +1,182 @@
+{
+  "name": "Qilinrui",
+  "types": [
+    "Ice",
+    "Dragon"
+  ],
+  "stats": {
+    "hp": 88,
+    "attack": 95,
+    "defense": 85,
+    "sp_attack": 110,
+    "sp_defense": 95,
+    "speed": 67
+  },
+  "abilities": [
+    "Snow Warning",
+    "Ice Body",
+    "Refrigerate"
+  ],
+  "signature_move": {
+    "name": "Jade Blizzard",
+    "type": "Ice",
+    "category": "Special",
+    "power": 95,
+    "accuracy": 85,
+    "description": "A mystical ice storm that may freeze the target and boosts the user's Sp. Attack"
+  },
+  "pokedex_entry": "Qilinrui is said to appear during the harshest blizzards, bringing fortune to those pure of heart. Its crystalline scales shimmer like precious jade, and ancient texts describe it as a guardian that maintains the balance between ice and flame. Legend claims it can create snowflakes that never melt, each one containing a blessing.",
+  "category": "The Jade Frost Pokemon",
+  "height_m": 3.2,
+  "weight_kg": 165.5,
+  "bst": 540,
+  "tier": "fully_evolved",
+  "concept": "ice dragon",
+  "culture": "china",
+  "moveset": {
+    "level_up_moves": [
+      {
+        "level": 1,
+        "move": "Growl",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 5,
+        "move": "Mist",
+        "type": "ice",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 10,
+        "move": "Leer",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 15,
+        "move": "Dragon Dance",
+        "type": "dragon",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 20,
+        "move": "Hail",
+        "type": "ice",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 25,
+        "move": "Swift",
+        "type": "normal",
+        "power": 60,
+        "category": "special"
+      },
+      {
+        "level": 30,
+        "move": "Freeze-Dry",
+        "type": "ice",
+        "power": 70,
+        "category": "special"
+      },
+      {
+        "level": 35,
+        "move": "Ice Beam",
+        "type": "ice",
+        "power": 90,
+        "category": "special"
+      },
+      {
+        "level": 40,
+        "move": "Dragon Pulse",
+        "type": "dragon",
+        "power": 85,
+        "category": "special"
+      },
+      {
+        "level": 45,
+        "move": "Draco Meteor",
+        "type": "dragon",
+        "power": 130,
+        "category": "special"
+      },
+      {
+        "level": 50,
+        "move": "Hyper Beam",
+        "type": "normal",
+        "power": 150,
+        "category": "special"
+      }
+    ],
+    "tm_moves": [
+      {
+        "move": "Ice Beam",
+        "type": "ice",
+        "power": 90,
+        "reason": "STAB"
+      },
+      {
+        "move": "Blizzard",
+        "type": "ice",
+        "power": 110,
+        "reason": "STAB"
+      },
+      {
+        "move": "Dragon Pulse",
+        "type": "dragon",
+        "power": 85,
+        "reason": "STAB"
+      },
+      {
+        "move": "Draco Meteor",
+        "type": "dragon",
+        "power": 130,
+        "reason": "STAB"
+      },
+      {
+        "move": "Giga Drain",
+        "type": "grass",
+        "power": 75,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Incinerate",
+        "type": "fire",
+        "power": 60,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Volt Switch",
+        "type": "electric",
+        "power": 70,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "reason": "Utility"
+      }
+    ],
+    "egg_moves": [
+      {
+        "move": "Ice Shard",
+        "type": "ice",
+        "power": 40
+      }
+    ],
+    "current_moves": [
+      "Ice Beam",
+      "Dragon Pulse",
+      "Draco Meteor",
+      "Hyper Beam"
+    ]
+  },
+  "image_path": "outputs\\qilinrui_20260105_234218_480195_9037.png",
+  "image_prompt": "Ice/Dragon type pokemon, ice dragon, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration"
+}

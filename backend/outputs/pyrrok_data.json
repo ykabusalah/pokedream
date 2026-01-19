@@ -1,0 +1,198 @@
+{
+  "name": "Pyrrok",
+  "types": [
+    "Fire",
+    "Rock"
+  ],
+  "stats": {
+    "hp": 85,
+    "attack": 110,
+    "defense": 95,
+    "sp_attack": 75,
+    "sp_defense": 80,
+    "speed": 55
+  },
+  "abilities": [
+    "Flame Body",
+    "Solid Rock",
+    "Molten Armor"
+  ],
+  "signature_move": {
+    "name": "Molten Barrage",
+    "type": "Fire",
+    "category": "Physical",
+    "power": 90,
+    "accuracy": 85,
+    "description": "Hurls chunks of molten rock at the target. May cause burn and lower Speed."
+  },
+  "pokedex_entry": "Pyrrok's body is composed of volcanic rock heated to extreme temperatures by an internal furnace. Ancient legends speak of these Pokemon emerging from dormant volcanoes to protect sacred flame sites. Its fists burn hot enough to melt steel, leaving glowing handprints on whatever it touches.",
+  "category": "The Forge Pokemon",
+  "height_m": 2.1,
+  "weight_kg": 240.5,
+  "bst": 500,
+  "tier": "fully_evolved",
+  "concept": "fire golem",
+  "culture": "original",
+  "moveset": {
+    "level_up_moves": [
+      {
+        "level": 1,
+        "move": "Scratch",
+        "type": "normal",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 5,
+        "move": "Ember",
+        "type": "fire",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 10,
+        "move": "Growl",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 15,
+        "move": "Quick Attack",
+        "type": "normal",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 20,
+        "move": "Stealth Rock",
+        "type": "rock",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 25,
+        "move": "Rock Tomb",
+        "type": "rock",
+        "power": 60,
+        "category": "physical"
+      },
+      {
+        "level": 30,
+        "move": "Body Slam",
+        "type": "normal",
+        "power": 85,
+        "category": "physical"
+      },
+      {
+        "level": 35,
+        "move": "Flame Wheel",
+        "type": "fire",
+        "power": 60,
+        "category": "physical"
+      },
+      {
+        "level": 40,
+        "move": "Double-Edge",
+        "type": "normal",
+        "power": 120,
+        "category": "physical"
+      },
+      {
+        "level": 45,
+        "move": "Headbutt",
+        "type": "normal",
+        "power": 70,
+        "category": "physical"
+      },
+      {
+        "level": 50,
+        "move": "Take Down",
+        "type": "normal",
+        "power": 90,
+        "category": "physical"
+      }
+    ],
+    "tm_moves": [
+      {
+        "move": "Flame Wheel",
+        "type": "fire",
+        "power": 60,
+        "reason": "STAB"
+      },
+      {
+        "move": "Fire Punch",
+        "type": "fire",
+        "power": 75,
+        "reason": "STAB"
+      },
+      {
+        "move": "Rock Tomb",
+        "type": "rock",
+        "power": 60,
+        "reason": "STAB"
+      },
+      {
+        "move": "Rock Slide",
+        "type": "rock",
+        "power": 75,
+        "reason": "STAB"
+      },
+      {
+        "move": "Liquidation",
+        "type": "water",
+        "power": 85,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Ice Fang",
+        "type": "ice",
+        "power": 65,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Thunder Punch",
+        "type": "electric",
+        "power": 75,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "reason": "Utility"
+      }
+    ],
+    "egg_moves": [
+      {
+        "move": "Blaze Kick",
+        "type": "fire",
+        "power": 85
+      },
+      {
+        "move": "Flare Blitz",
+        "type": "fire",
+        "power": 120
+      },
+      {
+        "move": "Stone Edge",
+        "type": "rock",
+        "power": 100
+      },
+      {
+        "move": "Head Smash",
+        "type": "rock",
+        "power": 150
+      }
+    ],
+    "current_moves": [
+      "Flame Wheel",
+      "Double-Edge",
+      "Headbutt",
+      "Take Down"
+    ]
+  },
+  "image_path": "outputs\\pyrrok_20260107_203236_139628_4246.png",
+  "image_prompt": "Fire type pokemon, fire golem, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+  "is_shiny": false
+}

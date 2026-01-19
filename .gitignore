@@ -1,20 +1,33 @@
-# Backend
+# Environment
 .env
+.env.local
+.env.production
+
+# Python
 venv/
-outputs/
 __pycache__/
 *.pyc
-sprites/
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
 
 # Frontend
-node_modules/
-dist/
-.vite/
+frontend/node_modules/
+frontend/dist/
+frontend/.env.local
 
 # IDE
 .vscode/
 .idea/
+*.swp
+*.swo
 
 # OS
 .DS_Store
 Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*

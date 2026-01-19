@@ -1,0 +1,192 @@
+{
+  "name": "Pholame",
+  "types": [
+    "Fire",
+    "Water"
+  ],
+  "stats": {
+    "hp": 95,
+    "attack": 65,
+    "defense": 80,
+    "sp_attack": 110,
+    "sp_defense": 85,
+    "speed": 75
+  },
+  "abilities": [
+    "Steam Engine",
+    "Water Absorb",
+    "Liquid Voice"
+  ],
+  "signature_move": {
+    "name": "Boiling Broth",
+    "type": "Water",
+    "category": "Special",
+    "power": 85,
+    "accuracy": 100,
+    "description": "A scalding hot soup attack that may burn the target and heals the user for 25% of damage dealt"
+  },
+  "pokedex_entry": "Pholame's bowl-shaped body contains a perpetually simmering broth that never cools. Street vendors in ancient times would seek out these Pokemon, believing their aromatic steam brought good fortune. The fragrant herbs floating in its body change with the seasons and its mood.",
+  "category": "The Soup Bowl Pokemon",
+  "height_m": 0.8,
+  "weight_kg": 45.2,
+  "bst": 510,
+  "tier": "fully_evolved",
+  "concept": "soup bowl creature",
+  "culture": "vietnam",
+  "moveset": {
+    "level_up_moves": [
+      {
+        "level": 1,
+        "move": "Growl",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 5,
+        "move": "Water Gun",
+        "type": "water",
+        "power": 40,
+        "category": "special"
+      },
+      {
+        "level": 10,
+        "move": "Leer",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 15,
+        "move": "Rain Dance",
+        "type": "water",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 20,
+        "move": "Will-O-Wisp",
+        "type": "fire",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 25,
+        "move": "Incinerate",
+        "type": "fire",
+        "power": 60,
+        "category": "special"
+      },
+      {
+        "level": 30,
+        "move": "Bubble Beam",
+        "type": "water",
+        "power": 65,
+        "category": "special"
+      },
+      {
+        "level": 35,
+        "move": "Heat Wave",
+        "type": "fire",
+        "power": 95,
+        "category": "special"
+      },
+      {
+        "level": 40,
+        "move": "Aqua Ring",
+        "type": "water",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 45,
+        "move": "Fire Blast",
+        "type": "fire",
+        "power": 110,
+        "category": "special"
+      },
+      {
+        "level": 50,
+        "move": "Swift",
+        "type": "normal",
+        "power": 60,
+        "category": "special"
+      }
+    ],
+    "tm_moves": [
+      {
+        "move": "Incinerate",
+        "type": "fire",
+        "power": 60,
+        "reason": "STAB"
+      },
+      {
+        "move": "Flamethrower",
+        "type": "fire",
+        "power": 90,
+        "reason": "STAB"
+      },
+      {
+        "move": "Bubble Beam",
+        "type": "water",
+        "power": 65,
+        "reason": "STAB"
+      },
+      {
+        "move": "Scald",
+        "type": "water",
+        "power": 80,
+        "reason": "STAB"
+      },
+      {
+        "move": "Blizzard",
+        "type": "ice",
+        "power": 110,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Leaf Storm",
+        "type": "grass",
+        "power": 130,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Thunder",
+        "type": "electric",
+        "power": 110,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "reason": "Utility"
+      }
+    ],
+    "egg_moves": [
+      {
+        "move": "Blaze Kick",
+        "type": "fire",
+        "power": 85
+      },
+      {
+        "move": "Flare Blitz",
+        "type": "fire",
+        "power": 120
+      },
+      {
+        "move": "Aqua Jet",
+        "type": "water",
+        "power": 40
+      }
+    ],
+    "current_moves": [
+      "Heat Wave",
+      "Aqua Ring",
+      "Fire Blast",
+      "Swift"
+    ]
+  },
+  "image_path": "outputs\\pholame.png",
+  "image_prompt": "Fire type, soup bowl creature"
+}

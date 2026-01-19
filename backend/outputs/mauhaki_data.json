@@ -1,0 +1,188 @@
+{
+  "name": "Mauhaki",
+  "types": [
+    "Electric",
+    "Dark"
+  ],
+  "stats": {
+    "hp": 75,
+    "attack": 65,
+    "defense": 70,
+    "sp_attack": 115,
+    "sp_defense": 95,
+    "speed": 105
+  },
+  "abilities": [
+    "Bad Dreams",
+    "Static",
+    "Insomnia"
+  ],
+  "signature_move": {
+    "name": "Terror Volt",
+    "type": "Electric",
+    "category": "Special",
+    "power": 80,
+    "accuracy": 100,
+    "description": "An electric attack that has a 30% chance to cause the target to flinch due to overwhelming fear"
+  },
+  "pokedex_entry": "Born from the collective fears that drift across ocean winds, Mauhaki feeds on the nightmares of sleeping sailors. Its crackling form appears during stormy nights, weaving between lightning strikes as it hunts for troubled dreams. Ancient island legends speak of its ability to trap victims in endless sleep terrors.",
+  "category": "The Dream Terror Pokemon",
+  "height_m": 1.8,
+  "weight_kg": 42.5,
+  "bst": 525,
+  "tier": "fully_evolved",
+  "concept": "the physical manifestation of a nightmare",
+  "culture": "polynesian",
+  "moveset": {
+    "level_up_moves": [
+      {
+        "level": 1,
+        "move": "Thunder Shock",
+        "type": "electric",
+        "power": 40,
+        "category": "special"
+      },
+      {
+        "level": 5,
+        "move": "Thunder Wave",
+        "type": "electric",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 10,
+        "move": "Growl",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 15,
+        "move": "Electro Ball",
+        "type": "electric",
+        "power": null,
+        "category": "special"
+      },
+      {
+        "level": 20,
+        "move": "Volt Switch",
+        "type": "electric",
+        "power": 70,
+        "category": "special"
+      },
+      {
+        "level": 25,
+        "move": "Leer",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 30,
+        "move": "Snarl",
+        "type": "dark",
+        "power": 55,
+        "category": "special"
+      },
+      {
+        "level": 35,
+        "move": "Electric Terrain",
+        "type": "electric",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 40,
+        "move": "Nasty Plot",
+        "type": "dark",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 45,
+        "move": "Thunderbolt",
+        "type": "electric",
+        "power": 90,
+        "category": "special"
+      },
+      {
+        "level": 50,
+        "move": "Hyper Beam",
+        "type": "normal",
+        "power": 150,
+        "category": "special"
+      }
+    ],
+    "tm_moves": [
+      {
+        "move": "Electro Ball",
+        "type": "electric",
+        "power": null,
+        "reason": "STAB"
+      },
+      {
+        "move": "Thunderbolt",
+        "type": "electric",
+        "power": 90,
+        "reason": "STAB"
+      },
+      {
+        "move": "Snarl",
+        "type": "dark",
+        "power": 55,
+        "reason": "STAB"
+      },
+      {
+        "move": "Dark Pulse",
+        "type": "dark",
+        "power": 80,
+        "reason": "STAB"
+      },
+      {
+        "move": "Blizzard",
+        "type": "ice",
+        "power": 110,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Leaf Storm",
+        "type": "grass",
+        "power": 130,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Heat Wave",
+        "type": "fire",
+        "power": 95,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "reason": "Utility"
+      }
+    ],
+    "egg_moves": [
+      {
+        "move": "Wild Charge",
+        "type": "electric",
+        "power": 90
+      },
+      {
+        "move": "Volt Tackle",
+        "type": "electric",
+        "power": 120
+      }
+    ],
+    "current_moves": [
+      "Electric Terrain",
+      "Nasty Plot",
+      "Thunderbolt",
+      "Hyper Beam"
+    ]
+  },
+  "image_path": "outputs\\mauhaki_20260106_201002_270770_8407.png",
+  "image_prompt": "Electric type pokemon, the physical manifestation of a nightmare, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+  "is_shiny": false
+}

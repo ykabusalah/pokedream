@@ -1,0 +1,182 @@
+{
+  "name": "Cryowyrm",
+  "types": [
+    "Ice",
+    "Dragon"
+  ],
+  "stats": {
+    "hp": 85,
+    "attack": 95,
+    "defense": 80,
+    "sp_attack": 115,
+    "sp_defense": 90,
+    "speed": 75
+  },
+  "abilities": [
+    "Snow Warning",
+    "Ice Body",
+    "Refrigerate"
+  ],
+  "signature_move": {
+    "name": "Frost Mandate",
+    "type": "Ice",
+    "category": "Special",
+    "power": 90,
+    "accuracy": 90,
+    "description": "Summons imperial ice shards that may lower the target's Speed and Special Attack"
+  },
+  "pokedex_entry": "Ancient legends speak of Cryowyrm as celestial dragons that descended from frozen mountain peaks to bring winter's blessing. Its crystalline scales shimmer like jade ice, and it commands blizzards with the authority of an emperor. Those who witness its graceful flight through snowstorms are said to receive good fortune.",
+  "category": "The Frost Emperor Pokemon",
+  "height_m": 3.2,
+  "weight_kg": 180.5,
+  "bst": 540,
+  "tier": "fully_evolved",
+  "concept": "ice dragon",
+  "culture": "china",
+  "moveset": {
+    "level_up_moves": [
+      {
+        "level": 1,
+        "move": "Powder Snow",
+        "type": "ice",
+        "power": 40,
+        "category": "special"
+      },
+      {
+        "level": 5,
+        "move": "Icy Wind",
+        "type": "ice",
+        "power": 55,
+        "category": "special"
+      },
+      {
+        "level": 10,
+        "move": "Leer",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 15,
+        "move": "Mist",
+        "type": "ice",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 20,
+        "move": "Swift",
+        "type": "normal",
+        "power": 60,
+        "category": "special"
+      },
+      {
+        "level": 25,
+        "move": "Hail",
+        "type": "ice",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 30,
+        "move": "Freeze-Dry",
+        "type": "ice",
+        "power": 70,
+        "category": "special"
+      },
+      {
+        "level": 35,
+        "move": "Hyper Beam",
+        "type": "normal",
+        "power": 150,
+        "category": "special"
+      },
+      {
+        "level": 40,
+        "move": "Dragon Dance",
+        "type": "dragon",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 45,
+        "move": "Draco Meteor",
+        "type": "dragon",
+        "power": 130,
+        "category": "special"
+      },
+      {
+        "level": 50,
+        "move": "Dragon Pulse",
+        "type": "dragon",
+        "power": 85,
+        "category": "special"
+      }
+    ],
+    "tm_moves": [
+      {
+        "move": "Ice Beam",
+        "type": "ice",
+        "power": 90,
+        "reason": "STAB"
+      },
+      {
+        "move": "Blizzard",
+        "type": "ice",
+        "power": 110,
+        "reason": "STAB"
+      },
+      {
+        "move": "Dragon Pulse",
+        "type": "dragon",
+        "power": 85,
+        "reason": "STAB"
+      },
+      {
+        "move": "Draco Meteor",
+        "type": "dragon",
+        "power": 130,
+        "reason": "STAB"
+      },
+      {
+        "move": "Energy Ball",
+        "type": "grass",
+        "power": 90,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Incinerate",
+        "type": "fire",
+        "power": 60,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Volt Switch",
+        "type": "electric",
+        "power": 70,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "reason": "Utility"
+      }
+    ],
+    "egg_moves": [
+      {
+        "move": "Ice Shard",
+        "type": "ice",
+        "power": 40
+      }
+    ],
+    "current_moves": [
+      "Hyper Beam",
+      "Dragon Dance",
+      "Draco Meteor",
+      "Dragon Pulse"
+    ]
+  },
+  "image_path": "outputs\\cryowyrm_20260105_234154_557685_6396.png",
+  "image_prompt": "Ice/Dragon type pokemon, ice dragon, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration"
+}

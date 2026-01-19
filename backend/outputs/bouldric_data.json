@@ -1,0 +1,182 @@
+{
+  "name": "Bouldric",
+  "types": [
+    "Rock",
+    null
+  ],
+  "stats": {
+    "hp": 95,
+    "attack": 110,
+    "defense": 130,
+    "sp_attack": 65,
+    "sp_defense": 85,
+    "speed": 40
+  },
+  "abilities": [
+    "Sturdy",
+    "Rock Head",
+    "Solid Rock"
+  ],
+  "signature_move": {
+    "name": "Boulder Barrage",
+    "type": "Rock",
+    "category": "Physical",
+    "power": 90,
+    "accuracy": 85,
+    "description": "Hurls massive stone chunks that may cause flinching. Hits 2-3 times."
+  },
+  "pokedex_entry": "Ancient legends speak of stone guardians that protected mountain passes from invaders. Bouldric's body is carved from the hardest granite, allowing it to withstand tremendous impacts without breaking. When threatened, it can reshape its limbs into devastating hammers and shields.",
+  "category": "The Stone Guardian Pokemon",
+  "height_m": 2.8,
+  "weight_kg": 485.2,
+  "bst": 525,
+  "tier": "fully_evolved",
+  "concept": "ROCK GOLEM",
+  "culture": "original",
+  "moveset": {
+    "level_up_moves": [
+      {
+        "level": 1,
+        "move": "Quick Attack",
+        "type": "normal",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 5,
+        "move": "Scratch",
+        "type": "normal",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 10,
+        "move": "Growl",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 15,
+        "move": "Rock Polish",
+        "type": "rock",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 20,
+        "move": "Headbutt",
+        "type": "normal",
+        "power": 70,
+        "category": "physical"
+      },
+      {
+        "level": 25,
+        "move": "Slash",
+        "type": "normal",
+        "power": 70,
+        "category": "physical"
+      },
+      {
+        "level": 30,
+        "move": "Rock Throw",
+        "type": "rock",
+        "power": 50,
+        "category": "physical"
+      },
+      {
+        "level": 35,
+        "move": "Rock Slide",
+        "type": "rock",
+        "power": 75,
+        "category": "physical"
+      },
+      {
+        "level": 40,
+        "move": "Head Smash",
+        "type": "rock",
+        "power": 150,
+        "category": "physical"
+      },
+      {
+        "level": 45,
+        "move": "Stone Edge",
+        "type": "rock",
+        "power": 100,
+        "category": "physical"
+      },
+      {
+        "level": 50,
+        "move": "Body Slam",
+        "type": "normal",
+        "power": 85,
+        "category": "physical"
+      }
+    ],
+    "tm_moves": [
+      {
+        "move": "Rock Tomb",
+        "type": "rock",
+        "power": 60,
+        "reason": "STAB"
+      },
+      {
+        "move": "Rock Slide",
+        "type": "rock",
+        "power": 75,
+        "reason": "STAB"
+      },
+      {
+        "move": "Aqua Tail",
+        "type": "water",
+        "power": 90,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Seed Bomb",
+        "type": "grass",
+        "power": 80,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Spark",
+        "type": "electric",
+        "power": 65,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "reason": "Utility"
+      },
+      {
+        "move": "Rest",
+        "type": "psychic",
+        "power": null,
+        "reason": "Recovery"
+      }
+    ],
+    "egg_moves": [
+      {
+        "move": "Stone Edge",
+        "type": "rock",
+        "power": 100
+      },
+      {
+        "move": "Head Smash",
+        "type": "rock",
+        "power": 150
+      }
+    ],
+    "current_moves": [
+      "Rock Slide",
+      "Head Smash",
+      "Stone Edge",
+      "Body Slam"
+    ]
+  },
+  "image_path": "outputs\\bouldric_20260107_203202_999003_3056.png",
+  "image_prompt": "Rock type pokemon, ROCK GOLEM, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+  "is_shiny": false
+}

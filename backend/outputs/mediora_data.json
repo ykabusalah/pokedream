@@ -1,0 +1,198 @@
+{
+  "name": "Mediora",
+  "types": [
+    "Normal",
+    "Psychic"
+  ],
+  "stats": {
+    "hp": 95,
+    "attack": 60,
+    "defense": 75,
+    "sp_attack": 110,
+    "sp_defense": 105,
+    "speed": 85
+  },
+  "abilities": [
+    "Healer",
+    "Telepathy",
+    "Triage"
+  ],
+  "signature_move": {
+    "name": "Digital Diagnosis",
+    "type": "Psychic",
+    "category": "Status",
+    "power": null,
+    "accuracy": 100,
+    "description": "Scans the target to identify status conditions and removes all stat reductions from ally Pokemon"
+  },
+  "pokedex_entry": "Mediora uses advanced psychic abilities to monitor the health of both Pokemon and humans in its territory. Known for its compassionate nature, it can instantly detect illness through bio-electromagnetic fields. Its lotus-shaped crest glows softly when providing healing energy to those in need.",
+  "category": "The Healthcare Pokemon",
+  "height_m": 1.6,
+  "weight_kg": 52.3,
+  "bst": 530,
+  "tier": "fully_evolved",
+  "concept": "a pokemon inspired by a vietnamese woman who works in health tech",
+  "culture": "vietnam",
+  "moveset": {
+    "level_up_moves": [
+      {
+        "level": 1,
+        "move": "Growl",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 5,
+        "move": "Leer",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 10,
+        "move": "Confusion",
+        "type": "psychic",
+        "power": 50,
+        "category": "special"
+      },
+      {
+        "level": 15,
+        "move": "Swords Dance",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 20,
+        "move": "Swift",
+        "type": "normal",
+        "power": 60,
+        "category": "special"
+      },
+      {
+        "level": 25,
+        "move": "Light Screen",
+        "type": "psychic",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 30,
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 35,
+        "move": "Reflect",
+        "type": "psychic",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 40,
+        "move": "Hyper Voice",
+        "type": "normal",
+        "power": 90,
+        "category": "special"
+      },
+      {
+        "level": 45,
+        "move": "Hyper Beam",
+        "type": "normal",
+        "power": 150,
+        "category": "special"
+      },
+      {
+        "level": 50,
+        "move": "Psychic",
+        "type": "psychic",
+        "power": 90,
+        "category": "special"
+      }
+    ],
+    "tm_moves": [
+      {
+        "move": "Swift",
+        "type": "normal",
+        "power": 60,
+        "reason": "STAB"
+      },
+      {
+        "move": "Hyper Voice",
+        "type": "normal",
+        "power": 90,
+        "reason": "STAB"
+      },
+      {
+        "move": "Psybeam",
+        "type": "psychic",
+        "power": 65,
+        "reason": "STAB"
+      },
+      {
+        "move": "Psychic",
+        "type": "psychic",
+        "power": 90,
+        "reason": "STAB"
+      },
+      {
+        "move": "Overheat",
+        "type": "fire",
+        "power": 130,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Bubble Beam",
+        "type": "water",
+        "power": 65,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Electro Ball",
+        "type": "electric",
+        "power": null,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "reason": "Utility"
+      }
+    ],
+    "egg_moves": [
+      {
+        "move": "Quick Attack",
+        "type": "normal",
+        "power": 40
+      },
+      {
+        "move": "Slash",
+        "type": "normal",
+        "power": 70
+      },
+      {
+        "move": "Take Down",
+        "type": "normal",
+        "power": 90
+      },
+      {
+        "move": "Double-Edge",
+        "type": "normal",
+        "power": 120
+      }
+    ],
+    "current_moves": [
+      "Reflect",
+      "Hyper Voice",
+      "Hyper Beam",
+      "Psychic"
+    ]
+  },
+  "image_path": "outputs\\mediora_20260107_220458_897717_4873.png",
+  "image_prompt": "Normal type pokemon, a pokemon inspired by a vietnamese woman who works in health tech, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+  "is_shiny": false
+}

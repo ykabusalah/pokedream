@@ -1,0 +1,193 @@
+{
+  "name": "Thundris",
+  "types": [
+    "Water",
+    "Electric"
+  ],
+  "stats": {
+    "hp": 75,
+    "attack": 65,
+    "defense": 70,
+    "sp_attack": 115,
+    "sp_defense": 85,
+    "speed": 125
+  },
+  "abilities": [
+    "Storm Drain",
+    "Lightning Rod",
+    "Volt Absorb"
+  ],
+  "signature_move": {
+    "name": "Thunder Siphon",
+    "type": "Electric",
+    "category": "Special",
+    "power": 85,
+    "accuracy": 95,
+    "description": "Drains electrical energy from the target, restoring the user's HP by half the damage dealt"
+  },
+  "pokedex_entry": "This swift Pokemon hovers near storm clouds, using its needle-like beak to draw lightning from the sky. Ancient hieroglyphs depict Thundris as a divine messenger that carried thunder between the heavens and the sacred Nile. Its wings beat so rapidly they create small electrical fields in humid air.",
+  "category": "The Storm Drinker Pokemon",
+  "height_m": 0.4,
+  "weight_kg": 2.8,
+  "bst": 535,
+  "tier": "fully_evolved",
+  "concept": "a hummingbird that drinks lightning",
+  "culture": "egyptian",
+  "moveset": {
+    "level_up_moves": [
+      {
+        "level": 1,
+        "move": "Thunder Shock",
+        "type": "electric",
+        "power": 40,
+        "category": "special"
+      },
+      {
+        "level": 5,
+        "move": "Water Gun",
+        "type": "water",
+        "power": 40,
+        "category": "special"
+      },
+      {
+        "level": 10,
+        "move": "Leer",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 15,
+        "move": "Volt Switch",
+        "type": "electric",
+        "power": 70,
+        "category": "special"
+      },
+      {
+        "level": 20,
+        "move": "Bubble Beam",
+        "type": "water",
+        "power": 65,
+        "category": "special"
+      },
+      {
+        "level": 25,
+        "move": "Electro Ball",
+        "type": "electric",
+        "power": null,
+        "category": "special"
+      },
+      {
+        "level": 30,
+        "move": "Swift",
+        "type": "normal",
+        "power": 60,
+        "category": "special"
+      },
+      {
+        "level": 35,
+        "move": "Electric Terrain",
+        "type": "electric",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 40,
+        "move": "Hyper Beam",
+        "type": "normal",
+        "power": 150,
+        "category": "special"
+      },
+      {
+        "level": 45,
+        "move": "Hyper Voice",
+        "type": "normal",
+        "power": 90,
+        "category": "special"
+      },
+      {
+        "level": 50,
+        "move": "Hydro Pump",
+        "type": "water",
+        "power": 110,
+        "category": "special"
+      }
+    ],
+    "tm_moves": [
+      {
+        "move": "Bubble Beam",
+        "type": "water",
+        "power": 65,
+        "reason": "STAB"
+      },
+      {
+        "move": "Scald",
+        "type": "water",
+        "power": 80,
+        "reason": "STAB"
+      },
+      {
+        "move": "Electro Ball",
+        "type": "electric",
+        "power": null,
+        "reason": "STAB"
+      },
+      {
+        "move": "Thunderbolt",
+        "type": "electric",
+        "power": 90,
+        "reason": "STAB"
+      },
+      {
+        "move": "Ice Beam",
+        "type": "ice",
+        "power": 90,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Giga Drain",
+        "type": "grass",
+        "power": 75,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Focus Blast",
+        "type": "fighting",
+        "power": 120,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "reason": "Utility"
+      }
+    ],
+    "egg_moves": [
+      {
+        "move": "Aqua Jet",
+        "type": "water",
+        "power": 40
+      },
+      {
+        "move": "Wild Charge",
+        "type": "electric",
+        "power": 90
+      },
+      {
+        "move": "Volt Tackle",
+        "type": "electric",
+        "power": 120
+      }
+    ],
+    "current_moves": [
+      "Electric Terrain",
+      "Hyper Beam",
+      "Hyper Voice",
+      "Hydro Pump"
+    ]
+  },
+  "image_path": "outputs\\thundris_20260108_130036_334455_9168.png",
+  "image_prompt": "Water type pokemon, a hummingbird that drinks lightning, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+  "is_shiny": false
+}

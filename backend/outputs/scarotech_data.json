@@ -1,0 +1,176 @@
+{
+  "name": "Scarotech",
+  "types": [
+    "Dark",
+    "Dragon"
+  ],
+  "stats": {
+    "hp": 88,
+    "attack": 115,
+    "defense": 95,
+    "sp_attack": 75,
+    "sp_defense": 80,
+    "speed": 67
+  },
+  "abilities": [
+    "Intimidate",
+    "Harvest",
+    "Technician"
+  ],
+  "signature_move": {
+    "name": "Terror Field",
+    "type": "Dark",
+    "category": "Status",
+    "power": null,
+    "accuracy": 85,
+    "description": "Creates an ominous field that lowers all opponents' Attack and Speed by one stage"
+  },
+  "pokedex_entry": "This mechanical guardian was built to protect vast farmlands from intruders. Its glowing red eyes can scan the horizon for miles, and its intimidating presence keeps both wild Pokemon and thieves at bay. When threatened, it unleashes dragon-type energy stored in its core systems.",
+  "category": "The Guardian Robot Pokemon",
+  "height_m": 2.1,
+  "weight_kg": 89.5,
+  "bst": 520,
+  "tier": "fully_evolved",
+  "concept": "A scarecrow robot pokemon",
+  "culture": "original",
+  "moveset": {
+    "level_up_moves": [
+      {
+        "level": 1,
+        "move": "Leer",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 5,
+        "move": "Scratch",
+        "type": "normal",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 10,
+        "move": "Quick Attack",
+        "type": "normal",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 15,
+        "move": "Take Down",
+        "type": "normal",
+        "power": 90,
+        "category": "physical"
+      },
+      {
+        "level": 20,
+        "move": "Throat Chop",
+        "type": "dark",
+        "power": 80,
+        "category": "physical"
+      },
+      {
+        "level": 25,
+        "move": "Crunch",
+        "type": "dark",
+        "power": 80,
+        "category": "physical"
+      },
+      {
+        "level": 30,
+        "move": "Taunt",
+        "type": "dark",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 35,
+        "move": "Nasty Plot",
+        "type": "dark",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 40,
+        "move": "Slash",
+        "type": "normal",
+        "power": 70,
+        "category": "physical"
+      },
+      {
+        "level": 45,
+        "move": "Dragon Dance",
+        "type": "dragon",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 50,
+        "move": "Sucker Punch",
+        "type": "dark",
+        "power": 70,
+        "category": "physical"
+      }
+    ],
+    "tm_moves": [
+      {
+        "move": "Feint Attack",
+        "type": "dark",
+        "power": 60,
+        "reason": "STAB"
+      },
+      {
+        "move": "Crunch",
+        "type": "dark",
+        "power": 80,
+        "reason": "STAB"
+      },
+      {
+        "move": "Dragon Claw",
+        "type": "dragon",
+        "power": 80,
+        "reason": "STAB"
+      },
+      {
+        "move": "Dragon Rush",
+        "type": "dragon",
+        "power": 100,
+        "reason": "STAB"
+      },
+      {
+        "move": "Flare Blitz",
+        "type": "fire",
+        "power": 120,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Thunder Punch",
+        "type": "electric",
+        "power": 75,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Seed Bomb",
+        "type": "grass",
+        "power": 80,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "reason": "Utility"
+      }
+    ],
+    "egg_moves": [],
+    "current_moves": [
+      "Nasty Plot",
+      "Slash",
+      "Dragon Dance",
+      "Sucker Punch"
+    ]
+  },
+  "image_path": "outputs\\pokemon.png",
+  "image_prompt": "Dark/Dragon type pokemon, A scarecrow robot pokemon, ken sugimori style, official pokemon art, cute creature, white background, full body"
+}

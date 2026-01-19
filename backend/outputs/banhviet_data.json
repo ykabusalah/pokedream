@@ -1,0 +1,164 @@
+{
+  "name": "Banhviet",
+  "types": [
+    "Normal",
+    null
+  ],
+  "stats": {
+    "hp": 95,
+    "attack": 85,
+    "defense": 75,
+    "sp_attack": 90,
+    "sp_defense": 80,
+    "speed": 95
+  },
+  "abilities": [
+    "Gluttony",
+    "Friend Guard",
+    "Pickup"
+  ],
+  "signature_move": {
+    "name": "Harmony Feast",
+    "type": "Normal",
+    "category": "Status",
+    "power": null,
+    "accuracy": 100,
+    "description": "Heals all party members and raises their friendship, boosting stats for 3 turns"
+  },
+  "pokedex_entry": "Banhviet travels between regions sharing delicious food and bringing communities together. Its warm presence and culinary skills have made it beloved across many cultures. It has an exceptional ability to bridge differences through shared meals.",
+  "category": "The Unity Pokemon",
+  "height_m": 1.2,
+  "weight_kg": 34.5,
+  "bst": 520,
+  "tier": "fully_evolved",
+  "concept": "a palestinian pokemon who loves vietnamese women and banh mi",
+  "culture": "vietnam",
+  "moveset": {
+    "level_up_moves": [
+      {
+        "level": 1,
+        "move": "Leer",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 5,
+        "move": "Growl",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 15,
+        "move": "Swift",
+        "type": "normal",
+        "power": 60,
+        "category": "special"
+      },
+      {
+        "level": 20,
+        "move": "Swords Dance",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 25,
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 35,
+        "move": "Hyper Voice",
+        "type": "normal",
+        "power": 90,
+        "category": "special"
+      },
+      {
+        "level": 40,
+        "move": "Hyper Beam",
+        "type": "normal",
+        "power": 150,
+        "category": "special"
+      }
+    ],
+    "tm_moves": [
+      {
+        "move": "Swift",
+        "type": "normal",
+        "power": 60,
+        "reason": "STAB"
+      },
+      {
+        "move": "Hyper Voice",
+        "type": "normal",
+        "power": 90,
+        "reason": "STAB"
+      },
+      {
+        "move": "Flamethrower",
+        "type": "fire",
+        "power": 90,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Surf",
+        "type": "water",
+        "power": 90,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Thunderbolt",
+        "type": "electric",
+        "power": 90,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "reason": "Utility"
+      },
+      {
+        "move": "Rest",
+        "type": "psychic",
+        "power": null,
+        "reason": "Recovery"
+      }
+    ],
+    "egg_moves": [
+      {
+        "move": "Quick Attack",
+        "type": "normal",
+        "power": 40
+      },
+      {
+        "move": "Slash",
+        "type": "normal",
+        "power": 70
+      },
+      {
+        "move": "Take Down",
+        "type": "normal",
+        "power": 90
+      },
+      {
+        "move": "Double-Edge",
+        "type": "normal",
+        "power": 120
+      }
+    ],
+    "current_moves": [
+      "Swords Dance",
+      "Protect",
+      "Hyper Voice",
+      "Hyper Beam"
+    ]
+  },
+  "image_path": "outputs\\banhviet_20260107_220557_654503_2427.png",
+  "image_prompt": "Normal type pokemon, a palestinian pokemon who loves vietnamese women and banh mi, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+  "is_shiny": false
+}

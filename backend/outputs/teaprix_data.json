@@ -1,0 +1,188 @@
+{
+  "name": "Teaprix",
+  "types": [
+    "Poison",
+    "Fairy"
+  ],
+  "stats": {
+    "hp": 75,
+    "attack": 60,
+    "defense": 85,
+    "sp_attack": 115,
+    "sp_defense": 95,
+    "speed": 90
+  },
+  "abilities": [
+    "Toxic Debris",
+    "Magic Bounce",
+    "Corrosion"
+  ],
+  "signature_move": {
+    "name": "Venomous Brew",
+    "type": "Poison",
+    "category": "Special",
+    "power": 80,
+    "accuracy": 90,
+    "description": "The user creates a toxic tea that badly poisons the target and may lower their Special Defense"
+  },
+  "pokedex_entry": "This tiny dragon makes its home in forgotten teacups, brewing poisonous concoctions from magical herbs. When threatened, it releases toxic steam that sparkles with fairy dust. Tea enthusiasts often mistake its glittering presence for good fortune.",
+  "category": "The Teacup Dragon Pokemon",
+  "height_m": 0.3,
+  "weight_kg": 1.2,
+  "bst": 520,
+  "tier": "fully_evolved",
+  "concept": "a tiny dragon that lives in teacups",
+  "culture": "original",
+  "moveset": {
+    "level_up_moves": [
+      {
+        "level": 1,
+        "move": "Sweet Kiss",
+        "type": "fairy",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 5,
+        "move": "Poison Gas",
+        "type": "poison",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 10,
+        "move": "Leer",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 15,
+        "move": "Swift",
+        "type": "normal",
+        "power": 60,
+        "category": "special"
+      },
+      {
+        "level": 20,
+        "move": "Toxic",
+        "type": "poison",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 25,
+        "move": "Moonlight",
+        "type": "fairy",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 30,
+        "move": "Draining Kiss",
+        "type": "fairy",
+        "power": 50,
+        "category": "special"
+      },
+      {
+        "level": 35,
+        "move": "Coil",
+        "type": "poison",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 40,
+        "move": "Sludge Wave",
+        "type": "poison",
+        "power": 95,
+        "category": "special"
+      },
+      {
+        "level": 45,
+        "move": "Sludge Bomb",
+        "type": "poison",
+        "power": 90,
+        "category": "special"
+      },
+      {
+        "level": 50,
+        "move": "Hyper Voice",
+        "type": "normal",
+        "power": 90,
+        "category": "special"
+      }
+    ],
+    "tm_moves": [
+      {
+        "move": "Sludge",
+        "type": "poison",
+        "power": 65,
+        "reason": "STAB"
+      },
+      {
+        "move": "Sludge Bomb",
+        "type": "poison",
+        "power": 90,
+        "reason": "STAB"
+      },
+      {
+        "move": "Draining Kiss",
+        "type": "fairy",
+        "power": 50,
+        "reason": "STAB"
+      },
+      {
+        "move": "Dazzling Gleam",
+        "type": "fairy",
+        "power": 80,
+        "reason": "STAB"
+      },
+      {
+        "move": "Solar Beam",
+        "type": "grass",
+        "power": 120,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Flamethrower",
+        "type": "fire",
+        "power": 90,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Thunder",
+        "type": "electric",
+        "power": 110,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "reason": "Utility"
+      }
+    ],
+    "egg_moves": [
+      {
+        "move": "Cross Poison",
+        "type": "poison",
+        "power": 70
+      },
+      {
+        "move": "Draining Kiss",
+        "type": "fairy",
+        "power": 50
+      }
+    ],
+    "current_moves": [
+      "Coil",
+      "Sludge Wave",
+      "Sludge Bomb",
+      "Hyper Voice"
+    ]
+  },
+  "image_path": "outputs\\teaprix_20260107_200559_103513_5154.png",
+  "image_prompt": "Poison/Fairy type pokemon, a tiny dragon that lives in teacups, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+  "is_shiny": false
+}

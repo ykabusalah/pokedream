@@ -1,0 +1,164 @@
+{
+  "name": "Gemipair",
+  "types": [
+    "Normal",
+    null
+  ],
+  "stats": {
+    "hp": 95,
+    "attack": 85,
+    "defense": 75,
+    "sp_attack": 90,
+    "sp_defense": 80,
+    "speed": 100
+  },
+  "abilities": [
+    "Cute Charm",
+    "Technician",
+    "Tangled Feet"
+  ],
+  "signature_move": {
+    "name": "Twin Pounce",
+    "type": "Normal",
+    "category": "Physical",
+    "power": 40,
+    "accuracy": 100,
+    "description": "A coordinated attack that always hits twice. May cause the target to flinch."
+  },
+  "pokedex_entry": "This unique Pokemon consists of two inseparable feline companions who share an unbreakable bond. The yellow one seeks high perches to survey their territory, while the orange one collects colorful strings and yarn for their shared nest. They are most content when curled together, purring in perfect harmony.",
+  "category": "The Twin Bond Pokemon",
+  "height_m": 0.8,
+  "weight_kg": 12.5,
+  "bst": 525,
+  "tier": "fully_evolved",
+  "concept": "two cats yellow and orange. yellow has heart pattern on belly and orange likes strings and cuddles, yellow likes height ",
+  "culture": "original",
+  "moveset": {
+    "level_up_moves": [
+      {
+        "level": 1,
+        "move": "Growl",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 5,
+        "move": "Leer",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 15,
+        "move": "Swords Dance",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 20,
+        "move": "Swift",
+        "type": "normal",
+        "power": 60,
+        "category": "special"
+      },
+      {
+        "level": 25,
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 35,
+        "move": "Hyper Beam",
+        "type": "normal",
+        "power": 150,
+        "category": "special"
+      },
+      {
+        "level": 40,
+        "move": "Hyper Voice",
+        "type": "normal",
+        "power": 90,
+        "category": "special"
+      }
+    ],
+    "tm_moves": [
+      {
+        "move": "Swift",
+        "type": "normal",
+        "power": 60,
+        "reason": "STAB"
+      },
+      {
+        "move": "Hyper Voice",
+        "type": "normal",
+        "power": 90,
+        "reason": "STAB"
+      },
+      {
+        "move": "Fire Blast",
+        "type": "fire",
+        "power": 110,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Surf",
+        "type": "water",
+        "power": 90,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Thunder",
+        "type": "electric",
+        "power": 110,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "reason": "Utility"
+      },
+      {
+        "move": "Rest",
+        "type": "psychic",
+        "power": null,
+        "reason": "Recovery"
+      }
+    ],
+    "egg_moves": [
+      {
+        "move": "Quick Attack",
+        "type": "normal",
+        "power": 40
+      },
+      {
+        "move": "Slash",
+        "type": "normal",
+        "power": 70
+      },
+      {
+        "move": "Take Down",
+        "type": "normal",
+        "power": 90
+      },
+      {
+        "move": "Double-Edge",
+        "type": "normal",
+        "power": 120
+      }
+    ],
+    "current_moves": [
+      "Swift",
+      "Protect",
+      "Hyper Beam",
+      "Hyper Voice"
+    ]
+  },
+  "image_path": "outputs\\gemipair_20260107_220356_419481_1074.png",
+  "image_prompt": "Normal type pokemon, two cats yellow and orange. yellow has heart pattern on belly and orange likes strings and cuddles, yellow likes height , pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+  "is_shiny": false
+}

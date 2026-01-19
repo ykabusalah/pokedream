@@ -1,0 +1,192 @@
+{
+  "name": "Majefin",
+  "types": [
+    "Electric",
+    "Water"
+  ],
+  "stats": {
+    "hp": 85,
+    "attack": 75,
+    "defense": 80,
+    "sp_attack": 120,
+    "sp_defense": 95,
+    "speed": 75
+  },
+  "abilities": [
+    "Volt Absorb",
+    "Swift Swim",
+    "Regal Presence"
+  ],
+  "signature_move": {
+    "name": "Majestic Surge",
+    "type": "Electric",
+    "category": "Special",
+    "power": 95,
+    "accuracy": 85,
+    "description": "Creates an electrified tidal wave that may paralyze the target and boosts the user's Sp.Attack"
+  },
+  "pokedex_entry": "Majefin glides through ocean depths with unparalleled grace, its magnificent fins crackling with stored electrical energy. Ancient sailors once believed sighting this Pokemon brought good fortune on voyages. When threatened, it creates dazzling displays of bioluminescent electricity that can be seen from miles away.",
+  "category": "The Sovereign Pokemon",
+  "height_m": 2.4,
+  "weight_kg": 89.5,
+  "bst": 530,
+  "tier": "fully_evolved",
+  "concept": "Majestic pokemon with fins and electricity",
+  "culture": "original",
+  "moveset": {
+    "level_up_moves": [
+      {
+        "level": 1,
+        "move": "Water Gun",
+        "type": "water",
+        "power": 40,
+        "category": "special"
+      },
+      {
+        "level": 5,
+        "move": "Thunder Shock",
+        "type": "electric",
+        "power": 40,
+        "category": "special"
+      },
+      {
+        "level": 10,
+        "move": "Leer",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 15,
+        "move": "Growl",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 20,
+        "move": "Swift",
+        "type": "normal",
+        "power": 60,
+        "category": "special"
+      },
+      {
+        "level": 25,
+        "move": "Aqua Ring",
+        "type": "water",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 30,
+        "move": "Electro Ball",
+        "type": "electric",
+        "power": null,
+        "category": "special"
+      },
+      {
+        "level": 35,
+        "move": "Rain Dance",
+        "type": "water",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 40,
+        "move": "Bubble Beam",
+        "type": "water",
+        "power": 65,
+        "category": "special"
+      },
+      {
+        "level": 45,
+        "move": "Volt Switch",
+        "type": "electric",
+        "power": 70,
+        "category": "special"
+      },
+      {
+        "level": 50,
+        "move": "Surf",
+        "type": "water",
+        "power": 90,
+        "category": "special"
+      }
+    ],
+    "tm_moves": [
+      {
+        "move": "Electro Ball",
+        "type": "electric",
+        "power": null,
+        "reason": "STAB"
+      },
+      {
+        "move": "Thunderbolt",
+        "type": "electric",
+        "power": 90,
+        "reason": "STAB"
+      },
+      {
+        "move": "Bubble Beam",
+        "type": "water",
+        "power": 65,
+        "reason": "STAB"
+      },
+      {
+        "move": "Scald",
+        "type": "water",
+        "power": 80,
+        "reason": "STAB"
+      },
+      {
+        "move": "Ice Beam",
+        "type": "ice",
+        "power": 90,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Incinerate",
+        "type": "fire",
+        "power": 60,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Leaf Storm",
+        "type": "grass",
+        "power": 130,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "reason": "Utility"
+      }
+    ],
+    "egg_moves": [
+      {
+        "move": "Wild Charge",
+        "type": "electric",
+        "power": 90
+      },
+      {
+        "move": "Volt Tackle",
+        "type": "electric",
+        "power": 120
+      },
+      {
+        "move": "Aqua Jet",
+        "type": "water",
+        "power": 40
+      }
+    ],
+    "current_moves": [
+      "Rain Dance",
+      "Bubble Beam",
+      "Volt Switch",
+      "Surf"
+    ]
+  },
+  "image_path": "outputs\\pokemon.png",
+  "image_prompt": "Electric type pokemon, Majestic pokemon with fins and electricity, ken sugimori style, official pokemon art, cute creature, white background, full body"
+}

@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: pokedream-api
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn api_server:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: REPLICATE_API_TOKEN
+        sync: false
+      - key: FRONTEND_URL
+        sync: false
+    disk:
+      name: pokedream-data
+      mountPath: /opt/render/project/src/data
+      sizeGB: 1
+    healthCheckPath: /health

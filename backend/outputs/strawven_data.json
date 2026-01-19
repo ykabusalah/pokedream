@@ -1,0 +1,192 @@
+{
+  "name": "Strawven",
+  "types": [
+    "Normal",
+    null
+  ],
+  "stats": {
+    "hp": 95,
+    "attack": 110,
+    "defense": 80,
+    "sp_attack": 75,
+    "sp_defense": 85,
+    "speed": 85
+  },
+  "abilities": [
+    "Guts",
+    "Steadfast",
+    "Simple"
+  ],
+  "signature_move": {
+    "name": "Brim Bash",
+    "type": "Normal",
+    "category": "Physical",
+    "power": 85,
+    "accuracy": 90,
+    "description": "The user strikes with its hat brim, gaining priority if the user's HP is below half"
+  },
+  "pokedex_entry": "This adventurous Pokemon never removes its treasured straw hat, which it received from a mentor long ago. Strawven's unwavering determination inspires other Pokemon to follow it on grand journeys across vast oceans and distant islands. Its cheerful spirit can turn even the most dire situations into exciting adventures.",
+  "category": "The Adventure Pokemon",
+  "height_m": 1.7,
+  "weight_kg": 64.5,
+  "bst": 530,
+  "tier": "fully_evolved",
+  "concept": "a pokemon with a straw hat like luffy's from one piece",
+  "culture": "original",
+  "moveset": {
+    "level_up_moves": [
+      {
+        "level": 1,
+        "move": "Growl",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 5,
+        "move": "Leer",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 10,
+        "move": "Quick Attack",
+        "type": "normal",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 15,
+        "move": "Body Slam",
+        "type": "normal",
+        "power": 85,
+        "category": "physical"
+      },
+      {
+        "level": 20,
+        "move": "Pound",
+        "type": "normal",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 25,
+        "move": "Tackle",
+        "type": "normal",
+        "power": 40,
+        "category": "physical"
+      },
+      {
+        "level": 30,
+        "move": "Headbutt",
+        "type": "normal",
+        "power": 70,
+        "category": "physical"
+      },
+      {
+        "level": 35,
+        "move": "Swords Dance",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 40,
+        "move": "Extreme Speed",
+        "type": "normal",
+        "power": 80,
+        "category": "physical"
+      },
+      {
+        "level": 45,
+        "move": "Take Down",
+        "type": "normal",
+        "power": 90,
+        "category": "physical"
+      },
+      {
+        "level": 50,
+        "move": "Slash",
+        "type": "normal",
+        "power": 70,
+        "category": "physical"
+      }
+    ],
+    "tm_moves": [
+      {
+        "move": "Headbutt",
+        "type": "normal",
+        "power": 70,
+        "reason": "STAB"
+      },
+      {
+        "move": "Slash",
+        "type": "normal",
+        "power": 70,
+        "reason": "STAB"
+      },
+      {
+        "move": "Fire Punch",
+        "type": "fire",
+        "power": 75,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Aqua Tail",
+        "type": "water",
+        "power": 90,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Wood Hammer",
+        "type": "grass",
+        "power": 120,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "reason": "Utility"
+      },
+      {
+        "move": "Rest",
+        "type": "psychic",
+        "power": null,
+        "reason": "Recovery"
+      }
+    ],
+    "egg_moves": [
+      {
+        "move": "Quick Attack",
+        "type": "normal",
+        "power": 40
+      },
+      {
+        "move": "Slash",
+        "type": "normal",
+        "power": 70
+      },
+      {
+        "move": "Take Down",
+        "type": "normal",
+        "power": 90
+      },
+      {
+        "move": "Double-Edge",
+        "type": "normal",
+        "power": 120
+      }
+    ],
+    "current_moves": [
+      "Swords Dance",
+      "Extreme Speed",
+      "Take Down",
+      "Slash"
+    ]
+  },
+  "image_path": "outputs\\strawven_20260109_140638_545488_3313.png",
+  "image_prompt": "Normal type pokemon, a pokemon with a straw hat like luffy's from one piece, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+  "is_shiny": false
+}

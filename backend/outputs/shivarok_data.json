@@ -1,0 +1,38 @@
+{
+  "name": "Shivarok",
+  "types": [
+    "Rock",
+    "Fighting"
+  ],
+  "stats": {
+    "hp": 95,
+    "attack": 110,
+    "defense": 105,
+    "sp_attack": 65,
+    "sp_defense": 85,
+    "speed": 70
+  },
+  "abilities": [
+    "Steadfast",
+    "Rock Head",
+    "Justified"
+  ],
+  "signature_move": {
+    "name": "Sacred Crush",
+    "type": "Rock",
+    "category": "Physical",
+    "power": 90,
+    "accuracy": 95,
+    "description": "A devastating stone attack that may lower the target's Attack and Defense stats"
+  },
+  "pokedex_entry": "Ancient guardians that stand vigil at sacred mountain temples, Shivarok are said to awaken only when great evil threatens the land. Their stone manes flow like cascading prayer flags, and their roar can be heard echoing through the highest peaks. Legend claims they were carved from the very stones of the world's tallest mountains.",
+  "category": "The Temple Guardian Pokemon",
+  "height_m": 2.1,
+  "weight_kg": 180.5,
+  "bst": 530,
+  "tier": "fully_evolved",
+  "concept": "temple guardian lion",
+  "culture": "nepal",
+  "image_path": "outputs\\shivarok.png",
+  "image_prompt": "Rock/Fighting type, temple guardian lion, quadruped, gold and red and white colored, inspired by Nepalese culture, Himalayan mythology, Buddhist and Hindu influences, temple architecture, prayer flags, snow leopard, yak, rhododendron"
+}

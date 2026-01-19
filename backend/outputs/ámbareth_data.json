@@ -1,0 +1,183 @@
+{
+  "name": "\u00c1mbareth",
+  "types": [
+    "Bug",
+    "Steel"
+  ],
+  "stats": {
+    "hp": 75,
+    "attack": 65,
+    "defense": 110,
+    "sp_attack": 95,
+    "sp_defense": 85,
+    "speed": 90
+  },
+  "abilities": [
+    "Compound Eyes",
+    "Light Metal",
+    "Magic Guard"
+  ],
+  "signature_move": {
+    "name": "Amber Prison",
+    "type": "Steel",
+    "category": "Special",
+    "power": 80,
+    "accuracy": 100,
+    "description": "Traps the target in hardened resin for 2-5 turns, preventing switching and dealing damage each turn."
+  },
+  "pokedex_entry": "Ancient Celtic fairy spirits became trapped in tree resin millions of years ago, eventually fossilizing into living amber. Its crystalline wings shimmer with trapped sunlight, and it's said to dance during the Day of the Dead to honor those preserved in time. The intricate patterns on its metallic carapace tell stories of forgotten forests.",
+  "category": "The Fossilized Fairy Pokemon",
+  "height_m": 0.8,
+  "weight_kg": 12.5,
+  "bst": 520,
+  "tier": "fully_evolved",
+  "concept": "a celtic fairy trapped in amber",
+  "culture": "mexican",
+  "moveset": {
+    "level_up_moves": [
+      {
+        "level": 1,
+        "move": "Struggle Bug",
+        "type": "bug",
+        "power": 50,
+        "category": "special"
+      },
+      {
+        "level": 5,
+        "move": "String Shot",
+        "type": "bug",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 10,
+        "move": "Growl",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 15,
+        "move": "Leer",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 20,
+        "move": "Swift",
+        "type": "normal",
+        "power": 60,
+        "category": "special"
+      },
+      {
+        "level": 25,
+        "move": "Metal Sound",
+        "type": "steel",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 30,
+        "move": "Signal Beam",
+        "type": "bug",
+        "power": 75,
+        "category": "special"
+      },
+      {
+        "level": 35,
+        "move": "Bug Buzz",
+        "type": "bug",
+        "power": 90,
+        "category": "special"
+      },
+      {
+        "level": 40,
+        "move": "Quiver Dance",
+        "type": "bug",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 45,
+        "move": "Flash Cannon",
+        "type": "steel",
+        "power": 80,
+        "category": "special"
+      },
+      {
+        "level": 50,
+        "move": "Iron Defense",
+        "type": "steel",
+        "power": null,
+        "category": "status"
+      }
+    ],
+    "tm_moves": [
+      {
+        "move": "Signal Beam",
+        "type": "bug",
+        "power": 75,
+        "reason": "STAB"
+      },
+      {
+        "move": "Bug Buzz",
+        "type": "bug",
+        "power": 90,
+        "reason": "STAB"
+      },
+      {
+        "move": "Flash Cannon",
+        "type": "steel",
+        "power": 80,
+        "reason": "STAB"
+      },
+      {
+        "move": "Electro Ball",
+        "type": "electric",
+        "power": null,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Flamethrower",
+        "type": "fire",
+        "power": 90,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Solar Beam",
+        "type": "grass",
+        "power": 120,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "reason": "Utility"
+      },
+      {
+        "move": "Rest",
+        "type": "psychic",
+        "power": null,
+        "reason": "Recovery"
+      }
+    ],
+    "egg_moves": [
+      {
+        "move": "Leech Life",
+        "type": "bug",
+        "power": 80
+      }
+    ],
+    "current_moves": [
+      "Bug Buzz",
+      "Quiver Dance",
+      "Flash Cannon",
+      "Iron Defense"
+    ]
+  },
+  "image_path": "outputs\\\u00e1mbareth_20260106_193503_073419_1334.png",
+  "image_prompt": "Bug/Steel type pokemon, a celtic fairy trapped in amber, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+  "is_shiny": false
+}

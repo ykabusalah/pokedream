@@ -1,0 +1,198 @@
+{
+  "name": "Kukulon",
+  "types": [
+    "Normal",
+    "Flying"
+  ],
+  "stats": {
+    "hp": 90,
+    "attack": 75,
+    "defense": 80,
+    "sp_attack": 105,
+    "sp_defense": 85,
+    "speed": 90
+  },
+  "abilities": [
+    "Serene Grace",
+    "Wind Rider",
+    "Aerilate"
+  ],
+  "signature_move": {
+    "name": "Feathered Serpent",
+    "type": "Flying",
+    "category": "Special",
+    "power": 90,
+    "accuracy": 95,
+    "description": "The user summons ancient winds in a spiraling attack. May cause the target to flinch."
+  },
+  "pokedex_entry": "Kukulon soars through ancient ruins, its iridescent feathers catching moonlight as it glides silently overhead. Legend says it appears to travelers who have lost their way, guiding them to safety with gentle calls that echo through stone corridors. Its elaborate tail feathers were once considered sacred symbols of wisdom and protection.",
+  "category": "The Feathered Serpent Pokemon",
+  "height_m": 2.8,
+  "weight_kg": 45.5,
+  "bst": 525,
+  "tier": "fully_evolved",
+  "concept": "A Pok\u00e9mon inspired by Mayan mythology...",
+  "culture": "mexico",
+  "moveset": {
+    "level_up_moves": [
+      {
+        "level": 1,
+        "move": "Leer",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 5,
+        "move": "Growl",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 10,
+        "move": "Gust",
+        "type": "flying",
+        "power": 40,
+        "category": "special"
+      },
+      {
+        "level": 15,
+        "move": "Tailwind",
+        "type": "flying",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 20,
+        "move": "Roost",
+        "type": "flying",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 25,
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 30,
+        "move": "Air Cutter",
+        "type": "flying",
+        "power": 60,
+        "category": "special"
+      },
+      {
+        "level": 35,
+        "move": "Swords Dance",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 40,
+        "move": "Hyper Voice",
+        "type": "normal",
+        "power": 90,
+        "category": "special"
+      },
+      {
+        "level": 45,
+        "move": "Swift",
+        "type": "normal",
+        "power": 60,
+        "category": "special"
+      },
+      {
+        "level": 50,
+        "move": "Hyper Beam",
+        "type": "normal",
+        "power": 150,
+        "category": "special"
+      }
+    ],
+    "tm_moves": [
+      {
+        "move": "Swift",
+        "type": "normal",
+        "power": 60,
+        "reason": "STAB"
+      },
+      {
+        "move": "Hyper Voice",
+        "type": "normal",
+        "power": 90,
+        "reason": "STAB"
+      },
+      {
+        "move": "Air Cutter",
+        "type": "flying",
+        "power": 60,
+        "reason": "STAB"
+      },
+      {
+        "move": "Air Slash",
+        "type": "flying",
+        "power": 75,
+        "reason": "STAB"
+      },
+      {
+        "move": "Electro Ball",
+        "type": "electric",
+        "power": null,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Energy Ball",
+        "type": "grass",
+        "power": 90,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Heat Wave",
+        "type": "fire",
+        "power": 95,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "reason": "Utility"
+      }
+    ],
+    "egg_moves": [
+      {
+        "move": "Quick Attack",
+        "type": "normal",
+        "power": 40
+      },
+      {
+        "move": "Slash",
+        "type": "normal",
+        "power": 70
+      },
+      {
+        "move": "Take Down",
+        "type": "normal",
+        "power": 90
+      },
+      {
+        "move": "Double-Edge",
+        "type": "normal",
+        "power": 120
+      }
+    ],
+    "current_moves": [
+      "Swords Dance",
+      "Hyper Voice",
+      "Swift",
+      "Hyper Beam"
+    ]
+  },
+  "image_path": "outputs\\kukulon_20260107_161539_524179_7041.png",
+  "image_prompt": "Normal type pokemon, A Pok\u00e9mon inspired by Mayan mythology..., pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+  "is_shiny": false
+}

@@ -1,0 +1,36 @@
+{
+  "name": "Himalon",
+  "types": [
+    "Ice",
+    "Fighting"
+  ],
+  "stats": {
+    "hp": 95,
+    "attack": 115,
+    "defense": 80,
+    "sp_attack": 65,
+    "sp_defense": 95,
+    "speed": 90
+  },
+  "abilities": [
+    "Inner Focus",
+    "Snow Cloak",
+    "Justified"
+  ],
+  "signature_move": {
+    "name": "Sacred Summit",
+    "type": "Fighting",
+    "category": "Physical",
+    "power": 90,
+    "accuracy": 90,
+    "description": "A mystical strike that draws power from high altitudes. Has increased critical hit ratio in hail."
+  },
+  "pokedex_entry": "This ancient guardian spirit watches over mountain villages from snowy peaks. Legend says it appears during blizzards to guide lost travelers to safety. Its powerful roar can trigger avalanches to protect its sacred territory.",
+  "category": "The Snow Guardian Pokemon",
+  "height_m": 1.8,
+  "weight_kg": 68.5,
+  "bst": 540,
+  "tier": "fully_evolved",
+  "concept": "snow leopard guardian spirit",
+  "culture": "Nepal"
+}

@@ -1,0 +1,198 @@
+{
+  "name": "Quetzul",
+  "types": [
+    "Normal",
+    "Flying"
+  ],
+  "stats": {
+    "hp": 90,
+    "attack": 85,
+    "defense": 75,
+    "sp_attack": 110,
+    "sp_defense": 95,
+    "speed": 85
+  },
+  "abilities": [
+    "Keen Eye",
+    "Magic Guard",
+    "Serene Grace"
+  ],
+  "signature_move": {
+    "name": "Sacred Glyph",
+    "type": "Normal",
+    "category": "Special",
+    "power": 80,
+    "accuracy": 100,
+    "description": "Ancient symbols appear and strike the target. May cause confusion."
+  },
+  "pokedex_entry": "This majestic Pok\u00e9mon soars through ancient ruins, its feathered wings shimmering with mystical energy. Legends say Quetzul once served as messengers between earth and sky, carrying prayers to the heavens. Its haunting call can be heard echoing through jungle temples at dawn.",
+  "category": "The Feathered Serpent Pokemon",
+  "height_m": 2.8,
+  "weight_kg": 45.5,
+  "bst": 540,
+  "tier": "fully_evolved",
+  "concept": "Create a Pok\u00e9mon inspired by Mayan mythology",
+  "culture": "mexico",
+  "moveset": {
+    "level_up_moves": [
+      {
+        "level": 1,
+        "move": "Leer",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 5,
+        "move": "Growl",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 10,
+        "move": "Gust",
+        "type": "flying",
+        "power": 40,
+        "category": "special"
+      },
+      {
+        "level": 15,
+        "move": "Air Cutter",
+        "type": "flying",
+        "power": 60,
+        "category": "special"
+      },
+      {
+        "level": 20,
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 25,
+        "move": "Air Slash",
+        "type": "flying",
+        "power": 75,
+        "category": "special"
+      },
+      {
+        "level": 30,
+        "move": "Swift",
+        "type": "normal",
+        "power": 60,
+        "category": "special"
+      },
+      {
+        "level": 35,
+        "move": "Hyper Voice",
+        "type": "normal",
+        "power": 90,
+        "category": "special"
+      },
+      {
+        "level": 40,
+        "move": "Hurricane",
+        "type": "flying",
+        "power": 110,
+        "category": "special"
+      },
+      {
+        "level": 45,
+        "move": "Roost",
+        "type": "flying",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 50,
+        "move": "Hyper Beam",
+        "type": "normal",
+        "power": 150,
+        "category": "special"
+      }
+    ],
+    "tm_moves": [
+      {
+        "move": "Swift",
+        "type": "normal",
+        "power": 60,
+        "reason": "STAB"
+      },
+      {
+        "move": "Hyper Voice",
+        "type": "normal",
+        "power": 90,
+        "reason": "STAB"
+      },
+      {
+        "move": "Air Cutter",
+        "type": "flying",
+        "power": 60,
+        "reason": "STAB"
+      },
+      {
+        "move": "Air Slash",
+        "type": "flying",
+        "power": 75,
+        "reason": "STAB"
+      },
+      {
+        "move": "Thunderbolt",
+        "type": "electric",
+        "power": 90,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Giga Drain",
+        "type": "grass",
+        "power": 75,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Incinerate",
+        "type": "fire",
+        "power": 60,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "reason": "Utility"
+      }
+    ],
+    "egg_moves": [
+      {
+        "move": "Quick Attack",
+        "type": "normal",
+        "power": 40
+      },
+      {
+        "move": "Slash",
+        "type": "normal",
+        "power": 70
+      },
+      {
+        "move": "Take Down",
+        "type": "normal",
+        "power": 90
+      },
+      {
+        "move": "Double-Edge",
+        "type": "normal",
+        "power": 120
+      }
+    ],
+    "current_moves": [
+      "Hyper Voice",
+      "Hurricane",
+      "Roost",
+      "Hyper Beam"
+    ]
+  },
+  "image_path": "outputs\\quetzul_20260107_162307_834998_4916.png",
+  "image_prompt": "Normal type pokemon, Create a Pok\u00e9mon inspired by Mayan mythology, pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+  "is_shiny": false
+}

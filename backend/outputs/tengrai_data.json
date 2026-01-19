@@ -1,0 +1,198 @@
+{
+  "name": "Tengrai",
+  "types": [
+    "Grass",
+    "Electric"
+  ],
+  "stats": {
+    "hp": 85,
+    "attack": 75,
+    "defense": 70,
+    "sp_attack": 120,
+    "sp_defense": 90,
+    "speed": 95
+  },
+  "abilities": [
+    "Chlorophyll",
+    "Lightning Rod",
+    "Storm Drain"
+  ],
+  "signature_move": {
+    "name": "Jade Thunder",
+    "type": "Electric",
+    "category": "Special",
+    "power": 90,
+    "accuracy": 95,
+    "description": "A powerful electric attack that may paralyze the target and restore the user's HP in sunlight"
+  },
+  "pokedex_entry": "This majestic dragon soars through storm clouds on wings of living bamboo and jade-colored leaves. Ancient scrolls speak of Tengrai as the guardian of sacred groves, channeling lightning through its verdant wings to nurture new growth. It is said to appear during spring thunderstorms to bless the harvest.",
+  "category": "The Storm Garden Pokemon",
+  "height_m": 3.2,
+  "weight_kg": 145.7,
+  "bst": 535,
+  "tier": "fully_evolved",
+  "concept": "a lightning dragon with grass wings ",
+  "culture": "china",
+  "moveset": {
+    "level_up_moves": [
+      {
+        "level": 1,
+        "move": "Absorb",
+        "type": "grass",
+        "power": 20,
+        "category": "special"
+      },
+      {
+        "level": 5,
+        "move": "Leech Seed",
+        "type": "grass",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 10,
+        "move": "Growl",
+        "type": "normal",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 15,
+        "move": "Swift",
+        "type": "normal",
+        "power": 60,
+        "category": "special"
+      },
+      {
+        "level": 20,
+        "move": "Synthesis",
+        "type": "grass",
+        "power": null,
+        "category": "status"
+      },
+      {
+        "level": 25,
+        "move": "Electro Ball",
+        "type": "electric",
+        "power": null,
+        "category": "special"
+      },
+      {
+        "level": 30,
+        "move": "Thunder Shock",
+        "type": "electric",
+        "power": 40,
+        "category": "special"
+      },
+      {
+        "level": 35,
+        "move": "Hyper Voice",
+        "type": "normal",
+        "power": 90,
+        "category": "special"
+      },
+      {
+        "level": 40,
+        "move": "Volt Switch",
+        "type": "electric",
+        "power": 70,
+        "category": "special"
+      },
+      {
+        "level": 45,
+        "move": "Energy Ball",
+        "type": "grass",
+        "power": 90,
+        "category": "special"
+      },
+      {
+        "level": 50,
+        "move": "Leaf Storm",
+        "type": "grass",
+        "power": 130,
+        "category": "special"
+      }
+    ],
+    "tm_moves": [
+      {
+        "move": "Giga Drain",
+        "type": "grass",
+        "power": 75,
+        "reason": "STAB"
+      },
+      {
+        "move": "Energy Ball",
+        "type": "grass",
+        "power": 90,
+        "reason": "STAB"
+      },
+      {
+        "move": "Electro Ball",
+        "type": "electric",
+        "power": null,
+        "reason": "STAB"
+      },
+      {
+        "move": "Thunderbolt",
+        "type": "electric",
+        "power": 90,
+        "reason": "STAB"
+      },
+      {
+        "move": "Flamethrower",
+        "type": "fire",
+        "power": 90,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Blizzard",
+        "type": "ice",
+        "power": 110,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Bubble Beam",
+        "type": "water",
+        "power": 65,
+        "reason": "Coverage"
+      },
+      {
+        "move": "Protect",
+        "type": "normal",
+        "power": null,
+        "reason": "Utility"
+      }
+    ],
+    "egg_moves": [
+      {
+        "move": "Razor Leaf",
+        "type": "grass",
+        "power": 55
+      },
+      {
+        "move": "Leaf Blade",
+        "type": "grass",
+        "power": 90
+      },
+      {
+        "move": "Wood Hammer",
+        "type": "grass",
+        "power": 120
+      },
+      {
+        "move": "Absorb",
+        "type": "grass",
+        "power": 20
+      }
+    ],
+    "current_moves": [
+      "Hyper Voice",
+      "Volt Switch",
+      "Energy Ball",
+      "Leaf Storm"
+    ]
+  },
+  "image_path": "outputs\\tengrai_20260109_133109_443952_6286.png",
+  "image_prompt": "Grass/Electric type pokemon, a lightning dragon with grass wings , pokemon official art style, ken sugimori illustration, single pokemon centered, full body on white background, clean vector illustration",
+  "is_shiny": false
+}
