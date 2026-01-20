@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
 // ============================================
-// VISIT TRACKING HELPERS (NEW IN COMMIT 2)
+// VISIT TRACKING HELPERS
 // ============================================
 const getVisitCount = () => {
   return parseInt(localStorage.getItem('pokedream_visit_count') || '0', 10);
@@ -16,7 +16,7 @@ const incrementVisitCount = () => {
 };
 
 // ============================================
-// HIDDEN MILESTONE DIALOGUE (NEW IN COMMIT 2)
+// HIDDEN MILESTONE DIALOGUE
 // ============================================
 const getMilestoneDialogue = (visitCount, name) => {
   const milestones = {
@@ -33,20 +33,20 @@ const getMilestoneDialogue = (visitCount, name) => {
     ],
     25: [
       { text: `${name}... 25 visits. I'm genuinely impressed.`, type: "speech" },
-      { text: `You've become a true Pokémon researcher. Professor Oak would be proud.`, type: "speech" },
-      { text: `Between you and me... I think your Pokédex might be more interesting than the official one!`, type: "speech" },
+      { text: `You've become a true Pokemon researcher. Professor Oak would be proud.`, type: "speech" },
+      { text: `Between you and me... I think your Pokedex might be more interesting than the official one!`, type: "speech" },
     ],
     50: [
       { text: `*Blaine removes his sunglasses in shock*`, type: "speech" },
       { text: `${name}... 50 visits?! You're not a trainer anymore...`, type: "speech" },
       { text: `You're a LEGEND. The Oneira region owes you a debt of gratitude.`, type: "speech" },
-      { text: `I hereby grant you the unofficial title of "Pokémon Dream Master"!`, type: "speech" },
+      { text: `I hereby grant you the unofficial title of "Pokemon Dream Master"!`, type: "speech" },
     ],
     100: [
       { text: `...`, type: "speech" },
       { text: `${name}. 100 visits.`, type: "speech" },
       { text: `I... I don't have a riddle for this. I'm speechless.`, type: "speech" },
-      { text: `You've created more Pokémon than some entire regions have discovered.`, type: "speech" },
+      { text: `You've created more Pokemon than some entire regions have discovered.`, type: "speech" },
       { text: `Thank you. Truly. For believing in dreams.`, type: "speech" },
     ],
   };
@@ -54,57 +54,54 @@ const getMilestoneDialogue = (visitCount, name) => {
   return milestones[visitCount] || null;
 };
 
-// Varied returning user dialogue (keeps it fresh)
+// Varied returning user dialogue
 const getReturningUserDialogue = (visitCount, name) => {
-  // Check for milestone first
   const milestone = getMilestoneDialogue(visitCount, name);
   if (milestone) {
-    return [...milestone, { text: `Now, let's create some more Pokémon!`, type: "speech" }];
+    return [...milestone, { text: `Now, let's create some more Pokemon!`, type: "speech" }];
   }
 
-  // Regular returning dialogue - varies based on visit count
   const dialogueOptions = [
     [
       { text: `Oh! Well, well, well... if it isn't ${name}!`, type: "speech" },
       { text: "I knew you'd come crawling back. They always do.", type: "speech" },
       { text: "What's the matter? Couldn't resist my charming personality?", type: "speech" },
-      { text: "...Or was it the AI-generated Pokémon? It's the Pokémon, isn't it.", type: "speech" },
+      { text: "...Or was it the AI-generated Pokemon? It's the Pokemon, isn't it.", type: "speech" },
       { text: "Let's make some more, shall we?", type: "speech" },
     ],
     [
       { text: `${name}! Welcome back to the Oneira region!`, type: "speech" },
       { text: "The servers are warm, the AI is ready, and I've got new riddles!", type: "speech" },
       { text: "Here's one: What sleeps in your mind but wakes up on screen?", type: "speech" },
-      { text: "...A dream Pokémon! Get it? ...You don't want to hear the riddles? Fine, fine.", type: "speech" },
-      { text: "Let's just make some Pokémon then!", type: "speech" },
+      { text: "...A dream Pokemon! Get it? ...You don't want to hear the riddles? Fine, fine.", type: "speech" },
+      { text: "Let's just make some Pokemon then!", type: "speech" },
     ],
     [
       { text: `Ah, ${name}! The dream researcher returns!`, type: "speech" },
       { text: "I was just calibrating the neural networks. Perfect timing!", type: "speech" },
-      { text: "Your Pokédex awaits. What will you create today?", type: "speech" },
+      { text: "Your Pokedex awaits. What will you create today?", type: "speech" },
     ],
     [
       { text: `${name}! *adjusts suitcase excitedly*`, type: "speech" },
       { text: "I've been experimenting with new algorithms since your last visit!", type: "speech" },
-      { text: "The Pokémon we can create now... they're even more magnificent!", type: "speech" },
+      { text: "The Pokemon we can create now... they're even more magnificent!", type: "speech" },
       { text: "Ready to see what dreams await?", type: "speech" },
     ],
     [
       { text: `Back so soon, ${name}?`, type: "speech" },
       { text: "Not that I'm complaining! Business has been... well, you're my only visitor.", type: "speech" },
-      { text: "But that just means more GPU power for YOUR Pokémon!", type: "speech" },
+      { text: "But that just means more GPU power for YOUR Pokemon!", type: "speech" },
       { text: "Oh! Before we start - a riddle: What has no body but lives in every trainer's heart?", type: "speech" },
-      { text: "...The dream of a new Pokémon! Now let's make that dream real!", type: "speech" },
+      { text: "...The dream of a new Pokemon! Now let's make that dream real!", type: "speech" },
     ],
     [
       { text: `${name}! Excellent timing!`, type: "speech" },
-      { text: "I was just about to take a coffee break, but Pokémon creation is MORE important!", type: "speech" },
+      { text: "I was just about to take a coffee break, but Pokemon creation is MORE important!", type: "speech" },
       { text: "...Don't tell anyone I said that. Professors need their coffee.", type: "speech" },
       { text: "Anyway, let's dream up some new creatures!", type: "speech" },
     ],
   ];
 
-  // Pick dialogue based on visit count to ensure variety
   const index = visitCount % dialogueOptions.length;
   return dialogueOptions[index];
 };
@@ -125,7 +122,7 @@ const INAPPROPRIATE_NAME_RESPONSES = [
   "Whoa there! Let's keep it family-friendly. This isn't the Celadon Game Corner!",
   "I've seen some things in my Gym Leader days, but that name? No way.",
   "My Rapidash just fainted from reading that. Try again!",
-  "That name would get us both banned from the Pokémon League. Next!",
+  "That name would get us both banned from the Pokemon League. Next!",
 ];
 
 const SHORT_NAME_RESPONSES = [
@@ -176,12 +173,8 @@ const Sparkle = ({ x, delay }) => (
   />
 );
 
-// Blaine sprite with suitcase - aligned to Blaine's visual center
+// Blaine sprite with suitcase - properly centered
 const BlaineSprite = () => {
-  // Adjust this value to align suitcase with Blaine's head
-  // Negative = move left, Positive = move right
-  const suitcaseOffset = -4; // pixels - tweak as needed
-  
   return (
     <div 
       className="flex flex-col items-center justify-center" 
@@ -195,25 +188,22 @@ const BlaineSprite = () => {
         style={{ imageRendering: 'pixelated' }}
       />
       
-      {/* Suitcase - positioned relative to Blaine's visual center */}
-      <div 
-        className="-mt-1"
-        style={{ marginLeft: `${suitcaseOffset}px` }}
-      >
-        <svg viewBox="0 0 60 35" className="w-16 h-10" style={{ imageRendering: 'pixelated' }}>
+      {/* Suitcase - centered SVG */}
+      <div className="-mt-1" style={{ marginLeft: '17px' }}>
+        <svg viewBox="0 0 50 35" className="w-16 h-10" style={{ imageRendering: 'pixelated' }}>
           {/* Suitcase body */}
-          <rect x="5" y="8" width="50" height="25" rx="3" fill="#8B4513" stroke="#5D2E0C" strokeWidth="2" />
+          <rect x="0" y="8" width="50" height="25" rx="3" fill="#8B4513" stroke="#5D2E0C" strokeWidth="2" />
           {/* Top band */}
-          <rect x="5" y="8" width="50" height="6" rx="2" fill="#A0522D" />
+          <rect x="0" y="8" width="50" height="6" rx="2" fill="#A0522D" />
           {/* Handle */}
-          <rect x="24" y="2" width="12" height="8" rx="2" fill="#5D2E0C" />
-          <rect x="26" y="4" width="8" height="4" rx="1" fill="#8B4513" />
+          <rect x="19" y="2" width="12" height="8" rx="2" fill="#5D2E0C" />
+          <rect x="21" y="4" width="8" height="4" rx="1" fill="#8B4513" />
           {/* Latches */}
-          <rect x="15" y="18" width="6" height="4" rx="1" fill="#DAA520" stroke="#B8860B" strokeWidth="1" />
-          <rect x="39" y="18" width="6" height="4" rx="1" fill="#DAA520" stroke="#B8860B" strokeWidth="1" />
+          <rect x="10" y="18" width="6" height="4" rx="1" fill="#DAA520" stroke="#B8860B" strokeWidth="1" />
+          <rect x="34" y="18" width="6" height="4" rx="1" fill="#DAA520" stroke="#B8860B" strokeWidth="1" />
           {/* Center clasp */}
-          <rect x="26" y="16" width="8" height="6" rx="1" fill="#DAA520" stroke="#B8860B" strokeWidth="1" />
-          <circle cx="30" cy="19" r="2" fill="#B8860B" />
+          <rect x="21" y="16" width="8" height="6" rx="1" fill="#DAA520" stroke="#B8860B" strokeWidth="1" />
+          <circle cx="25" cy="19" r="2" fill="#B8860B" />
         </svg>
       </div>
     </div>
@@ -268,48 +258,42 @@ export default function PokeDreamIntro({ onComplete, savedTrainerName }) {
   const [showProfessor, setShowProfessor] = useState(false);
   const [visitCount, setVisitCount] = useState(0);
   
-  // Check if returning user
   const isReturningUser = !!savedTrainerName;
 
-  // Track visit on mount (NEW IN COMMIT 2)
   useEffect(() => {
     const count = incrementVisitCount();
     setVisitCount(count);
   }, []);
 
-  // Dialogs for NEW users
   const newUserDialogs = [
     { text: "Hello there!", type: "speech" },
     { text: "It's so nice to meet you.", type: "speech" },
-    { text: "Welcome to the world of Pokémon!", type: "speech" },
-    { text: "My name is Blaine. I'm going to be your Pokémon Professor today!", type: "speech" },
+    { text: "Welcome to the world of Pokemon!", type: "speech" },
+    { text: "My name is Blaine. I'm going to be your Pokemon Professor today!", type: "speech" },
     { text: "It's a pleasure to meet you.", type: "speech" },
     { text: "...What's that? You recognize me?", type: "speech" },
     { text: "Ah yes... from Cinnabar Island. In Kanto. The Fire-type Gym Leader.", type: "speech" },
     { text: "Well... let's just say we had a few lawsuits after the volcano in the gym went off.", type: "speech" },
     { text: "Had to leave town in a hurry. Very hush-hush. You understand.", type: "speech" },
-    { text: "And if you don't keep quiet about it... you don't get a Pokémon! Capisce?", type: "speech" },
+    { text: "And if you don't keep quiet about it... you don't get a Pokemon! Capisce?", type: "speech" },
     { text: "Ahem. ANYWAY!", type: "speech" },
-    { text: "I've reinvented myself! Now I use ARTIFICIAL INTELLIGENCE to create brand new Pokémon!", type: "speech" },
+    { text: "I've reinvented myself! Now I use ARTIFICIAL INTELLIGENCE to create brand new Pokemon!", type: "speech" },
     { text: "It's like breeding, but with more GPUs and fewer Dittos. Much more sanitary.", type: "speech" },
     { text: "But first, tell me about yourself. What's your name?", type: "nameInput" },
     { text: "Right! So your name is NAME_PLACEHOLDER!", type: "speech", dynamic: true },
-    { text: "Today, we're demoing a new way to give trainers a Pokémon.", type: "speech" },
-    { text: "Through the power of new technologies, we are actively creating NEW Pokémon!", type: "speech" },
-    { text: "NAME_PLACEHOLDER! Your very own Pokémon dream is about to unfold!", type: "speech", dynamic: true },
-    { text: "A world of dreams and adventures with AI-generated Pokémon awaits!", type: "speech" },
+    { text: "Today, we're demoing a new way to give trainers a Pokemon.", type: "speech" },
+    { text: "Through the power of new technologies, we are actively creating NEW Pokemon!", type: "speech" },
+    { text: "NAME_PLACEHOLDER! Your very own Pokemon dream is about to unfold!", type: "speech", dynamic: true },
+    { text: "A world of dreams and adventures with AI-generated Pokemon awaits!", type: "speech" },
     { text: "Let's go!", type: "speech" },
   ];
 
-  // Get returning user dialogs dynamically based on visit count (UPDATED IN COMMIT 2)
   const returningUserDialogs = isReturningUser 
     ? getReturningUserDialogue(visitCount, savedTrainerName)
     : [];
 
-  // Choose dialog set based on user type
   const dialogs = isReturningUser ? returningUserDialogs : newUserDialogs;
 
-  // Phase transitions
   useEffect(() => {
     const t1 = setTimeout(() => setPhase('fadein'), 500);
     const t2 = setTimeout(() => {
@@ -352,15 +336,12 @@ export default function PokeDreamIntro({ onComplete, savedTrainerName }) {
     }
   };
 
-  // Keyboard support for advancing dialogue (Enter and Space)
   useEffect(() => {
     const handleKeyDown = (e) => {
-      // Don't trigger if user is typing in the name input
       if (currentDialog?.type === 'nameInput' && textComplete && !blaineResponse) {
         return;
       }
       
-      // Enter or Space advances dialogue
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
         handleContinue();
@@ -465,7 +446,7 @@ export default function PokeDreamIntro({ onComplete, savedTrainerName }) {
       {/* Main content */}
       <div className="relative z-10 flex flex-col items-center justify-center p-4 w-full min-h-screen">
         <div className="flex flex-col items-center w-full max-w-xl">
-          {/* Blaine sprite - show immediately for returning users */}
+          {/* Blaine sprite */}
           {showProfessor && (isReturningUser || dialogIndex >= 3) && (
             <div className="w-full max-w-md mx-auto flex justify-center mb-4">
               <BlaineSprite />
