@@ -1,182 +1,152 @@
-# PokéDream
+# PokeDream
 
-**AI-Powered Custom Pokémon Generator with Balanced Stats**
-
-Generate unique, never-before-seen Pokémon complete with balanced stats, movesets, abilities, and lore-accurate Pokédex entries — all powered by AI.
-
-![Python](https://img.shields.io/badge/Python-3.10+-blue?logo=python)
-![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-red?logo=pytorch)
-![License](https://img.shields.io/badge/License-MIT-green)
-
----
+A full-stack web application for generating original Pokemon using AI. Users describe a concept, and the system produces a complete Pokemon with balanced stats, a moveset, lore, and original artwork.
 
 ## Features
 
-- **AI-Generated Designs** — Create visually unique Pokémon using fine-tuned Stable Diffusion
-- **Balanced Stat Generation** — ML-driven stat allocation that respects game design principles
-- **Procedural Movesets** — Context-aware move generation based on type, stats, and lore
-- **Pokédex Entry Writer** — LLM-generated flavor text matching the official Pokémon style
-- **Type & Ability Assignment** — Intelligent classification based on visual and thematic cues
+- **Three generation modes**: Full control with type swhelection, quick generation from natural language, or fully randomized creation
+- **AI-generated content**: Stats, abilities, signature moves, and Pokedex entries via Claude API
+- **AI-generated artwork**: Ken Sugimori-style illustrations via Replicate's Flux model
+- **Game-accurate balancing**: Base stat totals follow official Pokemon tier conventions (early-game, mid-game, fully-evolved, pseudo-legendary, legendary)
+- **Shiny system**: 1/4096 chance for shiny variants, matching official Pokemon odds
+- **Tournament system**: Bi-weekly community voting brackets with 16 participants
+- **Daily challenges**: Themed creation prompts that rotate daily
+- **Achievement system**: Track milestones and unlock badges
+- **Hall of Fame**: Showcase for tournament champions
 
----
+## Tech Stack
 
-## AI Technologies Used
+**Frontend**: React 18, Vite, TailwindCSS
 
-| Component | Technology | Purpose |
-|-----------|------------|---------|
-| **Image Generation** | Stable Diffusion (fine-tuned) | Generate novel Pokémon artwork |
-| **Stat Balancing** | Custom ML Model (PyTorch) | Ensure competitive viability and game balance |
-| **Text Generation** | LLM (GPT-4 / Claude API) | Create Pokédex entries, names, and lore |
-| **Type Classification** | Vision Transformer (ViT) | Infer Pokémon types from generated images |
-| **Move Generation** | Retrieval-Augmented Generation (RAG) | Generate thematically appropriate movesets |
+**Backend**: Python, FastAPI, Uvicorn
 
----
+**AI Services**: Anthropic Claude API, Replicate API (Flux Schnell)
+
+**Deployment**: Vercel (frontend), Render (backend)
+
+**Storage**: JSON file-based database with persistent disk
 
 ## Project Structure
 
 ```
 pokedream/
-├── models/
-│   ├── diffusion/          # Fine-tuned Stable Diffusion checkpoints
-│   ├── stat_balancer/      # Stat generation model
-│   └── type_classifier/    # Vision model for type inference
-├── src/
-│   ├── generators/
-│   │   ├── image_gen.py    # Pokémon image generation
-│   │   ├── stats_gen.py    # Balanced stat allocation
-│   │   ├── moves_gen.py    # Moveset generation
-│   │   └── pokedex_gen.py  # Pokédex entry writer
-│   ├── utils/
-│   │   ├── balance.py      # Game balance constraints
-│   │   └── validation.py   # Output validation
-│   └── api/
-│       └── main.py         # FastAPI endpoints
-├── data/
-│   ├── pokemon_stats.csv   # Training data for stat model
-│   └── moves_database.json # Move pool reference
-├── notebooks/
-│   └── training.ipynb      # Model training experiments
-├── tests/
+├── api_server.py              # FastAPI application
+├── pokemon_generator.py       # Generation pipeline orchestrator
 ├── requirements.txt
-└── README.md
+├── src/
+│   ├── image_generator.py     # Replicate integration
+│   ├── stats_generator.py     # Claude integration
+│   ├── moves_generator.py     # Moveset assignment
+│   ├── pokedex_db.py          # Pokemon storage
+│   ├── trainer_db.py          # Trainer profiles
+│   ├── tournament_system.py   # Tournament logic
+│   └── ...
+├── data/                      # JSON data files
+├── outputs/                   # Generated images
+└── frontend/
+    ├── src/
+    │   ├── App.jsx
+    │   └── components/
+    │       ├── PokemonGenerator.jsx
+    │       ├── Pokedex.jsx
+    │       ├── Tournament.jsx
+    │       └── ...
+    └── ...
 ```
 
----
-
-## Getting Started
+## Setup
 
 ### Prerequisites
 
-- Python 3.10+
-- CUDA-compatible GPU (recommended)
-- API keys for LLM provider (OpenAI/Anthropic)
+- Python 3.9+
+- Node.js 18+
+- Anthropic API key
+- Replicate API token
 
-### Installation
+### Backend
 
 ```bash
-# Clone the repository
-git clone https://github.com/yourusername/pokedream.git
-cd pokedream
-
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
 # Install dependencies
 pip install -r requirements.txt
 
-# Set up environment variables
-cp .env.example .env
-# Add your API keys to .env
+# Create .env file
+ANTHROPIC_API_KEY=your-key-here
+REPLICATE_API_TOKEN=your-token-here
+FRONTEND_URL=http://localhost:5173
+
+# Run server
+uvicorn api_server:app --reload --port 8000
 ```
 
-### Usage
-
-```python
-from pokedream import PokemonGenerator
-
-generator = PokemonGenerator()
-
-# Generate a new Pokémon
-pokemon = generator.create(
-    theme="volcanic fire lizard",
-    evolution_stage=2,
-    stat_total=500  # BST constraint
-)
-
-print(pokemon.name)        # "Magmavern"
-print(pokemon.types)       # ["Fire", "Dragon"]
-print(pokemon.stats)       # {"hp": 75, "atk": 110, ...}
-print(pokemon.pokedex)     # "This Pokémon dwells in active volcanoes..."
-pokemon.image.show()       # Display generated artwork
-```
-
----
-
-## Game Balance Philosophy
-
-PokéDream enforces competitive balance through learned constraints:
-
-- **Base Stat Total (BST)** — Configurable limits matching official tiers (300-600)
-- **Stat Distribution** — Trained on 900+ official Pokémon to learn natural stat spreads
-- **Move Pool Coherence** — Moves align with type, stats, and thematic identity
-- **Ability Synergy** — Abilities complement the Pokémon's intended battle role
-
----
-
-## Model Training
-
-### Image Generation (Stable Diffusion)
-Fine-tuned on official Pokémon artwork using DreamBooth/LoRA techniques to capture the distinctive art style while enabling novel designs.
-
-### Stat Balancer
-Trained on the complete National Pokédex dataset to learn the relationship between:
-- Visual features → Type assignment
-- Type combinations → Stat distributions  
-- Evolution stage → Power scaling
-
----
-
-## API Reference
+### Frontend
 
 ```bash
-# Start the API server
-uvicorn src.api.main:app --reload
+cd frontend
+
+# Install dependencies
+npm install
+
+# Create .env file
+VITE_API_URL=http://localhost:8000
+
+# Run dev server
+npm run dev
 ```
 
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/generate` | POST | Create a new Pokémon |
-| `/pokemon/{id}` | GET | Retrieve generated Pokémon |
-| `/evolve/{id}` | POST | Generate an evolution |
+Open http://localhost:5173 in your browser.
 
----
+## API Endpoints
 
-## Roadmap
+### Generation
+- `POST /api/generate` - Full control generation with type selection
+- `POST /api/quick-generate` - Natural language generation
+- `POST /api/random-generate` - Randomized generation
 
-- [ ] Web UI with Gradio/Streamlit
-- [ ] Evolution chain generation
-- [ ] Shiny variant support
-- [ ] Battle simulator integration
-- [ ] Community gallery & voting
+### Pokedex
+- `GET /api/pokedex` - List all Pokemon (paginated)
+- `GET /api/pokedex/{dex_number}` - Get single Pokemon
+- `GET /api/pokedex/search?q=` - Search by name
 
----
+### Tournament
+- `GET /api/tournament/current` - Active tournament
+- `POST /api/tournament/vote` - Cast vote
+
+### Trainer
+- `GET /api/trainer/{id}/stats` - Trainer statistics
+- `GET /api/trainer/{id}/pokemon` - Trainer's Pokemon
+
+## Generation Pipeline
+
+1. User submits a concept description
+2. Claude generates name, stats, abilities, signature move, and Pokedex entry
+3. Name is checked against existing Pokedex to prevent duplicates
+4. Moveset is assigned from the move database based on type
+5. Replicate generates artwork using a structured prompt
+6. Shiny roll determines variant status
+7. Pokemon is saved to the Pokedex with a unique dex number
+
+## Stat Balancing
+
+Pokemon are generated within specific base stat total (BST) ranges:
+
+| Tier | BST Range |
+|------|-----------|
+| Early Game | 250-350 |
+| Mid Game | 400-500 |
+| Fully Evolved | 500-550 |
+| Pseudo-Legendary | 600 |
+| Legendary | 580-680 |
+
+## Deployment
+
+The application auto-deploys on push to main:
+- Frontend deploys to Vercel
+- Backend deploys to Render
 
 ## License
 
-This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+MIT
 
----
+## Author
 
-## Disclaimer
-
-This is a fan project for educational purposes demonstrating generative AI techniques. Pokémon is a trademark of Nintendo/Game Freak/The Pokémon Company. This project is not affiliated with or endorsed by them.
-
----
-
-
-### ✨ Created by [Yousef Abu-Salah](https://ykabusalah.me)
-
-<p align="center">
-  <i>Gotta generate 'em all!</i>
-</p>
+Yousef Abu-Salah
