@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import DailyChallenge from './DailyChallenge';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
@@ -37,7 +37,6 @@ const PokeballSpinner = () => (
 // Lab Background Pattern
 const LabBackground = () => (
   <div className="absolute inset-0 overflow-hidden pointer-events-none">
-    {/* Grid pattern */}
     <div
       className="absolute inset-0 opacity-5"
       style={{
@@ -48,10 +47,7 @@ const LabBackground = () => (
         backgroundSize: '40px 40px'
       }}
     />
-
-    {/* === OUTER EDGE POKÉBALLS === */}
-
-    {/* Pokéball - top right (large) */}
+    {/* Pokéballs - outer edge */}
     <div className="absolute top-12 right-8 opacity-[0.07]">
       <svg viewBox="0 0 100 100" className="w-32 h-32">
         <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="4"/>
@@ -59,8 +55,6 @@ const LabBackground = () => (
         <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="4"/>
       </svg>
     </div>
-
-    {/* Pokéball - top left (medium) */}
     <div className="absolute top-20 left-6 opacity-[0.06]">
       <svg viewBox="0 0 100 100" className="w-24 h-24">
         <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="4"/>
@@ -68,8 +62,6 @@ const LabBackground = () => (
         <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="4"/>
       </svg>
     </div>
-
-    {/* Pokéball - bottom left (medium) */}
     <div className="absolute bottom-24 left-8 opacity-[0.07]">
       <svg viewBox="0 0 100 100" className="w-24 h-24">
         <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="4"/>
@@ -77,8 +69,6 @@ const LabBackground = () => (
         <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="4"/>
       </svg>
     </div>
-
-    {/* Pokéball - bottom right (large) */}
     <div className="absolute bottom-16 right-6 opacity-[0.06]">
       <svg viewBox="0 0 100 100" className="w-28 h-28">
         <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="4"/>
@@ -86,10 +76,7 @@ const LabBackground = () => (
         <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="4"/>
       </svg>
     </div>
-
-    {/* === INNER POKÉBALLS - NEAR MENU === */}
-
-    {/* Pokéball - left of menu top (medium) */}
+    {/* Inner Pokéballs */}
     <div className="absolute top-48 left-[15%] opacity-[0.05]">
       <svg viewBox="0 0 100 100" className="w-20 h-20">
         <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="4"/>
@@ -97,8 +84,6 @@ const LabBackground = () => (
         <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="4"/>
       </svg>
     </div>
-
-    {/* Pokéball - right of menu top (small) */}
     <div className="absolute top-40 right-[15%] opacity-[0.05]">
       <svg viewBox="0 0 100 100" className="w-16 h-16">
         <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="5"/>
@@ -106,8 +91,6 @@ const LabBackground = () => (
         <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="5"/>
       </svg>
     </div>
-
-    {/* Pokéball - left of menu middle (large) */}
     <div className="absolute top-[45%] left-[12%] opacity-[0.06]">
       <svg viewBox="0 0 100 100" className="w-24 h-24">
         <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="4"/>
@@ -115,8 +98,6 @@ const LabBackground = () => (
         <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="4"/>
       </svg>
     </div>
-
-    {/* Pokéball - right of menu middle (medium) */}
     <div className="absolute top-[50%] right-[12%] opacity-[0.06]">
       <svg viewBox="0 0 100 100" className="w-22 h-22">
         <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="4"/>
@@ -124,8 +105,6 @@ const LabBackground = () => (
         <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="4"/>
       </svg>
     </div>
-
-    {/* Pokéball - left of menu lower (small) */}
     <div className="absolute top-[65%] left-[18%] opacity-[0.05]">
       <svg viewBox="0 0 100 100" className="w-14 h-14">
         <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="5"/>
@@ -133,8 +112,6 @@ const LabBackground = () => (
         <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="5"/>
       </svg>
     </div>
-
-    {/* Pokéball - right of menu lower (small) */}
     <div className="absolute top-[70%] right-[16%] opacity-[0.05]">
       <svg viewBox="0 0 100 100" className="w-16 h-16">
         <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="5"/>
@@ -142,8 +119,6 @@ const LabBackground = () => (
         <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="5"/>
       </svg>
     </div>
-
-    {/* Pokéball - left near bottom (tiny) */}
     <div className="absolute bottom-36 left-[20%] opacity-[0.04]">
       <svg viewBox="0 0 100 100" className="w-12 h-12">
         <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="6"/>
@@ -151,8 +126,6 @@ const LabBackground = () => (
         <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="6"/>
       </svg>
     </div>
-
-    {/* Pokéball - right near bottom (tiny) */}
     <div className="absolute bottom-44 right-[20%] opacity-[0.04]">
       <svg viewBox="0 0 100 100" className="w-10 h-10">
         <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="7"/>
@@ -160,8 +133,6 @@ const LabBackground = () => (
         <circle cx="50" cy="50" r="12" fill="none" stroke="white" strokeWidth="7"/>
       </svg>
     </div>
-
-    {/* Gradient overlay */}
     <div className="absolute inset-0 bg-gradient-to-b from-red-950/20 via-transparent to-gray-950"/>
   </div>
 );
@@ -352,6 +323,36 @@ export default function PokemonGenerator({ trainerName, trainerId, onNavigate, o
   const [showErrorPopup, setShowErrorPopup] = useState(false);
   const [activeChallenge, setActiveChallenge] = useState(null);
 
+  // Refs for auto-scrolling
+  const loadingRef = useRef(null);
+  const resultRef = useRef(null);
+
+  // Auto-scroll to loading spinner when generation starts
+  useEffect(() => {
+    if (isGenerating && loadingRef.current) {
+      // Small delay to ensure the element is rendered
+      setTimeout(() => {
+        loadingRef.current?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center'
+        });
+      }, 100);
+    }
+  }, [isGenerating]);
+
+  // Auto-scroll to result when Pokemon is created
+  useEffect(() => {
+    if (pokemon && !isGenerating && resultRef.current) {
+      // Small delay to ensure the card is fully rendered
+      setTimeout(() => {
+        resultRef.current?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center'
+        });
+      }, 150);
+    }
+  }, [pokemon, isGenerating]);
+
   const toggleType = (type) => {
     if (selectedTypes.includes(type)) {
       setSelectedTypes(selectedTypes.filter(t => t !== type));
@@ -360,15 +361,11 @@ export default function PokemonGenerator({ trainerName, trainerId, onNavigate, o
     }
   };
 
-  // Handler for when user clicks "Try It" on the daily challenge
   const handleUseChallenge = (challengeData) => {
     setActiveChallenge(challengeData);
-
-    // Build description from challenge text
     const desc = challengeData.challengeText || '';
     setDescription(desc);
 
-    // Switch to advanced mode if types are specified
     if (challengeData.types?.length > 0) {
       setMode('advanced');
       setSelectedTypes(challengeData.types);
@@ -376,16 +373,13 @@ export default function PokemonGenerator({ trainerName, trainerId, onNavigate, o
       setMode('simple');
     }
 
-    // Auto-generate if flagged
     if (challengeData.autoGenerate) {
-      // Small delay to let state update, then generate
       setTimeout(() => {
         handleGenerateWithChallenge(desc, challengeData);
       }, 100);
     }
   };
 
-  // Special generate function for challenges that uses passed data directly
   const handleGenerateWithChallenge = async (desc, challengeData) => {
     if (!desc.trim()) return;
 
@@ -428,11 +422,8 @@ export default function PokemonGenerator({ trainerName, trainerId, onNavigate, o
 
       const data = await res.json();
       setPokemon(data.pokemon || data);
-
-      // Clear active challenge after successful generation
       setActiveChallenge(null);
 
-      // Notify parent to check achievements
       if (onPokemonCreated) {
         onPokemonCreated(data.pokemon || data);
       }
@@ -502,11 +493,8 @@ export default function PokemonGenerator({ trainerName, trainerId, onNavigate, o
 
       const data = await res.json();
       setPokemon(data.pokemon || data);
-
-      // Clear active challenge after successful generation
       setActiveChallenge(null);
 
-      // Notify parent to check achievements
       if (onPokemonCreated) {
         onPokemonCreated(data.pokemon || data);
       }
@@ -697,9 +685,9 @@ export default function PokemonGenerator({ trainerName, trainerId, onNavigate, o
           </div>
         )}
 
-        {/* Loading State */}
+        {/* Loading State - with ref for auto-scroll */}
         {isGenerating && (
-          <div className="flex flex-col items-center justify-center py-12">
+          <div ref={loadingRef} className="flex flex-col items-center justify-center py-12">
             <PokeballSpinner />
             <p className="text-gray-400 mt-6 animate-pulse">
               {mode === 'random' ? 'The AI is cooking up something wild...' : 'Creating your Pokémon...'}
@@ -708,8 +696,12 @@ export default function PokemonGenerator({ trainerName, trainerId, onNavigate, o
           </div>
         )}
 
-        {/* Pokemon Result */}
-        {pokemon && !isGenerating && <PokemonCard pokemon={pokemon} imageKey={imageKey} />}
+        {/* Pokemon Result - with ref for auto-scroll */}
+        {pokemon && !isGenerating && (
+          <div ref={resultRef}>
+            <PokemonCard pokemon={pokemon} imageKey={imageKey} />
+          </div>
+        )}
 
         {/* Post-creation options */}
         {pokemon && !isGenerating && (
