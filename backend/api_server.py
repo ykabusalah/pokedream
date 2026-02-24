@@ -260,9 +260,9 @@ def root():
     return {"status": "PokeDream API running", "version": "1.0", "region": "Oneira"}
 
 
-@app.get("/health")
+@app.api_route("/health", methods=["GET", "HEAD"])
 def health_check():
-    """Health check endpoint for Railway."""
+    """Health check endpoint for monitoring."""
     return {"status": "healthy", "service": "pokedream-api"}
 
 
