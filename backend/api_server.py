@@ -261,9 +261,8 @@ def root():
 
 
 @app.api_route("/health", methods=["GET", "HEAD"])
-def health_check():
-    """Health check endpoint for monitoring."""
-    return {"status": "healthy", "service": "pokedream-api"}
+async def health_check():
+    return {"status": "ok"}
 
 
 @app.post("/api/generate")
